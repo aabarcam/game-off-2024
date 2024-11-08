@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://ihdh2acpem43"]
+
+[ext_resource type="Script" path="res://scripts/grenade/grenade_component.gd" id="1_h056a"]
+[ext_resource type="Texture2D" uid="uid://clav8tdybxrx5" path="res://icon.svg" id="2_yjh3m"]
+[ext_resource type="Script" path="res://scripts/grenade/grenade_base_state.gd" id="3_qh1rc"]
+[ext_resource type="Script" path="res://scripts/grenade/grenade_holding_state.gd" id="4_237cp"]
+[ext_resource type="Script" path="res://scripts/grenade/grenade_active_state.gd" id="5_vsgle"]
+[ext_resource type="Script" path="res://scripts/grenade/grenade_inactive_state.gd" id="6_nwals"]
+
+[node name="GrenadeComponent" type="Node2D" node_paths=PackedStringArray("holding_state", "active_state", "inactive_state")]
+script = ExtResource("1_h056a")
+holding_state = NodePath("GrenadeBaseState/GrenadeHoldingState")
+active_state = NodePath("GrenadeBaseState/GrenadeActiveState")
+inactive_state = NodePath("GrenadeBaseState/GrenadeInactiveState")
+
+[node name="GrenadeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_yjh3m")
+
+[node name="GrenadeBaseState" type="Node" parent="."]
+script = ExtResource("3_qh1rc")
+
+[node name="GrenadeHoldingState" type="Node" parent="GrenadeBaseState"]
+script = ExtResource("4_237cp")
+
+[node name="GrenadeActiveState" type="Node" parent="GrenadeBaseState"]
+script = ExtResource("5_vsgle")
+
+[node name="GrenadeInactiveState" type="Node" parent="GrenadeBaseState"]
+script = ExtResource("6_nwals")

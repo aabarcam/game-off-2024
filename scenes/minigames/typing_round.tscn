@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx2li1xr7phdr"]
+
+[ext_resource type="Script" path="res://scripts/minigames/typing_round.gd" id="1_hhujg"]
+
+[node name="TypingRound" type="Node2D"]
+script = ExtResource("1_hhujg")

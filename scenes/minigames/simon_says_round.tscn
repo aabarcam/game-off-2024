@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cevdffv7rhy2w"]
+
+[ext_resource type="Script" path="res://scripts/minigames/simon_says_round.gd" id="1_p6wfv"]
+
+[node name="SimonSaysRound" type="Node2D"]
+script = ExtResource("1_p6wfv")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4p2i6cbu0qrs"]
+
+[ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/interactable_component.tscn" id="1_yb83h"]
+
+[node name="MinigameTrigger" type="Node2D"]
+script = ExtResource("1_4yjdg")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
+
+[node name="MinigameLabel" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -113.5
+offset_right = 86.5
+offset_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MINIGAME
+STANDARD"
+horizontal_alignment = 1

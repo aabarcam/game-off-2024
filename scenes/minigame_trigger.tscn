@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
-[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/interactable_component.tscn" id="1_yb83h"]
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
 
 [node name="MinigameTrigger" type="Node2D"]
 script = ExtResource("1_4yjdg")

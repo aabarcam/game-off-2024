@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	# To debug this single scene
 	if OS.is_debug_build() and get_tree().root == get_parent():
-		push_warning("Debugging single Grenade scene")
+		push_warning("Debugging single Grenade component")
 		change_state(active_state)
 
 func _process(_delta: float) -> void:

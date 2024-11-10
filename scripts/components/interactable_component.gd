@@ -1,5 +1,8 @@
 extends Area2D
 class_name InteractableComponent
+## Component to add to interactable elements
+##
+## Emits clicked signal when interactable area is clicked
 
 signal clicked ## Fired when interactable is clicked
 
@@ -9,7 +12,7 @@ func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	# Ignore non-click events
 	if not event is InputEventMouseButton:
 		return

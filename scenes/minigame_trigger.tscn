@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=4 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="2_32x1j"]
 
-[node name="MinigameTrigger" type="Node2D"]
+[node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component") groups=["Minigame"]]
 script = ExtResource("1_4yjdg")
+interactable_component = NodePath("InteractableComponent")
+standard_round = ExtResource("2_32x1j")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
 

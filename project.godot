@@ -21,9 +21,14 @@ Signals="*res://scenes/autoload/signals.tscn"
 LevelManager="*res://scenes/autoload/level_manager.tscn"
 Manager="*res://scenes/autoload/manager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 Interactable="Interactable object in a room"
+Minigame=""
 
 [input]
 

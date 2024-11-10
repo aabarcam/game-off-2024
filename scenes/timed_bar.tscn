@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3sayov7tmyc"]
+
+[ext_resource type="Script" path="res://scripts/timed_bar.gd" id="1_uvkyx"]
+
+[node name="TimedBar" type="ProgressBar"]
+offset_right = 92.0
+offset_bottom = 27.0
+show_percentage = false
+script = ExtResource("1_uvkyx")
+
+[node name="Timer" type="Timer" parent="."]

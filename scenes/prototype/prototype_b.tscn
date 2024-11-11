@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfrx1gkeso1o1"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_1rngy"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_q44dy"]
+
+[node name="PrototypeB" instance=ExtResource("1_1rngy")]
+
+[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_q44dy")]
+position = Vector2(145, 338)
+rounds = 1
+
+[node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
+position = Vector2(969, 328)
+minigame = 1
+
+[node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_q44dy")]
+position = Vector2(568, 203)
+minigame = 2

@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://b4p2i6cbu0qrs"]
+
+[ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="2_32x1j"]
+[ext_resource type="PackedScene" uid="uid://dx2li1xr7phdr" path="res://scenes/minigames/typing_round.tscn" id="3_jd6sm"]
+[ext_resource type="PackedScene" uid="uid://cevdffv7rhy2w" path="res://scenes/minigames/simon_says_round.tscn" id="4_6ymm7"]
+[ext_resource type="Texture2D" uid="uid://cqnl8l71watxq" path="res://placeholder_bg.png" id="4_d6v8q"]
+[ext_resource type="PackedScene" uid="uid://ihdh2acpem43" path="res://scenes/components/grenade_component.tscn" id="5_46xms"]
+[ext_resource type="Texture2D" uid="uid://bxqtpmn2mqmio" path="res://assets/prototype/1.png" id="5_ivaxi"]
+[ext_resource type="Texture2D" uid="uid://38y1qmcshcm0" path="res://assets/prototype/2.png" id="6_khl80"]
+[ext_resource type="Texture2D" uid="uid://d2kfjkqaiqosf" path="res://assets/prototype/3.png" id="7_1r6oe"]
+[ext_resource type="Texture2D" uid="uid://wddg38n0jfye" path="res://assets/prototype/4.png" id="8_ktlh0"]
+[ext_resource type="Texture2D" uid="uid://dcx1yyfn1yba0" path="res://assets/prototype/5.png" id="9_5nogn"]
+[ext_resource type="Texture2D" uid="uid://j4ou2t86f68h" path="res://assets/prototype/6.png" id="10_5ob6x"]
+[ext_resource type="Texture2D" uid="uid://dm1cc8xi4v7g5" path="res://assets/prototype/7.png" id="11_wway4"]
+[ext_resource type="Texture2D" uid="uid://5akkijklydnf" path="res://assets/prototype/Saludo1.png" id="12_8gg1k"]
+[ext_resource type="Texture2D" uid="uid://d2jghc32stqry" path="res://assets/prototype/Saludo2.png" id="13_7t2ix"]
+[ext_resource type="Texture2D" uid="uid://caaloxrhd2f4u" path="res://assets/prototype/contrincante.png" id="17_0nhel"]
+
+[node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
+texture_filter = 1
+script = ExtResource("1_4yjdg")
+interactable_component = NodePath("InteractableComponent")
+grenade_component = NodePath("GrenadeComponent")
+standard_round = ExtResource("2_32x1j")
+typing_round = ExtResource("3_jd6sm")
+simon_says_round = ExtResource("4_6ymm7")
+player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80"), ExtResource("7_1r6oe"), ExtResource("8_ktlh0"), ExtResource("9_5nogn"), ExtResource("10_5ob6x"), ExtResource("11_wway4")])
+handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
+
+[node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
+
+[node name="MinigameLabel" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -113.5
+offset_right = 86.5
+offset_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MINIGAME
+STANDARD"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+
+[node name="Background" type="Sprite2D" parent="Instructions"]
+modulate = Color(0, 0.422065, 0.424418, 1)
+position = Vector2(576, 324)
+texture = ExtResource("4_d6v8q")
+
+[node name="Text" type="Label" parent="Instructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 457.5
+offset_top = 112.0
+offset_right = 694.5
+offset_bottom = 213.0
+grow_horizontal = 2
+text = "INSTRUCTIONS PLACEHOLDER"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Instructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 496.0
+offset_top = 506.0
+offset_right = 656.0
+offset_bottom = 571.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="GrenadeInstructions" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.0705882)
+
+[node name="Background" type="Sprite2D" parent="GrenadeInstructions"]
+modulate = Color(0, 0.422065, 0.424418, 1)
+position = Vector2(576, 324)
+texture = ExtResource("4_d6v8q")
+
+[node name="Text" type="Label" parent="GrenadeInstructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 457.5
+offset_top = 112.0
+offset_right = 694.5
+offset_bottom = 213.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Before we start, can you hold this for me?
+
+(HOLD LEFT CLICK AND DON'T LET GO)"
+horizontal_alignment = 1
+
+[node name="GrenadeComponent" parent="." instance=ExtResource("5_46xms")]
+position = Vector2(1048, 546)
+
+[node name="PlayerHandSprite" type="Sprite2D" parent="."]
+position = Vector2(-152, -75)
+scale = Vector2(2, 2)
+texture = ExtResource("11_wway4")
+centered = false
+
+[node name="OpponentHandSprite" type="Sprite2D" parent="."]
+position = Vector2(681, -82)
+scale = Vector2(2, 2)
+texture = ExtResource("17_0nhel")
+centered = false
+
+[node name="HandshakeSprite" type="Sprite2D" parent="."]
+position = Vector2(-63, -21)
+scale = Vector2(2, 2)
+texture = ExtResource("12_8gg1k")
+centered = false

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://e6gh4frdpblh"]
+
+[ext_resource type="Script" path="res://scripts/transition_trigger.gd" id="1_g4cho"]
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="2_286dy"]
+
+[node name="TransitionTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component")]
+script = ExtResource("1_g4cho")
+interactable_component = NodePath("InteractableComponent")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_286dy")]

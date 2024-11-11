@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://wnaxleb6ylw7"]
+
+[ext_resource type="Script" path="res://scripts/minigames/standard_round.gd" id="1_7c8h7"]
+[ext_resource type="PackedScene" uid="uid://b75c57ghg2hg7" path="res://scenes/components/sequence_generator_component.tscn" id="2_l5ttv"]
+
+[node name="StandardRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
+script = ExtResource("1_7c8h7")
+sequence_size = 2
+sequence_generator = NodePath("SequenceGeneratorComponent")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="SequenceGeneratorComponent" parent="." instance=ExtResource("2_l5ttv")]
+
+[node name="LetterStop" type="Marker2D" parent="."]
+position = Vector2(560, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStop"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+STOP HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LetterStart" type="Marker2D" parent="."]
+position = Vector2(1080, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStart"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+START HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SequenceTimer" type="Timer" parent="."]

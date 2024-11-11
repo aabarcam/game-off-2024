@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cehm3h4bvn8h5"]
+
+[ext_resource type="Script" path="res://scripts/autoload/level_manager.gd" id="1_xc0ai"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("1_xc0ai")
+prototype_levels = Array[String](["res://scenes/prototype/prototype_a.tscn", "res://scenes/prototype/prototype_b.tscn"])

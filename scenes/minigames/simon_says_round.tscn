@@ -5,13 +5,14 @@
 
 [node name="SimonSaysRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_p6wfv")
-memorize_time = 2.0
+memorize_time = 1.0
 sequence_quantity = 2
 sequence_size = 2
 time_per_sequence = 5.0
 sequence_generator = NodePath("SequenceGeneratorComponent")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)

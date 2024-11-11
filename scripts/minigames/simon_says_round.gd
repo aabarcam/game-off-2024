@@ -113,6 +113,7 @@ func _on_letter_activated() -> void:
 		current_sequence.set_quiet(false)
 		current_sequence.turn_green()
 		set_sequence_inactive(current_sequence)
+		key_pressed.emit()
 		#round_sequences.erase(current_sequence)
 		if sequence_id < sequence_quantity:
 			play()

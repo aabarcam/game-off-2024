@@ -80,6 +80,8 @@ func _on_letter_activated() -> void:
 			if seq != current_sequence:
 				seq.set_sequence_inactive()
 	current_sequence.activate_next_letter()
+	key_pressed.emit()
+	
 	if is_sequence_activated(current_sequence):
 		set_sequence_inactive(current_sequence)
 		round_sequences.erase(current_sequence)

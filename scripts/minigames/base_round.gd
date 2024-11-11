@@ -4,6 +4,7 @@ class_name BaseRound
 ##
 ## General use functions useful for all inheriting minigames
 
+signal key_pressed ## Keys have been pressed that warrant a change in hand sprite
 signal won ## Round has been cleared
 signal lost ## Round has been lost
 
@@ -26,6 +27,7 @@ var sequence_count: int = 0
 @onready var sequence_timer: Timer = $SequenceTimer
 
 func _ready() -> void:
+	Signals.register_signal(key_pressed, self)
 	Signals.register_signal(won, self)
 	Signals.register_signal(lost, self)
 	

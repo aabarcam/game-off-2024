@@ -20,6 +20,10 @@ signal lost ## Minigame lost
 @export var typing_round: PackedScene
 @export var simon_says_round: PackedScene
 
+@export_category("Hand textures")
+@export var player_textures: Array[Texture2D] = []
+@export var handshake_textures: Array[Texture2D] = []
+
 var current_round: BaseRound
 var round_count: int = 0
 
@@ -29,6 +33,9 @@ var round_count: int = 0
 @onready var instructions_bg: Sprite2D = $Instructions/Background
 @onready var instructions_text: Label = $Instructions/Text
 @onready var game_start_button: Button = $Instructions/StartButton
+@onready var player_hand: Sprite2D = $PlayerHandSprite
+@onready var opponent_hand: Sprite2D = $OpponentHandSprite
+@onready var handshake: Sprite2D = $HandshakeSprite
 
 ## Ready function called in editor
 func _ready_editor() -> void:
@@ -45,6 +52,10 @@ func _ready_game() -> void:
 	
 	grenade_instructions.global_position = Vector2.ZERO
 	grenade_instructions.modulate.a = 1.0
+	
+	player_hand.global_position = player_hand.position
+	opponent_hand.global_position = opponent_hand.position
+	handshake.global_position = handshake.position
 	
 	reset_trigger()
 	
@@ -63,9 +74,20 @@ func reset_trigger() -> void:
 	if current_round != null:
 		current_round.queue_free()
 		current_round = null
+	round_count = 0
 	grenade_component.reset()
 	grenade_instructions.hide()
 	instructions.hide()
+	hide_hands()
+	handshake.hide()
+
+func show_hands() -> void:
+	player_hand.show()
+	opponent_hand.show()
+
+func hide_hands() -> void:
+	player_hand.hide()
+	opponent_hand.hide()
 
 func show_instructions() -> void:
 	instructions.show()
@@ -74,11 +96,13 @@ func update_debug_label() -> void:
 	if minigame_label_debug != null:
 		minigame_label_debug.text = "MINIGAME\n" + Manager.Minigames.keys()[minigame]
 
-func connect_round_signals(this_round: Node2D) -> void:
+func connect_round_signals(this_round: BaseRound) -> void:
+	this_round.key_pressed.connect(_on_key_pressed)
 	this_round.won.connect(_on_round_won)
 	this_round.lost.connect(_on_round_lost)
 
-func disconnect_round_signals(this_round: Node2D) -> void:
+func disconnect_round_signals(this_round: BaseRound) -> void:
+	this_round.key_pressed.disconnect(_on_key_pressed)
 	this_round.won.disconnect(_on_round_won)
 	this_round.lost.disconnect(_on_round_lost)
 
@@ -89,9 +113,20 @@ func start_minigame() -> void:
 		current_round = typing_round.instantiate() as TypingRound
 	elif minigame == Manager.Minigames.SIMON_SAYS:
 		current_round = simon_says_round.instantiate() as SimonSaysRound
+	show_hands()
 	connect_round_signals(current_round)
 	add_child(current_round)
 	current_round.start_round()
+
+func get_random_player_sprite() -> Texture2D:
+	var rand_id: int = randi() % player_textures.size()
+	var output: Texture2D = player_textures[rand_id]
+	if output == player_hand.texture:
+		output = player_textures[(rand_id + 1) % player_textures.size()]
+	return output
+
+func disable_grenade() -> void:
+	grenade_component.change_state(grenade_component.inactive_state)
 
 func notify_minigame_lost() -> void:
 	#current_round.reset()
@@ -100,7 +135,6 @@ func notify_minigame_lost() -> void:
 
 func set_minigame(new_val: Manager.Minigames) -> void:
 	minigame = new_val
-	print("set")
 	if Engine.is_editor_hint():
 		update_debug_label()
 
@@ -121,6 +155,9 @@ func _on_round_won() -> void:
 		current_round.reset()
 		current_round.start_round()
 	else:
+		handshake.show()
+		hide_hands()
+		#reset_trigger()
 		won.emit()
 
 func _on_round_lost() -> void:
@@ -143,3 +180,7 @@ func _on_grenade_held() -> void:
 func _on_grenade_exploded() -> void:
 	# lose minigame
 	notify_minigame_lost()
+
+func _on_key_pressed() -> void:
+	# change player sprite
+	player_hand.texture = get_random_player_sprite()

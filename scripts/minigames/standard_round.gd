@@ -84,6 +84,7 @@ func _on_letter_activated() -> void:
 	if is_sequence_activated(current_sequence):
 		set_sequence_inactive(current_sequence)
 		sequence_count += 1
+		key_pressed.emit()
 		if sequence_count < sequence_quantity:
 			start_next_sequence()
 		else:

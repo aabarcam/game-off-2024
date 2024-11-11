@@ -37,5 +37,30 @@ func set_sequence_inactive() -> void:
 	for letter in letters:
 		letter.set_as_cleared()
 
+func activate_next_letter() -> void:
+	for letter in letters:
+		if letter.is_inactive():
+			letter.reset()
+			break
+
+func is_first_letter_activated() -> bool:
+	return letters[0].is_activated()
+
+func light_on() -> void:
+	for letter in letters:
+		letter.light_on()
+
+func light_off() -> void:
+	for letter in letters:
+		letter.light_off()
+
+func turn_green() -> void:
+	for letter in letters:
+		letter.change_color(Color.LIME_GREEN)
+
+func set_quiet(val: bool) -> void:
+	for letter in letters:
+		letter.set_quiet(val)
+
 func start_timer(time: float) -> void:
 	timed_bar.start_timer(time)

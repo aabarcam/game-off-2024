@@ -1,38 +1,59 @@
-extends BaseRound
-class_name StandardRound
-## Class represents a single round of the standard handshake minigame
+extends Node2D
+class_name BaseRound
+## Class represents a single round of a handshake minigame
 ##
-## Generates random sequences of letters the player must press at a time
+## General use functions useful for all inheriting minigames
 
-#func _ready() -> void:
-	#Signals.register_signal(won, self)
-	#Signals.register_signal(lost, self)
-	#
-	#global_position = Vector2.ZERO
-	#
-	#sequence_timer.one_shot = true
-	#sequence_timer.timeout.connect(_on_sequence_timer_timeout)
-	#
-	#start_point_debug_label.hide()
-	#stop_point_debug_label.hide()
-	#
-	#if OS.is_debug_build() and get_parent() == get_tree().root:
-		#await get_tree().create_timer(1.0).timeout
-		#start_round()
+signal won ## Round has been cleared
+signal lost ## Round has been lost
+
+@export_category("Config")
+@export var sequence_quantity: int = 5
+@export var sequence_size: int = 1
+@export var time_per_sequence: float = 2.5
+
+@export_category("Components")
+@export var sequence_generator: SequenceGenerator
+
+var current_sequence: Sequence
+var previous_sequences: Array[Sequence] = []
+var sequence_count: int = 0
+
+@onready var letter_stop_point: Vector2 = $LetterStop.position
+@onready var letter_start_point: Vector2 = $LetterStart.position
+@onready var stop_point_debug_label: Label = $LetterStop/DebugLabel
+@onready var start_point_debug_label: Label = $LetterStart/DebugLabel
+@onready var sequence_timer: Timer = $SequenceTimer
+
+func _ready() -> void:
+	Signals.register_signal(won, self)
+	Signals.register_signal(lost, self)
+	
+	global_position = Vector2.ZERO
+	
+	sequence_timer.one_shot = true
+	sequence_timer.timeout.connect(_on_sequence_timer_timeout)
+	
+	start_point_debug_label.hide()
+	stop_point_debug_label.hide()
+	
+	if OS.is_debug_build() and get_parent() == get_tree().root:
+		await get_tree().create_timer(1.0).timeout
+		start_round()
 
 func start_round() -> void:
 	start_next_sequence()
 
 ## Reset round to initial state to start anew
-#func reset() -> void:
-	#delete_previous_sequences()
-	#sequence_count = 0
-	#sequence_timer.stop()
+func reset() -> void:
+	delete_previous_sequences()
+	sequence_count = 0
+	sequence_timer.stop()
 
-#func delete_previous_sequences() -> void:
-	#for seq in previous_sequences:
-		#seq.queue_free()
-	#previous_sequences = []
+func delete_previous_sequences() -> void:
+	for seq in previous_sequences:
+		seq.queue_free()
+	previous_sequences = []
 
 func start_next_sequence() -> void:
 	sequence_timer.start(time_per_sequence)
@@ -44,9 +65,9 @@ func start_next_sequence() -> void:
 	reset_sequence_state(current_sequence)
 	start_sequence_move(current_sequence)
 
-#func get_next_sequence() -> Sequence:
-	#var sequence: String = sequence_generator.generate_random(sequence_size)
-	#return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
+func get_next_sequence() -> Sequence:
+	var sequence: String = sequence_generator.generate_random(sequence_size)
+	return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
 
 func start_sequence_move(sequence: Sequence) -> void:
 	create_tween().tween_property(sequence, "position:x", letter_stop_point.x, time_per_sequence)

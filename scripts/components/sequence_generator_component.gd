@@ -41,12 +41,12 @@ func generate_word() -> String:
 	return allowed_words.pick_random()
 
 ## Return sequence as instantiated Letters
-func string_to_letters(str: String, letter_mode: Letter.Mode) -> Sequence:
+func string_to_letters(string: String, letter_mode: Letter.Mode) -> Sequence:
 	var sequence: Sequence = sequence_scene.instantiate()
 	add_child(sequence)
-	for char in str:
+	for character in string:
 		var new_letter: Letter = letter_scene.instantiate()
-		new_letter.set_character(char)
+		new_letter.set_character(character)
 		new_letter.activation_mode = letter_mode
 		sequence.container.add_child(new_letter)
 		sequence.add_letter(new_letter)

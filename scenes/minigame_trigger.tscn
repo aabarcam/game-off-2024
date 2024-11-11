@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=8 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
 [ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="2_32x1j"]
+[ext_resource type="PackedScene" uid="uid://dx2li1xr7phdr" path="res://scenes/minigames/typing_round.tscn" id="3_jd6sm"]
+[ext_resource type="PackedScene" uid="uid://cevdffv7rhy2w" path="res://scenes/minigames/simon_says_round.tscn" id="4_6ymm7"]
+[ext_resource type="Texture2D" uid="uid://cqnl8l71watxq" path="res://placeholder_bg.png" id="4_d6v8q"]
+[ext_resource type="PackedScene" uid="uid://ihdh2acpem43" path="res://scenes/components/grenade_component.tscn" id="5_46xms"]
 
-[node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component") groups=["Minigame"]]
+[node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
 script = ExtResource("1_4yjdg")
 interactable_component = NodePath("InteractableComponent")
+grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")
+typing_round = ExtResource("3_jd6sm")
+simon_says_round = ExtResource("4_6ymm7")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
 
@@ -27,3 +34,61 @@ grow_vertical = 2
 text = "MINIGAME
 STANDARD"
 horizontal_alignment = 1
+
+[node name="Instructions" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+
+[node name="Background" type="Sprite2D" parent="Instructions"]
+modulate = Color(0, 0.422065, 0.424418, 1)
+position = Vector2(576, 324)
+texture = ExtResource("4_d6v8q")
+
+[node name="Text" type="Label" parent="Instructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 457.5
+offset_top = 112.0
+offset_right = 694.5
+offset_bottom = 213.0
+grow_horizontal = 2
+text = "INSTRUCTIONS PLACEHOLDER"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Instructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 496.0
+offset_top = 506.0
+offset_right = 656.0
+offset_bottom = 571.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="GrenadeInstructions" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.0705882)
+
+[node name="Background" type="Sprite2D" parent="GrenadeInstructions"]
+modulate = Color(0, 0.422065, 0.424418, 1)
+position = Vector2(576, 324)
+texture = ExtResource("4_d6v8q")
+
+[node name="Text" type="Label" parent="GrenadeInstructions"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 457.5
+offset_top = 112.0
+offset_right = 694.5
+offset_bottom = 213.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Before we start, can you hold this for me?
+
+(HOLD LEFT CLICK AND DON'T LET GO)"
+horizontal_alignment = 1
+
+[node name="GrenadeComponent" parent="." instance=ExtResource("5_46xms")]
+position = Vector2(1048, 546)

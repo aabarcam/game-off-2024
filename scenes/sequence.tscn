@@ -1,19 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bysqwntwxgx7c"]
+[gd_scene load_steps=4 format=3 uid="uid://bysqwntwxgx7c"]
 
 [ext_resource type="Script" path="res://scripts/sequence.gd" id="1_xjxu6"]
 [ext_resource type="PackedScene" uid="uid://i3sayov7tmyc" path="res://scenes/timed_bar.tscn" id="2_rwk0v"]
 
-[node name="Sequence" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6a2xp"]
+
+[node name="Sequence" type="Panel"]
+offset_left = -17.0
+offset_right = 17.0
 offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6a2xp")
 script = ExtResource("1_xjxu6")
 
 [node name="TimedBar" parent="." instance=ExtResource("2_rwk0v")]
 layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 offset_left = -12.0
-offset_top = 8.0
+offset_top = 15.0
 offset_right = 46.0
+offset_bottom = 34.0
+grow_horizontal = 2
 scale = Vector2(0.415, 0.415)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

@@ -18,4 +18,4 @@ func log_signal(sig: Signal) -> void:
 
 ## Return a function that logs the received signal
 func create_log_func(sig: Signal) -> Callable:
-	return func(): log_signal(sig)
+	return func(_a1=null): log_signal(sig)

@@ -1,6 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx2li1xr7phdr"]
+[gd_scene load_steps=3 format=3 uid="uid://dx2li1xr7phdr"]
 
 [ext_resource type="Script" path="res://scripts/minigames/typing_round.gd" id="1_hhujg"]
+[ext_resource type="PackedScene" uid="uid://b75c57ghg2hg7" path="res://scenes/components/sequence_generator_component.tscn" id="2_5ubva"]
 
-[node name="TypingRound" type="Node2D"]
+[node name="TypingRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_hhujg")
+sequence_quantity = 3
+time_per_sequence = 10.0
+sequence_generator = NodePath("SequenceGeneratorComponent")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="SequenceGeneratorComponent" parent="." instance=ExtResource("2_5ubva")]
+
+[node name="LetterStop" type="Marker2D" parent="."]
+position = Vector2(560, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStop"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+STOP HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LetterStart" type="Marker2D" parent="."]
+position = Vector2(1080, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStart"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+START HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SequenceTimer" type="Timer" parent="."]
+
+[node name="SequenceContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 45.0
+offset_right = 580.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 256
+alignment = 1

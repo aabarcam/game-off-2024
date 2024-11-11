@@ -1,7 +1,7 @@
 extends Node2D
 class_name LevelBase
 
-var minigames: Array[MinigameTrigger] = []
+var minigames: Array[Node] = []
 var active_minigame: MinigameTrigger
 
 func _ready() -> void:
@@ -11,10 +11,22 @@ func _ready() -> void:
 	for minigame in minigames:
 		minigame.clicked.connect(_on_minigame_clicked)
 
-func get_scene_minigames() -> Array[MinigameTrigger]:
+func get_scene_minigames() -> Array[Node]:
 	var children: Array[Node] = get_children()
-	var found_minigames: Array[MinigameTrigger] = children.filter(func (x: Node): return x.is_in_group("Minigame"))
+	var found_minigames: Array[Node] = children.filter(func (x: Node): return x.is_in_group("Minigame"))
 	return found_minigames
 
 func _on_minigame_clicked(minigame: MinigameTrigger) -> void:
 	active_minigame = minigame
+	if not active_minigame.lost.is_connected(_on_minigame_lost):
+		active_minigame.lost.connect(_on_minigame_lost)
+	if not active_minigame.won.is_connected(_on_minigame_won):
+		active_minigame.won.connect(_on_minigame_won)
+
+func _on_minigame_lost() -> void:
+	active_minigame = null
+
+func _on_minigame_won() -> void:
+	active_minigame.reset_trigger()
+	active_minigame.set_as_cleared()
+	active_minigame = null

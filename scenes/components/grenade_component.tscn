@@ -16,6 +16,18 @@ inactive_state = NodePath("GrenadeBaseState/GrenadeInactiveState")
 [node name="GrenadeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_g7u8r")
 
+[node name="Label" type="Label" parent="GrenadeSprite"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = -88.0
+offset_right = -30.0
+offset_bottom = -65.0
+grow_horizontal = 2
+text = "KEEP HOLDING!"
+horizontal_alignment = 1
+
 [node name="GrenadeBaseState" type="Node" parent="."]
 script = ExtResource("3_5tvo1")
 

@@ -8,3 +8,6 @@ func hold_grenade() -> void:
 
 func release_grenade() -> void:
 	return
+
+func is_inactive() -> bool:
+	return true

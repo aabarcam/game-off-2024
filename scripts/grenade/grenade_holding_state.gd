@@ -6,3 +6,6 @@ extends GrenadeBaseState
 func release_grenade() -> void:
 	grenade.notify_exploded()
 	grenade.change_state(grenade.inactive_state)
+
+func hold_grenade() -> void:
+	return

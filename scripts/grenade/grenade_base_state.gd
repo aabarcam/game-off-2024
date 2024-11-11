@@ -4,7 +4,7 @@ class_name GrenadeBaseState
 ##
 ## Declares shared functionalities and functions to be overriden
 
-var grenade: Grenade: ## Owner of this state
+var grenade: GrenadeComponent: ## Owner of this state
 	set = set_grenade
 
 func hold_grenade() -> void:
@@ -13,5 +13,8 @@ func hold_grenade() -> void:
 func release_grenade() -> void:
 	push_error("Invalid state, cannot release grenade")
 
-func set_grenade(new_grenade: Grenade) -> void:
+func is_inactive() -> bool:
+	return false
+
+func set_grenade(new_grenade: GrenadeComponent) -> void:
 	grenade = new_grenade

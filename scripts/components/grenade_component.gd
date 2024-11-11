@@ -1,5 +1,5 @@
 extends Node2D
-class_name Grenade
+class_name GrenadeComponent
 
 signal held
 signal exploded
@@ -38,6 +38,12 @@ func notify_held() -> void:
 
 func notify_exploded() -> void:
 	exploded.emit()
+
+func is_inactive() -> bool:
+	return state.is_inactive()
+
+func reset() -> void:
+	change_state(inactive_state)
 
 func change_state(new_state: GrenadeBaseState) -> void:
 	state = new_state

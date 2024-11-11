@@ -21,6 +21,8 @@ enum Mode {NOT_SET, HOLD, TYPE}
 
 var state: LetterBaseState
 var activation_mode: Mode = Mode.NOT_SET
+var quiet: bool = false:
+	set = set_quiet
 
 ## Function determining if letter has been deactivated
 var deactivate_condition: Callable
@@ -80,7 +82,7 @@ func hold_deactivate_condition(event: InputEvent) -> bool:
 	return event.pressed == false and event_key == character
 
 ## Condition to deactivate letter in typing minigames
-func type_deactivate_condition(event: InputEvent) -> bool:
+func type_deactivate_condition(_event: InputEvent) -> bool:
 	return false
 
 ## Returns the character corresponding to the key press, in lowercase
@@ -91,19 +93,30 @@ func get_event_key(event: InputEventKey) -> String:
 func update_text() -> void:
 	text = character
 
+func light_on() -> void:
+	modulate = Color.RED
+
+func light_off() -> void:
+	modulate = Color.WHITE
+
+func set_quiet(new_val: bool) -> void:
+	quiet = new_val
+
 func notify_activated() -> void:
-	activated.emit()
 	change_color(Color.LIME_GREEN)
+	activated.emit()
 
 func notify_deactivated() -> void:
-	deactivated.emit()
 	change_color(Color.WHITE)
+	deactivated.emit()
 
 ## Mark letter as cleared and set to inactive
 func set_as_cleared() -> void:
 	change_state(inactive_state)
 
 func change_color(color: Color) -> void:
+	if quiet:
+		return
 	modulate = color
 
 func is_activated() -> bool:
@@ -111,6 +124,9 @@ func is_activated() -> bool:
 
 func is_deactivated() -> bool:
 	return state.is_deactivated()
+
+func is_active() -> bool:
+	return state.is_active()
 
 func is_inactive() -> bool:
 	return state.is_inactive()

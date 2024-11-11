@@ -8,10 +8,10 @@ var letter: Letter: ## Owner of this state
 	set = set_letter
 
 func activate_letter() -> void:
-	push_error("Invalid state, cannot activate letter " + letter.character)
+	push_error("Invalid state " + str(self) + ", cannot activate letter " + letter.character)
 
 func deactivate_letter() -> void:
-	push_error("Invalid state, cannot deactivate letter " + letter.character)
+	push_error("Invalid state " + str(self) + ", cannot deactivate letter " + letter.character)
 
 func is_activated() -> bool:
 	return false

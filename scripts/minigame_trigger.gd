@@ -32,7 +32,7 @@ var round_count: int = 0
 
 ## Ready function called in editor
 func _ready_editor() -> void:
-	pass
+	update_debug_label()
 
 ## Ready function called in game
 func _ready_game() -> void:
@@ -71,7 +71,8 @@ func show_instructions() -> void:
 	instructions.show()
 
 func update_debug_label() -> void:
-	minigame_label_debug.text = "MINIGAME\n" + Manager.Minigames.keys()[minigame]
+	if minigame_label_debug != null:
+		minigame_label_debug.text = "MINIGAME\n" + Manager.Minigames.keys()[minigame]
 
 func connect_round_signals(this_round: Node2D) -> void:
 	this_round.won.connect(_on_round_won)
@@ -99,6 +100,7 @@ func notify_minigame_lost() -> void:
 
 func set_minigame(new_val: Manager.Minigames) -> void:
 	minigame = new_val
+	print("set")
 	if Engine.is_editor_hint():
 		update_debug_label()
 

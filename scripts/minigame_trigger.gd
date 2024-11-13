@@ -1,10 +1,18 @@
 @tool
-extends Node2D
+extends BaseTrigger
 class_name MinigameTrigger
 
 signal clicked(minigame: MinigameTrigger) ## Minigame clicked
 signal won ## Minigame won
 signal lost ## Minigame lost
+
+@export_category("Simon Says Config")
+@export var memorize_time: float = -1.0
+
+@export_category("General Config")
+@export var sequence_quantity: int = -1
+@export var sequence_size: int = -1
+@export var time_per_sequence: float = -1
 
 @export var minigame: Manager.Minigames: ## Minigame to trigger
 	set = set_minigame
@@ -63,6 +71,8 @@ func _ready_game() -> void:
 	
 	interactable_component.clicked.connect(_on_trigger_clicked)
 	game_start_button.button_up.connect(_on_instructions_start_pressed)
+	
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -113,10 +123,23 @@ func start_minigame() -> void:
 		current_round = typing_round.instantiate() as TypingRound
 	elif minigame == Manager.Minigames.SIMON_SAYS:
 		current_round = simon_says_round.instantiate() as SimonSaysRound
+		if memorize_time >= 0:
+			current_round.memorize_time = memorize_time
+	
+	if sequence_quantity >= 0:
+		current_round.sequence_quantity = sequence_quantity
+	if sequence_size >= 0:
+		current_round.sequence_size = sequence_size
+	if time_per_sequence >= 0:
+		current_round.time_per_sequence = time_per_sequence
 	show_hands()
 	connect_round_signals(current_round)
 	add_child(current_round)
 	current_round.start_round()
+
+func notify_minigame_triggered() -> void:
+	interacted_times += 1
+	show_instructions()
 
 func get_random_player_sprite() -> Texture2D:
 	var rand_id: int = randi() % player_textures.size()
@@ -147,17 +170,24 @@ func set_as_cleared() -> void:
 
 func _on_trigger_clicked() -> void:
 	clicked.emit(self)
-	show_instructions()
+	if dialogue != null:
+		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+	else:
+		notify_minigame_triggered()
 
 func _on_round_won() -> void:
 	round_count += 1
+	hide_hands()
+	handshake.show()
+	await get_tree().create_timer(2.0).timeout
+	handshake.hide()
+	show_hands()
 	if round_count < rounds:
 		current_round.reset()
 		current_round.start_round()
 	else:
-		handshake.show()
-		hide_hands()
 		#reset_trigger()
+		disable_grenade()
 		won.emit()
 
 func _on_round_lost() -> void:
@@ -184,3 +214,7 @@ func _on_grenade_exploded() -> void:
 func _on_key_pressed() -> void:
 	# change player sprite
 	player_hand.texture = get_random_player_sprite()
+
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == dialogue:
+		notify_minigame_triggered()

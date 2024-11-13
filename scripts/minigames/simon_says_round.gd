@@ -99,7 +99,6 @@ func start_lighting_on() -> void:
 
 func play() -> void:
 	current_sequence = previous_sequences[sequence_id]
-	current_sequence.reset_sequence_state()
 	sequence_id += 1
 
 func _on_sequence_timer_timeout() -> void:
@@ -119,6 +118,10 @@ func _on_letter_activated() -> void:
 			play()
 		else:
 			won.emit()
+	
+	for seq in previous_sequences:
+		if seq != current_sequence and is_sequence_activated(seq):
+			lost.emit()
 
 func _on_memorize_timer_timeout() -> void:
 	# hide letters, let player press
@@ -135,3 +138,5 @@ func _on_light_timer_timeout() -> void:
 		sequence_timer.start(time_per_sequence)
 		light_off_sequences(previous_sequences)
 		play()
+		for seq in previous_sequences:
+			seq.reset_sequence_state()

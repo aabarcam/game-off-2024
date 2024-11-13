@@ -33,14 +33,11 @@ func show_minigames() -> void:
 	minigames.map(func (x): x.show())
 
 func _on_minigame_lost() -> void:
-	if finished:
-		return
 	active_minigame = null
 
 func _on_minigame_won() -> void:
 	finished = true
 	active_minigame.disable_grenade()
-	await get_tree().create_timer(2.0).timeout
 	active_minigame.reset_trigger()
 	active_minigame.set_as_cleared()
 	active_minigame = null

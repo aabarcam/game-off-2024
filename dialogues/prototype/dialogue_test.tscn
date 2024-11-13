@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b07rbwj5cdsrb"]
+
+[ext_resource type="Script" path="res://dialogues/prototype/dialogue_test.gd" id="1_vnmf5"]
+
+[node name="DialogueTest" type="Node2D"]
+
+[node name="Test" type="Node2D" parent="."]
+script = ExtResource("1_vnmf5")
+
+[node name="Test2" type="Node2D" parent="."]
+script = ExtResource("1_vnmf5")
+testing = false
+action = "ui_accept"

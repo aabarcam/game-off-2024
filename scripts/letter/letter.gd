@@ -91,7 +91,7 @@ func get_event_key(event: InputEventKey) -> String:
 	return OS.get_keycode_string(keycode).to_lower()
 
 func update_text() -> void:
-	text = character
+	text = character.to_upper()
 
 func light_on() -> void:
 	modulate = Color.RED

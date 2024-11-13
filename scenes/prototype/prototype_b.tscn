@@ -20,7 +20,7 @@ position = Vector2(969, 328)
 memorize_time = -1.0
 sequence_quantity = 5
 sequence_size = -1
-time_per_sequence = 10.0
+time_per_sequence = 15.0
 minigame = 1
 
 [node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_q44dy")]

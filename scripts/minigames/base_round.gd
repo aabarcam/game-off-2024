@@ -26,8 +26,8 @@ var current_sequence: Sequence
 var previous_sequences: Array[Sequence] = []
 var sequence_count: int = 0
 
-@onready var letter_stop_point: Vector2 = $LetterStop.position
 @onready var letter_start_point: Vector2 = $LetterStart.position
+@onready var letter_stop_point: Vector2 = $LetterStop.position
 @onready var stop_point_debug_label: Label = $LetterStop/DebugLabel
 @onready var start_point_debug_label: Label = $LetterStart/DebugLabel
 @onready var sequence_timer: Timer = $SequenceTimer

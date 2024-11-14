@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=21 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://38y1qmcshcm0" path="res://assets/prototype/2.png" id="6_khl80"]
 [ext_resource type="PackedScene" uid="uid://da6rkiplqnqbp" path="res://scenes/minigames/whack_a_mole_round.tscn" id="6_tnjij"]
 [ext_resource type="Texture2D" uid="uid://d2kfjkqaiqosf" path="res://assets/prototype/3.png" id="7_1r6oe"]
+[ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="7_nqfx0"]
 [ext_resource type="Texture2D" uid="uid://wddg38n0jfye" path="res://assets/prototype/4.png" id="8_ktlh0"]
 [ext_resource type="Texture2D" uid="uid://dcx1yyfn1yba0" path="res://assets/prototype/5.png" id="9_5nogn"]
 [ext_resource type="Texture2D" uid="uid://j4ou2t86f68h" path="res://assets/prototype/6.png" id="10_5ob6x"]
@@ -23,6 +24,8 @@
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
 script = ExtResource("1_4yjdg")
+completion_threshold = null
+time_per_letter = null
 interactable_component = NodePath("InteractableComponent")
 grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")
@@ -30,6 +33,7 @@ typing_round = ExtResource("3_jd6sm")
 simon_says_round = ExtResource("4_6ymm7")
 hangman_round = ExtResource("5_tpxwr")
 whack_a_mole_round = ExtResource("6_tnjij")
+blitz_typing = ExtResource("7_nqfx0")
 player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80"), ExtResource("7_1r6oe"), ExtResource("8_ktlh0"), ExtResource("9_5nogn"), ExtResource("10_5ob6x"), ExtResource("11_wway4")])
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
 

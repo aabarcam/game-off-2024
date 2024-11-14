@@ -15,6 +15,10 @@ signal lost ## Minigame lost
 @export_category("Hangman Config")
 @export var missing_letters: int = -1
 
+@export_category("Blitz Config")
+@export var completion_threshold: float = -1
+@export var time_per_letter: float = -1
+
 @export_category("General Config")
 @export var sequence_quantity: int = -1
 @export var sequence_size: int = -1
@@ -35,6 +39,7 @@ signal lost ## Minigame lost
 @export var simon_says_round: PackedScene
 @export var hangman_round: PackedScene
 @export var whack_a_mole_round: PackedScene
+@export var blitz_typing: PackedScene
 
 @export_category("Hand textures")
 @export var player_textures: Array[Texture2D] = []
@@ -141,6 +146,10 @@ func start_minigame() -> void:
 			current_round.missing_letters = missing_letters if missing_letters >= 0 else current_round.missing_letters
 		Manager.Minigames.WHACK_A_MOLE:
 			current_round = whack_a_mole_round.instantiate() as WhackRound
+		Manager.Minigames.BLITZ_TYPING:
+			current_round = blitz_typing.instantiate() as BlitzTypingRound
+			current_round.completion_threshold = completion_threshold if completion_threshold >= 0 else current_round.completion_threshold
+			current_round.time_per_letter = time_per_letter if time_per_letter >= 0 else current_round.time_per_letter
 	
 	if sequence_quantity >= 0:
 		current_round.sequence_quantity = sequence_quantity

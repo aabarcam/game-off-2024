@@ -114,5 +114,20 @@ func set_quiet(val: bool) -> void:
 func start_timer(time: float) -> void:
 	timed_bar.start_timer(time)
 
+func stop_timer() -> void:
+	timed_bar.stop_timer()
+
+func size() -> int:
+	return letters.size()
+
 func get_letter_by_id(id: int) -> Letter:
 	return letters[id]
+
+func activated_percentage() -> float:
+	return float(activated_words())/float(letters.size()) * 100.0
+
+func activated_words() -> int:
+	var output: int = 0
+	for letter in letters:
+		output += int(letter.is_activated())
+	return output

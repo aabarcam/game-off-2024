@@ -8,6 +8,11 @@ signal key_pressed ## Keys have been pressed that warrant a change in hand sprit
 signal won ## Round has been cleared
 signal lost ## Round has been lost
 
+@export_category("Debug Config")
+@export var debug_sequence_quantity: int = -1
+@export var debug_sequence_size: int = -1
+@export var debug_time_per_sequence: float = -1
+
 @export_category("Config")
 @export var sequence_quantity: int = 5
 @export var sequence_size: int = 1
@@ -40,6 +45,9 @@ func _ready() -> void:
 	stop_point_debug_label.hide()
 	
 	if OS.is_debug_build() and get_parent() == get_tree().root:
+		sequence_quantity = debug_sequence_quantity if debug_sequence_quantity >= 0 else sequence_quantity
+		sequence_size = debug_sequence_size if debug_sequence_size >= 0 else sequence_size
+		time_per_sequence = debug_time_per_sequence if debug_time_per_sequence >= 0 else time_per_sequence
 		await get_tree().create_timer(1.0).timeout
 		start_round()
 

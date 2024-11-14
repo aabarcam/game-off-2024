@@ -18,11 +18,15 @@ enum Mode {NOT_SET, HOLD, TYPE}
 @export var activated_state: LetterBaseState
 @export var deactivated_state: LetterBaseState
 @export var inactive_state: LetterBaseState
+@export var cleared_state: LetterBaseState
 
 var state: LetterBaseState
 var activation_mode: Mode = Mode.NOT_SET
+var can_be_wrong: bool = false
 var quiet: bool = false:
 	set = set_quiet
+var incognito: bool = false:
+	set = set_incognito
 
 ## Function determining if letter has been deactivated
 var deactivate_condition: Callable
@@ -61,6 +65,7 @@ func _input(event: InputEvent) -> void:
 		if activation_mode == Mode.NOT_SET:
 			return
 		if activate_condition(event):
+			set_process_input(not can_be_wrong)
 			state.activate_letter()
 		if not deactivate_condition.is_null() and deactivate_condition.call(event):
 			state.deactivate_letter()
@@ -70,8 +75,13 @@ func activate_condition(event: InputEvent) -> bool:
 	if not event is InputEventKey or event.echo:
 		return false
 	event = event as InputEventKey
+	var keycode = event.keycode
 	var event_key: String = get_event_key(event)
-	return event.pressed == true and event_key == character
+	if not event.pressed:
+		return false
+	if can_be_wrong and event_key != character and keycode >= 65 and keycode <= 90:
+		state.wrong_letter(event_key)
+	return event_key == character
 
 ## Condition to deactivate letter in holding minigames
 func hold_deactivate_condition(event: InputEvent) -> bool:
@@ -99,6 +109,21 @@ func light_on() -> void:
 func light_off() -> void:
 	modulate = Color.WHITE
 
+func wrong_letter(character: String) -> void:
+	text = character.to_upper()
+	modulate = Color.RED
+	set_process_input(false)
+	await get_tree().create_timer(0.5).timeout
+	text = "_"
+	modulate = Color.WHITE
+	set_process_input(true)
+
+func update_incognito() -> void:
+	if incognito:
+		text = "_"
+	else:
+		text = character.to_upper()
+
 func set_quiet(new_val: bool) -> void:
 	quiet = new_val
 
@@ -110,9 +135,18 @@ func notify_deactivated() -> void:
 	change_color(Color.WHITE)
 	deactivated.emit()
 
-## Mark letter as cleared and set to inactive
-func set_as_cleared() -> void:
+func set_as_activated() -> void:
+	change_state(activated_state)
+
+## Mark letter as inactive
+func set_as_inactive() -> void:
 	change_state(inactive_state)
+
+func set_as_cleared() -> void:
+	change_state(cleared_state)
+
+func set_as_deactivated() -> void:
+	change_state(deactivated_state)
 
 func change_color(color: Color) -> void:
 	if quiet:
@@ -131,6 +165,9 @@ func is_active() -> bool:
 func is_inactive() -> bool:
 	return state.is_inactive()
 
+func is_cleared() -> bool:
+	return state.is_cleared()
+
 func set_character(new_val: String) -> void:
 	if new_val.length() > 1:
 		return
@@ -145,3 +182,7 @@ func change_state(new_state: LetterBaseState) -> void:
 func reset() -> void:
 	change_state(deactivated_state)
 	change_color(Color.WHITE)
+
+func set_incognito(new_val: bool) -> void:
+	incognito = new_val
+	update_incognito()

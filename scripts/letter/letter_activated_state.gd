@@ -3,6 +3,10 @@ extends LetterBaseState
 ##
 ## This letter can be deactivated
 
+func set_letter(new_letter: Letter) -> void:
+	super.set_letter(new_letter)
+	letter.text = letter.character.to_upper()
+
 func activate_letter() -> void:
 	return
 

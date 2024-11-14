@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=19 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cqnl8l71watxq" path="res://placeholder_bg.png" id="4_d6v8q"]
 [ext_resource type="PackedScene" uid="uid://ihdh2acpem43" path="res://scenes/components/grenade_component.tscn" id="5_46xms"]
 [ext_resource type="Texture2D" uid="uid://bxqtpmn2mqmio" path="res://assets/prototype/1.png" id="5_ivaxi"]
+[ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="5_tpxwr"]
 [ext_resource type="Texture2D" uid="uid://38y1qmcshcm0" path="res://assets/prototype/2.png" id="6_khl80"]
 [ext_resource type="Texture2D" uid="uid://d2kfjkqaiqosf" path="res://assets/prototype/3.png" id="7_1r6oe"]
 [ext_resource type="Texture2D" uid="uid://wddg38n0jfye" path="res://assets/prototype/4.png" id="8_ktlh0"]
@@ -21,15 +22,12 @@
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
 script = ExtResource("1_4yjdg")
-memorize_time = null
-sequence_quantity = null
-sequence_size = null
-time_per_sequence = null
 interactable_component = NodePath("InteractableComponent")
 grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")
 typing_round = ExtResource("3_jd6sm")
 simon_says_round = ExtResource("4_6ymm7")
+hangman_round = ExtResource("5_tpxwr")
 player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80"), ExtResource("7_1r6oe"), ExtResource("8_ktlh0"), ExtResource("9_5nogn"), ExtResource("10_5ob6x"), ExtResource("11_wway4")])
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
 

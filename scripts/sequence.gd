@@ -33,11 +33,26 @@ func is_sequence_inactive() -> bool:
 		output = output and letter.is_inactive()
 	return output
 
+func is_sequence_cleared() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.is_cleared()
+	return output
+
+func set_sequence_activated() -> void:
+	for letter in letters:
+		letter.set_as_activated()
+
 func set_sequence_inactive() -> void:
+	for letter in letters:
+		letter.set_as_inactive()
+
+func set_sequence_cleared() -> void:
 	for letter in letters:
 		letter.set_as_cleared()
 
-func activate_next_letter() -> void:
+func enable_next_letter() -> void:
 	for letter in letters:
 		if letter.is_inactive():
 			letter.reset()
@@ -64,3 +79,6 @@ func set_quiet(val: bool) -> void:
 
 func start_timer(time: float) -> void:
 	timed_bar.start_timer(time)
+
+func get_letter_by_id(id: int) -> Letter:
+	return letters[id]

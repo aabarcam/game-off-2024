@@ -1,32 +1,16 @@
 extends BaseRound
-class_name StandardRound
-## Class represents a single round of the standard handshake minigame
+class_name HangmanRound
+## Class represents a single round of the hangman handshake minigame
 ##
-## Generates random sequences of letters the player must press at a time
+## Generates random words the player must complete
 
-@export var debug_sequences_at_a_time: int = 1
-@export var sequences_at_a_time: int = 1
-
-var active_sequences: Array[Sequence] = []
+@export var debug_missing_letters: int = -1
+@export var missing_letters: int = 1
 
 func _ready() -> void:
 	if OS.is_debug_build() and get_parent() == get_tree().root:
-		sequences_at_a_time = debug_sequences_at_a_time if debug_sequences_at_a_time >= 0 else sequences_at_a_time
+		missing_letters = debug_missing_letters if debug_missing_letters >= 0 else missing_letters
 	super._ready()
-	#Signals.register_signal(won, self)
-	#Signals.register_signal(lost, self)
-	#
-	#global_position = Vector2.ZERO
-	#
-	#sequence_timer.one_shot = true
-	#sequence_timer.timeout.connect(_on_sequence_timer_timeout)
-	#
-	#start_point_debug_label.hide()
-	#stop_point_debug_label.hide()
-	#
-	#if OS.is_debug_build() and get_parent() == get_tree().root:
-		#await get_tree().create_timer(1.0).timeout
-		#start_round()
 
 func start_round() -> void:
 	start_next_sequence()
@@ -43,31 +27,24 @@ func start_round() -> void:
 	#previous_sequences = []
 
 func start_next_sequence() -> void:
-	var sequence_qty: int = randi() % sequences_at_a_time + 1
-	var seq_container: HBoxContainer = HBoxContainer.new()
-	#seq_container.alignment = BoxContainer.ALIGNMENT_CENTER
-	#seq_container.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	seq_container.add_theme_constant_override("separation", 12)
-	add_child(seq_container)
-	for _i in range(sequence_qty):
-		var new_seq: Sequence = get_next_sequence()
-		sequence_generator.remove_child(new_seq)
-		seq_container.add_child(new_seq)
-		sequence_timer.start(time_per_sequence)
-		previous_sequences.push_back(new_seq)
-		active_sequences.push_back(new_seq)
-		new_seq.start_timer(time_per_sequence)
-		connect_sequence_signals(new_seq)
-		#reset_sequence_position(new_seq)
-		reset_sequence_state(new_seq)
-		#start_sequence_move(new_seq)
-	reset_sequence_container_position(seq_container)
-	start_sequence_container_move(seq_container)
-	current_sequence = active_sequences.pop_front()
+	var new_seq: Sequence = get_next_sequence()
+	sequence_generator.remove_child(new_seq)
+	add_child(new_seq)
+	sequence_timer.start(time_per_sequence)
+	previous_sequences.push_back(new_seq)
+	new_seq.start_timer(time_per_sequence)
+	connect_sequence_signals(new_seq)
+	reset_sequence_position(new_seq)
+	#reset_sequence_state(new_seq)
+	new_seq.enable_next_letter()
+	#start_sequence_move(new_seq)
+	current_sequence = new_seq
 
-#func get_next_sequence() -> Sequence:
-	#var sequence: String = sequence_generator.generate_random(sequence_size)
-	#return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
+func get_next_sequence() -> Sequence:
+	var sequence_string: String = sequence_generator.generate_word()
+	var sequence: Sequence = sequence_generator.string_to_letters(sequence_string, Letter.Mode.TYPE)
+	sequence_generator.setup_hangman(sequence, missing_letters)
+	return sequence
 
 func start_sequence_move(sequence: Sequence) -> void:
 	create_tween().tween_property(sequence, "position:x", letter_stop_point.x, time_per_sequence)
@@ -76,7 +53,7 @@ func start_sequence_move(sequence: Sequence) -> void:
 		#create_tween().tween_property(letter, "position:x", letter_stop_point.x, time_per_sequence)
 
 func reset_sequence_position(sequence: Sequence) -> void:
-	sequence.position = letter_start_point
+	sequence.position = letter_stop_point
 	#for i in sequence.size():
 		#var letter: Letter = sequence[i]
 		#letter.position = letter_start_point
@@ -123,15 +100,16 @@ func _on_sequence_timer_timeout() -> void:
 		lost.emit()
 
 func _on_letter_activated() -> void:
+	key_pressed.emit()
+	current_sequence.enable_next_letter()
 	if is_sequence_activated(current_sequence):
 		set_sequence_cleared(current_sequence)
-		key_pressed.emit()
-		if not active_sequences.is_empty():
-			current_sequence = active_sequences.pop_front()
-			reset_sequence_state(current_sequence)
-			return
 		sequence_count += 1
 		if sequence_count < sequence_quantity:
+			await get_tree().create_timer(0.5).timeout
+			current_sequence.hide()
 			start_next_sequence()
 		else:
+			sequence_timer.stop()
+			current_sequence.timed_bar.stop_timer()
 			won.emit()

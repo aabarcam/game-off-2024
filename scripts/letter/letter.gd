@@ -7,6 +7,7 @@ class_name Letter
 
 signal activated ## Letter has been activated
 signal deactivated ## Letter has been deactivated
+#signal mistake ## Incorrect letter activated
 
 @export_category("Debug")
 @export var character: String: ## Charater represented by this letter
@@ -19,10 +20,12 @@ enum Mode {NOT_SET, HOLD, TYPE}
 @export var deactivated_state: LetterBaseState
 @export var inactive_state: LetterBaseState
 @export var cleared_state: LetterBaseState
+@export var deceiving_state: LetterBaseState
 
 var state: LetterBaseState
 var activation_mode: Mode = Mode.NOT_SET
 var can_be_wrong: bool = false
+var mistake: bool = false
 var quiet: bool = false:
 	set = set_quiet
 var incognito: bool = false:
@@ -110,11 +113,13 @@ func light_off() -> void:
 	modulate = Color.WHITE
 
 func wrong_letter(character: String) -> void:
-	text = character.to_upper()
+	if character != "":
+		text = character.to_upper()
 	modulate = Color.RED
 	set_process_input(false)
 	await get_tree().create_timer(0.5).timeout
-	text = "_"
+	if character != "":
+		text = "_"
 	modulate = Color.WHITE
 	set_process_input(true)
 
@@ -148,10 +153,16 @@ func set_as_cleared() -> void:
 func set_as_deactivated() -> void:
 	change_state(deactivated_state)
 
+func set_as_deceiving() -> void:
+	change_state(deceiving_state)
+
 func change_color(color: Color) -> void:
 	if quiet:
 		return
 	modulate = color
+
+func signal_next() -> void:
+	modulate = Color.DARK_BLUE
 
 func is_activated() -> bool:
 	return state.is_activated()
@@ -167,6 +178,9 @@ func is_inactive() -> bool:
 
 func is_cleared() -> bool:
 	return state.is_cleared()
+
+func is_deceiving() -> bool:
+	return state.is_deceiving()
 
 func set_character(new_val: String) -> void:
 	if new_val.length() > 1:

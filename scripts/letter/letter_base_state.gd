@@ -28,5 +28,8 @@ func is_inactive() -> bool:
 func is_cleared() -> bool:
 	return false
 
+func is_deceiving() -> bool:
+	return false
+
 func set_letter(new_letter: Letter) -> void:
 	letter = new_letter

@@ -32,3 +32,7 @@ dialogue = ExtResource("4_qhgvv")
 [node name="MinigameTrigger4" parent="." index="4" instance=ExtResource("2_q44dy")]
 position = Vector2(387, 542)
 minigame = 3
+
+[node name="MinigameTrigger5" parent="." index="5" instance=ExtResource("2_q44dy")]
+position = Vector2(741, 547)
+minigame = 4

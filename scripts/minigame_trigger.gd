@@ -34,6 +34,7 @@ signal lost ## Minigame lost
 @export var typing_round: PackedScene
 @export var simon_says_round: PackedScene
 @export var hangman_round: PackedScene
+@export var whack_a_mole_round: PackedScene
 
 @export_category("Hand textures")
 @export var player_textures: Array[Texture2D] = []
@@ -138,6 +139,8 @@ func start_minigame() -> void:
 		Manager.Minigames.HANGMAN:
 			current_round = hangman_round.instantiate() as HangmanRound
 			current_round.missing_letters = missing_letters if missing_letters >= 0 else current_round.missing_letters
+		Manager.Minigames.WHACK_A_MOLE:
+			current_round = whack_a_mole_round.instantiate() as WhackRound
 	
 	if sequence_quantity >= 0:
 		current_round.sequence_quantity = sequence_quantity

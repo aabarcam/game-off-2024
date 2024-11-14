@@ -40,6 +40,13 @@ func is_sequence_cleared() -> bool:
 		output = output and letter.is_cleared()
 	return output
 
+func is_sequence_deceiving() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.is_deceiving()
+	return output
+
 func set_sequence_activated() -> void:
 	for letter in letters:
 		letter.set_as_activated()
@@ -48,9 +55,28 @@ func set_sequence_inactive() -> void:
 	for letter in letters:
 		letter.set_as_inactive()
 
+func set_sequence_deactivated() -> void:
+	for letter in letters:
+		letter.set_as_deactivated()
+
 func set_sequence_cleared() -> void:
 	for letter in letters:
 		letter.set_as_cleared()
+
+func set_sequence_deceiving() -> void:
+	for letter in letters:
+		letter.set_as_deceiving()
+
+func set_mistake(val: bool) -> void:
+	for letter in letters:
+		letter.mistake = val
+
+func is_mistake() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.mistake
+	return output
 
 func enable_next_letter() -> void:
 	for letter in letters:
@@ -72,6 +98,14 @@ func light_off() -> void:
 func turn_green() -> void:
 	for letter in letters:
 		letter.change_color(Color.LIME_GREEN)
+
+func turn_red() -> void:
+	for letter in letters:
+		letter.change_color(Color.RED)
+
+func signal_next() -> void:
+	for letter in letters:
+		letter.signal_next()
 
 func set_quiet(val: bool) -> void:
 	for letter in letters:

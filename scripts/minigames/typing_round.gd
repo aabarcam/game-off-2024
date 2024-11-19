@@ -3,6 +3,9 @@ class_name TypingRound
 ## Class represents a single round of the typing handshake minigame
 ##
 ## Generates random sequences of letters the player must press in order
+## TODO: independent time for each word
+## TODO: (maybe) words appear out of nowhere
+## TODO: (maybe) use phrases
 
 var round_sequences: Array[Sequence] = []
 
@@ -24,7 +27,7 @@ func start_next_sequence() -> void:
 		#reset_sequence_position(new_sequence)
 		reset_sequence_state(new_sequence)
 		set_sequence_inactive(new_sequence)
-		new_sequence.activate_next_letter()
+		new_sequence.enable_next_letter()
 		#start_sequence_move(new_sequence)
 
 func get_next_sequence() -> Sequence:
@@ -54,6 +57,11 @@ func is_sequence_activated(sequence: Sequence) -> bool:
 func set_sequence_inactive(sequence: Sequence) -> void:
 	sequence.set_sequence_inactive()
 
+func set_noncurrent_sequences_inactive() -> void:
+	for seq in round_sequences:
+		if seq != current_sequence:
+			seq.set_sequence_inactive()
+
 func connect_sequence_signals(sequence: Sequence) -> void:
 	for letter in sequence.letters:
 		letter.activated.connect(_on_letter_activated)
@@ -63,6 +71,8 @@ func all_sequences_inactive() -> bool:
 	for seq in round_sequences:
 		output = output and seq.is_sequence_inactive()
 	return output
+
+## Signal handlers
 
 func _on_sequence_timer_timeout() -> void:
 	if not all_sequences_inactive():
@@ -76,10 +86,8 @@ func _on_letter_activated() -> void:
 			if seq.is_first_letter_activated():
 				current_sequence = seq
 				break
-		for seq in round_sequences:
-			if seq != current_sequence:
-				seq.set_sequence_inactive()
-	current_sequence.activate_next_letter()
+		set_noncurrent_sequences_inactive()
+	current_sequence.enable_next_letter()
 	key_pressed.emit()
 	
 	if is_sequence_activated(current_sequence):
@@ -89,7 +97,7 @@ func _on_letter_activated() -> void:
 
 		for seq in round_sequences:
 			if seq != current_sequence:
-				seq.activate_next_letter()
+				seq.enable_next_letter()
 
 		if sequence_count >= sequence_quantity:
 			won.emit()

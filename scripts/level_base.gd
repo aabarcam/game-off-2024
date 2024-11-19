@@ -34,9 +34,11 @@ func show_minigames() -> void:
 
 func _on_minigame_lost() -> void:
 	active_minigame = null
+	#MusicController.play_previous_zone()
 
 func _on_minigame_won() -> void:
 	finished = true
+	MusicController.play_music("minigame_won")
 	active_minigame.disable_grenade()
 	active_minigame.reset_trigger()
 	active_minigame.set_as_cleared()

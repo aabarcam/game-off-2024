@@ -4,8 +4,10 @@ class_name SimonSaysRound
 ##
 ## Generates random sequences of letters to memorize, the player must then
 ## repeat it in order
+## TODO: (maybe) use a split word
 
 @export_category("Config")
+@export var debug_memorize_time: float = -1
 @export var memorize_time: float = 5
 
 var round_sequences: Array[Sequence] = []
@@ -21,6 +23,9 @@ func _ready() -> void:
 	memorize_timer.timeout.connect(_on_memorize_timer_timeout)
 	
 	light_timer.timeout.connect(_on_light_timer_timeout)
+	
+	if OS.is_debug_build() and get_parent() == get_tree().root:
+		memorize_time = debug_memorize_time if debug_memorize_time >= 0 else memorize_time
 	
 	super._ready()
 

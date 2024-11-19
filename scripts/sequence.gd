@@ -33,11 +33,52 @@ func is_sequence_inactive() -> bool:
 		output = output and letter.is_inactive()
 	return output
 
+func is_sequence_cleared() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.is_cleared()
+	return output
+
+func is_sequence_deceiving() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.is_deceiving()
+	return output
+
+func set_sequence_activated() -> void:
+	for letter in letters:
+		letter.set_as_activated()
+
 func set_sequence_inactive() -> void:
+	for letter in letters:
+		letter.set_as_inactive()
+
+func set_sequence_deactivated() -> void:
+	for letter in letters:
+		letter.set_as_deactivated()
+
+func set_sequence_cleared() -> void:
 	for letter in letters:
 		letter.set_as_cleared()
 
-func activate_next_letter() -> void:
+func set_sequence_deceiving() -> void:
+	for letter in letters:
+		letter.set_as_deceiving()
+
+func set_mistake(val: bool) -> void:
+	for letter in letters:
+		letter.mistake = val
+
+func is_mistake() -> bool:
+	var output = true
+	for i in letters.size():
+		var letter: Letter = letters[i]
+		output = output and letter.mistake
+	return output
+
+func enable_next_letter() -> void:
 	for letter in letters:
 		if letter.is_inactive():
 			letter.reset()
@@ -58,9 +99,35 @@ func turn_green() -> void:
 	for letter in letters:
 		letter.change_color(Color.LIME_GREEN)
 
+func turn_red() -> void:
+	for letter in letters:
+		letter.change_color(Color.RED)
+
+func signal_next() -> void:
+	for letter in letters:
+		letter.signal_next()
+
 func set_quiet(val: bool) -> void:
 	for letter in letters:
 		letter.set_quiet(val)
 
 func start_timer(time: float) -> void:
 	timed_bar.start_timer(time)
+
+func stop_timer() -> void:
+	timed_bar.stop_timer()
+
+func size() -> int:
+	return letters.size()
+
+func get_letter_by_id(id: int) -> Letter:
+	return letters[id]
+
+func activated_percentage() -> float:
+	return float(activated_words())/float(letters.size()) * 100.0
+
+func activated_words() -> int:
+	var output: int = 0
+	for letter in letters:
+		output += int(letter.is_activated())
+	return output

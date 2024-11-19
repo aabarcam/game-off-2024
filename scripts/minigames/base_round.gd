@@ -7,6 +7,12 @@ class_name BaseRound
 signal key_pressed ## Keys have been pressed that warrant a change in hand sprite
 signal won ## Round has been cleared
 signal lost ## Round has been lost
+signal previous_cleared ## Previous sequences cleared
+
+@export_category("Debug Config")
+@export var debug_sequence_quantity: int = -1
+@export var debug_sequence_size: int = -1
+@export var debug_time_per_sequence: float = -1
 
 @export_category("Config")
 @export var sequence_quantity: int = 5
@@ -20,8 +26,8 @@ var current_sequence: Sequence
 var previous_sequences: Array[Sequence] = []
 var sequence_count: int = 0
 
-@onready var letter_stop_point: Vector2 = $LetterStop.position
 @onready var letter_start_point: Vector2 = $LetterStart.position
+@onready var letter_stop_point: Vector2 = $LetterStop.position
 @onready var stop_point_debug_label: Label = $LetterStop/DebugLabel
 @onready var start_point_debug_label: Label = $LetterStart/DebugLabel
 @onready var sequence_timer: Timer = $SequenceTimer
@@ -40,6 +46,9 @@ func _ready() -> void:
 	stop_point_debug_label.hide()
 	
 	if OS.is_debug_build() and get_parent() == get_tree().root:
+		sequence_quantity = debug_sequence_quantity if debug_sequence_quantity >= 0 else sequence_quantity
+		sequence_size = debug_sequence_size if debug_sequence_size >= 0 else sequence_size
+		time_per_sequence = debug_time_per_sequence if debug_time_per_sequence >= 0 else time_per_sequence
 		await get_tree().create_timer(1.0).timeout
 		start_round()
 
@@ -54,7 +63,8 @@ func reset() -> void:
 
 func delete_previous_sequences() -> void:
 	for seq in previous_sequences:
-		seq.queue_free()
+		#seq.queue_free()
+		seq.free()
 	previous_sequences = []
 
 func start_next_sequence() -> void:

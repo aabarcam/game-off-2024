@@ -19,3 +19,6 @@ func _process(_delta: float) -> void:
 func start_timer(time: float) -> void:
 	timer.start(time)
 	start_time = time
+
+func stop_timer() -> void:
+	timer.stop()

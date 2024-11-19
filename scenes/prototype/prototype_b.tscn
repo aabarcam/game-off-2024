@@ -9,6 +9,8 @@
 
 [node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_q44dy")]
 position = Vector2(145, 338)
+completion_threshold = -1.0
+time_per_letter = -1.0
 sequence_quantity = 5
 sequence_size = 2
 time_per_sequence = 2.5
@@ -16,15 +18,37 @@ dialogue = ExtResource("3_mchgk")
 
 [node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
 position = Vector2(969, 328)
-sequence_quantity = 5
+completion_threshold = -1.0
+time_per_letter = -1.0
+sequence_quantity = 1
 time_per_sequence = 15.0
 minigame = 1
 
 [node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_q44dy")]
 position = Vector2(568, 203)
 memorize_time = 1.0
+completion_threshold = -1.0
+time_per_letter = -1.0
 sequence_quantity = 4
 sequence_size = 2
 time_per_sequence = 10.0
 minigame = 2
 dialogue = ExtResource("4_qhgvv")
+
+[node name="MinigameTrigger4" parent="." index="4" instance=ExtResource("2_q44dy")]
+position = Vector2(387, 542)
+completion_threshold = -1.0
+time_per_letter = -1.0
+minigame = 3
+
+[node name="MinigameTrigger5" parent="." index="5" instance=ExtResource("2_q44dy")]
+position = Vector2(741, 547)
+completion_threshold = -1.0
+time_per_letter = -1.0
+minigame = 4
+
+[node name="MinigameTrigger6" parent="." index="6" instance=ExtResource("2_q44dy")]
+position = Vector2(574, 394)
+completion_threshold = -1.0
+time_per_letter = -1.0
+minigame = 5

@@ -6,8 +6,18 @@ signal clicked(minigame: MinigameTrigger) ## Minigame clicked
 signal won ## Minigame won
 signal lost ## Minigame lost
 
+@export_category("Standard Config")
+@export var sequences_at_a_time: int = -1
+
 @export_category("Simon Says Config")
 @export var memorize_time: float = -1.0
+
+@export_category("Hangman Config")
+@export var missing_letters: int = -1
+
+@export_category("Blitz Config")
+@export var completion_threshold: float = -1
+@export var time_per_letter: float = -1
 
 @export_category("General Config")
 @export var sequence_quantity: int = -1
@@ -27,6 +37,9 @@ signal lost ## Minigame lost
 @export var standard_round: PackedScene
 @export var typing_round: PackedScene
 @export var simon_says_round: PackedScene
+@export var hangman_round: PackedScene
+@export var whack_a_mole_round: PackedScene
+@export var blitz_typing: PackedScene
 
 @export_category("Hand textures")
 @export var player_textures: Array[Texture2D] = []
@@ -117,16 +130,26 @@ func disconnect_round_signals(this_round: BaseRound) -> void:
 	this_round.lost.disconnect(_on_round_lost)
 
 func start_minigame() -> void:
-	MusicController.play_music("minigame_loop")
-	MusicController.play_loop()
-	if minigame == Manager.Minigames.STANDARD:
-		current_round = standard_round.instantiate() as StandardRound
-	elif minigame == Manager.Minigames.TYPING_OF_THE_DEAD:
-		current_round = typing_round.instantiate() as TypingRound
-	elif minigame == Manager.Minigames.SIMON_SAYS:
-		current_round = simon_says_round.instantiate() as SimonSaysRound
-		if memorize_time >= 0:
-			current_round.memorize_time = memorize_time
+	match minigame:
+		Manager.Minigames.STANDARD:
+			current_round = standard_round.instantiate() as StandardRound
+			if sequences_at_a_time >= 0:
+				current_round.sequences_at_a_time = sequences_at_a_time
+		Manager.Minigames.TYPING_OF_THE_DEAD:
+			current_round = typing_round.instantiate() as TypingRound
+		Manager.Minigames.SIMON_SAYS:
+			current_round = simon_says_round.instantiate() as SimonSaysRound
+			if memorize_time >= 0:
+				current_round.memorize_time = memorize_time
+		Manager.Minigames.HANGMAN:
+			current_round = hangman_round.instantiate() as HangmanRound
+			current_round.missing_letters = missing_letters if missing_letters >= 0 else current_round.missing_letters
+		Manager.Minigames.WHACK_A_MOLE:
+			current_round = whack_a_mole_round.instantiate() as WhackRound
+		Manager.Minigames.BLITZ_TYPING:
+			current_round = blitz_typing.instantiate() as BlitzTypingRound
+			current_round.completion_threshold = completion_threshold if completion_threshold >= 0 else current_round.completion_threshold
+			current_round.time_per_letter = time_per_letter if time_per_letter >= 0 else current_round.time_per_letter
 	
 	if sequence_quantity >= 0:
 		current_round.sequence_quantity = sequence_quantity
@@ -158,6 +181,16 @@ func notify_minigame_lost() -> void:
 	reset_trigger()
 	lost.emit()
 
+func prompt_grenade() -> void:
+	grenade_instructions.show()
+	grenade_component.activate()
+	if not grenade_component.held.is_connected(_on_grenade_held):
+		grenade_component.held.connect(_on_grenade_held)
+	if not grenade_component.exploded.is_connected(_on_grenade_exploded):
+		grenade_component.exploded.connect(_on_grenade_exploded)
+
+## Getters/Setters
+
 func set_minigame(new_val: Manager.Minigames) -> void:
 	minigame = new_val
 	if Engine.is_editor_hint():
@@ -170,6 +203,8 @@ func set_as_cleared() -> void:
 	modulate = Color.GREEN
 	interactable_component.input_pickable = false
 
+## Signal handlers
+
 func _on_trigger_clicked() -> void:
 	clicked.emit(self)
 	if dialogue != null:
@@ -179,6 +214,9 @@ func _on_trigger_clicked() -> void:
 
 func _on_round_won() -> void:
 	round_count += 1
+	if round_count >= rounds:
+		disable_grenade()
+
 	hide_hands()
 	handshake.show()
 	await get_tree().create_timer(2.0).timeout
@@ -189,7 +227,6 @@ func _on_round_won() -> void:
 		current_round.start_round()
 	else:
 		#reset_trigger()
-		disable_grenade()
 		won.emit()
 
 func _on_round_lost() -> void:
@@ -197,12 +234,7 @@ func _on_round_lost() -> void:
 
 func _on_instructions_start_pressed() -> void:
 	instructions.hide()
-	grenade_instructions.show()
-	grenade_component.activate()
-	if not grenade_component.held.is_connected(_on_grenade_held):
-		grenade_component.held.connect(_on_grenade_held)
-	if not grenade_component.exploded.is_connected(_on_grenade_exploded):
-		grenade_component.exploded.connect(_on_grenade_exploded)
+	prompt_grenade()
 
 func _on_grenade_held() -> void:
 	# start minigame
@@ -220,4 +252,3 @@ func _on_key_pressed() -> void:
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == dialogue:
 		notify_minigame_triggered()
-		MusicController.pause_loop()

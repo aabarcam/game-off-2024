@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca5o4q0vwtep8"]
+[gd_scene load_steps=8 format=3 uid="uid://ca5o4q0vwtep8"]
 
 [ext_resource type="AudioStream" uid="uid://ckh7yydbbnfjb" path="res://assets/prototype/music/IMSLP119337-PMLP06701-Entertainer_4.mp3" id="1_0jakp"]
 [ext_resource type="Script" path="res://scripts/autoload/music_controller.gd" id="1_jm5vj"]
 [ext_resource type="AudioStream" uid="uid://bmcpeakgtovgu" path="res://assets/prototype/music/Tiny Tim - Tip Toe Thru' The Tulips With Me (Official Audio).ogg" id="2_uyrgk"]
 [ext_resource type="AudioStream" uid="uid://bk2cvk8bw15wg" path="res://assets/prototype/music/Benny Hill Theme.ogg" id="3_7q14m"]
 [ext_resource type="AudioStream" uid="uid://b108uswmdxbc5" path="res://assets/prototype/music/Chicken Little festejando - Plantilla Meme (HD).ogg" id="5_cu0wx"]
+[ext_resource type="AudioStream" uid="uid://dh6usgyb4vuwl" path="res://assets/prototype/music/257780__xtrgamr__man-oof.wav" id="6_fnp2f"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kvnvi"]
-clip_count = 4
+clip_count = 5
 clip_0/name = &"zone_0"
 clip_0/stream = ExtResource("1_0jakp")
 clip_0/auto_advance = 0
@@ -20,6 +21,9 @@ clip_2/auto_advance = 0
 clip_3/name = &"minigame_won"
 clip_3/stream = ExtResource("5_cu0wx")
 clip_3/auto_advance = 2
+clip_4/name = &"explosion"
+clip_4/stream = ExtResource("6_fnp2f")
+clip_4/auto_advance = 2
 _transitions = {
 Vector2i(-1, 2): {
 "fade_beats": 0,
@@ -72,7 +76,25 @@ Vector2i(2, 3): {
 "from_time": 0,
 "to_time": 1
 },
+Vector2i(2, 4): {
+"fade_beats": 0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
 Vector2i(3, 3): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(4, 0): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(4, 1): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,

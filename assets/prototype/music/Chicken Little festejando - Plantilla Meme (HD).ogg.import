@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b108uswmdxbc5"
+path="res://.godot/imported/Chicken Little festejando - Plantilla Meme (HD).ogg-545e55750cb11bab30e412fb7e79850a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/prototype/music/Chicken Little festejando - Plantilla Meme (HD).ogg"
+dest_files=["res://.godot/imported/Chicken Little festejando - Plantilla Meme (HD).ogg-545e55750cb11bab30e412fb7e79850a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

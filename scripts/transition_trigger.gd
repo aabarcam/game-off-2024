@@ -5,7 +5,6 @@ class_name TransitionTrigger
 
 func _ready() -> void:
 	Signals.register_signal(Signals.transition_triggered, self)
-	
 	interactable_component.clicked.connect(_on_interactable_clicked)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 

@@ -117,6 +117,8 @@ func disconnect_round_signals(this_round: BaseRound) -> void:
 	this_round.lost.disconnect(_on_round_lost)
 
 func start_minigame() -> void:
+	MusicController.play_music("minigame_loop")
+	MusicController.play_loop()
 	if minigame == Manager.Minigames.STANDARD:
 		current_round = standard_round.instantiate() as StandardRound
 	elif minigame == Manager.Minigames.TYPING_OF_THE_DEAD:
@@ -218,3 +220,4 @@ func _on_key_pressed() -> void:
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == dialogue:
 		notify_minigame_triggered()
+		MusicController.pause_loop()

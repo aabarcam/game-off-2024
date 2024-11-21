@@ -24,8 +24,6 @@
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
 script = ExtResource("1_4yjdg")
-completion_threshold = null
-time_per_letter = null
 interactable_component = NodePath("InteractableComponent")
 grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")

@@ -118,6 +118,7 @@ func _on_sequence_timer_timeout() -> void:
 	lost.emit()
 
 func _on_letter_activated() -> void:
+	key_pressed.emit()
 	if (round_sequences.size() == 1 and 
 		current_sequence.activated_percentage() >= completion_threshold and
 		sequences_generated < sequence_quantity):

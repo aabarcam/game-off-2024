@@ -1,54 +1,103 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfrx1gkeso1o1"]
+[gd_scene load_steps=9 format=3 uid="uid://cfrx1gkeso1o1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_1rngy"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_q44dy"]
-[ext_resource type="Resource" uid="uid://eq0anbek87ha" path="res://dialogues/prototype/prototype_dialogue_1.dialogue" id="3_mchgk"]
-[ext_resource type="Resource" uid="uid://decphhjrh6vsq" path="res://dialogues/prototype/prototype_dialogue_2.dialogue" id="4_qhgvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv7x7"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o72xv"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7685c"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oev4c"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjx20"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_515u3"]
+size = Vector2(118, 118)
 
 [node name="PrototypeB" instance=ExtResource("1_1rngy")]
 
 [node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_q44dy")]
 position = Vector2(145, 338)
-completion_threshold = -1.0
-time_per_letter = -1.0
 sequence_quantity = 5
 sequence_size = 2
 time_per_sequence = 2.5
-dialogue = ExtResource("3_mchgk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_bv7x7")
 
 [node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
 position = Vector2(969, 328)
-completion_threshold = -1.0
-time_per_letter = -1.0
 sequence_quantity = 1
 time_per_sequence = 15.0
 minigame = 1
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger2/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_o72xv")
+
+[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+text = "MINIGAME
+TYPING_OF_THE_DEAD"
+
 [node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_q44dy")]
 position = Vector2(568, 203)
 memorize_time = 1.0
-completion_threshold = -1.0
-time_per_letter = -1.0
 sequence_quantity = 4
 sequence_size = 2
 time_per_sequence = 10.0
 minigame = 2
-dialogue = ExtResource("4_qhgvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger3/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_7685c")
+
+[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+text = "MINIGAME
+SIMON_SAYS"
 
 [node name="MinigameTrigger4" parent="." index="4" instance=ExtResource("2_q44dy")]
 position = Vector2(387, 542)
-completion_threshold = -1.0
-time_per_letter = -1.0
 minigame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger4/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_oev4c")
+
+[node name="MinigameLabel" parent="MinigameTrigger4" index="1"]
+text = "MINIGAME
+HANGMAN"
 
 [node name="MinigameTrigger5" parent="." index="5" instance=ExtResource("2_q44dy")]
 position = Vector2(741, 547)
-completion_threshold = -1.0
-time_per_letter = -1.0
 minigame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger5/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_cjx20")
+
+[node name="MinigameLabel" parent="MinigameTrigger5" index="1"]
+text = "MINIGAME
+WHACK_A_MOLE"
 
 [node name="MinigameTrigger6" parent="." index="6" instance=ExtResource("2_q44dy")]
 position = Vector2(574, 394)
-completion_threshold = -1.0
-time_per_letter = -1.0
 minigame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger6/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_515u3")
+
+[node name="MinigameLabel" parent="MinigameTrigger6" index="1"]
+text = "MINIGAME
+BLITZ_TYPING"
+
+[editable path="MinigameTrigger"]
+[editable path="MinigameTrigger2"]
+[editable path="MinigameTrigger2/InteractableComponent"]
+[editable path="MinigameTrigger3"]
+[editable path="MinigameTrigger3/InteractableComponent"]
+[editable path="MinigameTrigger4"]
+[editable path="MinigameTrigger5"]
+[editable path="MinigameTrigger6"]

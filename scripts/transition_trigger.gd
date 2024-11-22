@@ -13,10 +13,11 @@ func notify_transition_triggered() -> void:
 
 func _on_interactable_clicked() -> void:
 	if dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(dialogue, "start")
+		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
 	else:
 		notify_transition_triggered()
 
-func _on_dialogue_ended(dialogue: DialogueResource) -> void:
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == dialogue:
 		notify_transition_triggered()
 	

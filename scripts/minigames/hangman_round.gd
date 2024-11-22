@@ -41,7 +41,7 @@ func start_next_sequence() -> void:
 	current_sequence = new_seq
 
 func get_next_sequence() -> Sequence:
-	var sequence_string: String = sequence_generator.generate_word()
+	var sequence_string: String = sequence_generator.generate_hangman_normal()
 	var sequence: Sequence = sequence_generator.string_to_letters(sequence_string, Letter.Mode.TYPE)
 	sequence_generator.setup_hangman(sequence, missing_letters)
 	return sequence

@@ -65,7 +65,7 @@ func reset() -> void:
 	super.reset()
 
 func get_next_sequence() -> Sequence:
-	var sequence: String = sequence_generator.generate_word()
+	var sequence: String = sequence_generator.generate_typing_word(3)
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.TYPE)
 
 func get_next_position() -> Vector2:
@@ -130,6 +130,7 @@ func _on_letter_activated() -> void:
 		current_sequence.stop_timer()
 		current_sequence.get_node("timer").stop()
 		if check_win_condition():
+			
 			won.emit()
 		else:
 			# continue next word

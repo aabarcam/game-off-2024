@@ -38,7 +38,7 @@ func generate_random(n: int) -> String:
 ## Generates a random word from a whitelisted source
 ## Returns word as a string of characters
 func generate_typing_word(length: int) -> String:
-	return WordLoader.typing_words.filter(func(x:String):return x.length()==length).pick_random()
+	return WordLoader.typing_words["mammals"].filter(func(x:String):return x.length()==length).pick_random()
 
 func generate_hangman_ambiguous() -> String:
 	return WordLoader.hangman_ambiguous.keys().pick_random()

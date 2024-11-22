@@ -1,9 +1,18 @@
-[
-	"cow",
-	"elk",
-	"bat",
-	"cat",
-	"dog",
-	"mule",
-	"hare",
-]
+{
+	"mammals": [
+		"cow",
+		"elk",
+		"bat",
+		"cat",
+		"dog",
+		"mule",
+		"hare",
+	],
+	"birds": [
+		"tit",
+		"hen",
+	],
+	"dinosaurs": [
+		"aardonyx"
+	]
+}

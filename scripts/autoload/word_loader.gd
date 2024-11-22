@@ -6,7 +6,7 @@ var hangman_normal: Dictionary = hangman_words["normal"]
 var hangman_ambiguous: Dictionary = hangman_words["ambiguous"]
 
 var typing_json: JSON = preload("res://words/typing.json")
-var typing_words: Array = typing_json.data
+var typing_words: Dictionary = typing_json.data
 
 func _ready() -> void:
 	pass

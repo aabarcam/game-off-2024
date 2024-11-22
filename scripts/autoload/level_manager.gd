@@ -32,6 +32,7 @@ func _on_transition_triggered() -> void:
 	var next_level: PackedScene = load(next_level_path)
 	get_tree().change_scene_to_packed(next_level)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	MusicController.play_music("zone_1")
 
 func set_current_level(new_val: String) -> void:
 	current_level = new_val

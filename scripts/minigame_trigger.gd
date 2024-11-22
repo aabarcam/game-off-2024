@@ -243,10 +243,13 @@ func _on_grenade_held() -> void:
 	# start minigame
 	grenade_instructions.hide()
 	start_minigame()
+	MusicController.play_music("minigame_loop")
+	MusicController.play_loop()
 
 func _on_grenade_exploded() -> void:
 	# lose minigame
 	notify_minigame_lost()
+	MusicController.play_music("explosion")
 
 func _on_key_pressed() -> void:
 	# change player sprite

@@ -24,8 +24,6 @@
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
 script = ExtResource("1_4yjdg")
-interactable_component = NodePath("InteractableComponent")
-grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")
 typing_round = ExtResource("3_jd6sm")
 simon_says_round = ExtResource("4_6ymm7")
@@ -34,6 +32,8 @@ whack_a_mole_round = ExtResource("6_tnjij")
 blitz_typing = ExtResource("7_nqfx0")
 player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80"), ExtResource("7_1r6oe"), ExtResource("8_ktlh0"), ExtResource("9_5nogn"), ExtResource("10_5ob6x"), ExtResource("11_wway4")])
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
+interactable_component = NodePath("InteractableComponent")
+grenade_component = NodePath("GrenadeComponent")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
 

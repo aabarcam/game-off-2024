@@ -12,7 +12,33 @@
 		"tit",
 		"hen",
 	],
-	"dinosaurs": [
-		"aardonyx"
-	]
+	"dinosaurs easy": [
+		"aardonyx",
+		"iguanodon",
+		"diplodocus",
+		"stegosaurus",
+		"triceratops",
+		"megalosaurus",
+		"velociraptor",
+		"anchiceratops",
+		"brachiosaurus",
+		"gigantoraptor",
+	],
+	"dinosaurs medium": [
+		"tyrannosaurus",
+		"hypsilophodon",
+		"styracosaurus",
+		"dromiceiomimus",
+		"poekilopleuron",
+		"proceratosaurus",
+		"argentinosaurus",
+		"brachylophosaurus",
+		"heterodontosaurus",
+		"protarchaeopteryx",
+		"eustreptospondylus",
+	],
+	"dinosaurs hard": [
+		"archaeornithomimus",
+		"micropachycephalosaurus",
+	],
 }

@@ -22,6 +22,7 @@ LevelManager="*res://scenes/autoload/level_manager.tscn"
 Manager="*res://scenes/autoload/manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MusicController="*res://scenes/autoload/music_controller.tscn"
+WordLoader="*res://scenes/autoload/word_loader.tscn"
 
 [display]
 

@@ -36,14 +36,28 @@ func generate_random(n: int) -> String:
 	return output
 
 ## Generates a random word from a whitelisted source
-## Returns word as a string of letters
-## TODO: Allow selection of different difficulty words
-func generate_word() -> String:
-	return allowed_words.keys().pick_random()
+## Returns word as a string of characters
+func generate_typing_word(length: int) -> String:
+	return WordLoader.typing_words.filter(func(x:String):return x.length()==length).pick_random()
+
+func generate_hangman_ambiguous() -> String:
+	return WordLoader.hangman_ambiguous.keys().pick_random()
+
+func generate_hangman_normal() -> String:
+	return WordLoader.hangman_normal.keys().pick_random()
 
 func setup_hangman(sequence: Sequence, missing_letters: int) -> void:
 	sequence.set_sequence_activated()
-	var missing_ids: Array = allowed_words[letters_to_string(sequence)]
+	var string_sequence: String = letters_to_string(sequence)
+	var word_dict: Dictionary
+	if WordLoader.hangman_normal.has(string_sequence):
+		word_dict = WordLoader.hangman_normal
+	elif WordLoader.hangman_ambiguous.has(string_sequence):
+		word_dict = WordLoader.hangman_ambiguous
+	else:
+		push_error("Invalid word.")
+		get_tree().paused = true
+	var missing_ids: Array = word_dict[string_sequence]
 	for i in range(min(missing_letters, missing_ids.size())):
 		var letter_id = missing_ids[i]
 		var letter: Letter = sequence.get_letter_by_id(letter_id)

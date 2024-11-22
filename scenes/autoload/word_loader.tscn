@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5s26p1s11s5p"]
+
+[ext_resource type="Script" path="res://scripts/autoload/word_loader.gd" id="1_qtsd4"]
+
+[node name="WordLoader" type="Node"]
+script = ExtResource("1_qtsd4")

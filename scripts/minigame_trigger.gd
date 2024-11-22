@@ -47,6 +47,7 @@ signal lost ## Minigame lost
 
 var current_round: BaseRound
 var round_count: int = 0
+var lives: int = 3
 
 @onready var minigame_label_debug: Label = $MinigameLabel ## Editor debug label
 @onready var grenade_instructions: Node2D = $GrenadeInstructions
@@ -58,6 +59,8 @@ var round_count: int = 0
 @onready var opponent_hand: Sprite2D = $OpponentHandSprite
 @onready var handshake: Sprite2D = $HandshakeSprite
 
+@export_category("Dialogues")
+@export var dialogue_beaten: DialogueResource
 ## Ready function called in editor
 func _ready_editor() -> void:
 	update_debug_label()

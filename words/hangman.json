@@ -1,0 +1,16 @@
+{
+	"normal": {
+		"giraffe": [4],
+		"volcano": [4],
+		"lantern": [5],
+		"zebra": [3],
+	},
+	"ambiguous": {
+		"quest": [0],
+		"guest": [0],
+		"revenge": [5],
+		"revenue": [5],
+		"takes": [2],
+		"taxes": [2],
+	},
+}

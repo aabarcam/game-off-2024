@@ -9,7 +9,7 @@ func activate_letter() -> void:
 func deactivate_letter() -> void:
 	return
 
-func wrong_letter(character: String) -> void:
+func wrong_letter(_character: String) -> void:
 	return
 
 func is_inactive() -> bool:

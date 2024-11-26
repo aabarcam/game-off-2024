@@ -52,7 +52,7 @@ func get_next_sequence() -> Sequence:
 	var sequence: String = sequence_generator.generate_random(sequence_size)
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
 
-func start_sequence_move(sequence: Sequence) -> void:
+func start_sequence_move(_sequence: Sequence) -> void:
 	previous_sequences.shuffle()
 	
 	# light on sequences

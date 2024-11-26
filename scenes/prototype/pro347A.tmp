@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfrx1gkeso1o1"]
+[gd_scene load_steps=13 format=3 uid="uid://cfrx1gkeso1o1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_1rngy"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_q44dy"]
@@ -6,22 +6,32 @@
 [ext_resource type="PackedScene" uid="uid://dx2li1xr7phdr" path="res://scenes/minigames/typing_round.tscn" id="4_f32ok"]
 [ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="5_d6xc8"]
 [ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="5_np6rw"]
-[ext_resource type="PackedScene" uid="uid://h5adf7o4spfx" path="res://scenes/misc_trigger.tscn" id="7_jmcb2"]
-[ext_resource type="Resource" uid="uid://cs1xxtk41gcqe" path="res://dialogues/test.dialogue" id="8_wplup"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vjqkt"]
-radius = 55.5788
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv7x7"]
+size = Vector2(118, 118)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqoyf"]
-size = Vector2(128, 122)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o72xv"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7685c"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oev4c"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjx20"]
+size = Vector2(118, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_515u3"]
+size = Vector2(118, 118)
 
 [node name="PrototypeB" instance=ExtResource("1_1rngy")]
 
 [node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_q44dy")]
 position = Vector2(145, 338)
 
-[node name="CollisionShape2D" parent="MinigameTrigger/InteractableComponent" index="1"]
-shape = SubResource("CircleShape2D_vjqkt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_bv7x7")
 
 [node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_jf6bv")]
 visible = false
@@ -35,6 +45,9 @@ sequences_at_a_time = 2
 [node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
 position = Vector2(969, 328)
 minigame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger2/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_o72xv")
 
 [node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
 text = "MINIGAME
@@ -50,6 +63,9 @@ TYPING_OF_THE_DEAD"
 position = Vector2(568, 203)
 minigame = 2
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger3/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_7685c")
+
 [node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
 text = "MINIGAME
 SIMON_SAYS"
@@ -57,6 +73,9 @@ SIMON_SAYS"
 [node name="MinigameTrigger4" parent="." index="4" instance=ExtResource("2_q44dy")]
 position = Vector2(387, 542)
 minigame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger4/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_oev4c")
 
 [node name="MinigameLabel" parent="MinigameTrigger4" index="1"]
 text = "MINIGAME
@@ -72,6 +91,9 @@ HANGMAN"
 position = Vector2(741, 547)
 minigame = 4
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger5/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_cjx20")
+
 [node name="MinigameLabel" parent="MinigameTrigger5" index="1"]
 text = "MINIGAME
 WHACK_A_MOLE"
@@ -79,6 +101,9 @@ WHACK_A_MOLE"
 [node name="MinigameTrigger6" parent="." index="6" instance=ExtResource("2_q44dy")]
 position = Vector2(574, 394)
 minigame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameTrigger6/InteractableComponent" index="1"]
+shape = SubResource("RectangleShape2D_515u3")
 
 [node name="MinigameLabel" parent="MinigameTrigger6" index="1"]
 text = "MINIGAME
@@ -100,15 +125,7 @@ theme = 2
 completion_threshold = 75.0
 time_per_letter = 1.0
 
-[node name="MiscTrigger" parent="." index="7" instance=ExtResource("7_jmcb2")]
-position = Vector2(287, 138)
-dialogue = ExtResource("8_wplup")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiscTrigger/InteractableComponent" index="0"]
-shape = SubResource("RectangleShape2D_aqoyf")
-
 [editable path="MinigameTrigger"]
-[editable path="MinigameTrigger/InteractableComponent"]
 [editable path="MinigameTrigger2"]
 [editable path="MinigameTrigger2/InteractableComponent"]
 [editable path="MinigameTrigger3"]
@@ -116,4 +133,3 @@ shape = SubResource("RectangleShape2D_aqoyf")
 [editable path="MinigameTrigger4"]
 [editable path="MinigameTrigger5"]
 [editable path="MinigameTrigger6"]
-[editable path="MiscTrigger"]

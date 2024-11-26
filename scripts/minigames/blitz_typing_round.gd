@@ -4,10 +4,14 @@ class_name BlitzTypingRound
 ##
 ## Generates random sequences of letters the player must press in order
 
+enum Subject {MAMMALS, BIRDS, DINOSAURS_EASY, DINOSAURS_MEDIUM, DINOSAURS_HARD}
+@export var theme: Subject = Subject.MAMMALS
 @export var debug_completion_threshold: float = -1
 @export var completion_threshold: float = 60.0
 @export var debug_time_per_letter: float = -1
 @export var time_per_letter: float = 1.0
+@export var min_length: int = 0
+@export var max_length: int = 20
 
 var round_sequences: Array[Sequence] = []
 var sequences_generated: int = 0
@@ -22,6 +26,7 @@ var current_position: Marker2D
 }
 
 func _ready() -> void:
+	sequence_positions.keys().map(func(x:Marker2D):x.hide())
 	completion_threshold = debug_completion_threshold if debug_completion_threshold >= 0 else completion_threshold
 	time_per_letter = debug_time_per_letter if debug_time_per_letter >= 0 else time_per_letter
 	super._ready()
@@ -37,6 +42,7 @@ func start_round() -> void:
 func start_next_sequence() -> void:
 	sequences_generated += 1
 	var new_sequence: Sequence = get_next_sequence()
+	new_sequence.set_can_be_wrong(true)
 	var new_position: Vector2 = get_next_position()
 	sequence_generator.remove_child(new_sequence)
 	add_child(new_sequence)
@@ -48,14 +54,15 @@ func start_next_sequence() -> void:
 	reset_sequence_state(new_sequence)
 	set_sequence_inactive(new_sequence)
 	#new_sequence.enable_next_letter()
-	var new_timer: Timer = Timer.new()
-	new_timer.name = "timer"
-	new_timer.timeout.connect(_on_sequence_timer_timeout)
-	new_sequence.add_child(new_timer)
-	new_timer.one_shot = true
+	#var new_timer: Timer = Timer.new()
+	#new_timer.name = "timer"
+	#new_timer.timeout.connect(_on_sequence_timer_timeout)
+	#new_sequence.add_child(new_timer)
+	#new_timer.one_shot = true
 	var new_time: float = time_per_letter * new_sequence.size()
+	new_sequence.timed_bar.timer.timeout.connect(_on_sequence_timer_timeout)
 	new_sequence.start_timer(new_time)
-	new_timer.start(new_time)
+	#new_timer.start(new_time)
 	#start_sequence_move(new_sequence)
 
 func reset() -> void:
@@ -65,7 +72,7 @@ func reset() -> void:
 	super.reset()
 
 func get_next_sequence() -> Sequence:
-	var sequence: String = sequence_generator.generate_typing_word(3)
+	var sequence: String = sequence_generator.generate_typing_word(min_length, max_length, Subject.keys()[theme].to_lower())
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.TYPE)
 
 func get_next_position() -> Vector2:
@@ -78,10 +85,10 @@ func get_next_position() -> Vector2:
 	sequence_positions[random_position] = true
 	return random_position.position
 
-func start_sequence_move(sequence: Sequence) -> void:
+func start_sequence_move(_sequence: Sequence) -> void:
 	pass
 
-func reset_sequence_position(sequence: Sequence) -> void:
+func reset_sequence_position(_sequence: Sequence) -> void:
 	pass
 
 func reset_sequence_state(sequence: Sequence) -> void:
@@ -102,6 +109,7 @@ func set_noncurrent_sequences_inactive() -> void:
 func connect_sequence_signals(sequence: Sequence) -> void:
 	for letter in sequence.letters:
 		letter.activated.connect(_on_letter_activated)
+		letter.mistake.connect(_on_letter_mistake)
 
 func all_sequences_inactive() -> bool:
 	var output: bool = true
@@ -114,7 +122,14 @@ func check_win_condition() -> bool:
 
 ## Signal handlers
 
+func _on_letter_mistake() -> void:
+	lost.emit()
+
 func _on_sequence_timer_timeout() -> void:
+	# reset current word
+	var time: float = time_per_letter * current_sequence.size()
+	#current_sequence.get_node("timer").start(time)
+	current_sequence.start_timer(time)
 	lost.emit()
 
 func _on_letter_activated() -> void:
@@ -128,9 +143,8 @@ func _on_letter_activated() -> void:
 		round_sequences.erase(current_sequence)
 		sequence_positions[current_position] = false
 		current_sequence.stop_timer()
-		current_sequence.get_node("timer").stop()
+		#current_sequence.get_node("timer").stop()
 		if check_win_condition():
-			
 			won.emit()
 		else:
 			# continue next word

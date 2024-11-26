@@ -9,19 +9,6 @@ class_name SequenceGenerator
 @export var letter_scene: PackedScene
 @export var sequence_scene: PackedScene
 
-## TODO: Save in different file
-## Dict of words and their missing letters for hangman
-var allowed_words: Dictionary = {
-	"penguin": [4, 0],
-	"computer": [3, 7],
-	"keyboard": [2, 6],
-	"handshake": [0, 4],
-	"cult": [2],
-	"gamejam": [4],
-	"github": [4, 1],
-	"grenade": [2, 5]
-}
-
 ## All the usable letters in the alphabet, for random sequences
 var alphabet: String = "qwertyuiopasdfghjklzxcvbnm"
 
@@ -37,8 +24,10 @@ func generate_random(n: int) -> String:
 
 ## Generates a random word from a whitelisted source
 ## Returns word as a string of characters
-func generate_typing_word(length: int) -> String:
-	return WordLoader.typing_words["mammals"].filter(func(x:String):return x.length()==length).pick_random()
+func generate_typing_word(min_length: int, max_length:int, subject:String="mammals") -> String:
+	return WordLoader.typing_words[subject].filter(
+		func(x:String):return min_length <= x.length() and x.length() <= max_length
+	).pick_random()
 
 func generate_hangman_ambiguous() -> String:
 	return WordLoader.hangman_ambiguous.keys().pick_random()

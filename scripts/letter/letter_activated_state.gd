@@ -14,5 +14,8 @@ func deactivate_letter() -> void:
 	letter.change_state(letter.deactivated_state)
 	letter.notify_deactivated()
 
+func wrong_letter(_char: String) -> void:
+	return
+
 func is_activated() -> bool:
 	return true

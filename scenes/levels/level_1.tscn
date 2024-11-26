@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjsgh722vmc5e"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_a4ymf"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_uu6l1"]
+
+[node name="Level1" instance=ExtResource("1_0q6oy")]
+
+[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_a4ymf")]
+position = Vector2(536, 317)
+lives = -1
+
+[node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_uu6l1")]
+sequence_size = 1
+time_per_sequence = 3.0
+
+[node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_uu6l1")]
+sequence_size = 1
+time_per_sequence = 3.0
+
+[node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_uu6l1")]
+time_per_sequence = 5.0
+
+[editable path="MinigameTrigger"]

@@ -6,12 +6,21 @@ class_name StandardRound
 
 @export var debug_sequences_at_a_time: int = 1
 @export var sequences_at_a_time: int = 1
+@export var debug_sequence_size_alt: Dictionary = {}
+@export var sequence_size_alt: Dictionary = {}
 
 var active_sequences: Array[Sequence] = []
+var current_sequence_container: HBoxContainer
+var sequence_size_array: Array = []
 
 func _ready() -> void:
 	if OS.is_debug_build() and get_parent() == get_tree().root:
 		sequences_at_a_time = debug_sequences_at_a_time if debug_sequences_at_a_time >= 0 else sequences_at_a_time
+		sequence_size_alt = debug_sequence_size_alt if not debug_sequence_size_alt.is_empty() else sequence_size_alt
+	for key in sequence_size_alt.keys():
+		for val in sequence_size_alt[key]:
+			sequence_size_array.append(key)
+	
 	super._ready()
 	#Signals.register_signal(won, self)
 	#Signals.register_signal(lost, self)
@@ -31,6 +40,14 @@ func _ready() -> void:
 func start_round() -> void:
 	start_next_sequence()
 
+func get_next_sequence() -> Sequence:
+	if sequence_size_array.is_empty():
+		return super.get_next_sequence()
+	var size: int = sequence_size_array.pick_random()
+	sequence_size_array.erase(size)
+	var sequence: String = sequence_generator.generate_random(size)
+	return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
+
 ## Reset round to initial state to start anew
 #func reset() -> void:
 	#delete_previous_sequences()
@@ -44,15 +61,15 @@ func start_round() -> void:
 
 func start_next_sequence() -> void:
 	var sequence_qty: int = randi() % sequences_at_a_time + 1
-	var seq_container: HBoxContainer = HBoxContainer.new()
-	#seq_container.alignment = BoxContainer.ALIGNMENT_CENTER
-	#seq_container.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	seq_container.add_theme_constant_override("separation", 12)
-	add_child(seq_container)
+	current_sequence_container = HBoxContainer.new()
+	#current_sequence_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	#current_sequence_container.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	current_sequence_container.add_theme_constant_override("separation", 12)
+	add_child(current_sequence_container)
 	for _i in range(sequence_qty):
 		var new_seq: Sequence = get_next_sequence()
 		sequence_generator.remove_child(new_seq)
-		seq_container.add_child(new_seq)
+		current_sequence_container.add_child(new_seq)
 		sequence_timer.start(time_per_sequence)
 		previous_sequences.push_back(new_seq)
 		active_sequences.push_back(new_seq)
@@ -61,8 +78,8 @@ func start_next_sequence() -> void:
 		#reset_sequence_position(new_seq)
 		reset_sequence_state(new_seq)
 		#start_sequence_move(new_seq)
-	reset_sequence_container_position(seq_container)
-	start_sequence_container_move(seq_container)
+	reset_sequence_container_position(current_sequence_container)
+	start_sequence_container_move(current_sequence_container)
 	current_sequence = active_sequences.pop_front()
 
 #func get_next_sequence() -> Sequence:
@@ -119,8 +136,13 @@ func connect_sequence_signals(sequence: Sequence) -> void:
 
 func _on_sequence_timer_timeout() -> void:
 	if not current_sequence.is_sequence_cleared():
-		set_sequence_inactive(current_sequence)
 		lost.emit()
+		#set_sequence_inactive(current_sequence)
+		reset_sequence_state(current_sequence)
+		current_sequence.start_timer(time_per_sequence)
+		sequence_timer.start(time_per_sequence)
+		reset_sequence_container_position(current_sequence_container)
+		start_sequence_container_move(current_sequence_container)
 
 func _on_letter_activated() -> void:
 	if is_sequence_activated(current_sequence):

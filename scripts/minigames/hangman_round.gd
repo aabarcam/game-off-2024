@@ -6,10 +6,13 @@ class_name HangmanRound
 
 @export var debug_missing_letters: int = -1
 @export var missing_letters: int = 1
+@export var debug_ambiguous_words: int = -1
+@export var ambiguous_words: int = 0
 
 func _ready() -> void:
 	if OS.is_debug_build() and get_parent() == get_tree().root:
 		missing_letters = debug_missing_letters if debug_missing_letters >= 0 else missing_letters
+		ambiguous_words = debug_ambiguous_words if debug_ambiguous_words >= 0 else ambiguous_words
 	super._ready()
 
 func start_round() -> void:
@@ -41,7 +44,12 @@ func start_next_sequence() -> void:
 	current_sequence = new_seq
 
 func get_next_sequence() -> Sequence:
-	var sequence_string: String = sequence_generator.generate_hangman_normal()
+	var generator: Callable
+	if sequence_count < sequence_quantity - ambiguous_words:
+		generator = sequence_generator.generate_hangman_normal
+	else:
+		generator = sequence_generator.generate_hangman_ambiguous
+	var sequence_string: String = generator.call()
 	var sequence: Sequence = sequence_generator.string_to_letters(sequence_string, Letter.Mode.TYPE)
 	sequence_generator.setup_hangman(sequence, missing_letters)
 	return sequence
@@ -96,8 +104,11 @@ func connect_sequence_signals(sequence: Sequence) -> void:
 
 func _on_sequence_timer_timeout() -> void:
 	if not current_sequence.is_sequence_cleared():
-		set_sequence_inactive(current_sequence)
 		lost.emit()
+		#set_sequence_inactive(current_sequence)
+		#reset_sequence_state(current_sequence)
+		current_sequence.start_timer(time_per_sequence)
+		sequence_timer.start(time_per_sequence)
 
 func _on_letter_activated() -> void:
 	key_pressed.emit()

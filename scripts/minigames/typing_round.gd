@@ -31,7 +31,7 @@ func start_next_sequence() -> void:
 		#start_sequence_move(new_sequence)
 
 func get_next_sequence() -> Sequence:
-	var sequence: String = sequence_generator.generate_typing_word(3)
+	var sequence: String = sequence_generator.generate_typing_word(3, 3)
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.TYPE)
 
 func start_sequence_move(sequence: Sequence) -> void:

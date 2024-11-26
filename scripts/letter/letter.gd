@@ -7,7 +7,7 @@ class_name Letter
 
 signal activated ## Letter has been activated
 signal deactivated ## Letter has been deactivated
-#signal mistake ## Incorrect letter activated
+signal mistake ## Incorrect letter activated
 
 @export_category("Debug")
 @export var character: String: ## Charater represented by this letter
@@ -25,7 +25,7 @@ enum Mode {NOT_SET, HOLD, TYPE}
 var state: LetterBaseState
 var activation_mode: Mode = Mode.NOT_SET
 var can_be_wrong: bool = false
-var mistake: bool = false
+#var mistake: bool = false
 var quiet: bool = false:
 	set = set_quiet
 var incognito: bool = false:
@@ -38,6 +38,7 @@ var deactivate_condition: Callable
 func _ready_game() -> void:
 	Signals.register_signal(activated, self)
 	Signals.register_signal(deactivated,self)
+	Signals.register_signal(mistake, self)
 	
 	change_state(inactive_state)
 	
@@ -68,7 +69,7 @@ func _input(event: InputEvent) -> void:
 		if activation_mode == Mode.NOT_SET:
 			return
 		if activate_condition(event):
-			set_process_input(not can_be_wrong)
+			#set_process_input(not can_be_wrong)
 			state.activate_letter()
 		if not deactivate_condition.is_null() and deactivate_condition.call(event):
 			state.deactivate_letter()
@@ -112,14 +113,16 @@ func light_on() -> void:
 func light_off() -> void:
 	modulate = Color.WHITE
 
-func wrong_letter(character: String) -> void:
-	if character != "":
-		text = character.to_upper()
+func wrong_letter(bad_char: String) -> void:
+	mistake.emit()
+	var original_char: String = text
+	if bad_char != "":
+		text = bad_char.to_upper()
 	modulate = Color.RED
 	set_process_input(false)
-	await get_tree().create_timer(0.5).timeout
-	if character != "":
-		text = "_"
+	await get_tree().create_timer(0.25).timeout
+	if bad_char != "":
+		text = original_char
 	modulate = Color.WHITE
 	set_process_input(true)
 

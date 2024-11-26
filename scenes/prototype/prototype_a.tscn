@@ -16,7 +16,7 @@ size = Vector2(118, 118)
 [node name="TransitionInteractable" parent="." index="1" instance=ExtResource("2_mrcku")]
 position = Vector2(580, 354)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionInteractable/InteractableComponent" index="1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TransitionInteractable/InteractableComponent" index="1"]
 shape = SubResource("RectangleShape2D_wkhxx")
 
 [node name="MiscTrigger" parent="." index="2" instance=ExtResource("3_hw3b1")]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://be8fo7qldu3f1"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_03nfb"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_kuhbm"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_hoii0"]
+
+[node name="Level2" instance=ExtResource("1_03nfb")]
+
+[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_kuhbm")]
+position = Vector2(521, 273)
+
+[node name="MinigameLabel" parent="MinigameTrigger" index="1"]
+text = "MINI
+BOSS"
+
+[node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+time_per_sequence = 4.0
+
+[node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_hoii0")]
+sequences_at_a_time = 2
+debug_sequence_size_alt = {}
+time_per_sequence = 3.0
+
+[node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_hoii0")]
+sequences_at_a_time = 2
+debug_sequence_size_alt = {}
+time_per_sequence = 3.0
+
+[node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_kuhbm")]
+position = Vector2(181, 366)
+
+[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+text = "PERSONAJE
+A"
+
+[node name="StandardRound" parent="MinigameTrigger2/Minigames" index="0" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 3,
+2: 2,
+3: 0
+}
+time_per_sequence = 4.0
+
+[node name="StandardRound2" parent="MinigameTrigger2/Minigames" index="1" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 3,
+2: 2,
+3: 0
+}
+time_per_sequence = 3.5
+
+[node name="StandardRound3" parent="MinigameTrigger2/Minigames" index="2" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 3,
+2: 2,
+3: 0
+}
+
+[node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_kuhbm")]
+position = Vector2(915, 344)
+
+[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+text = "PERSONAJE
+B"
+
+[node name="StandardRound" parent="MinigameTrigger3/Minigames" index="0" instance=ExtResource("3_hoii0")]
+sequence_size_alt = {
+1: 0,
+2: 4,
+3: 1
+}
+time_per_sequence = 5.0
+
+[node name="StandardRound2" parent="MinigameTrigger3/Minigames" index="1" instance=ExtResource("3_hoii0")]
+sequence_size_alt = {
+1: 0,
+2: 2,
+3: 3
+}
+time_per_sequence = 5.0
+
+[node name="StandardRound3" parent="MinigameTrigger3/Minigames" index="2" instance=ExtResource("3_hoii0")]
+sequence_size_alt = {
+1: 0,
+2: 2,
+3: 3
+}
+time_per_sequence = 5.0
+
+[editable path="MinigameTrigger"]
+[editable path="MinigameTrigger2"]
+[editable path="MinigameTrigger3"]

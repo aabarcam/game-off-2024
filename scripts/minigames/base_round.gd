@@ -7,7 +7,7 @@ class_name BaseRound
 signal key_pressed ## Keys have been pressed that warrant a change in hand sprite
 signal won ## Round has been cleared
 signal lost ## Round has been lost
-signal previous_cleared ## Previous sequences cleared
+#signal previous_cleared ## Previous sequences cleared
 
 @export_category("Debug Config")
 @export var debug_sequence_quantity: int = -1
@@ -64,7 +64,7 @@ func reset() -> void:
 func delete_previous_sequences() -> void:
 	for seq in previous_sequences:
 		#seq.queue_free()
-		seq.free()
+		seq.queue_free()
 	previous_sequences = []
 
 func start_next_sequence() -> void:

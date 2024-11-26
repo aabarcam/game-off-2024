@@ -1,33 +1,35 @@
-@tool
+#@tool
 extends BaseTrigger
 class_name MinigameTrigger
 
 signal clicked(minigame: MinigameTrigger) ## Minigame clicked
 signal won ## Minigame won
 signal lost ## Minigame lost
+#
+#@export_category("Standard Config")
+#@export var sequences_at_a_time: int = -1
+#
+#@export_category("Simon Says Config")
+#@export var memorize_time: float = -1.0
+#
+#@export_category("Hangman Config")
+#@export var missing_letters: int = -1
+#
+#@export_category("Blitz Config")
+#@export var completion_threshold: float = -1
+#@export var time_per_letter: float = -1
+#
+#@export_category("General Config")
+#@export var sequence_quantity: int = -1
+#@export var sequence_size: int = -1
+#@export var time_per_sequence: float = -1
 
-@export_category("Standard Config")
-@export var sequences_at_a_time: int = -1
-
-@export_category("Simon Says Config")
-@export var memorize_time: float = -1.0
-
-@export_category("Hangman Config")
-@export var missing_letters: int = -1
-
-@export_category("Blitz Config")
-@export var completion_threshold: float = -1
-@export var time_per_letter: float = -1
-
-@export_category("General Config")
-@export var sequence_quantity: int = -1
-@export var sequence_size: int = -1
-@export var time_per_sequence: float = -1
-
+@export var minigames: Node2D
 @export var minigame: Manager.Minigames: ## Minigame to trigger
 	set = set_minigame
-@export var rounds: int = 3: ## How many rounds for the minigame
-	set = set_rounds
+@export var total_rounds: int = 3: ## How many rounds for the minigame
+	set = set_total_rounds
+@export var lives: int = 3
 
 @export_category("Components")
 @export var interactable_component: InteractableComponent
@@ -45,9 +47,10 @@ signal lost ## Minigame lost
 @export var player_textures: Array[Texture2D] = []
 @export var handshake_textures: Array[Texture2D] = []
 
+var active: bool = false
+var minigame_list: Array[Node]
 var current_round: BaseRound
 var round_count: int = 0
-var lives: int = 3
 
 @onready var minigame_label_debug: Label = $MinigameLabel ## Editor debug label
 @onready var grenade_instructions: Node2D = $GrenadeInstructions
@@ -58,6 +61,7 @@ var lives: int = 3
 @onready var player_hand: Sprite2D = $PlayerHandSprite
 @onready var opponent_hand: Sprite2D = $OpponentHandSprite
 @onready var handshake: Sprite2D = $HandshakeSprite
+@onready var original_lives: int = lives
 
 @export_category("Dialogues")
 @export var dialogue_beaten: DialogueResource
@@ -98,9 +102,12 @@ func _ready() -> void:
 
 func reset_trigger() -> void:
 	if current_round != null:
-		current_round.queue_free()
+		#current_round.queue_free()
+		current_round.reset()
 		current_round = null
+	minigame_list = minigames.get_children().filter(func(x:Node2D):return x.visible)
 	round_count = 0
+	lives = original_lives
 	grenade_component.reset()
 	grenade_instructions.hide()
 	instructions.hide()
@@ -123,46 +130,43 @@ func update_debug_label() -> void:
 		minigame_label_debug.text = "MINIGAME\n" + Manager.Minigames.keys()[minigame]
 
 func connect_round_signals(this_round: BaseRound) -> void:
-	this_round.key_pressed.connect(_on_key_pressed)
-	this_round.won.connect(_on_round_won)
-	this_round.lost.connect(_on_round_lost)
+	if not this_round.key_pressed.is_connected(_on_key_pressed):
+		this_round.key_pressed.connect(_on_key_pressed)
+	if not this_round.won.is_connected(_on_round_won):
+		this_round.won.connect(_on_round_won)
+	if not this_round.lost.is_connected(_on_round_lost):
+		this_round.lost.connect(_on_round_lost)
 
 func disconnect_round_signals(this_round: BaseRound) -> void:
 	this_round.key_pressed.disconnect(_on_key_pressed)
 	this_round.won.disconnect(_on_round_won)
 	this_round.lost.disconnect(_on_round_lost)
 
-func start_minigame() -> void:
-	match minigame:
-		Manager.Minigames.STANDARD:
-			current_round = standard_round.instantiate() as StandardRound
-			if sequences_at_a_time >= 0:
-				current_round.sequences_at_a_time = sequences_at_a_time
-		Manager.Minigames.TYPING_OF_THE_DEAD:
-			current_round = typing_round.instantiate() as TypingRound
-		Manager.Minigames.SIMON_SAYS:
-			current_round = simon_says_round.instantiate() as SimonSaysRound
-			if memorize_time >= 0:
-				current_round.memorize_time = memorize_time
-		Manager.Minigames.HANGMAN:
-			current_round = hangman_round.instantiate() as HangmanRound
-			current_round.missing_letters = missing_letters if missing_letters >= 0 else current_round.missing_letters
-		Manager.Minigames.WHACK_A_MOLE:
-			current_round = whack_a_mole_round.instantiate() as WhackRound
-		Manager.Minigames.BLITZ_TYPING:
-			current_round = blitz_typing.instantiate() as BlitzTypingRound
-			current_round.completion_threshold = completion_threshold if completion_threshold >= 0 else current_round.completion_threshold
-			current_round.time_per_letter = time_per_letter if time_per_letter >= 0 else current_round.time_per_letter
+func next_round() -> void:
+	active = true
+	if minigame_list.is_empty():
+		disable_grenade()
+		notify_minigame_won()
+		return
 	
-	if sequence_quantity >= 0:
-		current_round.sequence_quantity = sequence_quantity
-	if sequence_size >= 0:
-		current_round.sequence_size = sequence_size
-	if time_per_sequence >= 0:
-		current_round.time_per_sequence = time_per_sequence
+	#match minigame:
+		#Manager.Minigames.STANDARD:
+			#current_round = standard_round.instantiate() as StandardRound
+		#Manager.Minigames.TYPING_OF_THE_DEAD:
+			#current_round = typing_round.instantiate() as TypingRound
+		#Manager.Minigames.SIMON_SAYS:
+			#current_round = simon_says_round.instantiate() as SimonSaysRound
+		#Manager.Minigames.HANGMAN:
+			#current_round = hangman_round.instantiate() as HangmanRound
+		#Manager.Minigames.WHACK_A_MOLE:
+			#current_round = whack_a_mole_round.instantiate() as WhackRound
+		#Manager.Minigames.BLITZ_TYPING:
+			#current_round = blitz_typing.instantiate() as BlitzTypingRound
+	current_round = minigame_list.pop_front()
 	show_hands()
+	handshake.hide()
 	connect_round_signals(current_round)
-	add_child(current_round)
+	#add_child(current_round)
 	current_round.start_round()
 
 func notify_minigame_triggered() -> void:
@@ -184,6 +188,9 @@ func notify_minigame_lost() -> void:
 	reset_trigger()
 	lost.emit()
 
+func notify_minigame_won() -> void:
+	won.emit()
+
 func prompt_grenade() -> void:
 	grenade_instructions.show()
 	grenade_component.activate()
@@ -199,8 +206,8 @@ func set_minigame(new_val: Manager.Minigames) -> void:
 	if Engine.is_editor_hint():
 		update_debug_label()
 
-func set_rounds(new_val: int) -> void:
-	rounds = new_val
+func set_total_rounds(new_val: int) -> void:
+	total_rounds = new_val
 
 func set_as_cleared() -> void:
 	modulate = Color.GREEN
@@ -217,23 +224,26 @@ func _on_trigger_clicked() -> void:
 
 func _on_round_won() -> void:
 	round_count += 1
-	if round_count >= rounds:
+	if round_count >= total_rounds:
 		disable_grenade()
 
 	hide_hands()
 	handshake.show()
 	await get_tree().create_timer(2.0).timeout
-	handshake.hide()
-	show_hands()
-	if round_count < rounds:
-		current_round.reset()
-		current_round.start_round()
+	#handshake.hide()
+	#show_hands()
+	if minigame_list.is_empty():
+		notify_minigame_won()
 	else:
+		current_round.reset()
+		#current_round.start_round()
+		next_round()
 		#reset_trigger()
-		won.emit()
 
 func _on_round_lost() -> void:
-	notify_minigame_lost()
+	lives -= 1
+	if lives == 0:
+		notify_minigame_lost()
 
 func _on_instructions_start_pressed() -> void:
 	instructions.hide()
@@ -242,7 +252,7 @@ func _on_instructions_start_pressed() -> void:
 func _on_grenade_held() -> void:
 	# start minigame
 	grenade_instructions.hide()
-	start_minigame()
+	next_round()
 	MusicController.play_music("minigame_loop")
 	MusicController.play_loop()
 

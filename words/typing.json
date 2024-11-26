@@ -75,7 +75,7 @@
 		"kingfisher",
 		"kookaburra",
 	],
-	"dinosaurs easy": [
+	"dinosaurs_easy": [
 		"aardonyx",
 		"iguanodon",
 		"diplodocus",
@@ -87,7 +87,7 @@
 		"brachiosaurus",
 		"gigantoraptor",
 	],
-	"dinosaurs medium": [
+	"dinosaurs_medium": [
 		"tyrannosaurus",
 		"hypsilophodon",
 		"styracosaurus",
@@ -100,7 +100,7 @@
 		"protarchaeopteryx",
 		"eustreptospondylus",
 	],
-	"dinosaurs hard": [
+	"dinosaurs_hard": [
 		"archaeornithomimus",
 		"micropachycephalosaurus",
 	],

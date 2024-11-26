@@ -5,8 +5,7 @@
 
 [node name="HangmanRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_uo3q4")
-debug_missing_letters = 2
-sequence_quantity = 3
+debug_ambiguous_words = 3
 time_per_sequence = 5.0
 sequence_generator = NodePath("SequenceGeneratorComponent")
 

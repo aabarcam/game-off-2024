@@ -12,6 +12,7 @@ var letters: Array[Letter] = []
 
 func add_letter(letter: Letter) -> void:
 	letters.push_back(letter)
+	#letter.mistake.connect(_on_letter_mistake)
 
 func reset_sequence_state() -> void:
 	for letter in letters:
@@ -67,9 +68,9 @@ func set_sequence_deceiving() -> void:
 	for letter in letters:
 		letter.set_as_deceiving()
 
-func set_mistake(val: bool) -> void:
-	for letter in letters:
-		letter.mistake = val
+#func set_mistake(val: bool) -> void:
+	#for letter in letters:
+		#letter.mistake = val
 
 func is_mistake() -> bool:
 	var output = true
@@ -117,6 +118,14 @@ func start_timer(time: float) -> void:
 func stop_timer() -> void:
 	timed_bar.stop_timer()
 
+func pause_timer() -> void:
+	timed_bar.pause()
+	await get_tree().create_timer(0.5).timeout
+	timed_bar.unpause()
+
+func set_can_be_wrong(val: bool) -> void:
+	letters.map(func(x:Letter):x.can_be_wrong=val)
+
 func size() -> int:
 	return letters.size()
 
@@ -131,3 +140,6 @@ func activated_words() -> int:
 	for letter in letters:
 		output += int(letter.is_activated())
 	return output
+
+func _on_letter_mistake() -> void:
+	pause_timer()

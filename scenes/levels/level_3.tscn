@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckyyb8vjgbxr4"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_37w43"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ihj4d"]
+[ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="3_djuq7"]
+
+[node name="Level3" instance=ExtResource("1_37w43")]
+
+[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_ihj4d")]
+position = Vector2(254, 348)
+
+[node name="MinigameLabel" parent="MinigameTrigger" index="1"]
+text = "PERSONAJE
+A"
+
+[node name="HangmanRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_djuq7")]
+time_per_sequence = 9.0
+
+[node name="HangmanRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_djuq7")]
+time_per_sequence = 7.0
+
+[node name="HangmanRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_djuq7")]
+
+[node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_ihj4d")]
+position = Vector2(928, 359)
+
+[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+text = "PERSONAJE
+B"
+
+[node name="HangmanRound" parent="MinigameTrigger2/Minigames" index="0" instance=ExtResource("3_djuq7")]
+ambiguous_words = 1
+time_per_sequence = 9.0
+
+[node name="HangmanRound2" parent="MinigameTrigger2/Minigames" index="1" instance=ExtResource("3_djuq7")]
+ambiguous_words = 2
+time_per_sequence = 9.0
+
+[node name="HangmanRound3" parent="MinigameTrigger2/Minigames" index="2" instance=ExtResource("3_djuq7")]
+ambiguous_words = 3
+time_per_sequence = 9.0
+
+[node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_ihj4d")]
+position = Vector2(583, 233)
+
+[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+text = "MINI
+BOSS"
+
+[node name="HangmanRound" parent="MinigameTrigger3/Minigames" index="0" instance=ExtResource("3_djuq7")]
+ambiguous_words = 1
+time_per_sequence = 7.0
+
+[node name="HangmanRound2" parent="MinigameTrigger3/Minigames" index="1" instance=ExtResource("3_djuq7")]
+ambiguous_words = 2
+time_per_sequence = 6.0
+
+[node name="HangmanRound3" parent="MinigameTrigger3/Minigames" index="2" instance=ExtResource("3_djuq7")]
+missing_letters = 2
+ambiguous_words = 3
+
+[editable path="MinigameTrigger"]
+[editable path="MinigameTrigger2"]
+[editable path="MinigameTrigger3"]

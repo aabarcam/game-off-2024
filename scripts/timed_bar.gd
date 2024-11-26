@@ -22,3 +22,9 @@ func start_timer(time: float) -> void:
 
 func stop_timer() -> void:
 	timer.stop()
+
+func pause() -> void:
+	timer.paused = true
+
+func unpause() -> void:
+	timer.paused = false

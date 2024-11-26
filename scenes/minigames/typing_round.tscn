@@ -5,11 +5,7 @@
 
 [node name="TypingRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_hhujg")
-debug_sequence_quantity = null
-debug_sequence_size = null
-debug_time_per_sequence = null
 sequence_quantity = 3
-sequence_size = null
 time_per_sequence = 10.0
 sequence_generator = NodePath("SequenceGeneratorComponent")
 

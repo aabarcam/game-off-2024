@@ -5,6 +5,16 @@
 
 [node name="StandardRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_7c8h7")
+debug_sequence_size_alt = {
+2: 4,
+3: 1
+}
+sequence_size_alt = {
+1: 0,
+2: 0,
+3: 0
+}
+debug_time_per_sequence = 10.0
 sequence_size = 2
 sequence_generator = NodePath("SequenceGeneratorComponent")
 

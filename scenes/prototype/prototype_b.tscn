@@ -24,13 +24,11 @@ position = Vector2(145, 338)
 shape = SubResource("CircleShape2D_vjqkt")
 
 [node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_jf6bv")]
-visible = false
 sequence_size = 1
 
 [node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_jf6bv")]
 
 [node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_jf6bv")]
-sequences_at_a_time = 2
 
 [node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
 position = Vector2(969, 328)

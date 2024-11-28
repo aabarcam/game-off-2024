@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ccqlmp35l8brw"
+path="res://.godot/imported/level_start_test.dialogue-a6e1d643483cf9fba1f33e91af401fce.tres"
+
+[deps]
+
+source_file="res://dialogues/prototype/level_start_test.dialogue"
+dest_files=["res://.godot/imported/level_start_test.dialogue-a6e1d643483cf9fba1f33e91af401fce.tres"]
+
+[params]
+
+defaults=true

@@ -6,6 +6,9 @@ class_name InteractableComponent
 
 signal clicked ## Fired when interactable is clicked
 
+var selectable: bool = false
+var focus: bool = false
+
 func _ready() -> void:
 	Signals.register_signal(clicked, self)
 
@@ -18,7 +21,13 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 		return
 	event = event as InputEventMouseButton
 	
-	if event.pressed == true and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+	#get_viewport().set_input_as_handled()
+	
+	if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		focus = true
+	
+	if not event.pressed and event.button_index == MOUSE_BUTTON_LEFT and focus:
+		print("interactable")
 		interactable_clicked()
 
 func interactable_clicked() -> void:

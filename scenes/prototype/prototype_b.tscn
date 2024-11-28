@@ -102,7 +102,7 @@ time_per_letter = 1.0
 position = Vector2(287, 138)
 dialogue = ExtResource("8_wplup")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiscTrigger/InteractableComponent" index="0"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MiscTrigger/InteractableComponent" index="0"]
 shape = SubResource("RectangleShape2D_aqoyf")
 
 [editable path="MinigameTrigger"]

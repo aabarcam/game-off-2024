@@ -225,6 +225,12 @@ func notify_minigame_lost() -> void:
 	lost.emit()
 
 func notify_minigame_won() -> void:
+	if dialogue_beaten:
+		DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
+	else:
+		notify_done()
+
+func notify_done() -> void:
 	won.emit()
 
 func prompt_grenade() -> void:
@@ -321,3 +327,5 @@ func _on_key_pressed() -> void:
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == dialogue:
 		notify_minigame_triggered()
+	elif resource == dialogue_beaten:
+		notify_done()

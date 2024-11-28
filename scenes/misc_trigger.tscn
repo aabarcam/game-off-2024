@@ -1,21 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://h5adf7o4spfx"]
+[gd_scene load_steps=3 format=3 uid="uid://h5adf7o4spfx"]
 
 [ext_resource type="Script" path="res://scripts/misc_trigger.gd" id="1_8ds57"]
-[ext_resource type="Script" path="res://scripts/components/interactable_component.gd" id="2_ywrab"]
-[ext_resource type="Texture2D" uid="uid://clav8tdybxrx5" path="res://icon.svg" id="3_nhpi8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5p7ih"]
-size = Vector2(114, 116)
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="2_41wr1"]
 
 [node name="MiscTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component")]
 script = ExtResource("1_8ds57")
 interactable_component = NodePath("InteractableComponent")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_nhpi8")
-
-[node name="InteractableComponent" type="Area2D" parent="."]
-script = ExtResource("2_ywrab")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
-shape = SubResource("RectangleShape2D_5p7ih")
+[node name="InteractableComponent" parent="." instance=ExtResource("2_41wr1")]

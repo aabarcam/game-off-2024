@@ -13,7 +13,7 @@ transition_dialogue = ExtResource("2_dwndk")
 position = Vector2(983, 328)
 dialogue = ExtResource("4_dw8ri")
 
-[node name="TransitionInteractable" parent="." index="3" instance=ExtResource("2_mrcku")]
+[node name="TransitionInteractable" parent="." index="2" instance=ExtResource("2_mrcku")]
 position = Vector2(580, 354)
 
 [editable path="MiscTrigger"]

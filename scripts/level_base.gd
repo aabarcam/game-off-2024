@@ -53,9 +53,11 @@ func unfocus_triggers() -> void:
 		trigger.interactable_component.focus = false
 
 func disable_triggers() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	var triggers: Array[Node] = get_triggers()
 	for trigger in triggers:
-		trigger.interactable_component.input_pickable = false
+		#trigger.interactable_component.input_pickable = false
+		trigger.interactable_component.disabled = true
 
 func enable_triggers_click() -> void:
 	var triggers: Array[Node] = get_triggers()

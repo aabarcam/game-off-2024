@@ -34,8 +34,16 @@ func _ready() -> void:
 
 func interactable_clicked() -> void:
 	clicked.emit()
-	if disabled:
-		mouse_default_cursor_shape = Control.CURSOR_ARROW
+	#if disabled:
+		#mouse_default_cursor_shape = Control.CURSOR_ARROW
+
+func _set(property: StringName, value: Variant) -> bool:
+	match property:
+		"disabled":
+			disabled = value
+			mouse_default_cursor_shape = Control.CURSOR_ARROW
+			return true
+	return false
 
 func _on_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)

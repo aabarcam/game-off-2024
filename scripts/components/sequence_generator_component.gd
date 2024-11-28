@@ -11,16 +11,25 @@ class_name SequenceGenerator
 
 ## All the usable letters in the alphabet, for random sequences
 var alphabet: String = "qwertyuiopasdfghjklzxcvbnm"
+var alphabet_array: Array[String]
+
+func _ready() -> void:
+	reset_alphabet_array()
 
 ## Generates a size n random sequence of letters
 ## Returns string of generated letters
-## TODO: Make sure chars are not repeating
 func generate_random(n: int) -> String:
 	var output: String = ""
 	for _i in range(n):
-		var random_id: int = randi() % alphabet.length()
-		output += alphabet[random_id]
+		var random_id: int = randi() % alphabet_array.size()
+		output += alphabet_array.pop_at(random_id)
+	reset_alphabet_array()
 	return output
+
+func reset_alphabet_array() -> void:
+	alphabet_array = []
+	for c in alphabet:
+		alphabet_array.append(c)
 
 ## Generates a random word from a whitelisted source
 ## Returns word as a string of characters

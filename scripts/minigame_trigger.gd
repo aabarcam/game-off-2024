@@ -257,7 +257,7 @@ func set_total_rounds(new_val: int) -> void:
 
 func set_as_cleared() -> void:
 	modulate = Color.GREEN
-	interactable_component.input_pickable = false
+	interactable_component.disabled = true
 
 func set_shake_intensity(new_val: float) -> void:
 	shake_intensity = new_val

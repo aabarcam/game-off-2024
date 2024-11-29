@@ -65,6 +65,7 @@ var noise_gen_x: FastNoiseLite = FastNoiseLite.new()
 var noise_gen_y: FastNoiseLite = FastNoiseLite.new()
 var accumulated_delta: float = 0
 var player_hand_original_position: Vector2
+var cleared = false
 
 @onready var minigame_label_debug: Label = $MinigameLabel ## Editor debug label
 @onready var grenade_instructions: Node2D = $GrenadeInstructions
@@ -81,6 +82,7 @@ var player_hand_original_position: Vector2
 
 @export_category("Dialogues")
 @export var dialogue_beaten: DialogueResource
+@export var dialogue_after_win: DialogueResource
 ## Ready function called in editor
 func _ready_editor() -> void:
 	update_debug_label()
@@ -231,6 +233,7 @@ func notify_minigame_won() -> void:
 		notify_done()
 
 func notify_done() -> void:
+	cleared = true
 	won.emit()
 
 func prompt_grenade() -> void:
@@ -256,8 +259,9 @@ func set_total_rounds(new_val: int) -> void:
 	total_rounds = new_val
 
 func set_as_cleared() -> void:
-	modulate = Color.GREEN
-	interactable_component.disabled = true
+	#modulate = Color.GREEN
+	cleared = true
+	interactable_component.disabled = dialogue_after_win == null
 
 func set_shake_intensity(new_val: float) -> void:
 	shake_intensity = new_val
@@ -270,6 +274,11 @@ func set_shake_frequency(new_val: float) -> void:
 
 func _on_trigger_clicked() -> void:
 	clicked.emit(self)
+	if cleared:
+		if dialogue_after_win != null:
+			DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
+		return
+	
 	if dialogue != null:
 		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
 	else:
@@ -325,6 +334,8 @@ func _on_key_pressed() -> void:
 	player_hand.texture = get_random_player_sprite()
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == null:
+		return
 	if resource == dialogue:
 		notify_minigame_triggered()
 	elif resource == dialogue_beaten:

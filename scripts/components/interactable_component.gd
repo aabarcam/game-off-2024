@@ -41,8 +41,9 @@ func _set(property: StringName, value: Variant) -> bool:
 	match property:
 		"disabled":
 			disabled = value
-			mouse_default_cursor_shape = Control.CURSOR_ARROW
-			return true
+			if disabled:
+				mouse_default_cursor_shape = Control.CURSOR_ARROW
+				return true
 	return false
 
 func _on_mouse_entered() -> void:

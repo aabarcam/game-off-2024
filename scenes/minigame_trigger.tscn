@@ -24,6 +24,7 @@
 
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("minigames", "interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
+scale = Vector2(0.556, 0.556)
 script = ExtResource("1_4yjdg")
 minigames = NodePath("Minigames")
 shake_intensities = Array[float]([0.0, 5.0, 10.0, 10.0])
@@ -42,6 +43,11 @@ player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(1.8, 1.8)
 
 [node name="MinigameLabel" type="Label" parent="."]
 texture_filter = 1

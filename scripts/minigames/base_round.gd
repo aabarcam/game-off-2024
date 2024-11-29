@@ -46,6 +46,7 @@ func _ready() -> void:
 	stop_point_debug_label.hide()
 	
 	if OS.is_debug_build() and get_parent() == get_tree().root:
+		scale = Vector2(1/1.8, 1/1.8)
 		sequence_quantity = debug_sequence_quantity if debug_sequence_quantity >= 0 else sequence_quantity
 		sequence_size = debug_sequence_size if debug_sequence_size >= 0 else sequence_size
 		time_per_sequence = debug_time_per_sequence if debug_time_per_sequence >= 0 else time_per_sequence

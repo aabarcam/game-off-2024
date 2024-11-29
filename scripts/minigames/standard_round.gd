@@ -8,15 +8,20 @@ class_name StandardRound
 @export var sequences_at_a_time: int = 1
 @export var debug_sequence_size_alt: Dictionary = {}
 @export var sequence_size_alt: Dictionary = {}
+@export var debug_rogue_letters: Array[int] = []
+@export var rogue_letters: Array[int] = []
+@export var rogue_letter_time: float = 1.5
 
 var active_sequences: Array[Sequence] = []
 var current_sequence_container: HBoxContainer
 var sequence_size_array: Array = []
+var original_time_per_sequence: float = -1
 
 func _ready() -> void:
 	if OS.is_debug_build() and get_parent() == get_tree().root:
 		sequences_at_a_time = debug_sequences_at_a_time if debug_sequences_at_a_time >= 0 else sequences_at_a_time
 		sequence_size_alt = debug_sequence_size_alt if not debug_sequence_size_alt.is_empty() else sequence_size_alt
+		rogue_letters = debug_rogue_letters if not debug_rogue_letters.is_empty() else rogue_letters
 	for key in sequence_size_alt.keys():
 		for val in sequence_size_alt[key]:
 			sequence_size_array.append(key)
@@ -45,6 +50,12 @@ func get_next_sequence() -> Sequence:
 		return super.get_next_sequence()
 	var size: int = sequence_size_array.pick_random()
 	sequence_size_array.erase(size)
+	
+	if not rogue_letters.is_empty() and sequence_count == rogue_letters.front():
+		size = 1
+		rogue_letters.pop_front()
+		time_per_sequence = rogue_letter_time
+	
 	var sequence: String = sequence_generator.generate_random(size)
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
 
@@ -60,6 +71,7 @@ func get_next_sequence() -> Sequence:
 	#previous_sequences = []
 
 func start_next_sequence() -> void:
+	original_time_per_sequence = time_per_sequence
 	var sequence_qty: int = randi() % sequences_at_a_time + 1
 	current_sequence_container = HBoxContainer.new()
 	#current_sequence_container.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -81,6 +93,7 @@ func start_next_sequence() -> void:
 	reset_sequence_container_position(current_sequence_container)
 	start_sequence_container_move(current_sequence_container)
 	current_sequence = active_sequences.pop_front()
+	time_per_sequence = original_time_per_sequence
 
 #func get_next_sequence() -> Sequence:
 	#var sequence: String = sequence_generator.generate_random(sequence_size)

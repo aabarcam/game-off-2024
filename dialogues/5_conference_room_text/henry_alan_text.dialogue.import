@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dljscuawc8vcq"
+path="res://.godot/imported/henry_alan_text.dialogue-a315a124bfab31059d11d7ca6d153645.tres"
+
+[deps]
+
+source_file="res://dialogues/5_conference_room_text/henry_alan_text.dialogue"
+dest_files=["res://.godot/imported/henry_alan_text.dialogue-a315a124bfab31059d11d7ca6d153645.tres"]
+
+[params]
+
+defaults=true

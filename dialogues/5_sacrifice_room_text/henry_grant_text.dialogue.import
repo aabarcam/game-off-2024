@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://t3cb4yfbxryq"
+valid=false
+
+[deps]
+
+source_file="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue"
+
+[params]
+
+defaults=true

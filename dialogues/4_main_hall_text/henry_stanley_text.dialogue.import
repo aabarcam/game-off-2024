@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://d2yabxdg70gdx"
+path="res://.godot/imported/henry_stanley_text.dialogue-07541e447c47945a3103d3dd9f53ff1b.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_stanley_text.dialogue"
+dest_files=["res://.godot/imported/henry_stanley_text.dialogue-07541e447c47945a3103d3dd9f53ff1b.tres"]
+
+[params]
+
+defaults=true

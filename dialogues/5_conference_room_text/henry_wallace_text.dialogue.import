@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://gfncs5p2j8r2"
+path="res://.godot/imported/henry_wallace_text.dialogue-341564829b14e6674a73a35268e6050e.tres"
+
+[deps]
+
+source_file="res://dialogues/5_conference_room_text/henry_wallace_text.dialogue"
+dest_files=["res://.godot/imported/henry_wallace_text.dialogue-341564829b14e6674a73a35268e6050e.tres"]
+
+[params]
+
+defaults=true

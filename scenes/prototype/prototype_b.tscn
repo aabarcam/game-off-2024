@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfrx1gkeso1o1"]
+[gd_scene load_steps=10 format=3 uid="uid://cfrx1gkeso1o1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_1rngy"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_q44dy"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://h5adf7o4spfx" path="res://scenes/misc_trigger.tscn" id="7_jmcb2"]
 [ext_resource type="Resource" uid="uid://cs1xxtk41gcqe" path="res://dialogues/test.dialogue" id="8_wplup"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vjqkt"]
-radius = 55.5788
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqoyf"]
 size = Vector2(128, 122)
 
@@ -20,17 +17,12 @@ size = Vector2(128, 122)
 [node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_q44dy")]
 position = Vector2(145, 338)
 
-[node name="CollisionShape2D" parent="MinigameTrigger/InteractableComponent" index="1"]
-shape = SubResource("CircleShape2D_vjqkt")
-
 [node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_jf6bv")]
-visible = false
 sequence_size = 1
 
 [node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_jf6bv")]
 
 [node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_jf6bv")]
-sequences_at_a_time = 2
 
 [node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_q44dy")]
 position = Vector2(969, 328)
@@ -104,7 +96,7 @@ time_per_letter = 1.0
 position = Vector2(287, 138)
 dialogue = ExtResource("8_wplup")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiscTrigger/InteractableComponent" index="0"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MiscTrigger/InteractableComponent" index="0"]
 shape = SubResource("RectangleShape2D_aqoyf")
 
 [editable path="MinigameTrigger"]

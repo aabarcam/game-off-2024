@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=22 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -20,11 +20,17 @@
 [ext_resource type="Texture2D" uid="uid://5akkijklydnf" path="res://assets/prototype/Saludo1.png" id="12_8gg1k"]
 [ext_resource type="Texture2D" uid="uid://d2jghc32stqry" path="res://assets/prototype/Saludo2.png" id="13_7t2ix"]
 [ext_resource type="Texture2D" uid="uid://caaloxrhd2f4u" path="res://assets/prototype/contrincante.png" id="17_0nhel"]
+[ext_resource type="Texture2D" uid="uid://clav8tdybxrx5" path="res://icon.svg" id="21_wrkdh"]
 
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("minigames", "interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
+scale = Vector2(0.556, 0.556)
 script = ExtResource("1_4yjdg")
 minigames = NodePath("Minigames")
+shake_intensities = Array[float]([0.0, 5.0, 10.0, 10.0])
+shake_frequencies = Array[float]([0.0, 5.0, 10.0, 20.0])
+shake_intensity = 15.0
+shake_frequency = 20.0
 interactable_component = NodePath("InteractableComponent")
 grenade_component = NodePath("GrenadeComponent")
 standard_round = ExtResource("2_32x1j")
@@ -37,6 +43,11 @@ player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(1.8, 1.8)
 
 [node name="MinigameLabel" type="Label" parent="."]
 texture_filter = 1
@@ -135,3 +146,8 @@ texture = ExtResource("12_8gg1k")
 centered = false
 
 [node name="Minigames" type="Node2D" parent="."]
+
+[node name="ShakeTest" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(578, 330)
+texture = ExtResource("21_wrkdh")

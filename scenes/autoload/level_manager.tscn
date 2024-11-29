@@ -5,3 +5,15 @@
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_xc0ai")
 prototype_levels = Array[String](["res://scenes/prototype/prototype_a.tscn", "res://scenes/prototype/prototype_b.tscn"])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScreen" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

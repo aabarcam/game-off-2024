@@ -24,6 +24,10 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MusicController="*res://scenes/autoload/music_controller.tscn"
 WordLoader="*res://scenes/autoload/word_loader.tscn"
 
+[dialogue_manager]
+
+general/balloon_path="res://addons/dialogue_manager/example_balloon/small_example_balloon.tscn"
+
 [display]
 
 window/size/viewport_width=640
@@ -50,4 +54,4 @@ hold_grenade_click={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/prototype/test_dialogue.dialogue", "res://dialogues/prototype/prototype_dialogue_1.dialogue", "res://dialogues/prototype/prototype_dialogue_2.dialogue", "res://dialogues/test.dialogue", "res://dialogues/dialogue.dialogue", "res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_text.dialogue", "res://dialogues/3_living_room_text/henry_norman_text.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/prototype/test_dialogue.dialogue", "res://dialogues/prototype/prototype_dialogue_1.dialogue", "res://dialogues/prototype/prototype_dialogue_2.dialogue", "res://dialogues/test.dialogue", "res://dialogues/dialogue.dialogue", "res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_text.dialogue", "res://dialogues/3_living_room_text/henry_norman_text.dialogue", "res://dialogues/prototype/closed_dialogue_test.dialogue", "res://dialogues/prototype/level_start_test.dialogue", "res://dialogues/prototype/open_dialogue_test.dialogue", "res://dialogues/prototype/transition_test.dialogue")

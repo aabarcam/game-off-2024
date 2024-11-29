@@ -23,7 +23,8 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	
 	if start_dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(start_dialogue, "start", [self])
+		#DialogueManager.show_example_dialogue_balloon(start_dialogue, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, start_dialogue, "start", [self])
 
 #func _unhandled_input(event: InputEvent) -> void:
 	## Ignore non-click events

@@ -11,7 +11,8 @@ func _ready() -> void:
 
 func _on_interactable_clicked() -> void:
 	if dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+		#DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue, "start", [self])
 		interacted_times += 1
 	else:
 		push_error("No dialogue set for misc interactable")

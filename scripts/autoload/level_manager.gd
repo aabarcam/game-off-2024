@@ -55,7 +55,8 @@ func transition_start(next_level: PackedScene) -> void:
 	await create_tween().tween_property(transition_screen, "modulate:a", 1.0, 1.0).finished
 	get_tree().change_scene_to_packed(next_level)
 	if next_transition_dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(next_transition_dialogue)
+		#DialogueManager.show_example_dialogue_balloon(next_transition_dialogue, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, next_transition_dialogue, "start", [self])
 		await DialogueManager.dialogue_ended
 
 func transition_end() -> void:

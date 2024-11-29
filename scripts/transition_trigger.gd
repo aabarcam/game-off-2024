@@ -22,7 +22,8 @@ func notify_transition_triggered() -> void:
 
 func show_dialogue(resource: DialogueResource) -> void:
 	if resource != null:
-		DialogueManager.show_example_dialogue_balloon(resource, "start", [self])
+		#DialogueManager.show_example_dialogue_balloon(resource, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, resource, "start", [self])
 	else:
 		DialogueManager.dialogue_ended.emit(resource)
 

@@ -3,11 +3,12 @@
 importer="dialogue_manager_compiler_13"
 type="Resource"
 uid="uid://t3cb4yfbxryq"
-valid=false
+path="res://.godot/imported/henry_grant_text.dialogue-11c6da4c8b518aa50634b31ec72ee613.tres"
 
 [deps]
 
 source_file="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue"
+dest_files=["res://.godot/imported/henry_grant_text.dialogue-11c6da4c8b518aa50634b31ec72ee613.tres"]
 
 [params]
 

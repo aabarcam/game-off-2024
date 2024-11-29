@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dmdgntrar6s53"
+path="res://.godot/imported/henry_alan_after_handshake_text.dialogue-83dae438d2dc4f433413c596e01abaea.tres"
+
+[deps]
+
+source_file="res://dialogues/5_conference_room_text/henry_alan_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_alan_after_handshake_text.dialogue-83dae438d2dc4f433413c596e01abaea.tres"]
+
+[params]
+
+defaults=true

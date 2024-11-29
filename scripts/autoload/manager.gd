@@ -1,6 +1,6 @@
 extends Node
 
-var small_example_balloon: PackedScene = preload("res://addons/dialogue_manager/example_balloon/small_example_balloon.tscn")
+var small_example_balloon: PackedScene = preload("res://dialogues/custom_balloon/balloon.tscn")
 
 enum Minigames {
 	STANDARD,

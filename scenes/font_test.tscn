@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4jpeqxs5ts8u"]
+
+[ext_resource type="FontFile" uid="uid://c38kjsm830lun" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="1_osiot"]
+
+[sub_resource type="Theme" id="Theme_d7ql0"]
+default_font = ExtResource("1_osiot")
+
+[node name="FontTest" type="Node2D"]
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 24.0
+offset_right = 161.0
+offset_bottom = 63.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_d7ql0")
+theme_override_font_sizes/font_size = 32
+text = "testing 12"
+
+[node name="Label3" type="Label" parent="."]
+offset_top = 50.0
+offset_right = 161.0
+offset_bottom = 89.0
+scale = Vector2(0.25, 0.25)
+theme = SubResource("Theme_d7ql0")
+theme_override_font_sizes/font_size = 64
+text = "testing 12"
+
+[node name="Label4" type="Label" parent="."]
+offset_top = 73.0
+offset_right = 323.0
+offset_bottom = 150.0
+scale = Vector2(0.025, 0.025)
+theme = SubResource("Theme_d7ql0")
+theme_override_font_sizes/font_size = 640
+text = "testing 12"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_d7ql0")
+text = "testing 12"

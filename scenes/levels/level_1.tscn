@@ -54,6 +54,7 @@ time_per_sequence = 3.0
 time_per_sequence = 5.0
 
 [node name="Reference" parent="." index="3"]
+visible = false
 scale = Vector2(1, 1)
 texture = ExtResource("8_uhrs8")
 

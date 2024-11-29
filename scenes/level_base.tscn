@@ -10,3 +10,8 @@ script = ExtResource("1_g26bc")
 position = Vector2(576, 324)
 scale = Vector2(9, 5.0625)
 texture = ExtResource("1_25r3e")
+
+[node name="Reference" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.176471)
+scale = Vector2(1.8, 1.8)
+centered = false

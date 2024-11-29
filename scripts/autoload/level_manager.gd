@@ -4,18 +4,32 @@ extends Node
 @export_file(".tscn") var prototype_levels: Array[String] ## List of prototype levels
 
 var selected_levels = levels ## Level list to use
+#var current_level: LevelBase: ## Level curently in play
+	#set = set_current_level
+var current_level_path: String:
+	set = set_current_level_path
+var next_transition_dialogue: DialogueResource:
+	set = set_next_transition_dialogue
 
-var current_level: String: ## Level curently in play
-	set = set_current_level
+@onready var transition_screen: ColorRect = $CanvasLayer/TransitionScreen
 
 func _ready() -> void:
 	Signals.transition_triggered.connect(_on_transition_triggered)
 
+#func _input(event: InputEvent) -> void:
+	## Ignore non-click events
+	#if not event is InputEventMouseButton:
+		#return
+	#event = event as InputEventMouseButton
+	#
+	#if event.pressed == false and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+		#print("mouse released")
+
 ## Return next level in the list
 func get_next_level() -> String:
-	if current_level == null:
+	if current_level_path == "":
 		return ""
-	var current_level_id: int = selected_levels.find(current_level)
+	var current_level_id: int = selected_levels.find(current_level_path)
 	if current_level_id == -1:
 		push_warning("Current level not found in list")
 		return ""
@@ -30,11 +44,32 @@ func _on_transition_triggered() -> void:
 	if next_level_path == "":
 		return
 	var next_level: PackedScene = load(next_level_path)
-	get_tree().change_scene_to_packed(next_level)
+	await transition_start(next_level)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	MusicController.play_music("zone_1")
+	await transition_end()
 
-func set_current_level(new_val: String) -> void:
-	current_level = new_val
-	if current_level in prototype_levels:
+func transition_start(next_level: PackedScene) -> void:
+	transition_screen.show()
+	transition_screen.modulate.a = 0
+	await create_tween().tween_property(transition_screen, "modulate:a", 1.0, 1.0).finished
+	get_tree().change_scene_to_packed(next_level)
+	if next_transition_dialogue != null:
+		DialogueManager.show_example_dialogue_balloon(next_transition_dialogue)
+		await DialogueManager.dialogue_ended
+
+func transition_end() -> void:
+	transition_screen.show()
+	transition_screen.modulate.a = 1
+	await create_tween().tween_property(transition_screen, "modulate:a", 0.0, 1.0).finished
+
+#func set_current_level(new_val: LevelBase) -> void:
+	#current_level = new_val
+
+func set_current_level_path(new_val: String) -> void:
+	current_level_path = new_val
+	if current_level_path in prototype_levels:
 		selected_levels = prototype_levels
+
+func set_next_transition_dialogue(new_val: DialogueResource) -> void:
+	next_transition_dialogue = new_val

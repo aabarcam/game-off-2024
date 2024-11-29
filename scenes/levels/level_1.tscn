@@ -1,14 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjsgh722vmc5e"]
+[gd_scene load_steps=10 format=3 uid="uid://cjsgh722vmc5e"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
+[ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_a4ymf"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_2bd7a"]
 [ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_uu6l1"]
+[ext_resource type="Texture2D" uid="uid://bj8hr6hkuqm55" path="res://assets/living_room/living_room_cdoor.png" id="4_evdec"]
+[ext_resource type="Texture2D" uid="uid://bu7sbia16qltd" path="res://assets/living_room/living_room_odoor.png" id="4_rk4x4"]
+[ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
+[ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
+texture_filter = 1
 
-[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_a4ymf")]
-position = Vector2(536, 317)
+[node name="Background" parent="." index="0"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("2_8lbcf")
+centered = false
+
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_2bd7a")]
+position = Vector2(-213, 0)
+required_minigames = [NodePath("../MinigameTrigger")]
+open_texture = ExtResource("4_rk4x4")
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = 479.0
+offset_top = 0.0
+offset_right = 607.0
+offset_bottom = 268.0
+texture_normal = ExtResource("4_evdec")
+
+[node name="MinigameTrigger" parent="." index="2" instance=ExtResource("2_a4ymf")]
+position = Vector2(129, 186)
 lives = -1
+
+[node name="InteractableComponent" parent="MinigameTrigger" index="0"]
+offset_left = -115.0
+offset_top = -115.0
+offset_right = 49.0
+offset_bottom = 84.0
+texture_normal = ExtResource("6_kiwdy")
 
 [node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_uu6l1")]
 sequence_size = 1
@@ -21,4 +53,10 @@ time_per_sequence = 3.0
 [node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_uu6l1")]
 time_per_sequence = 5.0
 
+[node name="Reference" parent="." index="3"]
+visible = false
+scale = Vector2(1, 1)
+texture = ExtResource("8_uhrs8")
+
+[editable path="TransitionTrigger"]
 [editable path="MinigameTrigger"]

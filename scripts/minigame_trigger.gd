@@ -31,6 +31,16 @@ signal lost ## Minigame lost
 	set = set_total_rounds
 @export var lives: int = 3
 
+@export_category("Shake Config")
+@export var debug_shake_intensity: float = -1
+@export var debug_shake_frequency: float = -1
+@export var shake_intensities: Array[float] = [5]
+@export var shake_frequencies: Array[float] = [5]
+@export var shake_intensity: float = 5:
+	set = set_shake_intensity
+@export var shake_frequency: float = 5:
+	set = set_shake_frequency
+
 @export_category("Components")
 @export var interactable_component: InteractableComponent
 @export var grenade_component: GrenadeComponent
@@ -51,6 +61,11 @@ var active: bool = false
 var minigame_list: Array[Node]
 var current_round: BaseRound
 var round_count: int = 0
+var noise_gen_x: FastNoiseLite = FastNoiseLite.new()
+var noise_gen_y: FastNoiseLite = FastNoiseLite.new()
+var accumulated_delta: float = 0
+var player_hand_original_position: Vector2
+var cleared = false
 
 @onready var minigame_label_debug: Label = $MinigameLabel ## Editor debug label
 @onready var grenade_instructions: Node2D = $GrenadeInstructions
@@ -62,9 +77,12 @@ var round_count: int = 0
 @onready var opponent_hand: Sprite2D = $OpponentHandSprite
 @onready var handshake: Sprite2D = $HandshakeSprite
 @onready var original_lives: int = lives
+@onready var shake_test: Sprite2D = $ShakeTest
+@onready var shake_test_original_position: Vector2 = shake_test.position
 
 @export_category("Dialogues")
 @export var dialogue_beaten: DialogueResource
+@export var dialogue_after_win: DialogueResource
 ## Ready function called in editor
 func _ready_editor() -> void:
 	update_debug_label()
@@ -84,6 +102,7 @@ func _ready_game() -> void:
 	player_hand.global_position = player_hand.position
 	opponent_hand.global_position = opponent_hand.position
 	handshake.global_position = handshake.position
+	player_hand_original_position = player_hand.position
 	
 	reset_trigger()
 	
@@ -92,13 +111,32 @@ func _ready_game() -> void:
 	interactable_component.clicked.connect(_on_trigger_clicked)
 	game_start_button.button_up.connect(_on_instructions_start_pressed)
 	
+	noise_gen_x.seed = randi()
+	noise_gen_y.seed = randi()
+	
+	noise_gen_x.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise_gen_y.noise_type = FastNoiseLite.TYPE_PERLIN
+	
+	shake_intensity = shake_intensities[round_count]
+	shake_frequency = shake_frequencies[round_count]
+	
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
+	shake_intensity = debug_shake_intensity if debug_shake_intensity >= 0 else shake_intensity
+	shake_frequency = debug_shake_frequency if debug_shake_frequency >= 0 else shake_frequency
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_ready_editor()
 	else:
 		_ready_game()
+
+func _process(delta: float) -> void:
+	accumulated_delta += delta
+	var offset_x: float = noise_gen_x.get_noise_1d(accumulated_delta) * shake_intensity
+	var offset_y: float = noise_gen_y.get_noise_1d(accumulated_delta) * shake_intensity
+	player_hand.position.x = player_hand_original_position.x + offset_x
+	player_hand.position.y = player_hand_original_position.y + offset_y
 
 func reset_trigger() -> void:
 	if current_round != null:
@@ -189,6 +227,13 @@ func notify_minigame_lost() -> void:
 	lost.emit()
 
 func notify_minigame_won() -> void:
+	if dialogue_beaten:
+		DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
+	else:
+		notify_done()
+
+func notify_done() -> void:
+	cleared = true
 	won.emit()
 
 func prompt_grenade() -> void:
@@ -198,6 +243,10 @@ func prompt_grenade() -> void:
 		grenade_component.held.connect(_on_grenade_held)
 	if not grenade_component.exploded.is_connected(_on_grenade_exploded):
 		grenade_component.exploded.connect(_on_grenade_exploded)
+
+func update_shake_config() -> void:
+	noise_gen_x.frequency = shake_frequency
+	noise_gen_y.frequency = shake_frequency
 
 ## Getters/Setters
 
@@ -210,13 +259,26 @@ func set_total_rounds(new_val: int) -> void:
 	total_rounds = new_val
 
 func set_as_cleared() -> void:
-	modulate = Color.GREEN
-	interactable_component.input_pickable = false
+	#modulate = Color.GREEN
+	cleared = true
+	interactable_component.disabled = dialogue_after_win == null
+
+func set_shake_intensity(new_val: float) -> void:
+	shake_intensity = new_val
+
+func set_shake_frequency(new_val: float) -> void:
+	shake_frequency = new_val
+	update_shake_config()
 
 ## Signal handlers
 
 func _on_trigger_clicked() -> void:
 	clicked.emit(self)
+	if cleared:
+		if dialogue_after_win != null:
+			DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
+		return
+	
 	if dialogue != null:
 		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
 	else:
@@ -224,12 +286,18 @@ func _on_trigger_clicked() -> void:
 
 func _on_round_won() -> void:
 	round_count += 1
+	
 	if round_count >= total_rounds:
 		disable_grenade()
+	
+	shake_intensity = shake_intensities[min(round_count, shake_intensities.size())]
+	shake_frequency = shake_frequencies[min(round_count, shake_frequencies.size())]
 
 	hide_hands()
 	handshake.show()
+	
 	await get_tree().create_timer(2.0).timeout
+	
 	#handshake.hide()
 	#show_hands()
 	if minigame_list.is_empty():
@@ -266,5 +334,9 @@ func _on_key_pressed() -> void:
 	player_hand.texture = get_random_player_sprite()
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == null:
+		return
 	if resource == dialogue:
 		notify_minigame_triggered()
+	elif resource == dialogue_beaten:
+		notify_done()

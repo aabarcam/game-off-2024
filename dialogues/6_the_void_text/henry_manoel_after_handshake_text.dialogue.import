@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dywkai6to8prd"
+path="res://.godot/imported/henry_manoel_after_handshake_text.dialogue-1f6402bb9ff66956ca10e080c32116f3.tres"
+
+[deps]
+
+source_file="res://dialogues/6_the_void_text/henry_manoel_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_manoel_after_handshake_text.dialogue-1f6402bb9ff66956ca10e080c32116f3.tres"]
+
+[params]
+
+defaults=true

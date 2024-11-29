@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bd6el1sfakobg"
+path="res://.godot/imported/henry_steven_text.dialogue-79a1af126a86d0f93feb0f185478e988.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_steven_text.dialogue"
+dest_files=["res://.godot/imported/henry_steven_text.dialogue-79a1af126a86d0f93feb0f185478e988.tres"]
+
+[params]
+
+defaults=true

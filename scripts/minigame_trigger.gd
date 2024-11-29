@@ -73,9 +73,10 @@ var cleared = false
 @onready var instructions_bg: Sprite2D = $Instructions/Background
 @onready var instructions_text: Label = $Instructions/Text
 @onready var game_start_button: Button = $Instructions/StartButton
-@onready var player_hand: Sprite2D = $PlayerHandSprite
-@onready var opponent_hand: Sprite2D = $OpponentHandSprite
-@onready var handshake: Sprite2D = $HandshakeSprite
+@onready var hand_sprites: Node2D = $HandSprites
+@onready var player_hand: Sprite2D = $HandSprites/PlayerHandSprite
+@onready var opponent_hand: Sprite2D = $HandSprites/OpponentHandSprite
+@onready var handshake: Sprite2D = $HandSprites/HandshakeSprite
 @onready var original_lives: int = lives
 @onready var shake_test: Sprite2D = $ShakeTest
 @onready var shake_test_original_position: Vector2 = shake_test.position
@@ -99,10 +100,11 @@ func _ready_game() -> void:
 	grenade_instructions.global_position = Vector2.ZERO
 	grenade_instructions.modulate.a = 1.0
 	
-	player_hand.global_position = player_hand.position
-	opponent_hand.global_position = opponent_hand.position
-	handshake.global_position = handshake.position
-	player_hand_original_position = player_hand.position
+	#player_hand.global_position = player_hand.position
+	#opponent_hand.global_position = opponent_hand.position
+	#handshake.global_position = handshake.position
+	hand_sprites.global_position = Vector2(0, 0)
+	player_hand_original_position = player_hand.global_position
 	
 	reset_trigger()
 	
@@ -228,7 +230,8 @@ func notify_minigame_lost() -> void:
 
 func notify_minigame_won() -> void:
 	if dialogue_beaten:
-		DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
+		#DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_beaten, "start", [self])
 	else:
 		notify_done()
 
@@ -276,11 +279,13 @@ func _on_trigger_clicked() -> void:
 	clicked.emit(self)
 	if cleared:
 		if dialogue_after_win != null:
-			DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
+			#DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
+			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_after_win, "start", [self])
 		return
 	
 	if dialogue != null:
-		DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+		#DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue, "start", [self])
 	else:
 		notify_minigame_triggered()
 

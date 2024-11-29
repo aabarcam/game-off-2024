@@ -124,21 +124,22 @@ horizontal_alignment = 1
 [node name="GrenadeComponent" parent="." instance=ExtResource("5_46xms")]
 position = Vector2(1048, 546)
 
-[node name="PlayerHandSprite" type="Sprite2D" parent="."]
+[node name="HandSprites" type="Node2D" parent="."]
+
+[node name="PlayerHandSprite" type="Sprite2D" parent="HandSprites"]
 visible = false
-position = Vector2(-152, -75)
+position = Vector2(-71.0648, -75)
 scale = Vector2(2, 2)
 texture = ExtResource("11_wway4")
 centered = false
 
-[node name="OpponentHandSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(681, -82)
+[node name="OpponentHandSprite" type="Sprite2D" parent="HandSprites"]
+position = Vector2(605.461, -82)
 scale = Vector2(2, 2)
 texture = ExtResource("17_0nhel")
 centered = false
 
-[node name="HandshakeSprite" type="Sprite2D" parent="."]
+[node name="HandshakeSprite" type="Sprite2D" parent="HandSprites"]
 visible = false
 position = Vector2(-63, -21)
 scale = Vector2(2, 2)

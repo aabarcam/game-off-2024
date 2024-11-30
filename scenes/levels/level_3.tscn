@@ -16,7 +16,7 @@ level_name = "conference_room"
 texture = ExtResource("2_lmqtt")
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_36rk4")]
-required_minigames = [NodePath("../MinigameTrigger"), NodePath("../MinigameTrigger2"), NodePath("../Boss")]
+required_minigames = [NodePath("../PendienteA"), NodePath("../PendenteB"), NodePath("../Boss")]
 open_texture = ExtResource("4_5j4ih")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
@@ -26,44 +26,45 @@ offset_right = 615.0
 offset_bottom = 187.0
 texture_normal = ExtResource("5_5kdco")
 
-[node name="MinigameTrigger" parent="." index="2" instance=ExtResource("2_ihj4d")]
-position = Vector2(254, 348)
+[node name="PendienteA" parent="." index="2" instance=ExtResource("2_ihj4d")]
+position = Vector2(66, 220)
 
-[node name="MinigameLabel" parent="MinigameTrigger" index="1"]
+[node name="MinigameLabel" parent="PendienteA" index="2"]
 text = "PERSONAJE
 A"
 
-[node name="HangmanRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="PendienteA/Minigames" index="0" instance=ExtResource("3_djuq7")]
 time_per_sequence = 9.0
 
-[node name="HangmanRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="PendienteA/Minigames" index="1" instance=ExtResource("3_djuq7")]
 time_per_sequence = 7.0
 
-[node name="HangmanRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="PendienteA/Minigames" index="2" instance=ExtResource("3_djuq7")]
 
-[node name="MinigameTrigger2" parent="." index="3" instance=ExtResource("2_ihj4d")]
-position = Vector2(928, 359)
+[node name="PendenteB" parent="." index="3" instance=ExtResource("2_ihj4d")]
+position = Vector2(447, 212)
 
-[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+[node name="MinigameLabel" parent="PendenteB" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="HangmanRound" parent="MinigameTrigger2/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="PendenteB/Minigames" index="0" instance=ExtResource("3_djuq7")]
 ambiguous_words = 1
 time_per_sequence = 9.0
 
-[node name="HangmanRound2" parent="MinigameTrigger2/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="PendenteB/Minigames" index="1" instance=ExtResource("3_djuq7")]
 ambiguous_words = 2
 time_per_sequence = 9.0
 
-[node name="HangmanRound3" parent="MinigameTrigger2/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="PendenteB/Minigames" index="2" instance=ExtResource("3_djuq7")]
 ambiguous_words = 3
 time_per_sequence = 9.0
 
-[node name="Boss" parent="." index="4" instance=ExtResource("2_ihj4d")]
+[node name="Boss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ihj4d")]
 position = Vector2(261, 116)
+required_minigames = [NodePath("../PendienteA"), NodePath("../PendenteB")]
 
-[node name="MinigameLabel" parent="Boss" index="1"]
+[node name="MinigameLabel" parent="Boss" index="2"]
 text = "MINI
 BOSS"
 
@@ -83,6 +84,6 @@ ambiguous_words = 3
 texture = ExtResource("5_begou")
 
 [editable path="TransitionTrigger"]
-[editable path="MinigameTrigger"]
-[editable path="MinigameTrigger2"]
+[editable path="PendienteA"]
+[editable path="PendenteB"]
 [editable path="Boss"]

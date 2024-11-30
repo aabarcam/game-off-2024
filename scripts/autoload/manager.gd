@@ -52,7 +52,7 @@ var portraits: Dictionary = {
 		},
 	},
 	"void": {
-		"pending0": {
+		"manoel": {
 			"texture": preload("res://assets/void/void_textbox.png"),
 			"offset": 40,
 		},

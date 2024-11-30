@@ -1,78 +1,100 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3jtrt7tpldwt"]
+[gd_scene load_steps=9 format=3 uid="uid://b3jtrt7tpldwt"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_rshu4"]
+[ext_resource type="Texture2D" uid="uid://brc6sjmghnyn2" path="res://assets/sacrificeroom/sc_background.png" id="2_2po1l"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ovyfg"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_choej"]
 [ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="3_e0ltp"]
+[ext_resource type="Texture2D" uid="uid://by4apogoj4ad0" path="res://assets/sacrificeroom/sc_door_open.png" id="4_sanj8"]
+[ext_resource type="Texture2D" uid="uid://02d05c355ttp" path="res://assets/sacrificeroom/sc_door_closed.png" id="5_qbsi2"]
+[ext_resource type="Texture2D" uid="uid://b0qxf5i8yhkml" path="res://assets/sacrificeroom/sacrificeroom_example.png" id="8_pvfeu"]
 
 [node name="Level4" instance=ExtResource("1_rshu4")]
 
-[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_ovyfg")]
-position = Vector2(268, 361)
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_2po1l")
 
-[node name="MinigameLabel" parent="MinigameTrigger" index="1"]
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_choej")]
+position = Vector2(568, 193)
+required_minigames = [NodePath("../PendienteA"), NodePath("../PendienteB"), NodePath("../Boss")]
+open_texture = ExtResource("4_sanj8")
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+texture_normal = ExtResource("5_qbsi2")
+
+[node name="PendienteA" parent="." index="2" instance=ExtResource("2_ovyfg")]
+position = Vector2(23, 174)
+
+[node name="MinigameLabel" parent="PendienteA" index="2"]
 text = "PERSONAJE
 A"
 
-[node name="BlitzTypingRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound" parent="PendienteA/Minigames" index="0" instance=ExtResource("3_e0ltp")]
 time_per_letter = 1.0
 min_length = 3
 max_length = 5
 
-[node name="BlitzTypingRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound2" parent="PendienteA/Minigames" index="1" instance=ExtResource("3_e0ltp")]
 time_per_letter = 1.0
 min_length = 5
 max_length = 7
 
-[node name="BlitzTypingRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound3" parent="PendienteA/Minigames" index="2" instance=ExtResource("3_e0ltp")]
 time_per_letter = 1.0
 min_length = 7
 
-[node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_ovyfg")]
-position = Vector2(896, 359)
+[node name="PendienteB" parent="." index="3" instance=ExtResource("2_ovyfg")]
+position = Vector2(535, 179)
 
-[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+[node name="MinigameLabel" parent="PendienteB" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="BlitzTypingRound" parent="MinigameTrigger2/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound" parent="PendienteB/Minigames" index="0" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 3
 max_length = 5
 
-[node name="BlitzTypingRound2" parent="MinigameTrigger2/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound2" parent="PendienteB/Minigames" index="1" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 5
 max_length = 7
 
-[node name="BlitzTypingRound3" parent="MinigameTrigger2/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound3" parent="PendienteB/Minigames" index="2" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 7
 
-[node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_ovyfg")]
-position = Vector2(576, 227)
+[node name="Boss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ovyfg")]
+position = Vector2(249, 108)
+required_minigames = [NodePath("../PendienteA"), NodePath("../PendienteB")]
 
-[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+[node name="MinigameLabel" parent="Boss" index="2"]
 text = "MINI
 BOSS"
 
-[node name="BlitzTypingRound" parent="MinigameTrigger3/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_e0ltp")]
 theme = 2
 time_per_letter = 1.0
 sequence_quantity = 3
 
-[node name="BlitzTypingRound2" parent="MinigameTrigger3/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_e0ltp")]
 theme = 3
 time_per_letter = 1.0
 sequence_quantity = 3
 
-[node name="BlitzTypingRound3" parent="MinigameTrigger3/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_e0ltp")]
 theme = 4
 time_per_letter = 1.0
 sequence_quantity = 1
 
-[editable path="MinigameTrigger"]
-[editable path="MinigameTrigger2"]
-[editable path="MinigameTrigger3"]
+[node name="Reference" parent="." index="5"]
+visible = false
+texture = ExtResource("8_pvfeu")
+
+[editable path="TransitionTrigger"]
+[editable path="PendienteA"]
+[editable path="PendienteB"]
+[editable path="Boss"]

@@ -10,6 +10,10 @@ var current_level_path: String:
 	set = set_current_level_path
 var next_transition_dialogue: DialogueResource:
 	set = set_next_transition_dialogue
+var level_name: String:
+	set = set_level_name
+var char_name: String:
+	set = set_char_name
 
 @onready var transition_screen: ColorRect = $CanvasLayer/TransitionScreen
 
@@ -71,6 +75,14 @@ func set_current_level_path(new_val: String) -> void:
 	current_level_path = new_val
 	if current_level_path in prototype_levels:
 		selected_levels = prototype_levels
+	else:
+		selected_levels = levels
 
 func set_next_transition_dialogue(new_val: DialogueResource) -> void:
 	next_transition_dialogue = new_val
+
+func set_level_name(value: String) -> void:
+	level_name = value
+
+func set_char_name(value: String) -> void:
+	char_name = value

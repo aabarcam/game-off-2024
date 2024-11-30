@@ -1,19 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://be8fo7qldu3f1"]
+[gd_scene load_steps=18 format=3 uid="uid://be8fo7qldu3f1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_03nfb"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_kuhbm"]
+[ext_resource type="Texture2D" uid="uid://bvhlk5mg225oo" path="res://assets/hall/hall_background.png" id="2_l8ywe"]
 [ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_hoii0"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="5_13wjo"]
+[ext_resource type="Texture2D" uid="uid://c7pdk7s0xkrgf" path="res://assets/hall/character1.png" id="5_657es"]
+[ext_resource type="Texture2D" uid="uid://c86u7yxoqfs8e" path="res://assets/hall/doorhall_open.png" id="6_farau"]
+[ext_resource type="Texture2D" uid="uid://dvgjbfkeyqgv" path="res://assets/hall/doorhall_closed.png" id="7_3tis8"]
+[ext_resource type="Texture2D" uid="uid://bxnqsjl1u8egp" path="res://assets/hall/character3.png" id="7_bmoas"]
+[ext_resource type="Texture2D" uid="uid://deixg1lamdcra" path="res://assets/hands/nivel1/round1_1.png" id="7_vmdhu"]
+[ext_resource type="Texture2D" uid="uid://bgc8rx2onu0yl" path="res://assets/hands/nivel1/round2_1.png" id="8_kss7t"]
+[ext_resource type="Texture2D" uid="uid://cag25ldghpogw" path="res://assets/hall/hall_example.png" id="8_l0jhn"]
+[ext_resource type="Resource" uid="uid://d2yabxdg70gdx" path="res://dialogues/4_main_hall_text/henry_stanley_text.dialogue" id="9_4qce5"]
+[ext_resource type="Texture2D" uid="uid://cwunc3ioa0jjv" path="res://assets/hall/character2.png" id="9_jxksl"]
+[ext_resource type="Texture2D" uid="uid://cyvavly6u01vl" path="res://assets/hands/nivel1/round3_1.png" id="9_tjumg"]
+[ext_resource type="Texture2D" uid="uid://bx6vf4ufbhw5t" path="res://assets/hands/nivel1/hand1.png" id="10_hih7s"]
+[ext_resource type="Texture2D" uid="uid://5o5rl3hf4bgc" path="res://assets/hands/nivel1/fondo1.png" id="11_674d2"]
 
 [node name="Level2" instance=ExtResource("1_03nfb")]
+level_name = "hall"
 
-[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("2_kuhbm")]
-position = Vector2(521, 273)
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_l8ywe")
 
-[node name="MinigameLabel" parent="MinigameTrigger" index="1"]
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("5_13wjo")]
+position = Vector2(330, 207)
+required_minigames = [NodePath("../Boss"), NodePath("../Stanley"), NodePath("../PendingName")]
+open_texture = ExtResource("6_farau")
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = -47.0
+offset_top = -91.0
+offset_right = 39.0
+offset_bottom = 60.0
+texture_normal = ExtResource("7_3tis8")
+
+[node name="Boss" parent="." index="2" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_kuhbm")]
+position = Vector2(348, 183)
+required_minigames = [NodePath("../Stanley"), NodePath("../PendingName")]
+handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
+oppponent_texture = ExtResource("10_hih7s")
+
+[node name="Background" parent="Boss" index="0"]
+texture = ExtResource("11_674d2")
+
+[node name="InteractableComponent" parent="Boss" index="1"]
+offset_left = -169.0
+offset_top = -29.0
+offset_right = -112.0
+offset_bottom = 95.0
+texture_normal = ExtResource("7_bmoas")
+
+[node name="MinigameLabel" parent="Boss" index="2"]
 text = "MINI
 BOSS"
 
-[node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_hoii0")]
+[node name="StandardRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 0,
@@ -22,24 +65,48 @@ sequence_size_alt = {
 }
 time_per_sequence = 4.0
 
-[node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_hoii0")]
-sequences_at_a_time = 2
+[node name="StandardRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+rogue_letters = Array[int]([1, 3])
 time_per_sequence = 3.0
 
-[node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_hoii0")]
-sequences_at_a_time = 2
+[node name="StandardRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+rogue_letters = Array[int]([1, 2, 4])
 time_per_sequence = 3.0
 
-[node name="MinigameTrigger2" parent="." index="2" instance=ExtResource("2_kuhbm")]
+[node name="Stanley" parent="." index="3" instance=ExtResource("2_kuhbm")]
 position = Vector2(181, 366)
+char_name = "stanley"
+handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
+oppponent_texture = ExtResource("10_hih7s")
+dialogue = ExtResource("9_4qce5")
 
-[node name="MinigameLabel" parent="MinigameTrigger2" index="1"]
+[node name="Background" parent="Stanley" index="0"]
+texture = ExtResource("11_674d2")
+
+[node name="InteractableComponent" parent="Stanley" index="1"]
+offset_left = 486.0
+offset_top = -356.0
+offset_right = 543.0
+offset_bottom = -179.0
+texture_normal = ExtResource("5_657es")
+
+[node name="MinigameLabel" parent="Stanley" index="2"]
 text = "PERSONAJE
 A"
 
-[node name="StandardRound" parent="MinigameTrigger2/Minigames" index="0" instance=ExtResource("3_hoii0")]
+[node name="StandardRound" parent="Stanley/Minigames" index="0" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 3,
@@ -48,7 +115,7 @@ sequence_size_alt = {
 }
 time_per_sequence = 4.0
 
-[node name="StandardRound2" parent="MinigameTrigger2/Minigames" index="1" instance=ExtResource("3_hoii0")]
+[node name="StandardRound2" parent="Stanley/Minigames" index="1" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 3,
@@ -57,7 +124,7 @@ sequence_size_alt = {
 }
 time_per_sequence = 3.5
 
-[node name="StandardRound3" parent="MinigameTrigger2/Minigames" index="2" instance=ExtResource("3_hoii0")]
+[node name="StandardRound3" parent="Stanley/Minigames" index="2" instance=ExtResource("3_hoii0")]
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 3,
@@ -65,14 +132,26 @@ sequence_size_alt = {
 3: 0
 }
 
-[node name="MinigameTrigger3" parent="." index="3" instance=ExtResource("2_kuhbm")]
-position = Vector2(915, 344)
+[node name="PendingName" parent="." index="4" instance=ExtResource("2_kuhbm")]
+position = Vector2(187, 180)
+handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
+oppponent_texture = ExtResource("10_hih7s")
 
-[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+[node name="Background" parent="PendingName" index="0"]
+texture = ExtResource("11_674d2")
+
+[node name="InteractableComponent" parent="PendingName" index="1"]
+offset_left = -41.0
+offset_top = -13.0
+offset_right = -16.0
+offset_bottom = 86.0
+texture_normal = ExtResource("9_jxksl")
+
+[node name="MinigameLabel" parent="PendingName" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="StandardRound" parent="MinigameTrigger3/Minigames" index="0" instance=ExtResource("3_hoii0")]
+[node name="StandardRound" parent="PendingName/Minigames" index="0" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 4,
@@ -80,7 +159,7 @@ sequence_size_alt = {
 }
 time_per_sequence = 5.0
 
-[node name="StandardRound2" parent="MinigameTrigger3/Minigames" index="1" instance=ExtResource("3_hoii0")]
+[node name="StandardRound2" parent="PendingName/Minigames" index="1" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 2,
@@ -88,7 +167,7 @@ sequence_size_alt = {
 }
 time_per_sequence = 5.0
 
-[node name="StandardRound3" parent="MinigameTrigger3/Minigames" index="2" instance=ExtResource("3_hoii0")]
+[node name="StandardRound3" parent="PendingName/Minigames" index="2" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 2,
@@ -96,6 +175,11 @@ sequence_size_alt = {
 }
 time_per_sequence = 5.0
 
-[editable path="MinigameTrigger"]
-[editable path="MinigameTrigger2"]
-[editable path="MinigameTrigger3"]
+[node name="Reference" parent="." index="5"]
+visible = false
+texture = ExtResource("8_l0jhn")
+
+[editable path="TransitionTrigger"]
+[editable path="Boss"]
+[editable path="Stanley"]
+[editable path="PendingName"]

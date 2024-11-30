@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjsgh722vmc5e"]
+[gd_scene load_steps=16 format=3 uid="uid://cjsgh722vmc5e"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
 [ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
@@ -9,17 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://bu7sbia16qltd" path="res://assets/living_room/living_room_odoor.png" id="4_rk4x4"]
 [ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
 [ext_resource type="Resource" uid="uid://b6j5tm6qmpll8" path="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue" id="7_dvhhj"]
+[ext_resource type="Texture2D" uid="uid://dkka85w5bjqkc" path="res://assets/hands/nivel0/round1_0.png" id="7_olu7a"]
 [ext_resource type="Resource" uid="uid://cmxluthjrawcv" path="res://dialogues/3_living_room_text/henry_norman_text.dialogue" id="8_u5ugt"]
 [ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
+[ext_resource type="Texture2D" uid="uid://bmlf357jyrm0y" path="res://assets/hands/nivel0/round2_0.png" id="8_vsmeq"]
+[ext_resource type="Texture2D" uid="uid://bqa6thymvo7sh" path="res://assets/hands/nivel0/round3_0.png" id="9_ueisr"]
+[ext_resource type="Texture2D" uid="uid://c0mgegts3dhey" path="res://assets/hands/nivel0/hand0.png" id="10_mkswk"]
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
+level_name = "living_room"
 
 [node name="Background" parent="." index="0"]
-position = Vector2(0, 0)
-scale = Vector2(1, 1)
 texture = ExtResource("2_8lbcf")
-centered = false
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_2bd7a")]
 position = Vector2(-213, 0)
@@ -29,17 +31,20 @@ open_texture = ExtResource("4_rk4x4")
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
 offset_left = 479.0
 offset_top = 0.0
-offset_right = 607.0
+offset_right = 587.0
 offset_bottom = 268.0
 texture_normal = ExtResource("4_evdec")
 
 [node name="MinigameTrigger" parent="." index="2" instance=ExtResource("2_a4ymf")]
 position = Vector2(129, 186)
 lives = -1
+char_name = "norman"
+handshake_textures = Array[Texture2D]([ExtResource("7_olu7a"), ExtResource("8_vsmeq"), ExtResource("9_ueisr")])
+oppponent_texture = ExtResource("10_mkswk")
 dialogue_beaten = ExtResource("7_dvhhj")
 dialogue = ExtResource("8_u5ugt")
 
-[node name="InteractableComponent" parent="MinigameTrigger" index="0"]
+[node name="InteractableComponent" parent="MinigameTrigger" index="1"]
 offset_left = -115.0
 offset_top = -115.0
 offset_right = 49.0
@@ -59,7 +64,6 @@ time_per_sequence = 5.0
 
 [node name="Reference" parent="." index="3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("8_uhrs8")
 
 [editable path="TransitionTrigger"]

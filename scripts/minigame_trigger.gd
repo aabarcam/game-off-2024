@@ -24,12 +24,14 @@ signal lost ## Minigame lost
 #@export var sequence_size: int = -1
 #@export var time_per_sequence: float = -1
 
+@export var required_minigames: Array[MinigameTrigger]
 @export var minigames: Node2D
 @export var minigame: Manager.Minigames: ## Minigame to trigger
 	set = set_minigame
 @export var total_rounds: int = 3: ## How many rounds for the minigame
 	set = set_total_rounds
 @export var lives: int = 3
+@export var char_name: String
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -56,6 +58,7 @@ signal lost ## Minigame lost
 @export_category("Hand textures")
 @export var player_textures: Array[Texture2D] = []
 @export var handshake_textures: Array[Texture2D] = []
+@export var oppponent_texture: Texture2D
 
 var active: bool = false
 var minigame_list: Array[Node]
@@ -65,7 +68,9 @@ var noise_gen_x: FastNoiseLite = FastNoiseLite.new()
 var noise_gen_y: FastNoiseLite = FastNoiseLite.new()
 var accumulated_delta: float = 0
 var player_hand_original_position: Vector2
-var cleared = false
+var cleared: bool = false
+var open: bool = false:
+	set = set_open
 
 @onready var minigame_label_debug: Label = $MinigameLabel ## Editor debug label
 @onready var grenade_instructions: Node2D = $GrenadeInstructions
@@ -80,8 +85,10 @@ var cleared = false
 @onready var original_lives: int = lives
 @onready var shake_test: Sprite2D = $ShakeTest
 @onready var shake_test_original_position: Vector2 = shake_test.position
+@onready var background: TextureRect = $Background
 
 @export_category("Dialogues")
+@export var dialogue_before_open: DialogueResource
 @export var dialogue_beaten: DialogueResource
 @export var dialogue_after_win: DialogueResource
 ## Ready function called in editor
@@ -94,17 +101,28 @@ func _ready_game() -> void:
 	Signals.register_signal(won, self)
 	Signals.register_signal(lost, self)
 	
+	for _minigame in required_minigames:
+		_minigame.won.connect(_on_minigame_won)
+	if required_minigames.is_empty():
+		set_open(true)
+	
 	instructions.global_position = Vector2.ZERO
 	instructions.modulate.a = 1.0
 	
 	grenade_instructions.global_position = Vector2.ZERO
 	grenade_instructions.modulate.a = 1.0
 	
+	background.global_position = Vector2.ZERO
+	background.modulate.a = 1.0
+	
 	#player_hand.global_position = player_hand.position
 	#opponent_hand.global_position = opponent_hand.position
 	#handshake.global_position = handshake.position
 	hand_sprites.global_position = Vector2(0, 0)
 	player_hand_original_position = player_hand.global_position
+	
+	if oppponent_texture != null:
+		opponent_hand.texture = oppponent_texture
 	
 	reset_trigger()
 	
@@ -146,10 +164,12 @@ func reset_trigger() -> void:
 		current_round.reset()
 		current_round = null
 	minigame_list = minigames.get_children().filter(func(x:Node2D):return x.visible)
+	minigame_list.map(func(x):x.reset())
 	round_count = 0
 	lives = original_lives
 	grenade_component.reset()
 	grenade_instructions.hide()
+	background.hide()
 	instructions.hide()
 	hide_hands()
 	handshake.hide()
@@ -163,6 +183,7 @@ func hide_hands() -> void:
 	opponent_hand.hide()
 
 func show_instructions() -> void:
+	background.show()
 	instructions.show()
 
 func update_debug_label() -> void:
@@ -210,7 +231,9 @@ func next_round() -> void:
 	current_round.start_round()
 
 func notify_minigame_triggered() -> void:
+	clicked.emit(self)
 	interacted_times += 1
+	interactable_component.hide()
 	show_instructions()
 
 func get_random_player_sprite() -> Texture2D:
@@ -225,6 +248,7 @@ func disable_grenade() -> void:
 
 func notify_minigame_lost() -> void:
 	#current_round.reset()
+	interactable_component.show()
 	reset_trigger()
 	lost.emit()
 
@@ -237,6 +261,7 @@ func notify_minigame_won() -> void:
 
 func notify_done() -> void:
 	cleared = true
+	interactable_component.show()
 	won.emit()
 
 func prompt_grenade() -> void:
@@ -251,6 +276,12 @@ func update_shake_config() -> void:
 	noise_gen_x.frequency = shake_frequency
 	noise_gen_y.frequency = shake_frequency
 
+func all_minigames_cleared() -> bool:
+	var output: bool = true
+	for _minigame in required_minigames:
+		output = output and _minigame.cleared
+	return output
+	
 ## Getters/Setters
 
 func set_minigame(new_val: Manager.Minigames) -> void:
@@ -273,26 +304,36 @@ func set_shake_frequency(new_val: float) -> void:
 	shake_frequency = new_val
 	update_shake_config()
 
+func set_open(value: bool) -> void:
+	open = value
+
 ## Signal handlers
 
 func _on_trigger_clicked() -> void:
-	clicked.emit(self)
+	LevelManager.set_char_name(char_name)
+	
 	if cleared:
 		if dialogue_after_win != null:
 			#DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
 			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_after_win, "start", [self])
 		return
 	
-	if dialogue != null:
-		#DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
-		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue, "start", [self])
+	if open:
+		if dialogue != null:
+			#DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
+			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue, "start", [self])
+		else:
+			notify_minigame_triggered()
 	else:
-		notify_minigame_triggered()
+		if dialogue_before_open != null:
+			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_before_open, "start", [self])
 
 func _on_round_won() -> void:
+	handshake.texture = handshake_textures[min(round_count, handshake_textures.size())]
+	
 	round_count += 1
 	
-	if round_count >= total_rounds:
+	if minigame_list.is_empty():
 		disable_grenade()
 	
 	shake_intensity = shake_intensities[min(round_count, shake_intensities.size())]
@@ -308,7 +349,8 @@ func _on_round_won() -> void:
 	if minigame_list.is_empty():
 		notify_minigame_won()
 	else:
-		current_round.reset()
+		if current_round != null:
+			current_round.reset()
 		#current_round.start_round()
 		next_round()
 		#reset_trigger()
@@ -345,3 +387,7 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		notify_minigame_triggered()
 	elif resource == dialogue_beaten:
 		notify_done()
+
+func _on_minigame_won() -> void:
+	if all_minigames_cleared():
+		set_open(true)

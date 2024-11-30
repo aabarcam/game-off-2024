@@ -4,6 +4,7 @@
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_xc0ai")
+levels = Array[String](["res://scenes/levels/level_1.tscn", "res://scenes/levels/level_2.tscn", "res://scenes/levels/level_3.tscn", "res://scenes/levels/level_4.tscn"])
 prototype_levels = Array[String](["res://scenes/prototype/prototype_a.tscn", "res://scenes/prototype/prototype_b.tscn"])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

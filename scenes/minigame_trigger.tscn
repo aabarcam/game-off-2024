@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=32 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -7,20 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://cevdffv7rhy2w" path="res://scenes/minigames/simon_says_round.tscn" id="4_6ymm7"]
 [ext_resource type="Texture2D" uid="uid://cqnl8l71watxq" path="res://placeholder_bg.png" id="4_d6v8q"]
 [ext_resource type="PackedScene" uid="uid://ihdh2acpem43" path="res://scenes/components/grenade_component.tscn" id="5_46xms"]
-[ext_resource type="Texture2D" uid="uid://bxqtpmn2mqmio" path="res://assets/prototype/1.png" id="5_ivaxi"]
 [ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="5_tpxwr"]
-[ext_resource type="Texture2D" uid="uid://38y1qmcshcm0" path="res://assets/prototype/2.png" id="6_khl80"]
 [ext_resource type="PackedScene" uid="uid://da6rkiplqnqbp" path="res://scenes/minigames/whack_a_mole_round.tscn" id="6_tnjij"]
-[ext_resource type="Texture2D" uid="uid://d2kfjkqaiqosf" path="res://assets/prototype/3.png" id="7_1r6oe"]
 [ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="7_nqfx0"]
-[ext_resource type="Texture2D" uid="uid://wddg38n0jfye" path="res://assets/prototype/4.png" id="8_ktlh0"]
-[ext_resource type="Texture2D" uid="uid://dcx1yyfn1yba0" path="res://assets/prototype/5.png" id="9_5nogn"]
-[ext_resource type="Texture2D" uid="uid://j4ou2t86f68h" path="res://assets/prototype/6.png" id="10_5ob6x"]
-[ext_resource type="Texture2D" uid="uid://dm1cc8xi4v7g5" path="res://assets/prototype/7.png" id="11_wway4"]
+[ext_resource type="Texture2D" uid="uid://e8ttkoyihq5b" path="res://assets/hands/henry/henryhands1.png" id="8_ckpak"]
+[ext_resource type="Texture2D" uid="uid://fdiprehohlxs" path="res://assets/hands/henry/henryhands2.png" id="9_ghpxx"]
+[ext_resource type="Texture2D" uid="uid://doujybc7if5h" path="res://assets/hands/henry/henryhands3.png" id="10_23jni"]
+[ext_resource type="Texture2D" uid="uid://ds7i6va7dqj0i" path="res://assets/hands/henry/henryhands4.png" id="11_s0jj5"]
 [ext_resource type="Texture2D" uid="uid://5akkijklydnf" path="res://assets/prototype/Saludo1.png" id="12_8gg1k"]
+[ext_resource type="Texture2D" uid="uid://dbbq54twts70c" path="res://assets/hands/henry/henryhands5.png" id="12_skx3u"]
+[ext_resource type="Texture2D" uid="uid://cgv7ka5cdu5k4" path="res://assets/hands/henry/henryhands6.png" id="13_5nhec"]
 [ext_resource type="Texture2D" uid="uid://d2jghc32stqry" path="res://assets/prototype/Saludo2.png" id="13_7t2ix"]
+[ext_resource type="Texture2D" uid="uid://dey5xr2hdvau8" path="res://assets/hands/henry/henryhands7.png" id="14_xf4k1"]
+[ext_resource type="Texture2D" uid="uid://b2bycyab0a35f" path="res://assets/hands/henry/henryhands8.png" id="15_rhjvk"]
+[ext_resource type="Texture2D" uid="uid://jcc5gmvk00gs" path="res://assets/hands/henry/henryhands9.png" id="16_uracd"]
 [ext_resource type="Texture2D" uid="uid://caaloxrhd2f4u" path="res://assets/prototype/contrincante.png" id="17_0nhel"]
+[ext_resource type="Texture2D" uid="uid://cbf546kcltt5i" path="res://assets/hands/henry/henryhands10.png" id="17_d3kbt"]
+[ext_resource type="Texture2D" uid="uid://pimrl4tiydxn" path="res://assets/hands/henry/henryhands11.png" id="18_18xjo"]
+[ext_resource type="Texture2D" uid="uid://dteaptwwjb4bq" path="res://assets/hands/henry/henryhands12.png" id="19_4nudc"]
+[ext_resource type="Texture2D" uid="uid://cjdehmve32q2j" path="res://assets/hands/henry/henryhands13.png" id="20_8hyr8"]
+[ext_resource type="Texture2D" uid="uid://cpthoytqujw67" path="res://assets/hands/henry/henryhands14.png" id="21_mq4sc"]
 [ext_resource type="Texture2D" uid="uid://clav8tdybxrx5" path="res://icon.svg" id="21_wrkdh"]
+[ext_resource type="Texture2D" uid="uid://0etc3pab1v6t" path="res://assets/hands/henry/henryhands15.png" id="22_ejw1h"]
+[ext_resource type="Texture2D" uid="uid://dsult6ypou8q7" path="res://assets/hands/henry/henryhands16.png" id="23_jxne3"]
+[ext_resource type="Texture2D" uid="uid://cryxukskkphs7" path="res://assets/hands/nivel0/fondo0.png" id="26_d8t8d"]
 
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("minigames", "interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
@@ -39,8 +49,13 @@ simon_says_round = ExtResource("4_6ymm7")
 hangman_round = ExtResource("5_tpxwr")
 whack_a_mole_round = ExtResource("6_tnjij")
 blitz_typing = ExtResource("7_nqfx0")
-player_textures = Array[Texture2D]([ExtResource("5_ivaxi"), ExtResource("6_khl80"), ExtResource("7_1r6oe"), ExtResource("8_ktlh0"), ExtResource("9_5nogn"), ExtResource("10_5ob6x"), ExtResource("11_wway4")])
+player_textures = Array[Texture2D]([ExtResource("8_ckpak"), ExtResource("9_ghpxx"), ExtResource("10_23jni"), ExtResource("11_s0jj5"), ExtResource("12_skx3u"), ExtResource("13_5nhec"), ExtResource("14_xf4k1"), ExtResource("15_rhjvk"), ExtResource("16_uracd"), ExtResource("17_d3kbt"), ExtResource("18_18xjo"), ExtResource("19_4nudc"), ExtResource("20_8hyr8"), ExtResource("21_mq4sc"), ExtResource("22_ejw1h"), ExtResource("23_jxne3")])
 handshake_textures = Array[Texture2D]([ExtResource("12_8gg1k"), ExtResource("13_7t2ix")])
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("26_d8t8d")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("1_yb83h")]
 offset_left = 0.0
@@ -70,6 +85,7 @@ horizontal_alignment = 1
 modulate = Color(1, 1, 1, 0.152941)
 
 [node name="Background" type="Sprite2D" parent="Instructions"]
+visible = false
 modulate = Color(0, 0.422065, 0.424418, 1)
 position = Vector2(576, 324)
 texture = ExtResource("4_d6v8q")
@@ -102,6 +118,7 @@ text = "START"
 modulate = Color(1, 1, 1, 0.0705882)
 
 [node name="Background" type="Sprite2D" parent="GrenadeInstructions"]
+visible = false
 modulate = Color(0, 0.422065, 0.424418, 1)
 position = Vector2(576, 324)
 texture = ExtResource("4_d6v8q")
@@ -130,10 +147,11 @@ position = Vector2(1048, 546)
 visible = false
 position = Vector2(-71.0648, -75)
 scale = Vector2(2, 2)
-texture = ExtResource("11_wway4")
+texture = ExtResource("8_ckpak")
 centered = false
 
 [node name="OpponentHandSprite" type="Sprite2D" parent="HandSprites"]
+visible = false
 position = Vector2(605.461, -82)
 scale = Vector2(2, 2)
 texture = ExtResource("17_0nhel")

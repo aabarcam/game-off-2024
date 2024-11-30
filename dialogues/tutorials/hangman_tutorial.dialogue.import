@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ceppql8bxg7lt"
+path="res://.godot/imported/hangman_tutorial.dialogue-ab35757469a6d74a6b69c6f4fdcbe44e.tres"
+
+[deps]
+
+source_file="res://dialogues/tutorials/hangman_tutorial.dialogue"
+dest_files=["res://.godot/imported/hangman_tutorial.dialogue-ab35757469a6d74a6b69c6f4fdcbe44e.tres"]
+
+[params]
+
+defaults=true

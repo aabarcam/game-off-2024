@@ -1,11 +1,7 @@
-~ this_is_a_node_title
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ start
+GRANT: You did it, Henry. You crazy son of a gun, you did it.
+HENRY: Thank you, man. And sorry for calling the raptor a turkey.
+GRANT: Don't worry about it, Henry. You know your dinosaurs. 
+GRANT: Your are a clever guy.
+HENRY: Yeah. Yeah, I guess I am.
 => END

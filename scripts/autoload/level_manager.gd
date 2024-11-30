@@ -75,6 +75,8 @@ func set_current_level_path(new_val: String) -> void:
 	current_level_path = new_val
 	if current_level_path in prototype_levels:
 		selected_levels = prototype_levels
+	else:
+		selected_levels = levels
 
 func set_next_transition_dialogue(new_val: DialogueResource) -> void:
 	next_transition_dialogue = new_val

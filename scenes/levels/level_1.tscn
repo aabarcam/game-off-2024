@@ -14,10 +14,9 @@
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
+level_name = "living_room"
 
 [node name="Background" parent="." index="0"]
-position = Vector2(0, 0)
-scale = Vector2(1, 1)
 texture = ExtResource("2_8lbcf")
 centered = false
 
@@ -29,13 +28,14 @@ open_texture = ExtResource("4_rk4x4")
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
 offset_left = 479.0
 offset_top = 0.0
-offset_right = 607.0
+offset_right = 587.0
 offset_bottom = 268.0
 texture_normal = ExtResource("4_evdec")
 
 [node name="MinigameTrigger" parent="." index="2" instance=ExtResource("2_a4ymf")]
 position = Vector2(129, 186)
 lives = -1
+char_name = "norman"
 dialogue_beaten = ExtResource("7_dvhhj")
 dialogue = ExtResource("8_u5ugt")
 
@@ -59,7 +59,6 @@ time_per_sequence = 5.0
 
 [node name="Reference" parent="." index="3"]
 visible = false
-scale = Vector2(1, 1)
 texture = ExtResource("8_uhrs8")
 
 [editable path="TransitionTrigger"]

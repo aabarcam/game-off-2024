@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://dialogues/custom_balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Texture2D" uid="uid://tqe37v3vrlfs" path="res://assets/conference room/character1_cr_text.png" id="2_fhpf3"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://6ssnaqegtvsm" path="res://assets/sacrificeroom/sc_textbox_3.png" id="3_dqcb3"]
 [ext_resource type="FontFile" uid="uid://c38kjsm830lun" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_ggvrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -90,15 +90,16 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -183.0
+offset_top = -221.0
 offset_right = -19.0
-offset_bottom = -19.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_f1n70")
 
-[node name="TextureRect" type="TextureRect" parent="Balloon/Panel"]
+[node name="BoxTexture" type="TextureRect" parent="Balloon/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,17 +108,18 @@ offset_top = -55.5
 offset_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fhpf3")
+texture = ExtResource("3_dqcb3")
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 271.0
-offset_top = 38.0
-offset_right = -1.0
-offset_bottom = 7.0
+offset_left = 40.0
+offset_top = 20.0
+offset_right = -10.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 

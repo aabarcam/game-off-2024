@@ -134,6 +134,7 @@ texture = ExtResource("11_wway4")
 centered = false
 
 [node name="OpponentHandSprite" type="Sprite2D" parent="HandSprites"]
+visible = false
 position = Vector2(605.461, -82)
 scale = Vector2(2, 2)
 texture = ExtResource("17_0nhel")

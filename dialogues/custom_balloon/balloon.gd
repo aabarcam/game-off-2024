@@ -38,6 +38,20 @@ var dialogue_line: DialogueLine:
 			await ready
 
 		dialogue_line = next_dialogue_line
+		
+		var text_box: Texture2D = box_texture.texture
+		var offset_x: int = 40
+		if Manager.portraits.has(LevelManager.level_name):
+			var level_portrait: Dictionary = Manager.portraits[LevelManager.level_name]
+			var char_name: String = LevelManager.char_name
+			if level_portrait.has(char_name):
+				text_box = level_portrait[char_name]["texture"]
+				offset_x = level_portrait[char_name]["offset"]
+
+		box_texture.texture = text_box
+		dialogue_box.position.x = offset_x
+		dialogue_box.position.y = 20
+		dialogue_box.size.x = 550 - dialogue_box.position.x
 
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
@@ -84,6 +98,9 @@ var dialogue_line: DialogueLine:
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var box_texture: TextureRect = %BoxTexture
+
+@onready var dialogue_box: MarginContainer = %Dialogue
 
 func _ready() -> void:
 	balloon.hide()

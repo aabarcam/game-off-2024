@@ -30,6 +30,7 @@ signal lost ## Minigame lost
 @export var total_rounds: int = 3: ## How many rounds for the minigame
 	set = set_total_rounds
 @export var lives: int = 3
+@export var char_name: String
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -276,6 +277,7 @@ func set_shake_frequency(new_val: float) -> void:
 ## Signal handlers
 
 func _on_trigger_clicked() -> void:
+	LevelManager.set_char_name(char_name)
 	clicked.emit(self)
 	if cleared:
 		if dialogue_after_win != null:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bbluj5m15qhw6"
+path="res://.godot/imported/henry_travis_after_handshake_text.dialogue-2604b1ff19891d5a9290b2e5f8a3cfc2.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_travis_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_travis_after_handshake_text.dialogue-2604b1ff19891d5a9290b2e5f8a3cfc2.tres"]
+
+[params]
+
+defaults=true

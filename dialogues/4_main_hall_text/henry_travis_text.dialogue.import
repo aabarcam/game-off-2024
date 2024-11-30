@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dk0veo4px6efb"
+path="res://.godot/imported/henry_travis_text.dialogue-b4bd69a678369509f365bc748210c98b.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_travis_text.dialogue"
+dest_files=["res://.godot/imported/henry_travis_text.dialogue-b4bd69a678369509f365bc748210c98b.tres"]
+
+[params]
+
+defaults=true

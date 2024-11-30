@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dkst4i0qwv56d"
+path="res://.godot/imported/henry_wallace_after_handshake.dialogue-0c1d02eff15df19ac8b020fb3c77299f.tres"
+
+[deps]
+
+source_file="res://dialogues/5_sacrifice_room_text/henry_wallace_after_handshake.dialogue"
+dest_files=["res://.godot/imported/henry_wallace_after_handshake.dialogue-0c1d02eff15df19ac8b020fb3c77299f.tres"]
+
+[params]
+
+defaults=true

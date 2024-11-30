@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ce503i68q54xg"
+path="res://.godot/imported/henry_felix_text.dialogue-dac5aecb856d159b27072e234cd42ce4.tres"
+
+[deps]
+
+source_file="res://dialogues/5_sacrifice_room_text/henry_felix_text.dialogue"
+dest_files=["res://.godot/imported/henry_felix_text.dialogue-dac5aecb856d159b27072e234cd42ce4.tres"]
+
+[params]
+
+defaults=true

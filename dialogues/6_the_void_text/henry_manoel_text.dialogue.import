@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bed3b44xdp8l6"
+path="res://.godot/imported/henry_manoel_text.dialogue-9c408c7c153d4f4a04e23e8b8f1ab8a6.tres"
+
+[deps]
+
+source_file="res://dialogues/6_the_void_text/henry_manoel_text.dialogue"
+dest_files=["res://.godot/imported/henry_manoel_text.dialogue-9c408c7c153d4f4a04e23e8b8f1ab8a6.tres"]
+
+[params]
+
+defaults=true

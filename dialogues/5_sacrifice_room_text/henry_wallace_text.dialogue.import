@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://gfncs5p2j8r2"
+path="res://.godot/imported/henry_wallace_text.dialogue-6c99af33b17753aa0b28f944310d6bc4.tres"
+
+[deps]
+
+source_file="res://dialogues/5_sacrifice_room_text/henry_wallace_text.dialogue"
+dest_files=["res://.godot/imported/henry_wallace_text.dialogue-6c99af33b17753aa0b28f944310d6bc4.tres"]
+
+[params]
+
+defaults=true

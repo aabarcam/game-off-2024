@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bq7wrmc2yo765"
+path="res://.godot/imported/henry_steven_after_handshake_text.dialogue-380c94804341a1de2134dd3a7318c5b6.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_steven_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_steven_after_handshake_text.dialogue-380c94804341a1de2134dd3a7318c5b6.tres"]
+
+[params]
+
+defaults=true

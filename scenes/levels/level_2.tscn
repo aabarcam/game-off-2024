@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://be8fo7qldu3f1"]
+[gd_scene load_steps=33 format=3 uid="uid://be8fo7qldu3f1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_03nfb"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_kuhbm"]
@@ -17,6 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://cyvavly6u01vl" path="res://assets/hands/nivel1/round3_1.png" id="9_tjumg"]
 [ext_resource type="Texture2D" uid="uid://bx6vf4ufbhw5t" path="res://assets/hands/nivel1/hand1.png" id="10_hih7s"]
 [ext_resource type="Texture2D" uid="uid://5o5rl3hf4bgc" path="res://assets/hands/nivel1/fondo1.png" id="11_674d2"]
+[ext_resource type="Resource" uid="uid://b4nvkvoyx2nv5" path="res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue" id="11_e2kya"]
+[ext_resource type="Texture2D" uid="uid://dnp726fql70n0" path="res://assets/hands/hall_levels/steven/round1_2.png" id="15_hqj8s"]
+[ext_resource type="Texture2D" uid="uid://bvrrfubclsefb" path="res://assets/hands/hall_levels/steven/round2_2.png" id="16_erwew"]
+[ext_resource type="Texture2D" uid="uid://bmaqh1hgvnx7f" path="res://assets/hands/hall_levels/steven/round3_2.png" id="17_1qh7o"]
+[ext_resource type="Texture2D" uid="uid://c538tyf65uc33" path="res://assets/hands/hall_levels/steven/hand2.png" id="18_mtdls"]
+[ext_resource type="Texture2D" uid="uid://3c1ao137xwes" path="res://assets/hands/hall_levels/steven/fondo2.png" id="19_8aldr"]
+[ext_resource type="Resource" uid="uid://bq7wrmc2yo765" path="res://dialogues/4_main_hall_text/henry_steven_after_handshake_text.dialogue" id="20_0jkth"]
+[ext_resource type="Texture2D" uid="uid://edyakarij7nl" path="res://assets/hands/hall_levels/travis/round1_3.png" id="21_sr0u7"]
+[ext_resource type="Texture2D" uid="uid://de4biw6dpvy25" path="res://assets/hands/hall_levels/travis/fondo3.png" id="21_vgfmm"]
+[ext_resource type="Resource" uid="uid://bd6el1sfakobg" path="res://dialogues/4_main_hall_text/henry_steven_text.dialogue" id="21_xox64"]
+[ext_resource type="Texture2D" uid="uid://bvgjygnbd4pwn" path="res://assets/hands/hall_levels/travis/round2_3.png" id="22_7apev"]
+[ext_resource type="Texture2D" uid="uid://bqhn8ftdhr3p5" path="res://assets/hands/hall_levels/travis/round3_3.png" id="23_poeaa"]
+[ext_resource type="Texture2D" uid="uid://0bjb80mvgfcc" path="res://assets/hands/hall_levels/travis/hand3.png" id="24_6d8wi"]
+[ext_resource type="Resource" uid="uid://bbluj5m15qhw6" path="res://dialogues/4_main_hall_text/henry_travis_after_handshake_text.dialogue" id="28_7ire4"]
+[ext_resource type="Resource" uid="uid://dk0veo4px6efb" path="res://dialogues/4_main_hall_text/henry_travis_text.dialogue" id="29_70gcf"]
 
 [node name="Level2" instance=ExtResource("1_03nfb")]
 level_name = "hall"
@@ -26,7 +41,7 @@ texture = ExtResource("2_l8ywe")
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("5_13wjo")]
 position = Vector2(330, 207)
-required_minigames = [NodePath("../Boss"), NodePath("../Stanley"), NodePath("../PendingName")]
+required_minigames = [NodePath("../TravisBoss"), NodePath("../Stanley"), NodePath("../Steven")]
 open_texture = ExtResource("6_farau")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
@@ -36,70 +51,20 @@ offset_right = 39.0
 offset_bottom = 60.0
 texture_normal = ExtResource("7_3tis8")
 
-[node name="Boss" parent="." index="2" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_kuhbm")]
-position = Vector2(348, 183)
-required_minigames = [NodePath("../Stanley"), NodePath("../PendingName")]
-handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
-oppponent_texture = ExtResource("10_hih7s")
-
-[node name="Background" parent="Boss" index="0"]
-texture = ExtResource("11_674d2")
-
-[node name="InteractableComponent" parent="Boss" index="1"]
-offset_left = -169.0
-offset_top = -29.0
-offset_right = -112.0
-offset_bottom = 95.0
-texture_normal = ExtResource("7_bmoas")
-
-[node name="MinigameLabel" parent="Boss" index="2"]
-text = "MINI
-BOSS"
-
-[node name="StandardRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_hoii0")]
-debug_sequence_size_alt = {}
-sequence_size_alt = {
-1: 0,
-2: 3,
-3: 2
-}
-time_per_sequence = 4.0
-
-[node name="StandardRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_hoii0")]
-debug_sequence_size_alt = {}
-sequence_size_alt = {
-1: 0,
-2: 3,
-3: 2
-}
-rogue_letters = Array[int]([1, 3])
-time_per_sequence = 3.0
-
-[node name="StandardRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_hoii0")]
-debug_sequence_size_alt = {}
-sequence_size_alt = {
-1: 0,
-2: 3,
-3: 2
-}
-rogue_letters = Array[int]([1, 2, 4])
-time_per_sequence = 3.0
-
-[node name="Stanley" parent="." index="3" instance=ExtResource("2_kuhbm")]
-position = Vector2(181, 366)
+[node name="Stanley" parent="." index="2" instance=ExtResource("2_kuhbm")]
+position = Vector2(451, 168)
 char_name = "stanley"
 handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
 oppponent_texture = ExtResource("10_hih7s")
+dialogue_beaten = ExtResource("11_e2kya")
 dialogue = ExtResource("9_4qce5")
 
 [node name="Background" parent="Stanley" index="0"]
 texture = ExtResource("11_674d2")
 
 [node name="InteractableComponent" parent="Stanley" index="1"]
-offset_left = 486.0
-offset_top = -356.0
-offset_right = 543.0
-offset_bottom = -179.0
+offset_right = 57.0
+offset_bottom = 177.0
 texture_normal = ExtResource("5_657es")
 
 [node name="MinigameLabel" parent="Stanley" index="2"]
@@ -132,26 +97,27 @@ sequence_size_alt = {
 3: 0
 }
 
-[node name="PendingName" parent="." index="4" instance=ExtResource("2_kuhbm")]
-position = Vector2(187, 180)
-handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
-oppponent_texture = ExtResource("10_hih7s")
+[node name="Steven" parent="." index="3" instance=ExtResource("2_kuhbm")]
+position = Vector2(164, 173)
+char_name = "steven"
+handshake_textures = Array[Texture2D]([ExtResource("15_hqj8s"), ExtResource("16_erwew"), ExtResource("17_1qh7o")])
+oppponent_texture = ExtResource("18_mtdls")
+dialogue_beaten = ExtResource("20_0jkth")
+dialogue = ExtResource("21_xox64")
 
-[node name="Background" parent="PendingName" index="0"]
-texture = ExtResource("11_674d2")
+[node name="Background" parent="Steven" index="0"]
+texture = ExtResource("19_8aldr")
 
-[node name="InteractableComponent" parent="PendingName" index="1"]
-offset_left = -41.0
-offset_top = -13.0
-offset_right = -16.0
-offset_bottom = 86.0
+[node name="InteractableComponent" parent="Steven" index="1"]
+offset_right = 25.0
+offset_bottom = 99.0
 texture_normal = ExtResource("9_jxksl")
 
-[node name="MinigameLabel" parent="PendingName" index="2"]
+[node name="MinigameLabel" parent="Steven" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="StandardRound" parent="PendingName/Minigames" index="0" instance=ExtResource("3_hoii0")]
+[node name="StandardRound" parent="Steven/Minigames" index="0" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 4,
@@ -159,7 +125,7 @@ sequence_size_alt = {
 }
 time_per_sequence = 5.0
 
-[node name="StandardRound2" parent="PendingName/Minigames" index="1" instance=ExtResource("3_hoii0")]
+[node name="StandardRound2" parent="Steven/Minigames" index="1" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 2,
@@ -167,19 +133,68 @@ sequence_size_alt = {
 }
 time_per_sequence = 5.0
 
-[node name="StandardRound3" parent="PendingName/Minigames" index="2" instance=ExtResource("3_hoii0")]
+[node name="StandardRound3" parent="Steven/Minigames" index="2" instance=ExtResource("3_hoii0")]
 sequence_size_alt = {
 1: 0,
 2: 2,
 3: 3
 }
 time_per_sequence = 5.0
+
+[node name="TravisBoss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_kuhbm")]
+position = Vector2(254, 167)
+required_minigames = [NodePath("../Stanley"), NodePath("../Steven")]
+char_name = "travis"
+handshake_textures = Array[Texture2D]([ExtResource("21_sr0u7"), ExtResource("22_7apev"), ExtResource("23_poeaa")])
+oppponent_texture = ExtResource("24_6d8wi")
+dialogue_beaten = ExtResource("28_7ire4")
+dialogue = ExtResource("29_70gcf")
+
+[node name="Background" parent="TravisBoss" index="0"]
+texture = ExtResource("21_vgfmm")
+
+[node name="InteractableComponent" parent="TravisBoss" index="1"]
+offset_right = 57.0
+offset_bottom = 124.0
+texture_normal = ExtResource("7_bmoas")
+
+[node name="MinigameLabel" parent="TravisBoss" index="2"]
+text = "MINI
+BOSS"
+
+[node name="StandardRound" parent="TravisBoss/Minigames" index="0" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+time_per_sequence = 4.0
+
+[node name="StandardRound2" parent="TravisBoss/Minigames" index="1" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+rogue_letters = Array[int]([1, 3])
+time_per_sequence = 3.0
+
+[node name="StandardRound3" parent="TravisBoss/Minigames" index="2" instance=ExtResource("3_hoii0")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+rogue_letters = Array[int]([1, 2, 4])
+time_per_sequence = 3.0
 
 [node name="Reference" parent="." index="5"]
-visible = false
 texture = ExtResource("8_l0jhn")
 
 [editable path="TransitionTrigger"]
-[editable path="Boss"]
 [editable path="Stanley"]
-[editable path="PendingName"]
+[editable path="Steven"]
+[editable path="TravisBoss"]

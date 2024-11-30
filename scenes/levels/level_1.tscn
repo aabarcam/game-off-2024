@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjsgh722vmc5e"]
+[gd_scene load_steps=17 format=3 uid="uid://cjsgh722vmc5e"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
 [ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bmlf357jyrm0y" path="res://assets/hands/nivel0/round2_0.png" id="8_vsmeq"]
 [ext_resource type="Texture2D" uid="uid://bqa6thymvo7sh" path="res://assets/hands/nivel0/round3_0.png" id="9_ueisr"]
 [ext_resource type="Texture2D" uid="uid://c0mgegts3dhey" path="res://assets/hands/nivel0/hand0.png" id="10_mkswk"]
+[ext_resource type="Texture2D" uid="uid://cpso6ven4k5vi" path="res://assets/hands/living_level/norman/fondo0.png" id="13_i6plk"]
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
@@ -25,7 +26,7 @@ texture = ExtResource("2_8lbcf")
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_2bd7a")]
 position = Vector2(-213, 0)
-required_minigames = [NodePath("../MinigameTrigger")]
+required_minigames = [NodePath("../Norman")]
 open_texture = ExtResource("4_rk4x4")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
@@ -35,7 +36,7 @@ offset_right = 587.0
 offset_bottom = 268.0
 texture_normal = ExtResource("4_evdec")
 
-[node name="MinigameTrigger" parent="." index="2" instance=ExtResource("2_a4ymf")]
+[node name="Norman" parent="." index="2" instance=ExtResource("2_a4ymf")]
 position = Vector2(129, 186)
 lives = -1
 char_name = "norman"
@@ -44,22 +45,25 @@ oppponent_texture = ExtResource("10_mkswk")
 dialogue_beaten = ExtResource("7_dvhhj")
 dialogue = ExtResource("8_u5ugt")
 
-[node name="InteractableComponent" parent="MinigameTrigger" index="1"]
+[node name="Background" parent="Norman" index="0"]
+texture = ExtResource("13_i6plk")
+
+[node name="InteractableComponent" parent="Norman" index="1"]
 offset_left = -115.0
 offset_top = -115.0
 offset_right = 49.0
 offset_bottom = 84.0
 texture_normal = ExtResource("6_kiwdy")
 
-[node name="StandardRound" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("3_uu6l1")]
+[node name="StandardRound" parent="Norman/Minigames" index="0" instance=ExtResource("3_uu6l1")]
 sequence_size = 1
 time_per_sequence = 3.0
 
-[node name="StandardRound2" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("3_uu6l1")]
+[node name="StandardRound2" parent="Norman/Minigames" index="1" instance=ExtResource("3_uu6l1")]
 sequence_size = 1
 time_per_sequence = 3.0
 
-[node name="StandardRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("3_uu6l1")]
+[node name="StandardRound3" parent="Norman/Minigames" index="2" instance=ExtResource("3_uu6l1")]
 time_per_sequence = 5.0
 
 [node name="Reference" parent="." index="3"]
@@ -67,4 +71,4 @@ visible = false
 texture = ExtResource("8_uhrs8")
 
 [editable path="TransitionTrigger"]
-[editable path="MinigameTrigger"]
+[editable path="Norman"]

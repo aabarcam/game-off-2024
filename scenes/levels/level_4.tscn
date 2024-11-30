@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3jtrt7tpldwt"]
+[gd_scene load_steps=31 format=3 uid="uid://b3jtrt7tpldwt"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_rshu4"]
 [ext_resource type="Texture2D" uid="uid://brc6sjmghnyn2" path="res://assets/sacrificeroom/sc_background.png" id="2_2po1l"]
@@ -7,7 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="3_e0ltp"]
 [ext_resource type="Texture2D" uid="uid://by4apogoj4ad0" path="res://assets/sacrificeroom/sc_door_open.png" id="4_sanj8"]
 [ext_resource type="Texture2D" uid="uid://02d05c355ttp" path="res://assets/sacrificeroom/sc_door_closed.png" id="5_qbsi2"]
+[ext_resource type="Texture2D" uid="uid://geaw1lnqcflh" path="res://assets/sacrificeroom/sc_character1.png" id="7_f3mrk"]
+[ext_resource type="Texture2D" uid="uid://44yx8rdqax0y" path="res://assets/hands/sacrifice_levels/wallace/round1_7.png" id="7_i1ug2"]
+[ext_resource type="Texture2D" uid="uid://dgeuw23xxa6h5" path="res://assets/hands/sacrifice_levels/wallace/round2_7.png" id="8_pnmek"]
 [ext_resource type="Texture2D" uid="uid://b0qxf5i8yhkml" path="res://assets/sacrificeroom/sacrificeroom_example.png" id="8_pvfeu"]
+[ext_resource type="Texture2D" uid="uid://cg6b1jlfsuttp" path="res://assets/hands/sacrifice_levels/wallace/round3_7.png" id="9_cgvow"]
+[ext_resource type="Texture2D" uid="uid://cxq4ve8ml50l8" path="res://assets/sacrificeroom/sc_character2.png" id="9_ukqb2"]
+[ext_resource type="Texture2D" uid="uid://pefajloiwcac" path="res://assets/sacrificeroom/sc_character3.png" id="10_bkqri"]
+[ext_resource type="Texture2D" uid="uid://lfn7ytsdd7ws" path="res://assets/hands/sacrifice_levels/wallace/hand7.png" id="10_gpgsh"]
+[ext_resource type="Resource" uid="uid://dkst4i0qwv56d" path="res://dialogues/5_sacrifice_room_text/henry_wallace_after_handshake.dialogue" id="11_tfrwv"]
+[ext_resource type="Texture2D" uid="uid://dls43ch8io8vi" path="res://assets/hands/sacrifice_levels/wallace/fondo7.png" id="11_u30fp"]
+[ext_resource type="Resource" uid="uid://gfncs5p2j8r2" path="res://dialogues/5_sacrifice_room_text/henry_wallace_text.dialogue" id="12_g1pxe"]
+[ext_resource type="Texture2D" uid="uid://dgypt7ffy44hn" path="res://assets/hands/sacrifice_levels/felix/round1_8.png" id="16_q2n4w"]
+[ext_resource type="Texture2D" uid="uid://c16uqeq3jv7kh" path="res://assets/hands/sacrifice_levels/felix/round2_8.png" id="17_l5faf"]
+[ext_resource type="Texture2D" uid="uid://ddp5qhysnye01" path="res://assets/hands/sacrifice_levels/felix/round3_8.png" id="18_k5e2v"]
+[ext_resource type="Texture2D" uid="uid://caqhx8303ks13" path="res://assets/hands/sacrifice_levels/felix/hand8.png" id="19_k8y5n"]
+[ext_resource type="Texture2D" uid="uid://01jo5apelgnj" path="res://assets/hands/sacrifice_levels/felix/fondo8.png" id="20_wmdmp"]
+[ext_resource type="Resource" uid="uid://ce503i68q54xg" path="res://dialogues/5_sacrifice_room_text/henry_felix_text.dialogue" id="20_ybqcb"]
+[ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="22_k7sax"]
+[ext_resource type="Texture2D" uid="uid://dnmamrga02qu1" path="res://assets/hands/sacrifice_levels/grant boss/round2_9.png" id="23_yqgwe"]
+[ext_resource type="Texture2D" uid="uid://0beccjxg1t5n" path="res://assets/hands/sacrifice_levels/grant boss/round3_9.png" id="24_3cgo7"]
+[ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="25_m6ofi"]
+[ext_resource type="Texture2D" uid="uid://bn365qy6go2ja" path="res://assets/hands/sacrifice_levels/grant boss/fondo.png" id="26_6bi5s"]
+[ext_resource type="Resource" uid="uid://t3cb4yfbxryq" path="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue" id="27_umff0"]
 
 [node name="Level4" instance=ExtResource("1_rshu4")]
 
@@ -15,86 +37,124 @@
 texture = ExtResource("2_2po1l")
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_choej")]
-position = Vector2(568, 193)
-required_minigames = [NodePath("../PendienteA"), NodePath("../PendienteB"), NodePath("../Boss")]
+position = Vector2(504, 129)
+required_minigames = [NodePath("../Felix"), NodePath("../Wallace"), NodePath("../GrantBoss")]
 open_texture = ExtResource("4_sanj8")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 126.0
 texture_normal = ExtResource("5_qbsi2")
 
-[node name="PendienteA" parent="." index="2" instance=ExtResource("2_ovyfg")]
-position = Vector2(23, 174)
+[node name="Wallace" parent="." index="2" instance=ExtResource("2_ovyfg")]
+position = Vector2(65, 158)
+char_name = "wallace"
+handshake_textures = Array[Texture2D]([ExtResource("7_i1ug2"), ExtResource("8_pnmek"), ExtResource("9_cgvow")])
+oppponent_texture = ExtResource("10_gpgsh")
+dialogue_beaten = ExtResource("11_tfrwv")
+dialogue = ExtResource("12_g1pxe")
 
-[node name="MinigameLabel" parent="PendienteA" index="2"]
-text = "PERSONAJE
-A"
+[node name="Background" parent="Wallace" index="0"]
+texture = ExtResource("11_u30fp")
 
-[node name="BlitzTypingRound" parent="PendienteA/Minigames" index="0" instance=ExtResource("3_e0ltp")]
-time_per_letter = 1.0
-min_length = 3
-max_length = 5
+[node name="InteractableComponent" parent="Wallace" index="1"]
+offset_right = 137.0
+offset_bottom = 179.0
+texture_normal = ExtResource("7_f3mrk")
 
-[node name="BlitzTypingRound2" parent="PendienteA/Minigames" index="1" instance=ExtResource("3_e0ltp")]
-time_per_letter = 1.0
-min_length = 5
-max_length = 7
-
-[node name="BlitzTypingRound3" parent="PendienteA/Minigames" index="2" instance=ExtResource("3_e0ltp")]
-time_per_letter = 1.0
-min_length = 7
-
-[node name="PendienteB" parent="." index="3" instance=ExtResource("2_ovyfg")]
-position = Vector2(535, 179)
-
-[node name="MinigameLabel" parent="PendienteB" index="2"]
+[node name="MinigameLabel" parent="Wallace" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="BlitzTypingRound" parent="PendienteB/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound" parent="Wallace/Minigames" index="0" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 3
 max_length = 5
 
-[node name="BlitzTypingRound2" parent="PendienteB/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound2" parent="Wallace/Minigames" index="1" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 5
 max_length = 7
 
-[node name="BlitzTypingRound3" parent="PendienteB/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound3" parent="Wallace/Minigames" index="2" instance=ExtResource("3_e0ltp")]
 theme = 1
 time_per_letter = 1.0
 min_length = 7
 
-[node name="Boss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ovyfg")]
-position = Vector2(249, 108)
-required_minigames = [NodePath("../PendienteA"), NodePath("../PendienteB")]
+[node name="Felix" parent="." index="3" instance=ExtResource("2_ovyfg")]
+position = Vector2(438, 158)
+char_name = "felix"
+handshake_textures = Array[Texture2D]([ExtResource("16_q2n4w"), ExtResource("17_l5faf"), ExtResource("18_k5e2v")])
+oppponent_texture = ExtResource("19_k8y5n")
+dialogue = ExtResource("20_ybqcb")
 
-[node name="MinigameLabel" parent="Boss" index="2"]
+[node name="Background" parent="Felix" index="0"]
+texture = ExtResource("20_wmdmp")
+
+[node name="InteractableComponent" parent="Felix" index="1"]
+texture_normal = ExtResource("9_ukqb2")
+
+[node name="MinigameLabel" parent="Felix" index="2"]
+text = "PERSONAJE
+A"
+
+[node name="BlitzTypingRound" parent="Felix/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+time_per_letter = 1.0
+min_length = 3
+max_length = 5
+
+[node name="BlitzTypingRound2" parent="Felix/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+time_per_letter = 1.0
+min_length = 5
+max_length = 7
+
+[node name="BlitzTypingRound3" parent="Felix/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+time_per_letter = 1.0
+min_length = 7
+
+[node name="GrantBoss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ovyfg")]
+position = Vector2(201, 209)
+required_minigames = [NodePath("../Felix"), NodePath("../Wallace")]
+char_name = "grant"
+handshake_textures = Array[Texture2D]([ExtResource("22_k7sax"), ExtResource("23_yqgwe"), ExtResource("24_3cgo7")])
+oppponent_texture = ExtResource("25_m6ofi")
+dialogue = ExtResource("27_umff0")
+
+[node name="Background" parent="GrantBoss" index="0"]
+texture = ExtResource("26_6bi5s")
+
+[node name="InteractableComponent" parent="GrantBoss" index="1"]
+offset_right = 250.0
+offset_bottom = 62.0
+texture_normal = ExtResource("10_bkqri")
+
+[node name="MinigameLabel" parent="GrantBoss" index="2"]
 text = "MINI
 BOSS"
 
-[node name="BlitzTypingRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound" parent="GrantBoss/Minigames" index="0" instance=ExtResource("3_e0ltp")]
 theme = 2
 time_per_letter = 1.0
 sequence_quantity = 3
 
-[node name="BlitzTypingRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound2" parent="GrantBoss/Minigames" index="1" instance=ExtResource("3_e0ltp")]
 theme = 3
 time_per_letter = 1.0
 sequence_quantity = 3
 
-[node name="BlitzTypingRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_e0ltp")]
+[node name="BlitzTypingRound3" parent="GrantBoss/Minigames" index="2" instance=ExtResource("3_e0ltp")]
 theme = 4
 time_per_letter = 1.0
 sequence_quantity = 1
 
 [node name="Reference" parent="." index="5"]
-visible = false
 texture = ExtResource("8_pvfeu")
 
 [editable path="TransitionTrigger"]
-[editable path="PendienteA"]
-[editable path="PendienteB"]
-[editable path="Boss"]
+[editable path="Wallace"]
+[editable path="Felix"]
+[editable path="GrantBoss"]

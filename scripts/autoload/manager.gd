@@ -14,11 +14,11 @@ var portraits: Dictionary = {
 			"texture": preload("res://assets/hall/character1_text.png"),
 			"offset": 240,
 		},
-		"pending1": {
+		"steven": {
 			"texture": preload("res://assets/hall/character2_text.png"),
 			"offset": 40,
 		},
-		"pending2": {
+		"travis": {
 			"texture": preload("res://assets/hall/character2_text.png"),
 			"offset": 180,
 		},
@@ -38,15 +38,15 @@ var portraits: Dictionary = {
 		},
 	},
 	"sacrifice_room": {
-		"pending0": {
+		"wallace": {
 			"texture": preload("res://assets/sacrificeroom/sc_textbox_1.png"),
 			"offset": 220,
 		},
-		"pending1": {
+		"felix": {
 			"texture": preload("res://assets/sacrificeroom/sc_textbox_2.png"),
 			"offset": 40,
 		},
-		"pending2": {
+		"grant": {
 			"texture": preload("res://assets/sacrificeroom/sc_textbox_3.png"),
 			"offset": 200,
 		},

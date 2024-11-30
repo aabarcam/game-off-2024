@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=33 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://dey5xr2hdvau8" path="res://assets/hands/henry/henryhands7.png" id="14_xf4k1"]
 [ext_resource type="Texture2D" uid="uid://b2bycyab0a35f" path="res://assets/hands/henry/henryhands8.png" id="15_rhjvk"]
 [ext_resource type="Texture2D" uid="uid://jcc5gmvk00gs" path="res://assets/hands/henry/henryhands9.png" id="16_uracd"]
-[ext_resource type="Texture2D" uid="uid://caaloxrhd2f4u" path="res://assets/prototype/contrincante.png" id="17_0nhel"]
 [ext_resource type="Texture2D" uid="uid://cbf546kcltt5i" path="res://assets/hands/henry/henryhands10.png" id="17_d3kbt"]
 [ext_resource type="Texture2D" uid="uid://pimrl4tiydxn" path="res://assets/hands/henry/henryhands11.png" id="18_18xjo"]
 [ext_resource type="Texture2D" uid="uid://dteaptwwjb4bq" path="res://assets/hands/henry/henryhands12.png" id="19_4nudc"]
@@ -31,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://0etc3pab1v6t" path="res://assets/hands/henry/henryhands15.png" id="22_ejw1h"]
 [ext_resource type="Texture2D" uid="uid://dsult6ypou8q7" path="res://assets/hands/henry/henryhands16.png" id="23_jxne3"]
 [ext_resource type="Texture2D" uid="uid://cryxukskkphs7" path="res://assets/hands/nivel0/fondo0.png" id="26_d8t8d"]
+[ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="30_uv06v"]
+[ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="31_kqgqu"]
 
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("minigames", "interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
@@ -145,23 +146,23 @@ position = Vector2(1048, 546)
 
 [node name="PlayerHandSprite" type="Sprite2D" parent="HandSprites"]
 visible = false
-position = Vector2(-71.0648, -75)
+position = Vector2(-85.4533, 97.6619)
 scale = Vector2(2, 2)
 texture = ExtResource("8_ckpak")
 centered = false
 
 [node name="OpponentHandSprite" type="Sprite2D" parent="HandSprites"]
 visible = false
-position = Vector2(605.461, -82)
+position = Vector2(605.461, 176.993)
 scale = Vector2(2, 2)
-texture = ExtResource("17_0nhel")
+texture = ExtResource("30_uv06v")
 centered = false
 
 [node name="HandshakeSprite" type="Sprite2D" parent="HandSprites"]
 visible = false
 position = Vector2(-63, -21)
 scale = Vector2(2, 2)
-texture = ExtResource("12_8gg1k")
+texture = ExtResource("31_kqgqu")
 centered = false
 
 [node name="Minigames" type="Node2D" parent="."]

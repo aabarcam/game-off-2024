@@ -48,20 +48,20 @@ func _on_transition_triggered() -> void:
 	if next_level_path == "":
 		return
 	var next_level: PackedScene = load(next_level_path)
-	await transition_start(next_level)
-	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-	MusicController.play_music("zone_1")
-	await transition_end()
-
-func transition_start(next_level: PackedScene) -> void:
-	transition_screen.show()
-	transition_screen.modulate.a = 0
-	await create_tween().tween_property(transition_screen, "modulate:a", 1.0, 1.0).finished
+	await transition_start()
 	get_tree().change_scene_to_packed(next_level)
 	if next_transition_dialogue != null:
 		#DialogueManager.show_example_dialogue_balloon(next_transition_dialogue, "start", [self])
 		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, next_transition_dialogue, "start", [self])
 		await DialogueManager.dialogue_ended
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	MusicController.play_music("zone_1")
+	await transition_end()
+
+func transition_start() -> void:
+	transition_screen.show()
+	transition_screen.modulate.a = 0
+	await create_tween().tween_property(transition_screen, "modulate:a", 1.0, 1.0).finished
 
 func transition_end() -> void:
 	transition_screen.show()

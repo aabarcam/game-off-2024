@@ -49,8 +49,11 @@ var dialogue_line: DialogueLine:
 				offset_x = level_portrait[char_name]["offset"]
 
 		box_texture.texture = text_box
+		box_texture.size = box_texture.texture.get_size()
+		box_texture.position.y = 360 - box_texture.size.y
+		box_texture.position.y = 0
 		dialogue_box.position.x = offset_x
-		dialogue_box.position.y = 20
+		dialogue_box.position.y = 54
 		dialogue_box.size.x = 550 - dialogue_box.position.x
 
 		character_label.visible = not dialogue_line.character.is_empty()

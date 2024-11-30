@@ -58,6 +58,7 @@ signal lost ## Minigame lost
 @export_category("Hand textures")
 @export var player_textures: Array[Texture2D] = []
 @export var handshake_textures: Array[Texture2D] = []
+@export var oppponent_texture: Texture2D
 
 var active: bool = false
 var minigame_list: Array[Node]
@@ -84,6 +85,7 @@ var open: bool = false:
 @onready var original_lives: int = lives
 @onready var shake_test: Sprite2D = $ShakeTest
 @onready var shake_test_original_position: Vector2 = shake_test.position
+@onready var background: TextureRect = $Background
 
 @export_category("Dialogues")
 @export var dialogue_before_open: DialogueResource
@@ -99,8 +101,8 @@ func _ready_game() -> void:
 	Signals.register_signal(won, self)
 	Signals.register_signal(lost, self)
 	
-	for minigame in required_minigames:
-		minigame.won.connect(_on_minigame_won)
+	for _minigame in required_minigames:
+		_minigame.won.connect(_on_minigame_won)
 	if required_minigames.is_empty():
 		set_open(true)
 	
@@ -110,11 +112,17 @@ func _ready_game() -> void:
 	grenade_instructions.global_position = Vector2.ZERO
 	grenade_instructions.modulate.a = 1.0
 	
+	background.global_position = Vector2.ZERO
+	background.modulate.a = 1.0
+	
 	#player_hand.global_position = player_hand.position
 	#opponent_hand.global_position = opponent_hand.position
 	#handshake.global_position = handshake.position
 	hand_sprites.global_position = Vector2(0, 0)
 	player_hand_original_position = player_hand.global_position
+	
+	if oppponent_texture != null:
+		opponent_hand.texture = oppponent_texture
 	
 	reset_trigger()
 	
@@ -161,6 +169,7 @@ func reset_trigger() -> void:
 	lives = original_lives
 	grenade_component.reset()
 	grenade_instructions.hide()
+	background.hide()
 	instructions.hide()
 	hide_hands()
 	handshake.hide()
@@ -174,6 +183,7 @@ func hide_hands() -> void:
 	opponent_hand.hide()
 
 func show_instructions() -> void:
+	background.show()
 	instructions.show()
 
 func update_debug_label() -> void:
@@ -223,6 +233,7 @@ func next_round() -> void:
 func notify_minigame_triggered() -> void:
 	clicked.emit(self)
 	interacted_times += 1
+	interactable_component.hide()
 	show_instructions()
 
 func get_random_player_sprite() -> Texture2D:
@@ -237,6 +248,7 @@ func disable_grenade() -> void:
 
 func notify_minigame_lost() -> void:
 	#current_round.reset()
+	interactable_component.show()
 	reset_trigger()
 	lost.emit()
 
@@ -249,6 +261,7 @@ func notify_minigame_won() -> void:
 
 func notify_done() -> void:
 	cleared = true
+	interactable_component.show()
 	won.emit()
 
 func prompt_grenade() -> void:
@@ -265,8 +278,8 @@ func update_shake_config() -> void:
 
 func all_minigames_cleared() -> bool:
 	var output: bool = true
-	for minigame in required_minigames:
-		output = output and minigame.cleared
+	for _minigame in required_minigames:
+		output = output and _minigame.cleared
 	return output
 	
 ## Getters/Setters
@@ -316,6 +329,8 @@ func _on_trigger_clicked() -> void:
 			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_before_open, "start", [self])
 
 func _on_round_won() -> void:
+	handshake.texture = handshake_textures[min(round_count, handshake_textures.size())]
+	
 	round_count += 1
 	
 	if minigame_list.is_empty():
@@ -334,7 +349,8 @@ func _on_round_won() -> void:
 	if minigame_list.is_empty():
 		notify_minigame_won()
 	else:
-		current_round.reset()
+		if current_round != null:
+			current_round.reset()
 		#current_round.start_round()
 		next_round()
 		#reset_trigger()

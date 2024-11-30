@@ -6,7 +6,7 @@ var portraits: Dictionary = {
 	"living_room": {
 		"norman": {
 			"texture": preload("res://assets/living_room/living_room_textbox.png"),
-			"offset": 220,
+			"offset": 180,
 		}
 	},
 	"hall": {

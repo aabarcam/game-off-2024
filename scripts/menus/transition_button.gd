@@ -1,0 +1,18 @@
+extends TextureButton
+
+## Target scene to transition to on button press
+@export_file(".tscn") var target_scene_path: String
+
+## Whether to change to target scene or spawn target scene
+@export var scene_change: bool = true
+
+func _ready() -> void:
+	button_up.connect(_on_button_up)
+
+func _on_button_up() -> void:
+	if scene_change:
+		get_tree().change_scene_to_file(target_scene_path)
+	else:
+		var new_scene: PackedScene = load(target_scene_path)
+		var new_instance: Control = new_scene.instantiate()
+		add_child(new_instance)

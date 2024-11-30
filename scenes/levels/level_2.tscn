@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://be8fo7qldu3f1"]
+[gd_scene load_steps=13 format=3 uid="uid://be8fo7qldu3f1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_03nfb"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_kuhbm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dvgjbfkeyqgv" path="res://assets/hall/doorhall_closed.png" id="7_3tis8"]
 [ext_resource type="Texture2D" uid="uid://bxnqsjl1u8egp" path="res://assets/hall/character3.png" id="7_bmoas"]
 [ext_resource type="Texture2D" uid="uid://cag25ldghpogw" path="res://assets/hall/hall_example.png" id="8_l0jhn"]
+[ext_resource type="Resource" uid="uid://d2yabxdg70gdx" path="res://dialogues/4_main_hall_text/henry_stanley_text.dialogue" id="9_4qce5"]
 [ext_resource type="Texture2D" uid="uid://cwunc3ioa0jjv" path="res://assets/hall/character2.png" id="9_jxksl"]
 
 [node name="Level2" instance=ExtResource("1_03nfb")]
@@ -17,7 +18,6 @@ level_name = "hall"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_l8ywe")
-centered = false
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("5_13wjo")]
 position = Vector2(330, 207)
@@ -78,6 +78,7 @@ time_per_sequence = 3.0
 [node name="Stanley" parent="." index="3" instance=ExtResource("2_kuhbm")]
 position = Vector2(181, 366)
 char_name = "stanley"
+dialogue = ExtResource("9_4qce5")
 
 [node name="InteractableComponent" parent="Stanley" index="0"]
 offset_left = 486.0

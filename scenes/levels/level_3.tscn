@@ -10,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
 
 [node name="Level3" instance=ExtResource("1_37w43")]
+level_name = "conference_room"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_lmqtt")
 
-[node name="TransitionTrigger" parent="." index="1" instance=ExtResource("3_36rk4")]
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_36rk4")]
+required_minigames = [NodePath("../MinigameTrigger"), NodePath("../MinigameTrigger2"), NodePath("../Boss")]
 open_texture = ExtResource("4_5j4ih")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
@@ -58,22 +60,22 @@ time_per_sequence = 9.0
 ambiguous_words = 3
 time_per_sequence = 9.0
 
-[node name="MinigameTrigger3" parent="." index="4" instance=ExtResource("2_ihj4d")]
-position = Vector2(583, 233)
+[node name="Boss" parent="." index="4" instance=ExtResource("2_ihj4d")]
+position = Vector2(261, 116)
 
-[node name="MinigameLabel" parent="MinigameTrigger3" index="1"]
+[node name="MinigameLabel" parent="Boss" index="1"]
 text = "MINI
 BOSS"
 
-[node name="HangmanRound" parent="MinigameTrigger3/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_djuq7")]
 ambiguous_words = 1
 time_per_sequence = 7.0
 
-[node name="HangmanRound2" parent="MinigameTrigger3/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_djuq7")]
 ambiguous_words = 2
 time_per_sequence = 6.0
 
-[node name="HangmanRound3" parent="MinigameTrigger3/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_djuq7")]
 missing_letters = 2
 ambiguous_words = 3
 
@@ -83,4 +85,4 @@ texture = ExtResource("5_begou")
 [editable path="TransitionTrigger"]
 [editable path="MinigameTrigger"]
 [editable path="MinigameTrigger2"]
-[editable path="MinigameTrigger3"]
+[editable path="Boss"]

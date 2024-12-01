@@ -137,4 +137,4 @@ func _on_transition_triggered() -> void:
 
 func _on_clicked_disabled() -> void:
 	# sonido malo
-	pass
+	MusicController.play_sfx_not()

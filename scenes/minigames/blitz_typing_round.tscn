@@ -18,7 +18,7 @@ color = Color(0, 0, 0, 1)
 [node name="SequenceGeneratorComponent" parent="." instance=ExtResource("1_dw0ll")]
 
 [node name="Sequence1" type="Marker2D" parent="."]
-position = Vector2(256, 64)
+position = Vector2(136, 64)
 
 [node name="DebugLabel" type="Label" parent="Sequence1"]
 visible = false

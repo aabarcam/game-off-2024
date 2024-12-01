@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckyyb8vjgbxr4"]
+[gd_scene load_steps=18 format=3 uid="uid://ckyyb8vjgbxr4"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_37w43"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ihj4d"]
@@ -8,9 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://1hynl2janovb" path="res://assets/conference room/door_open_conference_room.png" id="4_5j4ih"]
 [ext_resource type="Texture2D" uid="uid://7a7q371eeygq" path="res://assets/conference room/door_closed_conference_room.png" id="5_5kdco"]
 [ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
+[ext_resource type="Resource" uid="uid://dmdgntrar6s53" path="res://dialogues/5_conference_room_text/henry_alan_after_handshake_text.dialogue" id="7_j0ihb"]
 [ext_resource type="Texture2D" uid="uid://cbj4nr0qmfcwo" path="res://assets/conference room/character1_cr.png" id="7_wbiub"]
+[ext_resource type="Resource" uid="uid://dljscuawc8vcq" path="res://dialogues/5_conference_room_text/henry_alan_text.dialogue" id="8_uf0q1"]
 [ext_resource type="Texture2D" uid="uid://dj18bcpm176ii" path="res://assets/conference room/character2_cr.png" id="9_hhqji"]
 [ext_resource type="Texture2D" uid="uid://dninukrio7a2f" path="res://assets/conference room/character3_cr.png" id="10_ndvr7"]
+[ext_resource type="Resource" uid="uid://chpy6sdnluk0y" path="res://dialogues/5_conference_room_text/henry_truman_after_handshake_text.dialogue" id="11_ice8b"]
+[ext_resource type="Resource" uid="uid://c2rxrvyna7sfx" path="res://dialogues/5_conference_room_text/henry_truman_text.dialogue" id="12_lu0q2"]
+[ext_resource type="Resource" uid="uid://c5emomaaw6tfy" path="res://dialogues/5_conference_room_text/henry_tony_after_handshake_text.dialogue" id="14_43s2n"]
+[ext_resource type="Resource" uid="uid://dsb1ggotk0tpn" path="res://dialogues/5_conference_room_text/henry_tony_text.dialogue" id="15_l1h1a"]
 
 [node name="Level3" node_paths=PackedStringArray("transition") instance=ExtResource("1_37w43")]
 level_name = "conference_room"
@@ -34,6 +40,8 @@ texture_normal = ExtResource("5_5kdco")
 [node name="Alan" parent="." index="2" instance=ExtResource("2_ihj4d")]
 position = Vector2(203, 106)
 char_name = "alan"
+dialogue_beaten = ExtResource("7_j0ihb")
+dialogue = ExtResource("8_uf0q1")
 
 [node name="Background" parent="Alan" index="0"]
 texture = null
@@ -56,6 +64,8 @@ time_per_sequence = 7.0
 [node name="Truman" parent="." index="3" instance=ExtResource("2_ihj4d")]
 position = Vector2(71, 141)
 char_name = "truman"
+dialogue_beaten = ExtResource("11_ice8b")
+dialogue = ExtResource("12_lu0q2")
 
 [node name="Background" parent="Truman" index="0"]
 texture = null
@@ -87,6 +97,8 @@ time_per_sequence = 9.0
 position = Vector2(459, 123)
 required_minigames = [NodePath("../Alan"), NodePath("../Truman")]
 char_name = "tony"
+dialogue_beaten = ExtResource("14_43s2n")
+dialogue = ExtResource("15_l1h1a")
 
 [node name="Background" parent="TonyBoss" index="0"]
 texture = null

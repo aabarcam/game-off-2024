@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3jtrt7tpldwt"]
+[gd_scene load_steps=33 format=3 uid="uid://b3jtrt7tpldwt"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_rshu4"]
 [ext_resource type="Texture2D" uid="uid://brc6sjmghnyn2" path="res://assets/sacrificeroom/sc_background.png" id="2_2po1l"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c16uqeq3jv7kh" path="res://assets/hands/sacrifice_levels/felix/round2_8.png" id="17_l5faf"]
 [ext_resource type="Texture2D" uid="uid://ddp5qhysnye01" path="res://assets/hands/sacrifice_levels/felix/round3_8.png" id="18_k5e2v"]
 [ext_resource type="Texture2D" uid="uid://caqhx8303ks13" path="res://assets/hands/sacrifice_levels/felix/hand8.png" id="19_k8y5n"]
+[ext_resource type="Resource" uid="uid://bm1vhfmlyntur" path="res://dialogues/5_sacrifice_room_text/henry_felix_after_handshake_text.dialogue" id="20_om8ff"]
 [ext_resource type="Texture2D" uid="uid://01jo5apelgnj" path="res://assets/hands/sacrifice_levels/felix/fondo8.png" id="20_wmdmp"]
 [ext_resource type="Resource" uid="uid://ce503i68q54xg" path="res://dialogues/5_sacrifice_room_text/henry_felix_text.dialogue" id="20_ybqcb"]
 [ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="22_k7sax"]
@@ -30,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="25_m6ofi"]
 [ext_resource type="Texture2D" uid="uid://bn365qy6go2ja" path="res://assets/hands/sacrifice_levels/grant boss/fondo.png" id="26_6bi5s"]
 [ext_resource type="Resource" uid="uid://t3cb4yfbxryq" path="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue" id="27_umff0"]
+[ext_resource type="Resource" uid="uid://68aq6stk6whr" path="res://dialogues/5_sacrifice_room_text/henry_grant_after_handshake_text.dialogue" id="28_74s0k"]
 
 [node name="Level4" node_paths=PackedStringArray("transition") instance=ExtResource("1_rshu4")]
 level_name = "sacrifice_room"
@@ -93,6 +95,7 @@ position = Vector2(438, 158)
 char_name = "felix"
 handshake_textures = Array[Texture2D]([ExtResource("16_q2n4w"), ExtResource("17_l5faf"), ExtResource("18_k5e2v")])
 oppponent_texture = ExtResource("19_k8y5n")
+dialogue_beaten = ExtResource("20_om8ff")
 dialogue = ExtResource("20_ybqcb")
 
 [node name="Background" parent="Felix" index="0"]
@@ -125,6 +128,7 @@ required_minigames = [NodePath("../Felix"), NodePath("../Wallace")]
 char_name = "grant"
 handshake_textures = Array[Texture2D]([ExtResource("22_k7sax"), ExtResource("23_yqgwe"), ExtResource("24_3cgo7")])
 oppponent_texture = ExtResource("25_m6ofi")
+dialogue_beaten = ExtResource("28_74s0k")
 dialogue = ExtResource("27_umff0")
 
 [node name="Background" parent="GrantBoss" index="0"]

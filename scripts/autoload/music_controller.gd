@@ -21,6 +21,8 @@ var sound : float = 1: set = set_sound
 @onready var grenade_hold_sfx: AudioStreamPlayer = $GrenadeHoldSFX
 @onready var letter_type_sfx: AudioStreamPlayer = $LetterTypeSFX
 @onready var letter_wrong_sfx: AudioStreamPlayer = $LetterWrongSFX
+@onready var minigame_lost_sfx: AudioStreamPlayer = $MinigameLostSFX
+
 
 
 ## MUSIC FUNCTIONS
@@ -52,8 +54,11 @@ func play_sfx_door_open() -> void:
 func play_sfx_door_enter() -> void:
 	door_enter_sfx.play()
 
-func play_sfx_explosion() ->void:
+func play_sfx_explosion() -> void:
 	explosion_sfx.play()
+	
+func play_sfx_lost() -> void:
+	minigame_lost_sfx.play()
 
 func play_sfx_text_click() -> void:
 	text_click_sfx.play()

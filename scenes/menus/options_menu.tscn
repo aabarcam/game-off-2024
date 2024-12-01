@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ervsvdutg7y"]
+[gd_scene load_steps=3 format=3 uid="uid://b1ervsvdutg7y"]
 
 [ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_wni2c"]
+[ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_6rthe"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -22,3 +23,11 @@ offset_left = 228.0
 offset_top = 248.0
 offset_right = 412.0
 offset_bottom = 264.0
+
+[node name="BackButton" parent="." instance=ExtResource("2_6rthe")]
+layout_mode = 1
+offset_left = 474.0
+offset_top = 196.0
+offset_right = 602.0
+offset_bottom = 324.0
+target_scene_path = "res://scenes/menus/main_menu.tscn"

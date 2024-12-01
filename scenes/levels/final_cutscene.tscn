@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctpyptfl2qqgg"]
+[gd_scene load_steps=8 format=3 uid="uid://cu7dr11576vl6"]
 
 [ext_resource type="Script" path="res://scripts/final_cutscene.gd" id="1_rn5qq"]
 [ext_resource type="Texture2D" uid="uid://fmbyswolw77x" path="res://assets/street/street_end.png" id="2_226r0"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogues/void_balloon/balloon.tscn" id="2_p1b64"]
-[ext_resource type="PackedScene" path="res://scenes/menus/credits.tscn" id="3_6y5no"]
+[ext_resource type="PackedScene" uid="uid://bfkpyjokc0kvw" path="res://scenes/menus/credits.tscn" id="3_6y5no"]
 [ext_resource type="Texture2D" uid="uid://dypqm4ojkqa8s" path="res://assets/credits/ejemplo.png" id="5_0x204"]
 [ext_resource type="Texture2D" uid="uid://di82bjq5oatej" path="res://assets/credits/credits1.png" id="6_pm5pd"]
 [ext_resource type="Texture2D" uid="uid://bfstewhsaee75" path="res://assets/credits/thank you.png" id="7_pled6"]

@@ -461,7 +461,7 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		return
 	if resource == dialogue:
 		notify_minigame_triggered()
-	elif resource == dialogue_instructions:
+	elif resource == dialogue_instructions and get_parent().active_minigame == self:
 		prompt_grenade()
 	elif resource == dialogue_beaten and is_boss:
 		Signals.transition_triggered.emit()

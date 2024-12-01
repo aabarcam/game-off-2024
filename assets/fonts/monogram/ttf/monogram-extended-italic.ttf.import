@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dwvoviarbyate"
-path="res://.godot/imported/PixelifySans-SemiBold.ttf-d1062290f3824df197953a7689a1ecdf.fontdata"
+uid="uid://b3ekeaydjccod"
+path="res://.godot/imported/monogram-extended-italic.ttf-53a36f67174c94470dcb70d0794fad94.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf"
-dest_files=["res://.godot/imported/PixelifySans-SemiBold.ttf-d1062290f3824df197953a7689a1ecdf.fontdata"]
+source_file="res://assets/fonts/monogram/ttf/monogram-extended-italic.ttf"
+dest_files=["res://.godot/imported/monogram-extended-italic.ttf-53a36f67174c94470dcb70d0794fad94.fontdata"]
 
 [params]
 

@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://reacflfakkjd"
-path="res://.godot/imported/PixelifySans-Bold.ttf-967d8ecfc191350c92b25613a33eceb0.fontdata"
+uid="uid://c76uyuq5r0105"
+path="res://.godot/imported/monogram.ttf-1948aaec1f3447f28e5ae2ff7f801fa1.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf"
-dest_files=["res://.godot/imported/PixelifySans-Bold.ttf-967d8ecfc191350c92b25613a33eceb0.fontdata"]
+source_file="res://assets/fonts/monogram/ttf/monogram.ttf"
+dest_files=["res://.godot/imported/monogram.ttf-1948aaec1f3447f28e5ae2ff7f801fa1.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

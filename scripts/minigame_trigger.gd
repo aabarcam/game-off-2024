@@ -128,6 +128,8 @@ func _ready_game() -> void:
 	if oppponent_texture != null:
 		opponent_hand.texture = oppponent_texture
 	
+	#opponent_hand.texture = oppponent_texture
+	
 	reset_trigger()
 	
 	minigame_label_debug.hide()

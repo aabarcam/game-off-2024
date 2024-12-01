@@ -64,7 +64,7 @@ func reset() -> void:
 
 func delete_previous_sequences() -> void:
 	for seq in previous_sequences:
-		#seq.queue_free()
+		seq.stop_timer()
 		seq.queue_free()
 	previous_sequences = []
 

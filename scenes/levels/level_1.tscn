@@ -8,13 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://bj8hr6hkuqm55" path="res://assets/living_room/living_room_cdoor.png" id="4_evdec"]
 [ext_resource type="Texture2D" uid="uid://bu7sbia16qltd" path="res://assets/living_room/living_room_odoor.png" id="4_rk4x4"]
 [ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
+[ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_38emy"]
 [ext_resource type="Resource" uid="uid://b6j5tm6qmpll8" path="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue" id="7_dvhhj"]
 [ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_olu7a"]
 [ext_resource type="Resource" uid="uid://cmxluthjrawcv" path="res://dialogues/3_living_room_text/henry_norman_text.dialogue" id="8_u5ugt"]
 [ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
-[ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_vsmeq"]
-[ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_ueisr"]
-[ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_mkswk"]
+[ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_x8iax"]
+[ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_17b4w"]
+[ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_qtrsy"]
+[ext_resource type="Texture2D" uid="uid://cpso6ven4k5vi" path="res://assets/hands/living_level/norman/fondo0.png" id="13_i6plk"]
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
@@ -40,8 +42,8 @@ texture_normal = ExtResource("4_evdec")
 position = Vector2(129, 186)
 lives = -1
 char_name = "norman"
-handshake_textures = Array[Texture2D]([ExtResource("7_olu7a"), ExtResource("8_vsmeq"), ExtResource("9_ueisr")])
-oppponent_texture = ExtResource("10_mkswk")
+handshake_textures = Array[Texture2D]([ExtResource("7_38emy"), ExtResource("8_x8iax"), ExtResource("9_17b4w")])
+oppponent_texture = ExtResource("10_qtrsy")
 dialogue_beaten = ExtResource("7_dvhhj")
 dialogue = ExtResource("8_u5ugt")
 

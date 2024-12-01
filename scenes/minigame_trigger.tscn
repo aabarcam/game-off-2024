@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://clav8tdybxrx5" path="res://icon.svg" id="21_wrkdh"]
 [ext_resource type="Texture2D" uid="uid://0etc3pab1v6t" path="res://assets/hands/henry/henryhands15.png" id="22_ejw1h"]
 [ext_resource type="Texture2D" uid="uid://dsult6ypou8q7" path="res://assets/hands/henry/henryhands16.png" id="23_jxne3"]
-[ext_resource type="Texture2D" uid="uid://cryxukskkphs7" path="res://assets/hands/nivel0/fondo0.png" id="26_d8t8d"]
+[ext_resource type="Texture2D" uid="uid://cpso6ven4k5vi" path="res://assets/hands/living_level/norman/fondo0.png" id="26_d8t8d"]
 [ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="30_uv06v"]
 [ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="31_kqgqu"]
 

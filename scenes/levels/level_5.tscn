@@ -59,6 +59,7 @@ _data = {
 
 [node name="Level5" instance=ExtResource("1_i1c4q")]
 level_name = "void"
+music_name = "void"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_uhmnx")

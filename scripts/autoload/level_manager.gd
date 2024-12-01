@@ -14,6 +14,7 @@ var level_name: String:
 	set = set_level_name
 var char_name: String:
 	set = set_char_name
+var music_name: String
 
 @onready var transition_screen: ColorRect = $CanvasLayer/TransitionScreen
 
@@ -55,7 +56,6 @@ func _on_transition_triggered() -> void:
 		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, next_transition_dialogue, "start", [self])
 		await DialogueManager.dialogue_ended
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-	MusicController.play_music("zone_1")
 	await transition_end()
 
 func transition_start() -> void:

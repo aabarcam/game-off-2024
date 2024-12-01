@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjsgh722vmc5e"]
+[gd_scene load_steps=16 format=3 uid="uid://cjsgh722vmc5e"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
 [ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
 [ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_38emy"]
 [ext_resource type="Resource" uid="uid://b6j5tm6qmpll8" path="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue" id="7_dvhhj"]
+[ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_olu7a"]
 [ext_resource type="Resource" uid="uid://cmxluthjrawcv" path="res://dialogues/3_living_room_text/henry_norman_text.dialogue" id="8_u5ugt"]
 [ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
 [ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_x8iax"]
@@ -20,6 +21,7 @@
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
 level_name = "living_room"
+music_name = "living"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_8lbcf")
@@ -44,9 +46,6 @@ handshake_textures = Array[Texture2D]([ExtResource("7_38emy"), ExtResource("8_x8
 oppponent_texture = ExtResource("10_qtrsy")
 dialogue_beaten = ExtResource("7_dvhhj")
 dialogue = ExtResource("8_u5ugt")
-
-[node name="Background" parent="Norman" index="0"]
-texture = ExtResource("13_i6plk")
 
 [node name="InteractableComponent" parent="Norman" index="1"]
 offset_left = -115.0

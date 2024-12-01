@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://c86u7yxoqfs8e" path="res://assets/hall/doorhall_open.png" id="6_farau"]
 [ext_resource type="Texture2D" uid="uid://dvgjbfkeyqgv" path="res://assets/hall/doorhall_closed.png" id="7_3tis8"]
 [ext_resource type="Texture2D" uid="uid://bxnqsjl1u8egp" path="res://assets/hall/character3.png" id="7_bmoas"]
-[ext_resource type="Texture2D" uid="uid://deixg1lamdcra" path="res://assets/hands/nivel1/round1_1.png" id="7_vmdhu"]
-[ext_resource type="Texture2D" uid="uid://bgc8rx2onu0yl" path="res://assets/hands/nivel1/round2_1.png" id="8_kss7t"]
+[ext_resource type="Texture2D" uid="uid://44lmfdkpc4rn" path="res://assets/hands/hall_levels/stanley/round1_1.png" id="7_vmdhu"]
+[ext_resource type="Texture2D" uid="uid://dox55hfwxog8p" path="res://assets/hands/hall_levels/stanley/round2_1.png" id="8_kss7t"]
 [ext_resource type="Texture2D" uid="uid://cag25ldghpogw" path="res://assets/hall/hall_example.png" id="8_l0jhn"]
 [ext_resource type="Resource" uid="uid://d2yabxdg70gdx" path="res://dialogues/4_main_hall_text/henry_stanley_text.dialogue" id="9_4qce5"]
 [ext_resource type="Texture2D" uid="uid://cwunc3ioa0jjv" path="res://assets/hall/character2.png" id="9_jxksl"]
-[ext_resource type="Texture2D" uid="uid://cyvavly6u01vl" path="res://assets/hands/nivel1/round3_1.png" id="9_tjumg"]
-[ext_resource type="Texture2D" uid="uid://bx6vf4ufbhw5t" path="res://assets/hands/nivel1/hand1.png" id="10_hih7s"]
-[ext_resource type="Texture2D" uid="uid://5o5rl3hf4bgc" path="res://assets/hands/nivel1/fondo1.png" id="11_674d2"]
+[ext_resource type="Texture2D" uid="uid://iu3dfsf38p7w" path="res://assets/hands/hall_levels/stanley/round3_1.png" id="9_tjumg"]
+[ext_resource type="Texture2D" uid="uid://ctqhlicaarewb" path="res://assets/hands/hall_levels/stanley/hand1.png" id="10_hih7s"]
+[ext_resource type="Texture2D" uid="uid://ehpo771m07mx" path="res://assets/hands/hall_levels/stanley/fondo1.png" id="11_674d2"]
 [ext_resource type="Resource" uid="uid://b4nvkvoyx2nv5" path="res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue" id="11_e2kya"]
 [ext_resource type="Texture2D" uid="uid://dnp726fql70n0" path="res://assets/hands/hall_levels/steven/round1_2.png" id="15_hqj8s"]
 [ext_resource type="Texture2D" uid="uid://bvrrfubclsefb" path="res://assets/hands/hall_levels/steven/round2_2.png" id="16_erwew"]
@@ -35,6 +35,7 @@
 
 [node name="Level2" instance=ExtResource("1_03nfb")]
 level_name = "hall"
+music_name = "hall"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_l8ywe")

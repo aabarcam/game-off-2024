@@ -31,9 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://bn365qy6go2ja" path="res://assets/hands/sacrifice_levels/grant boss/fondo.png" id="26_6bi5s"]
 [ext_resource type="Resource" uid="uid://t3cb4yfbxryq" path="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue" id="27_umff0"]
 
-[node name="Level4" instance=ExtResource("1_rshu4")]
+[node name="Level4" node_paths=PackedStringArray("transition") instance=ExtResource("1_rshu4")]
 level_name = "sacrifice_room"
 music_name = "sacrifice_room"
+transition = NodePath("TransitionTrigger")
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_2po1l")

@@ -16,10 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_17b4w"]
 [ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_qtrsy"]
 
-[node name="Level1" instance=ExtResource("1_0q6oy")]
+[node name="Level1" node_paths=PackedStringArray("transition") instance=ExtResource("1_0q6oy")]
 texture_filter = 1
 level_name = "living_room"
 music_name = "living"
+transition = NodePath("TransitionTrigger")
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_8lbcf")

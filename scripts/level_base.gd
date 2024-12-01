@@ -6,9 +6,9 @@ class_name LevelBase
 @export var level_name: String
 @export var music_name: String
 @export var balloon: PackedScene
+@export var transition: TransitionTrigger
 
 var minigames: Array[Node] = []
-var transition: TransitionTrigger
 var active_minigame: MinigameTrigger:
 	set = set_active_minigame
 var finished: bool = false

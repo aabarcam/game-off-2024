@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://7a7q371eeygq" path="res://assets/conference room/door_closed_conference_room.png" id="5_5kdco"]
 [ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
 
-[node name="Level3" instance=ExtResource("1_37w43")]
+[node name="Level3" node_paths=PackedStringArray("transition") instance=ExtResource("1_37w43")]
 level_name = "conference_room"
 music_name = "conference_room"
+transition = NodePath("TransitionTrigger")
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_lmqtt")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dorjuoki14sj4"
+path="res://.godot/imported/standard_handshake_tutorial.dialogue-2009059b69abe7eb0c9eb9f413bdd19c.tres"
+
+[deps]
+
+source_file="res://dialogues/tutorials/standard_handshake_tutorial.dialogue"
+dest_files=["res://.godot/imported/standard_handshake_tutorial.dialogue-2009059b69abe7eb0c9eb9f413bdd19c.tres"]
+
+[params]
+
+defaults=true

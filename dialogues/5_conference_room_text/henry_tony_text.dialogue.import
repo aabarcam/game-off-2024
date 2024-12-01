@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dsb1ggotk0tpn"
+path="res://.godot/imported/henry_tony_text.dialogue-00477810a4557af453d5472558bfa913.tres"
+
+[deps]
+
+source_file="res://dialogues/5_conference_room_text/henry_tony_text.dialogue"
+dest_files=["res://.godot/imported/henry_tony_text.dialogue-00477810a4557af453d5472558bfa913.tres"]
+
+[params]
+
+defaults=true

@@ -56,6 +56,7 @@ theme_override_icons/grabber = ExtResource("3_v57rm")
 theme_override_icons/grabber_highlight = ExtResource("3_v57rm")
 theme_override_icons/grabber_disabled = ExtResource("3_v57rm")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_nh5gb")
+max_value = 1.0
 
 [node name="BackButton" parent="." instance=ExtResource("2_6rthe")]
 layout_mode = 1

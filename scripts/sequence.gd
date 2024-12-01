@@ -6,6 +6,7 @@ class_name Sequence
 ## sequence timer
 
 var letters: Array[Letter] = []
+var tween: Tween
 
 @onready var container: HBoxContainer = $HBoxContainer
 @onready var timed_bar: TimedBar = $TimedBar
@@ -125,6 +126,10 @@ func pause_timer() -> void:
 
 func set_can_be_wrong(val: bool) -> void:
 	letters.map(func(x:Letter):x.can_be_wrong=val)
+
+func kill_tween() -> void:
+	if tween != null:
+		tween.stop()
 
 func size() -> int:
 	return letters.size()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://dialogues/void_balloon/balloon.gd" id="1_36de5"]
-[ext_resource type="FontFile" uid="uid://c38kjsm830lun" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_7105f"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="FontFile" uid="uid://m62uhgt7y685" path="res://assets/fonts/monogram/ttf/monogram-extended.ttf" id="2_hfhg3"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="Texture2D" uid="uid://drl4yfsh14w4m" path="res://assets/void/void_textbox.png" id="3_qoa5s"]
 [ext_resource type="Texture2D" uid="uid://sdpn0kcvyjog" path="res://assets/void/void_textexample.png" id="6_oogqv"]
@@ -55,6 +55,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
+default_font = ExtResource("2_hfhg3")
 default_font_size = 20
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
@@ -67,7 +68,7 @@ MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="Theme" id="Theme_x07tv"]
-default_font = ExtResource("2_7105f")
+default_font = ExtResource("2_hfhg3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vgvkh"]
 

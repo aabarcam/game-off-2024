@@ -17,6 +17,8 @@ var current_sequence_container: HBoxContainer
 var sequence_size_array: Array = []
 var original_time_per_sequence: float = -1
 
+@onready var finished_sequences_container: HBoxContainer = $FinishedSequencesContainer
+
 func _ready() -> void:
 	if OS.is_debug_build() and get_parent() == get_tree().root:
 		sequences_at_a_time = debug_sequences_at_a_time if debug_sequences_at_a_time >= 0 else sequences_at_a_time
@@ -113,7 +115,9 @@ func reset_sequence_position(sequence: Sequence) -> void:
 		#letter.position.y += 24 * i
 
 func start_sequence_container_move(container: HBoxContainer) -> void:
-	create_tween().tween_property(container, "position:x", letter_stop_point.x, time_per_sequence)
+	var sequence: Sequence = container.get_child(0)
+	sequence.tween = create_tween()
+	sequence.tween.tween_property(container, "position:x", letter_stop_point.x, time_per_sequence)
 
 func reset_sequence_container_position(container: HBoxContainer) -> void:
 	container.position = letter_start_point
@@ -159,6 +163,11 @@ func _on_sequence_timer_timeout() -> void:
 
 func _on_letter_activated() -> void:
 	if is_sequence_activated(current_sequence):
+		current_sequence.stop_timer()
+		current_sequence.kill_tween()
+		remove_child(current_sequence_container)
+		current_sequence_container.position = Vector2.ZERO
+		finished_sequences_container.add_child(current_sequence_container)
 		set_sequence_cleared(current_sequence)
 		key_pressed.emit()
 		if not active_sequences.is_empty():

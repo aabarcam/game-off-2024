@@ -57,7 +57,7 @@ var dialogue_line: DialogueLine:
 		#box_texture.position.y = 0
 		dialogue_box.global_position.x = offset_x
 		dialogue_box.global_position.y = box_texture.global_position.y + box_texture.size.y - 170 + offset_y
-		dialogue_box.size.x = 360
+		dialogue_box.size.x = 350
 		
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dnwj3t11pqpl8"
+path="res://.godot/imported/typing_handshake_tutorial.dialogue-11cfe4a0d23a0edca541663ce9f4214f.tres"
+
+[deps]
+
+source_file="res://dialogues/tutorials/typing_handshake_tutorial.dialogue"
+dest_files=["res://.godot/imported/typing_handshake_tutorial.dialogue-11cfe4a0d23a0edca541663ce9f4214f.tres"]
+
+[params]
+
+defaults=true

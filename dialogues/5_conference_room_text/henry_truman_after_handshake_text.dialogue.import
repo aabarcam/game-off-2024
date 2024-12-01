@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://chpy6sdnluk0y"
+path="res://.godot/imported/henry_truman_after_handshake_text.dialogue-6e57ccd397adb735ecfb592c4874064a.tres"
+
+[deps]
+
+source_file="res://dialogues/5_conference_room_text/henry_truman_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_truman_after_handshake_text.dialogue-6e57ccd397adb735ecfb592c4874064a.tres"]
+
+[params]
+
+defaults=true

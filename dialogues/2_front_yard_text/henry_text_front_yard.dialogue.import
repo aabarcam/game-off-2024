@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b3sldpvncdbci"
+path="res://.godot/imported/henry_text_front_yard.dialogue-a8f7c78bddfda2d0fb33bffaf8a70c07.tres"
+
+[deps]
+
+source_file="res://dialogues/2_front_yard_text/henry_text_front_yard.dialogue"
+dest_files=["res://.godot/imported/henry_text_front_yard.dialogue-a8f7c78bddfda2d0fb33bffaf8a70c07.tres"]
+
+[params]
+
+defaults=true

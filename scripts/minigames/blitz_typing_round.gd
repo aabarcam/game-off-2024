@@ -20,9 +20,7 @@ var current_position: Marker2D
 @onready var sequence_container: HBoxContainer = $SequenceContainer
 @onready var sequence_positions: Dictionary = {
 	$Sequence1: false,
-	$Sequence2: false,
-	$Sequence3: false,
-	$Sequence4: false
+	$Sequence3: false
 }
 
 func _ready() -> void:

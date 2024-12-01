@@ -87,6 +87,9 @@ func enable_triggers() -> void:
 	for trigger in triggers:
 		#trigger.interactable_component.input_pickable = false
 		trigger.interactable_component.disabled = false
+		if trigger is MinigameTrigger:
+			if trigger.cleared:
+				trigger.interactable_component.disabled = true
 
 func enable_triggers_click() -> void:
 	var triggers: Array[Node] = get_triggers()

@@ -30,7 +30,7 @@ signal lost ## Minigame lost
 	set = set_minigame
 @export var total_rounds: int = 3: ## How many rounds for the minigame
 	set = set_total_rounds
-@export var lives: int = 3
+@export var lives: int = 5
 @export var char_name: String
 @export var balloon_scene: PackedScene
 @export var is_boss: bool = false

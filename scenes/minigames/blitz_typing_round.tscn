@@ -21,6 +21,7 @@ color = Color(0, 0, 0, 1)
 position = Vector2(256, 64)
 
 [node name="DebugLabel" type="Label" parent="Sequence1"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -39,6 +40,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(456, 64)
 
 [node name="DebugLabel" type="Label" parent="Sequence2"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -57,6 +59,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(656, 64)
 
 [node name="DebugLabel" type="Label" parent="Sequence3"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -75,6 +78,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(856, 64)
 
 [node name="DebugLabel" type="Label" parent="Sequence4"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

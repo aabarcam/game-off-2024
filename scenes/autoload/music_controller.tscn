@@ -201,69 +201,99 @@ Vector2i(9, -1): {
 "to_time": 2
 },
 Vector2i(9, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 3): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 4): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 5): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 6): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, -1): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 1): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 3): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 4): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 5): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 6): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 7): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 8): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 9): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 10): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 }
 }

@@ -391,7 +391,10 @@ func _on_round_lost() -> void:
 	if lives == 0:
 		minigame_lost()
 		notify_minigame_lost()
-		MusicController.play_music("minigame_lost")
+		if not is_boss:
+			MusicController.play_music("minigame_lost")
+		else:
+			MusicController.play_sfx_lost()
 
 func _on_instructions_start_pressed() -> void:
 	instructions.hide()
@@ -412,7 +415,10 @@ func _on_grenade_held() -> void:
 
 func _on_grenade_exploded() -> void:
 	# lose minigame
-	MusicController.play_music("explosion")
+	if not is_boss:
+		MusicController.play_music("explosion")
+	else:
+		MusicController.play_sfx_explosion()
 	var explosion_scene: PackedScene = load("res://scenes/grenade_explotion.tscn")
 	var explosion_instance: GrenadeExplosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion_instance)

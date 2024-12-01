@@ -84,7 +84,6 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 
 func _on_minigame_lost() -> void:
 	active_minigame = null
-	#MusicController.play_previous_zone()
 
 func _on_minigame_won() -> void:
 	finished = true

@@ -66,6 +66,7 @@ texture = ExtResource("2_uhmnx")
 
 [node name="Manoel" parent="." index="1" instance=ExtResource("4_yn0aa")]
 position = Vector2(256, 106)
+lives = 5
 char_name = "manoel"
 balloon_scene = ExtResource("4_266of")
 is_boss = true

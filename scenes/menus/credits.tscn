@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://bfkpyjokc0kvw"]
+[gd_scene load_steps=5 format=3 uid="uid://bfkpyjokc0kvw"]
+
+[ext_resource type="Texture2D" uid="uid://di82bjq5oatej" path="res://assets/credits/credits1.png" id="1_xlvox"]
+[ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_0bvfe"]
+[ext_resource type="Texture2D" uid="uid://d1eal5nueuuy1" path="res://assets/options/x_button.png" id="3_62bpv"]
+[ext_resource type="Texture2D" uid="uid://cn0vxbch63mvb" path="res://assets/options/x_buttonhover.png" id="4_ik0xa"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -7,3 +12,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xlvox")
+
+[node name="TransitionButton" parent="." instance=ExtResource("2_0bvfe")]
+layout_mode = 1
+offset_left = 567.0
+offset_top = 27.0
+offset_right = -48.0
+offset_bottom = -308.0
+texture_normal = ExtResource("3_62bpv")
+texture_hover = ExtResource("4_ik0xa")
+target_scene_path = "res://scenes/menus/main_menu.tscn"

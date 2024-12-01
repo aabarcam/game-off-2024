@@ -59,6 +59,7 @@ offset_bottom = -143.0
 texture_normal = ExtResource("7_frg5u")
 texture_hover = ExtResource("8_2gx4n")
 target_scene_path = "res://scenes/menus/options_menu.tscn"
+scene_change = false
 
 [node name="QuitButton" parent="." instance=ExtResource("5_hl70k")]
 layout_mode = 1

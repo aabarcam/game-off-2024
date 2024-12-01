@@ -14,7 +14,7 @@ func _ready() -> void:
 func _on_button_up() -> void:
 	MusicController.play_sfx_ui()
 	if close_menu:
-		queue_free()
+		get_parent().queue_free()
 		return
 	
 	if scene_change:
@@ -22,4 +22,4 @@ func _on_button_up() -> void:
 	else:
 		var new_scene: PackedScene = load(target_scene_path)
 		var new_instance: Control = new_scene.instantiate()
-		add_child(new_instance)
+		get_tree().current_scene.add_child(new_instance)

@@ -13,6 +13,9 @@ func start_round() -> void:
 	current_minigame = get_next_minigame()
 	connect_minigame_signals(current_minigame)
 	start_minigame(current_minigame)
+	
+	for minigame in minigames:
+		minigame.global_position = Vector2.ZERO
 
 func get_valid_minigames() -> Array[BaseRound]:
 	var valid_minigames: Array[BaseRound] = minigames.filter(func(x:BaseRound):return x!=current_minigame)

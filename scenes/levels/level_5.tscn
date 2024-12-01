@@ -86,6 +86,7 @@ offset_bottom = 169.0
 texture_normal = ExtResource("5_1184p")
 
 [node name="StandardRound3" parent="Manoel/Minigames" index="0" instance=ExtResource("5_ltel4")]
+visible = false
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 0,
@@ -96,10 +97,12 @@ rogue_letters = Array[int]([1, 2, 4])
 time_per_sequence = 3.0
 
 [node name="HangmanRound3" parent="Manoel/Minigames" index="1" instance=ExtResource("6_1n3w6")]
+visible = false
 missing_letters = 2
 ambiguous_words = 3
 
 [node name="BlitzTypingRound3" parent="Manoel/Minigames" index="2" instance=ExtResource("7_pxibu")]
+visible = false
 theme = 4
 time_per_letter = 1.0
 sequence_quantity = 1

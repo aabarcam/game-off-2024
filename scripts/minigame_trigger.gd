@@ -246,6 +246,7 @@ func next_round() -> void:
 		#Manager.Minigames.BLITZ_TYPING:
 			#current_round = blitz_typing.instantiate() as BlitzTypingRound
 	current_round = minigame_list.pop_front()
+	print(current_round)
 	show_hands()
 	handshake.hide()
 	connect_round_signals(current_round)

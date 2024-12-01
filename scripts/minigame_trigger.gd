@@ -292,6 +292,9 @@ func notify_done() -> void:
 	cleared = true
 	interactable_component.show()
 	won.emit()
+	if is_boss:
+		MusicController.play_music("title_screen")
+		
 
 func prompt_grenade() -> void:
 	grenade_instructions.show()

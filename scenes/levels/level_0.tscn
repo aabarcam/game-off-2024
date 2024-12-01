@@ -8,6 +8,7 @@
 
 [node name="Level0" node_paths=PackedStringArray("transition") instance=ExtResource("1_aubhi")]
 start_dialogue = ExtResource("2_46i0n")
+music_name = "street"
 balloon = ExtResource("2_3xu8g")
 transition = NodePath("TransitionTrigger")
 

@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1ervsvdutg7y"]
+[gd_scene load_steps=11 format=3 uid="uid://b1ervsvdutg7y"]
 
 [ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_wni2c"]
 [ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_6rthe"]
+[ext_resource type="Texture2D" uid="uid://dy6mlgyhfimgv" path="res://assets/options/options_background.png" id="2_feqxx"]
+[ext_resource type="Texture2D" uid="uid://blxbd0ee2oywf" path="res://assets/options/screen.png" id="2_nyvsf"]
+[ext_resource type="Texture2D" uid="uid://bpce26ndofura" path="res://assets/options/ejemplo_options.png" id="3_q2dnj"]
+[ext_resource type="Texture2D" uid="uid://nyovphobxm67" path="res://assets/options/slider.png" id="3_v57rm"]
+[ext_resource type="Texture2D" uid="uid://d1eal5nueuuy1" path="res://assets/options/x_button.png" id="6_1kv45"]
+[ext_resource type="Texture2D" uid="uid://cn0vxbch63mvb" path="res://assets/options/x_buttonhover.png" id="7_rmy60"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nxkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nh5gb"]
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
@@ -9,26 +19,53 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wni2c")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_nyvsf")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 16.0
+offset_right = 409.0
+offset_bottom = 336.0
+texture = ExtResource("2_feqxx")
+
 [node name="MusicSlider" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = 228.0
-offset_top = 200.0
-offset_right = 412.0
-offset_bottom = 216.0
+offset_left = 221.0
+offset_top = 85.0
+offset_right = 392.0
+offset_bottom = 95.0
+theme_override_icons/grabber = ExtResource("3_v57rm")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_4nxkl")
 max_value = 1.0
 
 [node name="SFXSlider" type="HSlider" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 228.0
-offset_top = 248.0
-offset_right = 412.0
-offset_bottom = 264.0
+offset_left = 221.0
+offset_top = 126.0
+offset_right = 393.0
+offset_bottom = 136.0
+theme_override_icons/grabber = ExtResource("3_v57rm")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_nh5gb")
 
 [node name="BackButton" parent="." instance=ExtResource("2_6rthe")]
 layout_mode = 1
-offset_left = 474.0
-offset_top = 196.0
-offset_right = 602.0
-offset_bottom = 324.0
+offset_left = 380.0
+offset_top = 19.0
+offset_right = 405.0
+offset_bottom = 44.0
+texture_normal = ExtResource("6_1kv45")
+texture_hover = ExtResource("7_rmy60")
 target_scene_path = "res://scenes/menus/main_menu.tscn"
+close_menu = true
+
+[node name="EjemploOptions" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.176471)
+texture = ExtResource("3_q2dnj")
+centered = false

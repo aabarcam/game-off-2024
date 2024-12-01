@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p63h0iu58i11"]
+[gd_scene load_steps=13 format=3 uid="uid://p63h0iu58i11"]
 
 [ext_resource type="Texture2D" uid="uid://b5olccg22dtue" path="res://assets/titilescreen/titlescreen_background.png" id="1_xsdih"]
 [ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_itf5x"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://4hpwfvck17yt" path="res://scenes/menus/quit_button.tscn" id="5_hl70k"]
 [ext_resource type="Texture2D" uid="uid://w6spgb2gou0j" path="res://assets/titilescreen/quitbutton.png" id="6_uq358"]
 [ext_resource type="Texture2D" uid="uid://cdvwrkag5xjda" path="res://assets/titilescreen/credits_hover.png" id="6_vvk1q"]
+[ext_resource type="Texture2D" uid="uid://528xjyhbrtnp" path="res://assets/titilescreen/options.png" id="7_frg5u"]
 [ext_resource type="Texture2D" uid="uid://c3l1eekvoofod" path="res://assets/titilescreen/quit_hover.png" id="7_h17mu"]
+[ext_resource type="Texture2D" uid="uid://bp5viejd1vvrp" path="res://assets/titilescreen/options_hover.png" id="8_2gx4n"]
 [ext_resource type="Texture2D" uid="uid://b7ugkcgfgotqc" path="res://assets/titilescreen/ejemplo.png" id="8_2y83p"]
 
 [node name="MainMenu" type="Control"]
@@ -46,7 +48,17 @@ offset_right = -111.0
 offset_bottom = -114.0
 texture_normal = ExtResource("5_fclir")
 texture_hover = ExtResource("6_vvk1q")
-target_scene_path = "qres://scenes/menus/credits.tscn"
+target_scene_path = "res://scenes/menus/credits.tscn"
+
+[node name="OptionsButton" parent="." instance=ExtResource("2_itf5x")]
+layout_mode = 1
+offset_left = 453.0
+offset_top = 192.0
+offset_right = -111.0
+offset_bottom = -143.0
+texture_normal = ExtResource("7_frg5u")
+texture_hover = ExtResource("8_2gx4n")
+target_scene_path = "res://scenes/menus/options_menu.tscn"
 
 [node name="QuitButton" parent="." instance=ExtResource("5_hl70k")]
 layout_mode = 1

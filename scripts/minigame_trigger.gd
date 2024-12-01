@@ -34,6 +34,7 @@ signal lost ## Minigame lost
 @export var char_name: String
 @export var balloon_scene: PackedScene
 @export var is_boss: bool = false
+@export var grenade_mouse: Texture2D
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -93,6 +94,8 @@ var open: bool = false:
 @export var dialogue_before_open: DialogueResource
 @export var dialogue_beaten: DialogueResource
 @export var dialogue_after_win: DialogueResource
+@export var dialogue_instructions: DialogueResource
+
 ## Ready function called in editor
 func _ready_editor() -> void:
 	update_debug_label()
@@ -116,6 +119,8 @@ func _ready_game() -> void:
 	
 	background.global_position = Vector2.ZERO
 	background.modulate.a = 1.0
+	
+	grenade_component.global_position = grenade_component.position
 	
 	if balloon_scene == null:
 		balloon_scene = Manager.small_example_balloon
@@ -173,8 +178,11 @@ func reset_trigger() -> void:
 	minigame_list = minigames.get_children().filter(func(x:Node2D):return x.visible)
 	minigame_list.map(func(x):x.reset())
 	round_count = 0
+	shake_intensity = shake_intensities[round_count]
+	shake_frequency = shake_frequencies[round_count]
 	lives = original_lives
 	grenade_component.reset()
+	grenade_component.hide()
 	grenade_instructions.hide()
 	background.hide()
 	instructions.hide()
@@ -191,7 +199,11 @@ func hide_hands() -> void:
 
 func show_instructions() -> void:
 	background.show()
-	instructions.show()
+	if dialogue_instructions != null:
+		DialogueManager.show_dialogue_balloon_scene(Manager.void_balloon, dialogue_instructions, "start", [self])
+	else:
+		prompt_grenade()
+	#instructions.show()
 
 func update_debug_label() -> void:
 	if minigame_label_debug != null:
@@ -255,6 +267,8 @@ func disable_grenade() -> void:
 
 func minigame_lost() -> void:
 	#current_round.reset()
+	Input.set_custom_mouse_cursor(null)
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
 	interactable_component.show()
 	reset_trigger()
 
@@ -262,10 +276,12 @@ func notify_minigame_lost() -> void:
 	lost.emit()
 
 func notify_minigame_won() -> void:
+	Input.set_custom_mouse_cursor(null)
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
 	notify_done()
-	#if dialogue_beaten:
+	if dialogue_beaten:
 		#DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
-	DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_beaten, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_beaten, "start", [self])
 	#else:
 
 func notify_done() -> void:
@@ -276,6 +292,7 @@ func notify_done() -> void:
 func prompt_grenade() -> void:
 	grenade_instructions.show()
 	grenade_component.activate()
+	grenade_component.show()
 	if not grenade_component.held.is_connected(_on_grenade_held):
 		grenade_component.held.connect(_on_grenade_held)
 	if not grenade_component.exploded.is_connected(_on_grenade_exploded):
@@ -377,7 +394,10 @@ func _on_instructions_start_pressed() -> void:
 
 func _on_grenade_held() -> void:
 	# start minigame
+	Input.set_custom_mouse_cursor(grenade_mouse)
+	Input.set_custom_mouse_cursor(grenade_mouse, Input.CURSOR_POINTING_HAND)
 	grenade_instructions.hide()
+	grenade_component.hide()
 	
 	next_round()
 	if not is_boss:
@@ -404,6 +424,8 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		return
 	if resource == dialogue:
 		notify_minigame_triggered()
+	elif resource == dialogue_instructions:
+		prompt_grenade()
 	#elif resource == dialogue_beaten:
 		#notify_done()
 

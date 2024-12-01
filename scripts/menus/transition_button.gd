@@ -6,10 +6,16 @@ extends TextureButton
 ## Whether to change to target scene or spawn target scene
 @export var scene_change: bool = true
 
+@export var close_menu: bool = false
+
 func _ready() -> void:
 	button_up.connect(_on_button_up)
 
 func _on_button_up() -> void:
+	if close_menu:
+		queue_free()
+		return
+	
 	if scene_change:
 		get_tree().change_scene_to_file(target_scene_path)
 	else:

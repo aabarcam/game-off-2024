@@ -1,5 +1,6 @@
 extends Node
 
+var void_balloon: PackedScene = preload("res://dialogues/void_balloon/balloon.tscn")
 var small_example_balloon: PackedScene = preload("res://dialogues/custom_balloon/balloon.tscn")
 
 var portraits: Dictionary = {

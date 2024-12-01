@@ -11,17 +11,17 @@
 
 [sub_resource type="Theme" id="Theme_hvdsj"]
 default_font = ExtResource("1_28joq")
-default_font_size = 56
+default_font_size = 64
 
 [node name="Letter" type="Label" node_paths=PackedStringArray("activated_state", "deactivated_state", "inactive_state", "cleared_state", "deceiving_state")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = -284.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.25, 0.25)
+scale = Vector2(1.8, 1.8)
 theme = SubResource("Theme_hvdsj")
 text = "V"
 horizontal_alignment = 1

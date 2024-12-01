@@ -9,5 +9,10 @@ func _ready() -> void:
 	music_slider.step = 0.0001
 	music_slider.value_changed.connect(_on_music_value_changed)
 
+func _process(delta: float) -> void:
+	if get_tree().paused and Input.is_action_just_pressed("pause"):
+		get_tree().paused = false
+		queue_free()
+
 func _on_music_value_changed(value: float) -> void:
 	MusicController.music = value

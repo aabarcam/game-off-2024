@@ -8,10 +8,12 @@ class_name LevelBase
 @export var balloon: PackedScene
 
 var minigames: Array[Node] = []
+var transition: TransitionTrigger
 var active_minigame: MinigameTrigger:
 	set = set_active_minigame
 var finished: bool = false
 var input_active: bool = false
+var options_menu: PackedScene = preload("res://scenes/menus/options_menu.tscn")
 
 func _ready() -> void:
 	#LevelManager.set_current_level(self)
@@ -23,6 +25,10 @@ func _ready() -> void:
 	minigames = get_scene_minigames()
 	for minigame in minigames:
 		minigame.clicked.connect(_on_minigame_clicked)
+		minigame.clicked_disabled.connect(_on_clicked_disabled)
+	
+	if transition != null:
+		transition.clicked_disabled.connect(_on_clicked_disabled)
 	
 	Signals.transition_triggered.connect(_on_transition_triggered)
 	
@@ -34,6 +40,12 @@ func _ready() -> void:
 	if start_dialogue != null:
 		#DialogueManager.show_example_dialogue_balloon(start_dialogue, "start", [self])
 		DialogueManager.show_dialogue_balloon_scene(balloon, start_dialogue, "start", [self])
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		var options_inst = options_menu.instantiate()
+		get_tree().current_scene.add_child(options_inst)
+		get_tree().paused = true
 
 #func _unhandled_input(event: InputEvent) -> void:
 	## Ignore non-click events
@@ -122,3 +134,7 @@ func _on_minigame_clicked(minigame: MinigameTrigger) -> void:
 func _on_transition_triggered() -> void:
 	# diable all interactables
 	disable_triggers()
+
+func _on_clicked_disabled() -> void:
+	# sonido malo
+	pass

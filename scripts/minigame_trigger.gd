@@ -35,6 +35,7 @@ signal lost ## Minigame lost
 @export var balloon_scene: PackedScene
 @export var is_boss: bool = false
 @export var grenade_mouse: Texture2D
+@export var opponent_hand_offset: Vector2 = Vector2.ZERO
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -129,6 +130,7 @@ func _ready_game() -> void:
 	#opponent_hand.global_position = opponent_hand.position
 	#handshake.global_position = handshake.position
 	hand_sprites.global_position = Vector2(0, 0)
+	opponent_hand.global_position += opponent_hand_offset
 	player_hand_original_position = player_hand.global_position
 	
 	if oppponent_texture != null:
@@ -158,6 +160,7 @@ func _ready_game() -> void:
 	shake_frequency = debug_shake_frequency if debug_shake_frequency >= 0 else shake_frequency
 
 func _ready() -> void:
+	super._ready()
 	if Engine.is_editor_hint():
 		_ready_editor()
 	else:
@@ -351,6 +354,7 @@ func _on_trigger_clicked() -> void:
 		else:
 			notify_minigame_triggered()
 	else:
+		clicked_disabled.emit()
 		if dialogue_before_open != null:
 			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_before_open, "start", [self])
 

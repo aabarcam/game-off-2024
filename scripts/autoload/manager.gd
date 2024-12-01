@@ -2,6 +2,7 @@ extends Node
 
 var void_balloon: PackedScene = preload("res://dialogues/void_balloon/balloon.tscn")
 var small_example_balloon: PackedScene = preload("res://dialogues/custom_balloon/balloon.tscn")
+var options_menu: PackedScene = preload("res://scenes/menus/options_menu.tscn")
 
 var portraits: Dictionary = {
 	"living_room": {
@@ -78,5 +79,3 @@ enum Minigames {
 	HANGMAN,
 	WHACK_A_MOLE,
 	BLITZ_TYPING}
-
-var test = false

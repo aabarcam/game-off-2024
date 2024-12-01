@@ -389,8 +389,8 @@ func _on_grenade_exploded() -> void:
 	var explosion_instance: GrenadeExplosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion_instance)
 	minigame_lost()
-	notify_minigame_lost()
 	await explosion_instance.animation_finished
+	notify_minigame_lost()
 	explosion_instance.queue_free()
 
 func _on_key_pressed() -> void:

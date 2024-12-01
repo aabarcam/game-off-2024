@@ -33,7 +33,7 @@ signal lost ## Minigame lost
 @export var lives: int = 3
 @export var char_name: String
 @export var balloon_scene: PackedScene
-@export var is_boss: bool
+@export var is_boss: bool = false
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1

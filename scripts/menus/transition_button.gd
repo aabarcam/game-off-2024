@@ -12,6 +12,7 @@ func _ready() -> void:
 	button_up.connect(_on_button_up)
 
 func _on_button_up() -> void:
+	MusicController.play_sfx_ui()
 	if close_menu:
 		queue_free()
 		return

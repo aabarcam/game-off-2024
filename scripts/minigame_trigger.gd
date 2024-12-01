@@ -270,7 +270,7 @@ func minigame_lost() -> void:
 	Input.set_custom_mouse_cursor(null)
 	Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
 	interactable_component.show()
-	reset_trigger()
+	reset_trigger() 
 
 func notify_minigame_lost() -> void:
 	lost.emit()
@@ -355,7 +355,7 @@ func _on_trigger_clicked() -> void:
 			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_before_open, "start", [self])
 
 func _on_round_won() -> void:
-	handshake.texture = handshake_textures[min(round_count, handshake_textures.size())]
+	handshake.texture = handshake_textures[min(round_count, handshake_textures.size()-1)]
 	
 	round_count += 1
 	
@@ -383,6 +383,7 @@ func _on_round_won() -> void:
 
 func _on_round_lost() -> void:
 	lives -= 1
+	MusicController.play_sfx_life()
 	if lives == 0:
 		minigame_lost()
 		notify_minigame_lost()
@@ -394,6 +395,7 @@ func _on_instructions_start_pressed() -> void:
 
 func _on_grenade_held() -> void:
 	# start minigame
+	MusicController.play_sfx_grenade_hold()
 	Input.set_custom_mouse_cursor(grenade_mouse)
 	Input.set_custom_mouse_cursor(grenade_mouse, Input.CURSOR_POINTING_HAND)
 	grenade_instructions.hide()
@@ -402,7 +404,7 @@ func _on_grenade_held() -> void:
 	next_round()
 	if not is_boss:
 		MusicController.play_music("minigame_loop")
-		MusicController.play_loop()
+	
 
 func _on_grenade_exploded() -> void:
 	# lose minigame
@@ -418,6 +420,7 @@ func _on_grenade_exploded() -> void:
 func _on_key_pressed() -> void:
 	# change player sprite
 	player_hand.texture = get_random_player_sprite()
+	MusicController.play_sfx_letter_type()
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == null:

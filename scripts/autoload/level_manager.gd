@@ -59,6 +59,7 @@ func _on_transition_triggered() -> void:
 	await transition_end()
 
 func transition_start() -> void:
+	MusicController.play_sfx_door_enter()
 	transition_screen.show()
 	transition_screen.modulate.a = 0
 	await create_tween().tween_property(transition_screen, "modulate:a", 1.0, 1.0).finished

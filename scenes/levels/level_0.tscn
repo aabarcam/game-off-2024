@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_g0bqk"]
 
 [node name="Level0" instance=ExtResource("1_aubhi")]
+music_name = "street"
 balloon = ExtResource("2_3xu8g")
 
 [node name="Background" parent="." index="0"]

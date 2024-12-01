@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=36 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
 [ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="2_32x1j"]
+[ext_resource type="Texture2D" uid="uid://b1a51i000s5vj" path="res://assets/grenade/grenade_hold.png" id="2_56dso"]
 [ext_resource type="PackedScene" uid="uid://dx2li1xr7phdr" path="res://scenes/minigames/typing_round.tscn" id="3_jd6sm"]
 [ext_resource type="PackedScene" uid="uid://cevdffv7rhy2w" path="res://scenes/minigames/simon_says_round.tscn" id="4_6ymm7"]
 [ext_resource type="Texture2D" uid="uid://cqnl8l71watxq" path="res://placeholder_bg.png" id="4_d6v8q"]
@@ -30,14 +31,19 @@
 [ext_resource type="Texture2D" uid="uid://0etc3pab1v6t" path="res://assets/hands/henry/henryhands15.png" id="22_ejw1h"]
 [ext_resource type="Texture2D" uid="uid://dsult6ypou8q7" path="res://assets/hands/henry/henryhands16.png" id="23_jxne3"]
 [ext_resource type="Texture2D" uid="uid://cpso6ven4k5vi" path="res://assets/hands/living_level/norman/fondo0.png" id="26_d8t8d"]
+[ext_resource type="FontFile" uid="uid://m62uhgt7y685" path="res://assets/fonts/monogram/ttf/monogram-extended.ttf" id="29_4qu6v"]
 [ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="30_uv06v"]
 [ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="31_kqgqu"]
+
+[sub_resource type="Theme" id="Theme_yjxbe"]
+default_font = ExtResource("29_4qu6v")
 
 [node name="MinigameTrigger" type="Node2D" node_paths=PackedStringArray("minigames", "interactable_component", "grenade_component") groups=["Minigame"]]
 texture_filter = 1
 scale = Vector2(0.556, 0.556)
 script = ExtResource("1_4yjdg")
 minigames = NodePath("Minigames")
+grenade_mouse = ExtResource("2_56dso")
 shake_intensities = Array[float]([0.0, 5.0, 10.0, 10.0])
 shake_frequencies = Array[float]([0.0, 5.0, 10.0, 20.0])
 shake_intensity = 15.0
@@ -83,6 +89,7 @@ STANDARD"
 horizontal_alignment = 1
 
 [node name="Instructions" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.152941)
 
 [node name="Background" type="Sprite2D" parent="Instructions"]
@@ -133,14 +140,16 @@ offset_top = 112.0
 offset_right = 694.5
 offset_bottom = 213.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
+theme = SubResource("Theme_yjxbe")
+theme_override_font_sizes/font_size = 64
 text = "Before we start, can you hold this for me?
 
 (HOLD LEFT CLICK AND DON'T LET GO)"
 horizontal_alignment = 1
 
 [node name="GrenadeComponent" parent="." instance=ExtResource("5_46xms")]
-position = Vector2(1048, 546)
+position = Vector2(280, 160)
+scale = Vector2(1.8, 1.8)
 
 [node name="HandSprites" type="Node2D" parent="."]
 

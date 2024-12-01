@@ -1,15 +1,18 @@
 ~ start
-FELIX: (Eyes Henry up and down) Tell me something, Henry. What's your favorite animal?
-HENRY: The Penguin. Also, hi? Nice to meet you?
-FELIX: That's not the answer that I was expecting, to be honest. Anyway!
-FELIX: I love researching animals. Specially mammals. You know, like me and you!
-HENRY: Very interesting, man. Hey, do you know something about the next text?
-HENRY: I'm kinda in the middle of something.
-FELIX: (In his own world) I used to be a vet, Henry. But I'm allergic to every single animal.
-FELIX: Specially mammals.
-HENRY: That's so sad, man. Hey, about the grenade?
-FELIX: (Dramatically) Oh, what I would give to not have this curse. 
-HENRY: Yeah, a real tragedy, man. Hey, IS THAT ONE THOSE ANIMALS OR SOMETHING?
-FELIX: WHERE???
-HENRY: (Henry grabs the grenade from Felix's pocket to start the handshake)
+if interacted_times == 0:
+	FELIX: (Eyes Henry up and down) Tell me something, Henry. What's your favorite animal?
+	HENRY: The Penguin. Also, hi? Nice to meet you?
+	FELIX: That's not the answer that I was expecting, to be honest. Anyway!
+	FELIX: I love researching animals. Specially mammals. You know, like me and you!
+	HENRY: Very interesting, man. Hey, do you know something about the next text?
+	HENRY: I'm kinda in the middle of something.
+	FELIX: (In his own world) I used to be a vet, Henry. But I'm allergic to every single animal.
+	FELIX: Specially mammals.
+	HENRY: That's so sad, man. Hey, about the grenade?
+	FELIX: (Dramatically) Oh, what I would give to not have this curse. 
+	HENRY: Yeah, a real tragedy, man. Hey, IS THAT ONE THOSE ANIMALS OR SOMETHING?
+	FELIX: WHERE???
+	HENRY: (Henry grabs the grenade from Felix's pocket to start the handshake)
+else:
+	Don't take my grenade without asking me never again. Let's try that again...
 => END

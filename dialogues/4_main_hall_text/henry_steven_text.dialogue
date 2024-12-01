@@ -1,18 +1,21 @@
 ~ start
-STEVEN: (Slow and anxious) H-hello, you-you’re here for... the d-deal, right?
-HENRY: Absolutely, the best deal of my life!
-STEVEN: Mm-hmm. Okay. Well... first things first. You gotta see this.
-STEVEN: (Steven pulls out a spirograph. As anyone does)
-STEVEN: You know what a spirograph is, right?
-HENRY: (Half-confused, half-patient) Uh, yeah. I think so.
-STEVEN: (Stares at it, quietly proud) It’s a... thing. It’s like... you make these patterns, see? 
-STEVEN: It’s all gears and circles, but they fit together. Like... everything fits together in the world.
-STEVEN: (Quietly) Life’s like that. You just gotta... keep the gears turning.
-STEVEN: (He hands Henry the grenade)
-HENRY: Are these grenades even real?
-STEVEN: Only one way to find out.
-STEVEN: It’s all part of the pattern. Trust the pattern, Henry.
-HENRY: Hey, how do you know my nam-
-STEVEN: That's the very first thing you said, Henry.
-HENRY: Yeah, I figured...
+if interacted_times == 0:
+	STEVEN: (Slow and anxious) H-hello, you-you’re here for... the d-deal, right?
+	HENRY: Absolutely, the best deal of my life!
+	STEVEN: Mm-hmm. Okay. Well... first things first. You gotta see this.
+	STEVEN: (Steven pulls out a spirograph. As anyone does)
+	STEVEN: You know what a spirograph is, right?
+	HENRY: (Half-confused, half-patient) Uh, yeah. I think so.
+	STEVEN: (Stares at it, quietly proud) It’s a... thing. It’s like... you make these patterns, see? 
+	STEVEN: It’s all gears and circles, but they fit together. Like... everything fits together in the world.
+	STEVEN: (Quietly) Life’s like that. You just gotta... keep the gears turning.
+	STEVEN: (He hands Henry the grenade)
+	HENRY: Are these grenades even real?
+	STEVEN: Only one way to find out.
+	STEVEN: It’s all part of the pattern. Trust the pattern, Henry.
+	HENRY: Hey, how do you know my nam-
+	STEVEN: That's the very first thing you said, Henry.
+	HENRY: Yeah, I figured...
+else:
+	Well... o-one more time, Henry...
 => END

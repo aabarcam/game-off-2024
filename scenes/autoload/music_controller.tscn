@@ -1,100 +1,165 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca5o4q0vwtep8"]
+[gd_scene load_steps=12 format=3 uid="uid://ca5o4q0vwtep8"]
 
-[ext_resource type="AudioStream" uid="uid://ckh7yydbbnfjb" path="res://assets/prototype/music/IMSLP119337-PMLP06701-Entertainer_4.mp3" id="1_0jakp"]
 [ext_resource type="Script" path="res://scripts/autoload/music_controller.gd" id="1_jm5vj"]
-[ext_resource type="AudioStream" uid="uid://bmcpeakgtovgu" path="res://assets/prototype/music/Tiny Tim - Tip Toe Thru' The Tulips With Me (Official Audio).ogg" id="2_uyrgk"]
-[ext_resource type="AudioStream" uid="uid://bk2cvk8bw15wg" path="res://assets/prototype/music/Benny Hill Theme.ogg" id="3_7q14m"]
-[ext_resource type="AudioStream" uid="uid://b108uswmdxbc5" path="res://assets/prototype/music/Chicken Little festejando - Plantilla Meme (HD).ogg" id="5_cu0wx"]
+[ext_resource type="AudioStream" uid="uid://bjr8bifdjbpol" path="res://assets/audio/music/levels/title_screen.ogg" id="2_1aq7h"]
+[ext_resource type="AudioStream" uid="uid://clmagsoskc8s1" path="res://assets/audio/music/levels/living_4-4_117bpm_16M.ogg" id="2_yg48y"]
+[ext_resource type="AudioStream" uid="uid://ya240ikud2ja" path="res://assets/audio/music/levels/street.ogg" id="3_jpajy"]
+[ext_resource type="AudioStream" uid="uid://b31je7bctqcm5" path="res://assets/audio/music/levels/hall_4-4_70bpm_26M.ogg" id="3_xg7e4"]
+[ext_resource type="AudioStream" uid="uid://u42qojqoil0i" path="res://assets/audio/music/levels/sacrifice_room_3-4_71bpm_19M.ogg" id="4_ecel4"]
+[ext_resource type="AudioStream" uid="uid://b8fypysb7liyx" path="res://assets/audio/music/levels/void.ogg" id="5_cnhqj"]
 [ext_resource type="AudioStream" uid="uid://dh6usgyb4vuwl" path="res://assets/prototype/music/257780__xtrgamr__man-oof.wav" id="6_fnp2f"]
+[ext_resource type="AudioStream" uid="uid://c7b62gomwd3bf" path="res://assets/audio/music/minigames/minigame_one_4-4_85bpm_8M.ogg" id="6_x831d"]
+[ext_resource type="AudioStream" uid="uid://c24qmr32fpfu1" path="res://assets/audio/music/minigames/explosion.wav" id="8_0gul5"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kvnvi"]
-clip_count = 5
-clip_0/name = &"zone_0"
-clip_0/stream = ExtResource("1_0jakp")
+clip_count = 10
+clip_0/name = &"title_screen"
+clip_0/stream = ExtResource("2_1aq7h")
 clip_0/auto_advance = 0
-clip_1/name = &"zone_1"
-clip_1/stream = ExtResource("2_uyrgk")
+clip_1/name = &"street"
+clip_1/stream = ExtResource("3_jpajy")
 clip_1/auto_advance = 0
-clip_2/name = &"minigame_loop"
-clip_2/stream = ExtResource("3_7q14m")
+clip_2/name = &"living"
+clip_2/stream = ExtResource("2_yg48y")
 clip_2/auto_advance = 0
-clip_3/name = &"minigame_won"
-clip_3/stream = ExtResource("5_cu0wx")
-clip_3/auto_advance = 2
-clip_4/name = &"explosion"
-clip_4/stream = ExtResource("6_fnp2f")
-clip_4/auto_advance = 2
+clip_3/name = &"hall"
+clip_3/stream = ExtResource("3_xg7e4")
+clip_3/auto_advance = 0
+clip_4/name = &"conference_room"
+clip_4/auto_advance = 0
+clip_5/name = &"sacrifice_room"
+clip_5/stream = ExtResource("4_ecel4")
+clip_5/auto_advance = 0
+clip_6/name = &"void"
+clip_6/stream = ExtResource("5_cnhqj")
+clip_6/auto_advance = 0
+clip_7/name = &"minigame_loop"
+clip_7/stream = ExtResource("6_x831d")
+clip_7/auto_advance = 0
+clip_8/name = &"minigame_won"
+clip_8/stream = ExtResource("6_fnp2f")
+clip_8/auto_advance = 2
+clip_9/name = &"explosion"
+clip_9/stream = ExtResource("8_0gul5")
+clip_9/auto_advance = 2
 _transitions = {
-Vector2i(-1, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
-"hold_previous": true,
-"to_time": 1
-},
 Vector2i(0, 1): {
 "fade_beats": 1,
 "fade_mode": 4,
-"from_time": 1,
-"to_time": 0
-},
-Vector2i(0, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
 "from_time": 0,
-"hold_previous": true,
 "to_time": 1
-},
-Vector2i(1, 0): {
-"fade_beats": 1,
-"fade_mode": 4,
-"from_time": 1,
-"to_time": 0
 },
 Vector2i(1, 2): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 3): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 7): {
 "fade_beats": 0,
 "fade_mode": 4,
 "from_time": 0,
 "hold_previous": true,
 "to_time": 1
 },
-Vector2i(2, 0): {
+Vector2i(3, 4): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(3, 7): {
+"fade_beats": 0,
+"fade_mode": 4,
+"from_time": 0,
+"hold_previous": true,
+"to_time": 1
+},
+Vector2i(4, 5): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(4, 7): {
+"fade_beats": 0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(5, 6): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(5, 7): {
+"fade_beats": 0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(6, 7): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(7, 2): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(2, 1): {
+Vector2i(7, 3): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(2, 3): {
+Vector2i(7, 8): {
 "fade_beats": 0,
 "fade_mode": 3,
 "from_time": 0,
 "to_time": 1
 },
-Vector2i(2, 4): {
+Vector2i(7, 9): {
 "fade_beats": 0,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 1
 },
-Vector2i(3, 3): {
+Vector2i(8, -1): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(4, 0): {
+Vector2i(8, 8): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(4, 1): {
+Vector2i(9, -1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(9, 2): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(9, 3): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
@@ -107,5 +172,4 @@ script = ExtResource("1_jm5vj")
 
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_kvnvi")
-volume_db = -10.0
 autoplay = true

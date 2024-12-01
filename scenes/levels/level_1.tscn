@@ -9,17 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://bu7sbia16qltd" path="res://assets/living_room/living_room_odoor.png" id="4_rk4x4"]
 [ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
 [ext_resource type="Resource" uid="uid://b6j5tm6qmpll8" path="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue" id="7_dvhhj"]
-[ext_resource type="Texture2D" uid="uid://dkka85w5bjqkc" path="res://assets/hands/nivel0/round1_0.png" id="7_olu7a"]
+[ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_olu7a"]
 [ext_resource type="Resource" uid="uid://cmxluthjrawcv" path="res://dialogues/3_living_room_text/henry_norman_text.dialogue" id="8_u5ugt"]
 [ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
-[ext_resource type="Texture2D" uid="uid://bmlf357jyrm0y" path="res://assets/hands/nivel0/round2_0.png" id="8_vsmeq"]
-[ext_resource type="Texture2D" uid="uid://bqa6thymvo7sh" path="res://assets/hands/nivel0/round3_0.png" id="9_ueisr"]
-[ext_resource type="Texture2D" uid="uid://c0mgegts3dhey" path="res://assets/hands/nivel0/hand0.png" id="10_mkswk"]
+[ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_vsmeq"]
+[ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_ueisr"]
+[ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_mkswk"]
 [ext_resource type="Texture2D" uid="uid://cpso6ven4k5vi" path="res://assets/hands/living_level/norman/fondo0.png" id="13_i6plk"]
 
 [node name="Level1" instance=ExtResource("1_0q6oy")]
 texture_filter = 1
 level_name = "living_room"
+music_name = "living"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_8lbcf")

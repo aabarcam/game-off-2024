@@ -11,6 +11,7 @@
 
 [node name="Level3" instance=ExtResource("1_37w43")]
 level_name = "conference_room"
+music_name = "conference_room"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_lmqtt")
@@ -29,6 +30,9 @@ texture_normal = ExtResource("5_5kdco")
 [node name="PendienteA" parent="." index="2" instance=ExtResource("2_ihj4d")]
 position = Vector2(66, 220)
 
+[node name="Background" parent="PendienteA" index="0"]
+texture = null
+
 [node name="MinigameLabel" parent="PendienteA" index="2"]
 text = "PERSONAJE
 A"
@@ -43,6 +47,9 @@ time_per_sequence = 7.0
 
 [node name="PendenteB" parent="." index="3" instance=ExtResource("2_ihj4d")]
 position = Vector2(447, 212)
+
+[node name="Background" parent="PendenteB" index="0"]
+texture = null
 
 [node name="MinigameLabel" parent="PendenteB" index="2"]
 text = "PERSONAJE
@@ -63,6 +70,9 @@ time_per_sequence = 9.0
 [node name="Boss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ihj4d")]
 position = Vector2(261, 116)
 required_minigames = [NodePath("../PendienteA"), NodePath("../PendenteB")]
+
+[node name="Background" parent="Boss" index="0"]
+texture = null
 
 [node name="MinigameLabel" parent="Boss" index="2"]
 text = "MINI

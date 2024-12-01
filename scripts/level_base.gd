@@ -4,6 +4,7 @@ class_name LevelBase
 @export var start_dialogue: DialogueResource
 @export var transition_dialogue: DialogueResource
 @export var level_name: String
+@export var music_name: String
 
 var minigames: Array[Node] = []
 var active_minigame: MinigameTrigger:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	LevelManager.set_current_level_path(get_tree().current_scene.scene_file_path)
 	LevelManager.set_next_transition_dialogue(transition_dialogue)
 	LevelManager.set_level_name(level_name)
+	LevelManager.music_name = music_name
+	MusicController.play_music(music_name)
 	minigames = get_scene_minigames()
 	for minigame in minigames:
 		minigame.clicked.connect(_on_minigame_clicked)

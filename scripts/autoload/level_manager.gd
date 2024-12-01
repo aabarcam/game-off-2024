@@ -14,6 +14,7 @@ var level_name: String:
 	set = set_level_name
 var char_name: String:
 	set = set_char_name
+var music_name: String
 
 @onready var transition_screen: ColorRect = $CanvasLayer/TransitionScreen
 

@@ -13,6 +13,6 @@ if interacted_times == 0:
 	HENRY: Yeah, a real tragedy, man. Hey, IS THAT ONE THOSE ANIMALS OR SOMETHING?
 	FELIX: WHERE???
 	HENRY: (Henry grabs the grenade from Felix's pocket to start the handshake)
-	else:
-		Don't take my grenade without asking me never again. Let's try that again...
+else:
+	Don't take my grenade without asking me never again. Let's try that again...
 => END

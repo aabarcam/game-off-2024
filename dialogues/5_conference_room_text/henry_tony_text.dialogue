@@ -11,6 +11,6 @@ if interacted_times == 0:
 	TONY: Most can’t do it. They can’t stop thinking. When they think, they're doomed.
 	HENRY: (Calm) I’m not most people.
 	TONY: (Smiling faintly) We’ll see, Henry.
-	else:
-		Would you kindly try again, Henry?
+else:
+	Would you kindly try again, Henry?
 => END

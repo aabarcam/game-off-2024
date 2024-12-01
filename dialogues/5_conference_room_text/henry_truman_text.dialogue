@@ -10,6 +10,6 @@ if interacted_times == 0:
 	HENRY: (Shrugs) Well, I don’t know. If I get through it, sure. 
 	HENRY: If not, it’s a short day. Either way, we’re done.
 	TRUMAN: It's high noon, then.
-	else:
-		Seems like that was a big challenge for a wimpy guy. Again!
+else:
+	Seems like that was a big challenge for a wimpy guy. Again!
 => END

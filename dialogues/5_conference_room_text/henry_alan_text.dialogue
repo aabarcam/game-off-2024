@@ -10,6 +10,6 @@ if interacted_times == 0:
 	HENRY: (Going with the flow) Uh, sure-sure. 
 	HENRY: Look, man. Just hand me the grenade so I can finally get the deal once and for all.
 	ALAN: (Calmly) Oh, why didn't you say so? Of course, Henry! Here you go. Good luck :)
-	else:
-		Very good. BUT THAT WAS WROOOOONG! AGAIN!   
+else:
+	Very good. BUT THAT WAS WROOOOONG! AGAIN!   
 => END

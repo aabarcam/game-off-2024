@@ -12,6 +12,6 @@ if interacted_times == 0:
 	GRANT: He moves like a bird, lightly, bobbing his head -Wait, what am I even doing right now???
 	GRANT: Just take the grenade and give me that freaking handshake. 
 	GRANT: AND YES. YOU TOLD ME YOUR NAME, HENRY.
-	else:
-		GRANT: Life finds a way, Henry. AGAIN.
+else:
+	GRANT: Life finds a way, Henry. AGAIN.
 => END

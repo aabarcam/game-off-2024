@@ -14,6 +14,6 @@ if interacted_times == 0:
 	HENRY: Sure thing! I'm ready! Wait a second...
 	TRAVIS: Marvelous, Henry! Now, here's your grenade.
 	TRAVIS: (With a creepy smile) START!!!
-	else:
-		Let's try this again, shall we? 
+else:
+	Let's try this again, shall we? 
 => END

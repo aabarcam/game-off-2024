@@ -18,6 +18,6 @@ if interacted_times == 0:
 	WALLACE: You think I don’t know? You think I’M the one who doesn’t know about birds?
 	HENRY: Look, man. The bird doesn't exist anymore, just saying... It's just facts. 
 	WALLACE: YOU WILL BE THE ONE WHO WON'T EXIST ANYMORE. TAKE THE GRENADE. NOW!!!
-	else:
-		HAHAHA! WANNA TRY THAT AGAIN?
+else:
+	HAHAHA! WANNA TRY THAT AGAIN?
 => END

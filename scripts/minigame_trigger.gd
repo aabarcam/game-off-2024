@@ -33,6 +33,7 @@ signal lost ## Minigame lost
 @export var lives: int = 3
 @export var char_name: String
 @export var balloon_scene: PackedScene
+@export var is_boss: bool
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -379,8 +380,9 @@ func _on_grenade_held() -> void:
 	grenade_instructions.hide()
 	
 	next_round()
-	MusicController.play_music("minigame_loop")
-	MusicController.play_loop()
+	if not is_boss:
+		MusicController.play_music("minigame_loop")
+		MusicController.play_loop()
 
 func _on_grenade_exploded() -> void:
 	# lose minigame

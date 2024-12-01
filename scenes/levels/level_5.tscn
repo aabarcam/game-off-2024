@@ -68,6 +68,7 @@ texture = ExtResource("2_uhmnx")
 position = Vector2(256, 106)
 char_name = "manoel"
 balloon_scene = ExtResource("4_266of")
+is_boss = true
 handshake_textures = Array[Texture2D]([ExtResource("6_m1vki"), ExtResource("7_i1q14"), ExtResource("8_3lkr0")])
 oppponent_texture = ExtResource("9_s3kat")
 dialogue_beaten = ExtResource("8_hw5w7")

@@ -391,8 +391,8 @@ func _on_round_won() -> void:
 	if minigame_list.is_empty():
 		disable_grenade()
 	
-	shake_intensity = shake_intensities[min(round_count, shake_intensities.size())]
-	shake_frequency = shake_frequencies[min(round_count, shake_frequencies.size())]
+	shake_intensity = shake_intensities[min(round_count, shake_intensities.size() - 1)]
+	shake_frequency = shake_frequencies[min(round_count, shake_frequencies.size() - 1)]
 
 	hide_hands()
 	handshake.show()

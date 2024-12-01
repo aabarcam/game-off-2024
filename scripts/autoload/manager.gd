@@ -42,7 +42,7 @@ var portraits: Dictionary = {
 		},
 		"tony": {
 			"texture": preload("res://assets/conference room/character3_cr_text.png"),
-			"offset": 220,
+			"offset": 270,
 			"offset_y": 0,
 		},
 	},

@@ -78,6 +78,7 @@ func enable_triggers_click() -> void:
 
 func start_cutscene() -> void:
 	await create_tween().tween_property(background, "position:x", 640 - 856, 5.0).finished
+	await get_tree().create_timer(3.0).timeout
 	if after_cutscene_dialogue != null:
 		DialogueManager.show_dialogue_balloon_scene(balloon, after_cutscene_dialogue, "start", [self])
 	else:

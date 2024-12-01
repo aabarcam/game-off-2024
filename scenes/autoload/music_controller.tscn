@@ -350,6 +350,10 @@ bus = &"SFX"
 stream = ExtResource("8_0gul5")
 bus = &"SFX"
 
+[node name="MinigameLostSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vallb")
+bus = &"SFX"
+
 [node name="LifeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rlhh5")
 bus = &"SFX"

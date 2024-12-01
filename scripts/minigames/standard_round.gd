@@ -153,13 +153,13 @@ func connect_sequence_signals(sequence: Sequence) -> void:
 
 func _on_sequence_timer_timeout() -> void:
 	if not current_sequence.is_sequence_cleared():
-		lost.emit()
 		#set_sequence_inactive(current_sequence)
 		reset_sequence_state(current_sequence)
 		current_sequence.start_timer(time_per_sequence)
 		sequence_timer.start(time_per_sequence)
 		reset_sequence_container_position(current_sequence_container)
 		start_sequence_container_move(current_sequence_container)
+		lost.emit()
 
 func _on_letter_activated() -> void:
 	if is_sequence_activated(current_sequence):

@@ -20,7 +20,7 @@ signal lost ## Minigame lost
 #@export var time_per_letter: float = -1
 #
 #@export_category("General Config")
-#@export var sequence_quantity: int = -1
+#@export var sequence_sequence_quantity: int = -1
 #@export var sequence_size: int = -1
 #@export var time_per_sequence: float = -1
 
@@ -252,10 +252,12 @@ func get_random_player_sprite() -> Texture2D:
 func disable_grenade() -> void:
 	grenade_component.change_state(grenade_component.inactive_state)
 
-func notify_minigame_lost() -> void:
+func minigame_lost() -> void:
 	#current_round.reset()
 	interactable_component.show()
 	reset_trigger()
+
+func notify_minigame_lost() -> void:
 	lost.emit()
 
 func notify_minigame_won() -> void:
@@ -364,6 +366,7 @@ func _on_round_won() -> void:
 func _on_round_lost() -> void:
 	lives -= 1
 	if lives == 0:
+		minigame_lost()
 		notify_minigame_lost()
 		MusicController.play_music("minigame_lost")
 
@@ -374,6 +377,7 @@ func _on_instructions_start_pressed() -> void:
 func _on_grenade_held() -> void:
 	# start minigame
 	grenade_instructions.hide()
+	
 	next_round()
 	MusicController.play_music("minigame_loop")
 	MusicController.play_loop()
@@ -384,6 +388,7 @@ func _on_grenade_exploded() -> void:
 	var explosion_scene: PackedScene = load("res://scenes/grenade_explotion.tscn")
 	var explosion_instance: GrenadeExplosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion_instance)
+	minigame_lost()
 	notify_minigame_lost()
 	await explosion_instance.animation_finished
 	explosion_instance.queue_free()

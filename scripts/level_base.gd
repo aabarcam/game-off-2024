@@ -65,6 +65,13 @@ func disable_triggers() -> void:
 		#trigger.interactable_component.input_pickable = false
 		trigger.interactable_component.disabled = true
 
+func enable_triggers() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	var triggers: Array[Node] = get_triggers()
+	for trigger in triggers:
+		#trigger.interactable_component.input_pickable = false
+		trigger.interactable_component.disabled = false
+
 func enable_triggers_click() -> void:
 	var triggers: Array[Node] = get_triggers()
 	for trigger in triggers:
@@ -84,9 +91,11 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 
 func _on_minigame_lost() -> void:
 	active_minigame = null
+	enable_triggers()
 	#MusicController.play_previous_zone()
 
 func _on_minigame_won() -> void:
+	enable_triggers()
 	finished = true
 	MusicController.play_music("minigame_won")
 	active_minigame.disable_grenade()
@@ -95,6 +104,7 @@ func _on_minigame_won() -> void:
 	active_minigame = null
 
 func _on_minigame_clicked(minigame: MinigameTrigger) -> void:
+	disable_triggers()
 	active_minigame = minigame
 	if not active_minigame.lost.is_connected(_on_minigame_lost):
 		active_minigame.lost.connect(_on_minigame_lost)

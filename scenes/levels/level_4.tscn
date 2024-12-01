@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3jtrt7tpldwt"]
+[gd_scene load_steps=34 format=3 uid="uid://b3jtrt7tpldwt"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_rshu4"]
 [ext_resource type="Texture2D" uid="uid://brc6sjmghnyn2" path="res://assets/sacrificeroom/sc_background.png" id="2_2po1l"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://dkst4i0qwv56d" path="res://dialogues/5_sacrifice_room_text/henry_wallace_after_handshake.dialogue" id="11_tfrwv"]
 [ext_resource type="Texture2D" uid="uid://dls43ch8io8vi" path="res://assets/hands/sacrifice_levels/wallace/fondo7.png" id="11_u30fp"]
 [ext_resource type="Resource" uid="uid://gfncs5p2j8r2" path="res://dialogues/5_sacrifice_room_text/henry_wallace_text.dialogue" id="12_g1pxe"]
+[ext_resource type="Resource" uid="uid://dnwj3t11pqpl8" path="res://dialogues/tutorials/typing_handshake_tutorial.dialogue" id="12_sii74"]
 [ext_resource type="Texture2D" uid="uid://dgypt7ffy44hn" path="res://assets/hands/sacrifice_levels/felix/round1_8.png" id="16_q2n4w"]
 [ext_resource type="Texture2D" uid="uid://c16uqeq3jv7kh" path="res://assets/hands/sacrifice_levels/felix/round2_8.png" id="17_l5faf"]
 [ext_resource type="Texture2D" uid="uid://ddp5qhysnye01" path="res://assets/hands/sacrifice_levels/felix/round3_8.png" id="18_k5e2v"]
@@ -59,6 +60,7 @@ char_name = "wallace"
 handshake_textures = Array[Texture2D]([ExtResource("7_i1ug2"), ExtResource("8_pnmek"), ExtResource("9_cgvow")])
 oppponent_texture = ExtResource("10_gpgsh")
 dialogue_beaten = ExtResource("11_tfrwv")
+dialogue_instructions = ExtResource("12_sii74")
 dialogue = ExtResource("12_g1pxe")
 
 [node name="Background" parent="Wallace" index="0"]
@@ -96,6 +98,7 @@ char_name = "felix"
 handshake_textures = Array[Texture2D]([ExtResource("16_q2n4w"), ExtResource("17_l5faf"), ExtResource("18_k5e2v")])
 oppponent_texture = ExtResource("19_k8y5n")
 dialogue_beaten = ExtResource("20_om8ff")
+dialogue_instructions = ExtResource("12_sii74")
 dialogue = ExtResource("20_ybqcb")
 
 [node name="Background" parent="Felix" index="0"]
@@ -129,6 +132,7 @@ char_name = "grant"
 handshake_textures = Array[Texture2D]([ExtResource("22_k7sax"), ExtResource("23_yqgwe"), ExtResource("24_3cgo7")])
 oppponent_texture = ExtResource("25_m6ofi")
 dialogue_beaten = ExtResource("28_74s0k")
+dialogue_instructions = ExtResource("12_sii74")
 dialogue = ExtResource("27_umff0")
 
 [node name="Background" parent="GrantBoss" index="0"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjsgh722vmc5e"]
+[gd_scene load_steps=17 format=3 uid="uid://cjsgh722vmc5e"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
 [ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_x8iax"]
 [ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_17b4w"]
 [ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_qtrsy"]
+[ext_resource type="Resource" uid="uid://dorjuoki14sj4" path="res://dialogues/tutorials/standard_handshake_tutorial.dialogue" id="12_bcmqr"]
 
 [node name="Level1" node_paths=PackedStringArray("transition") instance=ExtResource("1_0q6oy")]
 texture_filter = 1
@@ -44,6 +45,7 @@ char_name = "norman"
 handshake_textures = Array[Texture2D]([ExtResource("7_38emy"), ExtResource("8_x8iax"), ExtResource("9_17b4w")])
 oppponent_texture = ExtResource("10_qtrsy")
 dialogue_beaten = ExtResource("7_dvhhj")
+dialogue_instructions = ExtResource("12_bcmqr")
 dialogue = ExtResource("8_u5ugt")
 
 [node name="InteractableComponent" parent="Norman" index="1"]

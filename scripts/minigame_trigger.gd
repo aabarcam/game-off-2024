@@ -156,6 +156,8 @@ func _ready_game() -> void:
 	interactable_component.clicked.connect(_on_trigger_clicked)
 	game_start_button.button_up.connect(_on_instructions_start_pressed)
 	
+	grenade_component.hide()
+	
 	noise_gen_x.seed = randi()
 	noise_gen_y.seed = randi()
 	
@@ -391,6 +393,7 @@ func _on_round_won() -> void:
 
 	hide_hands()
 	handshake.show()
+	grenade_component.hide()
 	
 	await get_tree().create_timer(2.0).timeout
 	

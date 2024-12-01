@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckyyb8vjgbxr4"]
+[gd_scene load_steps=19 format=3 uid="uid://ckyyb8vjgbxr4"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_37w43"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ihj4d"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
 [ext_resource type="Resource" uid="uid://dmdgntrar6s53" path="res://dialogues/5_conference_room_text/henry_alan_after_handshake_text.dialogue" id="7_j0ihb"]
 [ext_resource type="Texture2D" uid="uid://cbj4nr0qmfcwo" path="res://assets/conference room/character1_cr.png" id="7_wbiub"]
+[ext_resource type="Resource" uid="uid://ceppql8bxg7lt" path="res://dialogues/tutorials/hangman_tutorial.dialogue" id="8_aqul8"]
 [ext_resource type="Resource" uid="uid://dljscuawc8vcq" path="res://dialogues/5_conference_room_text/henry_alan_text.dialogue" id="8_uf0q1"]
 [ext_resource type="Texture2D" uid="uid://dj18bcpm176ii" path="res://assets/conference room/character2_cr.png" id="9_hhqji"]
 [ext_resource type="Texture2D" uid="uid://dninukrio7a2f" path="res://assets/conference room/character3_cr.png" id="10_ndvr7"]
@@ -41,6 +42,7 @@ texture_normal = ExtResource("5_5kdco")
 position = Vector2(203, 106)
 char_name = "alan"
 dialogue_beaten = ExtResource("7_j0ihb")
+dialogue_instructions = ExtResource("8_aqul8")
 dialogue = ExtResource("8_uf0q1")
 
 [node name="Background" parent="Alan" index="0"]
@@ -65,6 +67,7 @@ time_per_sequence = 7.0
 position = Vector2(71, 141)
 char_name = "truman"
 dialogue_beaten = ExtResource("11_ice8b")
+dialogue_instructions = ExtResource("8_aqul8")
 dialogue = ExtResource("12_lu0q2")
 
 [node name="Background" parent="Truman" index="0"]
@@ -98,6 +101,7 @@ position = Vector2(459, 123)
 required_minigames = [NodePath("../Alan"), NodePath("../Truman")]
 char_name = "tony"
 dialogue_beaten = ExtResource("14_43s2n")
+dialogue_instructions = ExtResource("8_aqul8")
 dialogue = ExtResource("15_l1h1a")
 
 [node name="Background" parent="TonyBoss" index="0"]

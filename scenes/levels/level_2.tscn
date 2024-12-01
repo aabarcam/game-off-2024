@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://be8fo7qldu3f1"]
+[gd_scene load_steps=34 format=3 uid="uid://be8fo7qldu3f1"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_03nfb"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_kuhbm"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ctqhlicaarewb" path="res://assets/hands/hall_levels/stanley/hand1.png" id="10_hih7s"]
 [ext_resource type="Texture2D" uid="uid://ehpo771m07mx" path="res://assets/hands/hall_levels/stanley/fondo1.png" id="11_674d2"]
 [ext_resource type="Resource" uid="uid://b4nvkvoyx2nv5" path="res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue" id="11_e2kya"]
+[ext_resource type="Resource" uid="uid://dorjuoki14sj4" path="res://dialogues/tutorials/standard_handshake_tutorial.dialogue" id="12_5a0lb"]
 [ext_resource type="Texture2D" uid="uid://dnp726fql70n0" path="res://assets/hands/hall_levels/steven/round1_2.png" id="15_hqj8s"]
 [ext_resource type="Texture2D" uid="uid://bvrrfubclsefb" path="res://assets/hands/hall_levels/steven/round2_2.png" id="16_erwew"]
 [ext_resource type="Texture2D" uid="uid://bmaqh1hgvnx7f" path="res://assets/hands/hall_levels/steven/round3_2.png" id="17_1qh7o"]
@@ -59,6 +60,7 @@ char_name = "stanley"
 handshake_textures = Array[Texture2D]([ExtResource("7_vmdhu"), ExtResource("8_kss7t"), ExtResource("9_tjumg")])
 oppponent_texture = ExtResource("10_hih7s")
 dialogue_beaten = ExtResource("11_e2kya")
+dialogue_instructions = ExtResource("12_5a0lb")
 dialogue = ExtResource("9_4qce5")
 
 [node name="Background" parent="Stanley" index="0"]
@@ -105,6 +107,7 @@ char_name = "steven"
 handshake_textures = Array[Texture2D]([ExtResource("15_hqj8s"), ExtResource("16_erwew"), ExtResource("17_1qh7o")])
 oppponent_texture = ExtResource("18_mtdls")
 dialogue_beaten = ExtResource("20_0jkth")
+dialogue_instructions = ExtResource("12_5a0lb")
 dialogue = ExtResource("21_xox64")
 
 [node name="Background" parent="Steven" index="0"]
@@ -150,6 +153,7 @@ char_name = "travis"
 handshake_textures = Array[Texture2D]([ExtResource("21_sr0u7"), ExtResource("22_7apev"), ExtResource("23_poeaa")])
 oppponent_texture = ExtResource("24_6d8wi")
 dialogue_beaten = ExtResource("28_7ire4")
+dialogue_instructions = ExtResource("12_5a0lb")
 dialogue = ExtResource("29_70gcf")
 
 [node name="Background" parent="TravisBoss" index="0"]

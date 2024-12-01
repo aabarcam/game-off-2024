@@ -33,9 +33,10 @@
 [ext_resource type="Resource" uid="uid://bbluj5m15qhw6" path="res://dialogues/4_main_hall_text/henry_travis_after_handshake_text.dialogue" id="28_7ire4"]
 [ext_resource type="Resource" uid="uid://dk0veo4px6efb" path="res://dialogues/4_main_hall_text/henry_travis_text.dialogue" id="29_70gcf"]
 
-[node name="Level2" instance=ExtResource("1_03nfb")]
+[node name="Level2" node_paths=PackedStringArray("transition") instance=ExtResource("1_03nfb")]
 level_name = "hall"
 music_name = "hall"
+transition = NodePath("TransitionTrigger")
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_l8ywe")

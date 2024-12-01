@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca5o4q0vwtep8"]
+[gd_scene load_steps=26 format=3 uid="uid://ca5o4q0vwtep8"]
 
 [ext_resource type="Script" path="res://scripts/autoload/music_controller.gd" id="1_jm5vj"]
 [ext_resource type="AudioStream" uid="uid://bjr8bifdjbpol" path="res://assets/audio/music/levels/title_screen.ogg" id="2_1aq7h"]
@@ -7,9 +7,22 @@
 [ext_resource type="AudioStream" uid="uid://b31je7bctqcm5" path="res://assets/audio/music/levels/hall_4-4_70bpm_26M.ogg" id="3_xg7e4"]
 [ext_resource type="AudioStream" uid="uid://u42qojqoil0i" path="res://assets/audio/music/levels/sacrifice_room_3-4_71bpm_19M.ogg" id="4_ecel4"]
 [ext_resource type="AudioStream" uid="uid://b8fypysb7liyx" path="res://assets/audio/music/levels/void.ogg" id="5_cnhqj"]
-[ext_resource type="AudioStream" uid="uid://dh6usgyb4vuwl" path="res://assets/prototype/music/257780__xtrgamr__man-oof.wav" id="6_fnp2f"]
 [ext_resource type="AudioStream" uid="uid://c7b62gomwd3bf" path="res://assets/audio/music/minigames/minigame_one_4-4_85bpm_8M.ogg" id="6_x831d"]
 [ext_resource type="AudioStream" uid="uid://c24qmr32fpfu1" path="res://assets/audio/music/minigames/explosion.wav" id="8_0gul5"]
+[ext_resource type="AudioStream" uid="uid://c78mxsn77qi0a" path="res://assets/audio/music/levels/minigame_won.ogg" id="10_bdnvy"]
+[ext_resource type="AudioStream" uid="uid://dd4udkrnun41j" path="res://assets/audio/sfx/ui_sfx.wav" id="11_k1jw4"]
+[ext_resource type="AudioStream" uid="uid://bk3i7s8tw3k4y" path="res://assets/audio/music/levels/minigame_lost.ogg" id="11_vallb"]
+[ext_resource type="AudioStream" uid="uid://c23d0r8fng2iv" path="res://assets/audio/sfx/text_click_sfx.wav" id="12_jglso"]
+[ext_resource type="AudioStream" uid="uid://b60lr41815306" path="res://assets/audio/sfx/door_open_sfx.wav" id="13_odvf0"]
+[ext_resource type="AudioStream" uid="uid://qbvx21hr1dac" path="res://assets/audio/music/levels/not_sfx.wav" id="13_uacvk"]
+[ext_resource type="AudioStream" uid="uid://ni2tvwf12hny" path="res://assets/audio/sfx/door_enter_sfx.wav" id="14_kgkeb"]
+[ext_resource type="AudioStream" uid="uid://vf2gcv5hr0ps" path="res://assets/audio/sfx/life_sfx.wav" id="15_rlhh5"]
+[ext_resource type="AudioStream" uid="uid://di7krp87lx7t7" path="res://assets/audio/sfx/grenade_hold_sfx.wav" id="16_xq1rk"]
+[ext_resource type="AudioStream" uid="uid://cyx83vdcp83rx" path="res://assets/audio/sfx/letter_type_sfx-001.wav" id="17_w7y53"]
+[ext_resource type="AudioStream" uid="uid://qxixo5x731lw" path="res://assets/audio/sfx/letter_type_sfx-002.wav" id="18_17ei8"]
+[ext_resource type="AudioStream" uid="uid://cm1q8i8iuy48o" path="res://assets/audio/sfx/letter_type_sfx-003.wav" id="19_fc1xc"]
+[ext_resource type="AudioStream" uid="uid://br6440jw7pnaq" path="res://assets/audio/sfx/letter_type_sfx-004.wav" id="20_qh01l"]
+[ext_resource type="AudioStream" uid="uid://bana1oe78xncd" path="res://assets/audio/sfx/letter_wrong_sfx.wav" id="21_royhb"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kvnvi"]
 clip_count = 11
@@ -37,10 +50,10 @@ clip_7/name = &"minigame_loop"
 clip_7/stream = ExtResource("6_x831d")
 clip_7/auto_advance = 0
 clip_8/name = &"minigame_won"
-clip_8/stream = ExtResource("6_fnp2f")
+clip_8/stream = ExtResource("10_bdnvy")
 clip_8/auto_advance = 2
 clip_9/name = &"minigame_lost"
-clip_9/stream = ExtResource("6_fnp2f")
+clip_9/stream = ExtResource("11_vallb")
 clip_9/auto_advance = 2
 clip_10/name = &"explosion"
 clip_10/stream = ExtResource("8_0gul5")
@@ -201,72 +214,109 @@ Vector2i(9, -1): {
 "to_time": 2
 },
 Vector2i(9, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 3): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 4): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 5): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(9, 6): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, -1): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 1): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 2): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 3): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 4): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 5): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 },
 Vector2i(10, 6): {
-"fade_beats": 0,
-"fade_mode": 4,
-"from_time": 0,
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 7): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 8): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 9): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
+"to_time": 2
+},
+Vector2i(10, 10): {
+"fade_beats": 2,
+"fade_mode": 3,
+"from_time": 3,
 "to_time": 2
 }
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1fqi2"]
+streams_count = 4
+stream_0/stream = ExtResource("17_w7y53")
+stream_1/stream = ExtResource("18_17ei8")
+stream_2/stream = ExtResource("19_fc1xc")
+stream_3/stream = ExtResource("20_qh01l")
 
 [node name="MusicController" type="Node2D"]
 script = ExtResource("1_jm5vj")
@@ -274,3 +324,46 @@ script = ExtResource("1_jm5vj")
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_kvnvi")
 autoplay = true
+
+[node name="SfxUI" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_k1jw4")
+bus = &"SFX"
+
+[node name="TextClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jglso")
+bus = &"SFX"
+
+[node name="NotSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_uacvk")
+volume_db = 9.229
+bus = &"SFX"
+
+[node name="DoorOpenSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_odvf0")
+bus = &"SFX"
+
+[node name="DoorEnterSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_kgkeb")
+bus = &"SFX"
+
+[node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0gul5")
+bus = &"SFX"
+
+[node name="LifeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_rlhh5")
+bus = &"SFX"
+
+[node name="GrenadeHoldSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_xq1rk")
+bus = &"SFX"
+
+[node name="LetterTypeSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_1fqi2")
+max_polyphony = 5
+bus = &"SFX"
+playback_type = 1
+
+[node name="LetterWrongSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_royhb")
+bus = &"SFX"

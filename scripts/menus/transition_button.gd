@@ -20,9 +20,6 @@ func _on_button_up() -> void:
 	if scene_change:
 		get_tree().change_scene_to_file(target_scene_path)
 	else:
-		print("instancing")
 		var new_scene: PackedScene = load(target_scene_path)
-		print(new_scene)
 		var new_instance: Control = new_scene.instantiate()
-		print(new_instance)
 		get_tree().current_scene.add_child(new_instance)

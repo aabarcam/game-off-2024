@@ -7,10 +7,12 @@ extends Control
 func _ready() -> void:
 	music_slider.min_value = 0.0001
 	music_slider.step = 0.0001
+	music_slider.value = MusicController.music
 	music_slider.value_changed.connect(_on_music_value_changed)
 	sfx_slider.min_value = 0.0001
 	sfx_slider.step = 0.0001
 	sfx_slider.value_changed.connect(_on_sfx_value_changed)
+	sfx_slider.value = MusicController.sound
 
 func _process(_delta: float) -> void:
 	if get_tree().paused and Input.is_action_just_pressed("pause"):

@@ -41,6 +41,8 @@ offset_top = 85.0
 offset_right = 392.0
 offset_bottom = 95.0
 theme_override_icons/grabber = ExtResource("3_v57rm")
+theme_override_icons/grabber_highlight = ExtResource("3_v57rm")
+theme_override_icons/grabber_disabled = ExtResource("3_v57rm")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_4nxkl")
 max_value = 1.0
 
@@ -51,6 +53,8 @@ offset_top = 126.0
 offset_right = 393.0
 offset_bottom = 136.0
 theme_override_icons/grabber = ExtResource("3_v57rm")
+theme_override_icons/grabber_highlight = ExtResource("3_v57rm")
+theme_override_icons/grabber_disabled = ExtResource("3_v57rm")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_nh5gb")
 
 [node name="BackButton" parent="." instance=ExtResource("2_6rthe")]

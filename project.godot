@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Game Off 2024"
-run/main_scene="res://scenes/prototype/prototype_a.tscn"
+run/main_scene="res://scenes/levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +27,7 @@ WordLoader="*res://scenes/autoload/word_loader.tscn"
 
 [dialogue_manager]
 
-general/balloon_path="res://dialogues/custom_balloon/balloon.tscn"
+general/balloon_path="res://dialogues/void_balloon/balloon.tscn"
 general/custom_test_scene_path="res://dialogues/dialogue_test_scene.tscn"
 
 [display]
@@ -45,6 +46,13 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 Interactable="Interactable object in a room"
 Minigame=""
 
+[gui]
+
+theme/custom_font="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=2
+theme/default_font_subpixel_positioning=0
+
 [input]
 
 hold_grenade_click={
@@ -55,7 +63,7 @@ hold_grenade_click={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/prototype/test_dialogue.dialogue", "res://dialogues/prototype/prototype_dialogue_1.dialogue", "res://dialogues/prototype/prototype_dialogue_2.dialogue", "res://dialogues/test.dialogue", "res://dialogues/dialogue.dialogue", "res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_text.dialogue", "res://dialogues/3_living_room_text/henry_norman_text.dialogue", "res://dialogues/prototype/closed_dialogue_test.dialogue", "res://dialogues/prototype/level_start_test.dialogue", "res://dialogues/prototype/open_dialogue_test.dialogue", "res://dialogues/prototype/transition_test.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_steven_text.dialogue", "res://dialogues/4_main_hall_text/henry_steven_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_travis_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_travis_text.dialogue", "res://dialogues/5_conference_room_text/henry_alan_text.dialogue", "res://dialogues/6_the_void_text/henry_manoel_text.dialogue", "res://dialogues/6_the_void_text/henry_manoel_after_handshake_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_wallace_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_wallace_after_handshake.dialogue", "res://dialogues/5_sacrifice_room_text/henry_felix_text.dialogue", "<null>")
+locale/translations_pot_files=PackedStringArray("res://dialogues/prototype/test_dialogue.dialogue", "res://dialogues/prototype/prototype_dialogue_1.dialogue", "res://dialogues/prototype/prototype_dialogue_2.dialogue", "res://dialogues/test.dialogue", "res://dialogues/dialogue.dialogue", "res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_text.dialogue", "res://dialogues/3_living_room_text/henry_norman_text.dialogue", "res://dialogues/prototype/closed_dialogue_test.dialogue", "res://dialogues/prototype/level_start_test.dialogue", "res://dialogues/prototype/open_dialogue_test.dialogue", "res://dialogues/prototype/transition_test.dialogue", "res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_steven_text.dialogue", "res://dialogues/4_main_hall_text/henry_steven_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_travis_after_handshake_text.dialogue", "res://dialogues/4_main_hall_text/henry_travis_text.dialogue", "res://dialogues/5_conference_room_text/henry_alan_text.dialogue", "res://dialogues/6_the_void_text/henry_manoel_text.dialogue", "res://dialogues/6_the_void_text/henry_manoel_after_handshake_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_wallace_text.dialogue", "res://dialogues/5_sacrifice_room_text/henry_wallace_after_handshake.dialogue", "res://dialogues/5_sacrifice_room_text/henry_felix_text.dialogue", "<null>", "res://dialogues/5_conference_room_text/henry_alan_after_handshake_text.dialogue")
 
 [rendering]
 

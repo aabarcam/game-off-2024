@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://t3cb4yfbxryq" path="res://dialogues/5_sacrifice_room_text/henry_grant_text.dialogue" id="27_umff0"]
 
 [node name="Level4" instance=ExtResource("1_rshu4")]
+level_name = "sacrifice_room"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_2po1l")
@@ -152,6 +153,7 @@ time_per_letter = 1.0
 sequence_quantity = 1
 
 [node name="Reference" parent="." index="5"]
+visible = false
 texture = ExtResource("8_pvfeu")
 
 [editable path="TransitionTrigger"]

@@ -32,6 +32,7 @@ signal lost ## Minigame lost
 	set = set_total_rounds
 @export var lives: int = 3
 @export var char_name: String
+@export var balloon_scene: PackedScene
 
 @export_category("Shake Config")
 @export var debug_shake_intensity: float = -1
@@ -114,6 +115,9 @@ func _ready_game() -> void:
 	
 	background.global_position = Vector2.ZERO
 	background.modulate.a = 1.0
+	
+	if balloon_scene == null:
+		balloon_scene = Manager.small_example_balloon
 	
 	#player_hand.global_position = player_hand.position
 	#opponent_hand.global_position = opponent_hand.position
@@ -255,7 +259,7 @@ func notify_minigame_lost() -> void:
 func notify_minigame_won() -> void:
 	if dialogue_beaten:
 		#DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
-		DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_beaten, "start", [self])
+		DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_beaten, "start", [self])
 	else:
 		notify_done()
 
@@ -315,18 +319,18 @@ func _on_trigger_clicked() -> void:
 	if cleared:
 		if dialogue_after_win != null:
 			#DialogueManager.show_example_dialogue_balloon(dialogue_after_win, "start", [self])
-			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_after_win, "start", [self])
+			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_after_win, "start", [self])
 		return
 	
 	if open:
 		if dialogue != null:
 			#DialogueManager.show_example_dialogue_balloon(dialogue, "start", [self])
-			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue, "start", [self])
+			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue, "start", [self])
 		else:
 			notify_minigame_triggered()
 	else:
 		if dialogue_before_open != null:
-			DialogueManager.show_dialogue_balloon_scene(Manager.small_example_balloon, dialogue_before_open, "start", [self])
+			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_before_open, "start", [self])
 
 func _on_round_won() -> void:
 	handshake.texture = handshake_textures[min(round_count, handshake_textures.size())]
@@ -373,8 +377,13 @@ func _on_grenade_held() -> void:
 
 func _on_grenade_exploded() -> void:
 	# lose minigame
-	notify_minigame_lost()
 	MusicController.play_music("explosion")
+	var explosion_scene: PackedScene = load("res://scenes/grenade_explotion.tscn")
+	var explosion_instance: GrenadeExplosion = explosion_scene.instantiate()
+	get_tree().current_scene.add_child(explosion_instance)
+	notify_minigame_lost()
+	await explosion_instance.animation_finished
+	explosion_instance.queue_free()
 
 func _on_key_pressed() -> void:
 	# change player sprite

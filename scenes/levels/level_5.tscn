@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://4d6vaqpei83q"]
+[gd_scene load_steps=22 format=3 uid="uid://4d6vaqpei83q"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_i1c4q"]
 [ext_resource type="Texture2D" uid="uid://qij5gsvf5alp" path="res://assets/void/void_background1.png" id="2_uhmnx"]
 [ext_resource type="Texture2D" uid="uid://dgghty847c8fw" path="res://assets/void/void_example.png" id="3_dabda"]
 [ext_resource type="Texture2D" uid="uid://cjapkop0gmaej" path="res://assets/void/void_background2.png" id="4_4legt"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogues/void_balloon/balloon.tscn" id="4_266of"]
 [ext_resource type="Texture2D" uid="uid://cbt876mnm7u0j" path="res://assets/hands/finalboss/fondob.png" id="4_c6riy"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="4_yn0aa"]
 [ext_resource type="Texture2D" uid="uid://bexg32pfwd7vr" path="res://assets/void/big_boss.png" id="5_1184p"]
@@ -17,6 +18,21 @@
 [ext_resource type="Resource" uid="uid://dywkai6to8prd" path="res://dialogues/6_the_void_text/henry_manoel_after_handshake_text.dialogue" id="8_hw5w7"]
 [ext_resource type="Resource" uid="uid://bed3b44xdp8l6" path="res://dialogues/6_the_void_text/henry_manoel_text.dialogue" id="9_ltboa"]
 [ext_resource type="Texture2D" uid="uid://c0ckglh1o3rg0" path="res://assets/hands/finalboss/handboss.png" id="9_s3kat"]
+
+[sub_resource type="Animation" id="Animation_b7ylj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uhmnx")]
+}
 
 [sub_resource type="Animation" id="Animation_f4lrn"]
 resource_name = "idle"
@@ -35,21 +51,6 @@ tracks/0/keys = {
 "values": [ExtResource("2_uhmnx"), ExtResource("4_4legt")]
 }
 
-[sub_resource type="Animation" id="Animation_b7ylj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_uhmnx")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b54e0"]
 _data = {
 "RESET": SubResource("Animation_b7ylj"),
@@ -62,25 +63,26 @@ level_name = "void"
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_uhmnx")
 
-[node name="MinigameTrigger" parent="." index="1" instance=ExtResource("4_yn0aa")]
+[node name="Manoel" parent="." index="1" instance=ExtResource("4_yn0aa")]
 position = Vector2(256, 106)
 char_name = "manoel"
+balloon_scene = ExtResource("4_266of")
 handshake_textures = Array[Texture2D]([ExtResource("6_m1vki"), ExtResource("7_i1q14"), ExtResource("8_3lkr0")])
 oppponent_texture = ExtResource("9_s3kat")
 dialogue_beaten = ExtResource("8_hw5w7")
 dialogue = ExtResource("9_ltboa")
 
-[node name="Background" parent="MinigameTrigger" index="0"]
+[node name="Background" parent="Manoel" index="0"]
 texture = ExtResource("4_c6riy")
 
-[node name="InteractableComponent" parent="MinigameTrigger" index="1"]
+[node name="InteractableComponent" parent="Manoel" index="1"]
 offset_left = -460.0
 offset_top = -191.0
 offset_right = 180.0
 offset_bottom = 169.0
 texture_normal = ExtResource("5_1184p")
 
-[node name="StandardRound3" parent="MinigameTrigger/Minigames" index="0" instance=ExtResource("5_ltel4")]
+[node name="StandardRound3" parent="Manoel/Minigames" index="0" instance=ExtResource("5_ltel4")]
 debug_sequence_size_alt = {}
 sequence_size_alt = {
 1: 0,
@@ -90,16 +92,16 @@ sequence_size_alt = {
 rogue_letters = Array[int]([1, 2, 4])
 time_per_sequence = 3.0
 
-[node name="HangmanRound3" parent="MinigameTrigger/Minigames" index="1" instance=ExtResource("6_1n3w6")]
+[node name="HangmanRound3" parent="Manoel/Minigames" index="1" instance=ExtResource("6_1n3w6")]
 missing_letters = 2
 ambiguous_words = 3
 
-[node name="BlitzTypingRound3" parent="MinigameTrigger/Minigames" index="2" instance=ExtResource("7_pxibu")]
+[node name="BlitzTypingRound3" parent="Manoel/Minigames" index="2" instance=ExtResource("7_pxibu")]
 theme = 4
 time_per_letter = 1.0
 sequence_quantity = 1
 
-[node name="MixRound" parent="MinigameTrigger/Minigames" index="3" instance=ExtResource("8_34kug")]
+[node name="MixRound" parent="Manoel/Minigames" index="3" instance=ExtResource("8_34kug")]
 
 [node name="Reference" parent="." index="2"]
 visible = false
@@ -111,4 +113,4 @@ libraries = {
 }
 autoplay = "idle"
 
-[editable path="MinigameTrigger"]
+[editable path="Manoel"]

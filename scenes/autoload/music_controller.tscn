@@ -61,7 +61,7 @@ clip_10/auto_advance = 2
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 1,
-"fade_mode": 4,
+"fade_mode": 3,
 "from_time": 0,
 "to_time": 1
 },

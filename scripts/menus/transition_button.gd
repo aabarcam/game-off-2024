@@ -15,6 +15,8 @@ func _on_button_up() -> void:
 	MusicController.play_sfx_ui()
 	if close_menu:
 		get_parent().queue_free()
+		if get_tree().paused:
+			get_tree().paused = false
 		return
 	
 	if scene_change:

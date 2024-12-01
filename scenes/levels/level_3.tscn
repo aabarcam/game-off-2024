@@ -127,6 +127,7 @@ missing_letters = 2
 ambiguous_words = 3
 
 [node name="Reference" parent="." index="5"]
+visible = false
 texture = ExtResource("5_begou")
 
 [editable path="TransitionTrigger"]

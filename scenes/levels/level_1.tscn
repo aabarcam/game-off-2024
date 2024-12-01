@@ -38,7 +38,7 @@ offset_bottom = 268.0
 texture_normal = ExtResource("4_evdec")
 
 [node name="Norman" parent="." index="2" instance=ExtResource("2_a4ymf")]
-position = Vector2(129, 186)
+position = Vector2(129, 185)
 lives = -1
 char_name = "norman"
 handshake_textures = Array[Texture2D]([ExtResource("7_38emy"), ExtResource("8_x8iax"), ExtResource("9_17b4w")])

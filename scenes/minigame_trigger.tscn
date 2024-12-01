@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b4p2i6cbu0qrs"]
+[gd_scene load_steps=37 format=3 uid="uid://b4p2i6cbu0qrs"]
 
 [ext_resource type="Script" path="res://scripts/minigame_trigger.gd" id="1_4yjdg"]
 [ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="1_yb83h"]
@@ -34,6 +34,7 @@
 [ext_resource type="FontFile" uid="uid://m62uhgt7y685" path="res://assets/fonts/monogram/ttf/monogram-extended.ttf" id="29_4qu6v"]
 [ext_resource type="Texture2D" uid="uid://dap22oigdqr8d" path="res://assets/hands/sacrifice_levels/grant boss/hand9.png" id="30_uv06v"]
 [ext_resource type="Texture2D" uid="uid://b7br26unvxbcv" path="res://assets/hands/sacrifice_levels/grant boss/round1_9.png" id="31_kqgqu"]
+[ext_resource type="Texture2D" uid="uid://0nq6wv37pf1v" path="res://assets/lives/lives example.png" id="35_xilkn"]
 
 [sub_resource type="Theme" id="Theme_yjxbe"]
 default_font = ExtResource("29_4qu6v")
@@ -180,3 +181,16 @@ centered = false
 visible = false
 position = Vector2(578, 330)
 texture = ExtResource("21_wrkdh")
+
+[node name="Lives" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 45.0
+scale = Vector2(1.8, 1.8)
+theme_override_constants/separation = 7
+
+[node name="LivesExample" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.356863)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("35_xilkn")
+centered = false

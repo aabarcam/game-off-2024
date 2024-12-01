@@ -90,6 +90,9 @@ var open: bool = false:
 @onready var shake_test: Sprite2D = $ShakeTest
 @onready var shake_test_original_position: Vector2 = shake_test.position
 @onready var background: TextureRect = $Background
+@onready var lives_container: HBoxContainer = $Lives
+@onready var live_texture: Texture2D = preload("res://assets/lives/live1.png")
+@onready var no_live_texture: Texture2D = preload("res://assets/lives/live2.png")
 
 @export_category("Dialogues")
 @export var dialogue_before_open: DialogueResource
@@ -106,6 +109,14 @@ func _ready_game() -> void:
 	Signals.register_signal(clicked, self)
 	Signals.register_signal(won, self)
 	Signals.register_signal(lost, self)
+	
+	if lives >= 0:
+		lives_container.global_position = Vector2(40, 300)
+		lives_container.get_children().map(func(x):x.queue_free())
+		for live in range(lives):
+			var live_tex: TextureRect = TextureRect.new()
+			live_tex.texture = live_texture
+			lives_container.add_child(live_tex)
 	
 	for _minigame in required_minigames:
 		_minigame.won.connect(_on_minigame_won)
@@ -184,6 +195,15 @@ func reset_trigger() -> void:
 	shake_intensity = shake_intensities[round_count]
 	shake_frequency = shake_frequencies[round_count]
 	lives = original_lives
+	
+	lives_container.hide()
+	if lives >= 0:
+		lives_container.get_children().map(func(x):x.queue_free())
+		for live in range(lives):
+			var live_tex: TextureRect = TextureRect.new()
+			live_tex.texture = live_texture
+			lives_container.add_child(live_tex)
+	
 	grenade_component.reset()
 	grenade_component.hide()
 	grenade_instructions.hide()
@@ -246,7 +266,6 @@ func next_round() -> void:
 		#Manager.Minigames.BLITZ_TYPING:
 			#current_round = blitz_typing.instantiate() as BlitzTypingRound
 	current_round = minigame_list.pop_front()
-	print(current_round)
 	show_hands()
 	handshake.hide()
 	connect_round_signals(current_round)
@@ -388,6 +407,7 @@ func _on_round_won() -> void:
 
 func _on_round_lost() -> void:
 	lives -= 1
+	lives_container.get_child(lives).texture = no_live_texture
 	MusicController.play_sfx_life()
 	if lives == 0:
 		minigame_lost()
@@ -403,6 +423,7 @@ func _on_instructions_start_pressed() -> void:
 
 func _on_grenade_held() -> void:
 	# start minigame
+	lives_container.show()
 	MusicController.play_sfx_grenade_hold()
 	Input.set_custom_mouse_cursor(grenade_mouse)
 	Input.set_custom_mouse_cursor(grenade_mouse, Input.CURSOR_POINTING_HAND)
@@ -412,7 +433,6 @@ func _on_grenade_held() -> void:
 	next_round()
 	if not is_boss:
 		MusicController.play_music("minigame_loop")
-	
 
 func _on_grenade_exploded() -> void:
 	# lose minigame

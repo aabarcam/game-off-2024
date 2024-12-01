@@ -15,7 +15,6 @@ balloon = ExtResource("2_p1b64")
 credits_scene = ExtResource("3_6y5no")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-64, 67)
 texture = ExtResource("2_226r0")
 centered = false
 

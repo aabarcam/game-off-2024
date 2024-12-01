@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c24qmr32fpfu1" path="res://assets/audio/music/minigames/explosion.wav" id="8_0gul5"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kvnvi"]
-clip_count = 10
+clip_count = 11
 clip_0/name = &"title_screen"
 clip_0/stream = ExtResource("2_1aq7h")
 clip_0/auto_advance = 0
@@ -39,9 +39,12 @@ clip_7/auto_advance = 0
 clip_8/name = &"minigame_won"
 clip_8/stream = ExtResource("6_fnp2f")
 clip_8/auto_advance = 2
-clip_9/name = &"explosion"
-clip_9/stream = ExtResource("8_0gul5")
+clip_9/name = &"minigame_lost"
+clip_9/stream = ExtResource("6_fnp2f")
 clip_9/auto_advance = 2
+clip_10/name = &"explosion"
+clip_10/stream = ExtResource("8_0gul5")
+clip_10/auto_advance = 2
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 1,
@@ -88,9 +91,10 @@ Vector2i(4, 5): {
 "to_time": 1
 },
 Vector2i(4, 7): {
-"fade_beats": 0,
+"fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
+"hold_previous": true,
 "to_time": 1
 },
 Vector2i(5, 6): {
@@ -100,15 +104,17 @@ Vector2i(5, 6): {
 "to_time": 1
 },
 Vector2i(5, 7): {
-"fade_beats": 0,
+"fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
-"to_time": 0
+"hold_previous": true,
+"to_time": 1
 },
 Vector2i(6, 7): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
+"hold_previous": true,
 "to_time": 1
 },
 Vector2i(7, 2): {
@@ -129,7 +135,7 @@ Vector2i(7, 8): {
 "from_time": 0,
 "to_time": 1
 },
-Vector2i(7, 9): {
+Vector2i(7, 10): {
 "fade_beats": 0,
 "fade_mode": 4,
 "from_time": 0,
@@ -153,13 +159,19 @@ Vector2i(9, -1): {
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(9, 2): {
+Vector2i(10, -1): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 2
 },
-Vector2i(9, 3): {
+Vector2i(10, 2): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(10, 3): {
 "fade_beats": 1,
 "fade_mode": 4,
 "from_time": 0,

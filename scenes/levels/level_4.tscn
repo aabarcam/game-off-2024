@@ -33,6 +33,7 @@
 
 [node name="Level4" instance=ExtResource("1_rshu4")]
 level_name = "sacrifice_room"
+music_name = "sacrifice_room"
 
 [node name="Background" parent="." index="0"]
 texture = ExtResource("2_2po1l")

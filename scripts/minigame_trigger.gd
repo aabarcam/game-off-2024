@@ -363,6 +363,7 @@ func _on_round_lost() -> void:
 	lives -= 1
 	if lives == 0:
 		notify_minigame_lost()
+		MusicController.play_music("minigame_lost")
 
 func _on_instructions_start_pressed() -> void:
 	instructions.hide()

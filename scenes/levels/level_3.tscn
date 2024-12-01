@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckyyb8vjgbxr4"]
+[gd_scene load_steps=12 format=3 uid="uid://ckyyb8vjgbxr4"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_37w43"]
 [ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ihj4d"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://1hynl2janovb" path="res://assets/conference room/door_open_conference_room.png" id="4_5j4ih"]
 [ext_resource type="Texture2D" uid="uid://7a7q371eeygq" path="res://assets/conference room/door_closed_conference_room.png" id="5_5kdco"]
 [ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
+[ext_resource type="Texture2D" uid="uid://cbj4nr0qmfcwo" path="res://assets/conference room/character1_cr.png" id="7_wbiub"]
+[ext_resource type="Texture2D" uid="uid://dj18bcpm176ii" path="res://assets/conference room/character2_cr.png" id="9_hhqji"]
+[ext_resource type="Texture2D" uid="uid://dninukrio7a2f" path="res://assets/conference room/character3_cr.png" id="10_ndvr7"]
 
 [node name="Level3" node_paths=PackedStringArray("transition") instance=ExtResource("1_37w43")]
 level_name = "conference_room"
@@ -18,7 +21,7 @@ transition = NodePath("TransitionTrigger")
 texture = ExtResource("2_lmqtt")
 
 [node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_36rk4")]
-required_minigames = [NodePath("../PendienteA"), NodePath("../PendenteB"), NodePath("../Boss")]
+required_minigames = [NodePath("../Alan"), NodePath("../Truman"), NodePath("../TonyBoss")]
 open_texture = ExtResource("4_5j4ih")
 
 [node name="InteractableComponent" parent="TransitionTrigger" index="0"]
@@ -28,66 +31,86 @@ offset_right = 615.0
 offset_bottom = 187.0
 texture_normal = ExtResource("5_5kdco")
 
-[node name="PendienteA" parent="." index="2" instance=ExtResource("2_ihj4d")]
-position = Vector2(66, 220)
+[node name="Alan" parent="." index="2" instance=ExtResource("2_ihj4d")]
+position = Vector2(203, 106)
+char_name = "alan"
 
-[node name="Background" parent="PendienteA" index="0"]
+[node name="Background" parent="Alan" index="0"]
 texture = null
 
-[node name="MinigameLabel" parent="PendienteA" index="2"]
+[node name="InteractableComponent" parent="Alan" index="1"]
+texture_normal = ExtResource("7_wbiub")
+
+[node name="MinigameLabel" parent="Alan" index="2"]
 text = "PERSONAJE
 A"
 
-[node name="HangmanRound" parent="PendienteA/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="Alan/Minigames" index="0" instance=ExtResource("3_djuq7")]
 time_per_sequence = 9.0
 
-[node name="HangmanRound2" parent="PendienteA/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="Alan/Minigames" index="1" instance=ExtResource("3_djuq7")]
 time_per_sequence = 7.0
 
-[node name="HangmanRound3" parent="PendienteA/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="Alan/Minigames" index="2" instance=ExtResource("3_djuq7")]
 
-[node name="PendenteB" parent="." index="3" instance=ExtResource("2_ihj4d")]
-position = Vector2(447, 212)
+[node name="Truman" parent="." index="3" instance=ExtResource("2_ihj4d")]
+position = Vector2(71, 141)
+char_name = "truman"
 
-[node name="Background" parent="PendenteB" index="0"]
+[node name="Background" parent="Truman" index="0"]
 texture = null
 
-[node name="MinigameLabel" parent="PendenteB" index="2"]
+[node name="InteractableComponent" parent="Truman" index="1"]
+offset_left = 152.878
+offset_top = -28.777
+offset_right = 280.878
+offset_bottom = 109.223
+texture_normal = ExtResource("9_hhqji")
+
+[node name="MinigameLabel" parent="Truman" index="2"]
 text = "PERSONAJE
 B"
 
-[node name="HangmanRound" parent="PendenteB/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="Truman/Minigames" index="0" instance=ExtResource("3_djuq7")]
 ambiguous_words = 1
 time_per_sequence = 9.0
 
-[node name="HangmanRound2" parent="PendenteB/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="Truman/Minigames" index="1" instance=ExtResource("3_djuq7")]
 ambiguous_words = 2
 time_per_sequence = 9.0
 
-[node name="HangmanRound3" parent="PendenteB/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="Truman/Minigames" index="2" instance=ExtResource("3_djuq7")]
 ambiguous_words = 3
 time_per_sequence = 9.0
 
-[node name="Boss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ihj4d")]
-position = Vector2(261, 116)
-required_minigames = [NodePath("../PendienteA"), NodePath("../PendenteB")]
+[node name="TonyBoss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ihj4d")]
+position = Vector2(459, 123)
+required_minigames = [NodePath("../Alan"), NodePath("../Truman")]
+char_name = "tony"
 
-[node name="Background" parent="Boss" index="0"]
+[node name="Background" parent="TonyBoss" index="0"]
 texture = null
 
-[node name="MinigameLabel" parent="Boss" index="2"]
+[node name="InteractableComponent" parent="TonyBoss" index="1"]
+offset_left = -26.9785
+offset_top = 62.9496
+offset_right = 28.0215
+offset_bottom = 113.95
+texture_normal = ExtResource("10_ndvr7")
+
+[node name="MinigameLabel" parent="TonyBoss" index="2"]
 text = "MINI
 BOSS"
 
-[node name="HangmanRound" parent="Boss/Minigames" index="0" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound" parent="TonyBoss/Minigames" index="0" instance=ExtResource("3_djuq7")]
 ambiguous_words = 1
 time_per_sequence = 7.0
 
-[node name="HangmanRound2" parent="Boss/Minigames" index="1" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound2" parent="TonyBoss/Minigames" index="1" instance=ExtResource("3_djuq7")]
 ambiguous_words = 2
 time_per_sequence = 6.0
 
-[node name="HangmanRound3" parent="Boss/Minigames" index="2" instance=ExtResource("3_djuq7")]
+[node name="HangmanRound3" parent="TonyBoss/Minigames" index="2" instance=ExtResource("3_djuq7")]
 missing_letters = 2
 ambiguous_words = 3
 
@@ -95,6 +118,6 @@ ambiguous_words = 3
 texture = ExtResource("5_begou")
 
 [editable path="TransitionTrigger"]
-[editable path="PendienteA"]
-[editable path="PendenteB"]
-[editable path="Boss"]
+[editable path="Alan"]
+[editable path="Truman"]
+[editable path="TonyBoss"]

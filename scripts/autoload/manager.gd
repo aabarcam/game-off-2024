@@ -30,17 +30,17 @@ var portraits: Dictionary = {
 		},
 	},
 	"conference_room": {
-		"pending0": {
+		"alan": {
 			"texture": preload("res://assets/conference room/character1_cr_text.png"),
 			"offset": 270,
 			"offset_y": 0,
 		},
-		"pending1": {
+		"truman": {
 			"texture": preload("res://assets/conference room/character2_cr_text.png"),
 			"offset": 40,
 			"offset_y": 0,
 		},
-		"pending2": {
+		"tony": {
 			"texture": preload("res://assets/conference room/character3_cr_text.png"),
 			"offset": 220,
 			"offset_y": 0,

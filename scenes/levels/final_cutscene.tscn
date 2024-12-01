@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu7dr11576vl6"]
+[gd_scene load_steps=8 format=3 uid="uid://cu7dr11576vl6"]
 
 [ext_resource type="Script" path="res://scripts/final_cutscene.gd" id="1_rn5qq"]
 [ext_resource type="Texture2D" uid="uid://fmbyswolw77x" path="res://assets/street/street_end.png" id="2_226r0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfkpyjokc0kvw" path="res://scenes/menus/credits.tscn" id="3_6y5no"]
 [ext_resource type="Texture2D" uid="uid://dypqm4ojkqa8s" path="res://assets/credits/ejemplo.png" id="5_0x204"]
 [ext_resource type="Texture2D" uid="uid://di82bjq5oatej" path="res://assets/credits/credits1.png" id="6_pm5pd"]
+[ext_resource type="Texture2D" uid="uid://bfstewhsaee75" path="res://assets/credits/thank you.png" id="7_pled6"]
 
 [node name="FinalCutscene" type="Node2D"]
 script = ExtResource("1_rn5qq")
@@ -16,11 +17,16 @@ credits_scene = ExtResource("3_6y5no")
 texture = ExtResource("2_226r0")
 centered = false
 
+[node name="Credits1" type="Sprite2D" parent="Background"]
+position = Vector2(536, -540)
+texture = ExtResource("6_pm5pd")
+
+[node name="ThankYou" type="Sprite2D" parent="Background"]
+position = Vector2(536, -180)
+texture = ExtResource("7_pled6")
+
 [node name="Ejemplo" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.317647)
 position = Vector2(426, -180)
 texture = ExtResource("5_0x204")
-
-[node name="Credits1" type="Sprite2D" parent="."]
-position = Vector2(532, -540)
-texture = ExtResource("6_pm5pd")

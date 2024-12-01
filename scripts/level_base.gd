@@ -41,7 +41,7 @@ func _ready() -> void:
 		#DialogueManager.show_example_dialogue_balloon(start_dialogue, "start", [self])
 		DialogueManager.show_dialogue_balloon_scene(balloon, start_dialogue, "start", [self])
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		var options_inst = options_menu.instantiate()
 		get_tree().current_scene.add_child(options_inst)

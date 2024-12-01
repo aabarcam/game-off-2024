@@ -81,8 +81,8 @@ func start_cutscene() -> void:
 	if after_cutscene_dialogue != null:
 		DialogueManager.show_dialogue_balloon_scene(balloon, after_cutscene_dialogue, "start", [self])
 	else:
-		if credits_scene != null:
-			get_tree().change_scene_to_packed(credits_scene)
+		await create_tween().tween_property(background, "position:y", 720, 10.0).finished
+
 
 ## SETTERS / GETTERS
 
@@ -92,7 +92,7 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == start_dialogue:
 		start_cutscene()
 	elif resource == after_cutscene_dialogue:
-		get_tree().change_scene_to_packed(credits_scene)
+		await create_tween().tween_property(background, "position:y", -720, 10.0).finished
 
 func _on_transition_triggered() -> void:
 	# diable all interactables

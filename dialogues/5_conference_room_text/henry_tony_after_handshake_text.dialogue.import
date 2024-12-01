@@ -3,11 +3,12 @@
 importer="dialogue_manager_compiler_13"
 type="Resource"
 uid="uid://c5emomaaw6tfy"
-valid=false
+path="res://.godot/imported/henry_tony_after_handshake_text.dialogue-8288940959f193a0191fbde10105ac9c.tres"
 
 [deps]
 
 source_file="res://dialogues/5_conference_room_text/henry_tony_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_tony_after_handshake_text.dialogue-8288940959f193a0191fbde10105ac9c.tres"]
 
 [params]
 

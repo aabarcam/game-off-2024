@@ -4,6 +4,7 @@ class_name MiscTrigger
 @export var interactable_component: InteractableComponent
 
 func _ready() -> void:
+	super._ready()
 	interactable_component.clicked.connect(_on_interactable_clicked)
 
 #func notify_transition_triggered() -> void:

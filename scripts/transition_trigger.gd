@@ -10,6 +10,7 @@ var open: bool = false:
 	set = set_open
 
 func _ready() -> void:
+	super._ready()
 	Signals.register_signal(Signals.transition_triggered, self)
 	interactable_component.clicked.connect(_on_interactable_clicked)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
@@ -45,6 +46,7 @@ func _on_interactable_clicked() -> void:
 	if open:
 		show_dialogue(open_dialogue)
 	else:
+		clicked_disabled.emit()
 		show_dialogue(dialogue)
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:

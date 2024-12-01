@@ -8,6 +8,7 @@ class_name LevelBase
 @export var balloon: PackedScene
 
 var minigames: Array[Node] = []
+var transition: TransitionTrigger
 var active_minigame: MinigameTrigger:
 	set = set_active_minigame
 var finished: bool = false
@@ -24,6 +25,10 @@ func _ready() -> void:
 	minigames = get_scene_minigames()
 	for minigame in minigames:
 		minigame.clicked.connect(_on_minigame_clicked)
+		minigame.clicked_disabled.connect(_on_clicked_disabled)
+	
+	if transition != null:
+		transition.clicked_disabled.connect(_on_clicked_disabled)
 	
 	Signals.transition_triggered.connect(_on_transition_triggered)
 	
@@ -129,3 +134,7 @@ func _on_minigame_clicked(minigame: MinigameTrigger) -> void:
 func _on_transition_triggered() -> void:
 	# diable all interactables
 	disable_triggers()
+
+func _on_clicked_disabled() -> void:
+	# sonido malo
+	pass

@@ -160,6 +160,7 @@ func _ready_game() -> void:
 	shake_frequency = debug_shake_frequency if debug_shake_frequency >= 0 else shake_frequency
 
 func _ready() -> void:
+	super._ready()
 	if Engine.is_editor_hint():
 		_ready_editor()
 	else:
@@ -353,6 +354,7 @@ func _on_trigger_clicked() -> void:
 		else:
 			notify_minigame_triggered()
 	else:
+		clicked_disabled.emit()
 		if dialogue_before_open != null:
 			DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_before_open, "start", [self])
 

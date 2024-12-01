@@ -26,6 +26,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="SequenceGeneratorComponent" parent="." instance=ExtResource("2_l5ttv")]
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 450.0
+offset_top = 44.0
+offset_right = 490.0
+offset_bottom = 84.0
+alignment = 2
+
 [node name="LetterStop" type="Marker2D" parent="."]
 position = Vector2(560, 64)
 

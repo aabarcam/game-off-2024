@@ -193,6 +193,7 @@ rogue_letters = Array[int]([1, 2, 4])
 time_per_sequence = 3.0
 
 [node name="Reference" parent="." index="5"]
+visible = false
 texture = ExtResource("8_l0jhn")
 
 [editable path="TransitionTrigger"]

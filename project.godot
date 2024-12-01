@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Game Off 2024"
-run/main_scene="res://scenes/prototype/prototype_a.tscn"
+run/main_scene="res://scenes/levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +27,7 @@ WordLoader="*res://scenes/autoload/word_loader.tscn"
 
 [dialogue_manager]
 
-general/balloon_path="res://dialogues/custom_balloon/balloon.tscn"
+general/balloon_path="res://dialogues/void_balloon/balloon.tscn"
 general/custom_test_scene_path="res://dialogues/dialogue_test_scene.tscn"
 
 [display]
@@ -44,6 +45,13 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 Interactable="Interactable object in a room"
 Minigame=""
+
+[gui]
+
+theme/custom_font="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=2
+theme/default_font_subpixel_positioning=0
 
 [input]
 

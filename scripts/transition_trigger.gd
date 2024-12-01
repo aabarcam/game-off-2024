@@ -16,6 +16,9 @@ func _ready() -> void:
 	
 	for minigame in required_minigames:
 		minigame.won.connect(_on_minigame_won)
+	
+	if all_minigames_cleared():
+		set_open(true)
 
 func notify_transition_triggered() -> void:
 	Signals.transition_triggered.emit()

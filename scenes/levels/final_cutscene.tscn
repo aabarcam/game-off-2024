@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu7dr11576vl6"]
+
+[ext_resource type="Script" path="res://scripts/final_cutscene.gd" id="1_rn5qq"]
+[ext_resource type="Texture2D" uid="uid://fmbyswolw77x" path="res://assets/street/street_end.png" id="2_226r0"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogues/void_balloon/balloon.tscn" id="2_p1b64"]
+[ext_resource type="PackedScene" uid="uid://bfkpyjokc0kvw" path="res://scenes/menus/credits.tscn" id="3_6y5no"]
+
+[node name="FinalCutscene" type="Node2D"]
+script = ExtResource("1_rn5qq")
+balloon = ExtResource("2_p1b64")
+credits_scene = ExtResource("3_6y5no")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_226r0")
+centered = false

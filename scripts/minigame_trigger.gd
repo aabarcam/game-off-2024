@@ -261,11 +261,11 @@ func notify_minigame_lost() -> void:
 	lost.emit()
 
 func notify_minigame_won() -> void:
-	if dialogue_beaten:
+	notify_done()
+	#if dialogue_beaten:
 		#DialogueManager.show_example_dialogue_balloon(dialogue_beaten, "start", [self])
-		DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_beaten, "start", [self])
-	else:
-		notify_done()
+	DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_beaten, "start", [self])
+	#else:
 
 func notify_done() -> void:
 	cleared = true
@@ -360,7 +360,7 @@ func _on_round_won() -> void:
 		if current_round != null:
 			current_round.reset()
 		#current_round.start_round()
-		next_round()
+			next_round()
 		#reset_trigger()
 
 func _on_round_lost() -> void:
@@ -402,8 +402,8 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		return
 	if resource == dialogue:
 		notify_minigame_triggered()
-	elif resource == dialogue_beaten:
-		notify_done()
+	#elif resource == dialogue_beaten:
+		#notify_done()
 
 func _on_minigame_won() -> void:
 	if all_minigames_cleared():

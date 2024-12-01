@@ -15,5 +15,5 @@ if interacted_times == 0:
 	HENRY: Hey, thanks. That means a lot to me.
 	STANLEY: No problem, Henry. Now, let's see that beautiful handshake of yours.
 else: 
-	You can do it, Henry. Let's try this again.
+	STANLEY: You can do it, Henry. Let's try this again.
 => END

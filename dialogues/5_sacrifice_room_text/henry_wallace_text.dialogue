@@ -19,5 +19,5 @@ if interacted_times == 0:
 	HENRY: Look, man. The bird doesn't exist anymore, just saying... It's just facts. 
 	WALLACE: YOU WILL BE THE ONE WHO WON'T EXIST ANYMORE. TAKE THE GRENADE. NOW!!!
 else:
-	HAHAHA! WANNA TRY THAT AGAIN?
+	WALLACE: HAHAHA! WANNA TRY THAT AGAIN?
 => END

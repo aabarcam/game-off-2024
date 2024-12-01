@@ -11,5 +11,5 @@ if interacted_times == 0:
 	HENRY: If not, it’s a short day. Either way, we’re done.
 	TRUMAN: It's high noon, then.
 else:
-	Seems like that was a big challenge for a wimpy guy. Again!
+	TRUMAN: Seems like that was a big challenge for a wimpy guy. Again!
 => END

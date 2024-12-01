@@ -14,5 +14,5 @@ if interacted_times == 0:
 	FELIX: WHERE???
 	HENRY: (Henry grabs the grenade from Felix's pocket to start the handshake)
 else:
-	Don't take my grenade without asking me never again. Let's try that again...
+	FELIX: Don't take my grenade without asking me never again. Let's try that again...
 => END

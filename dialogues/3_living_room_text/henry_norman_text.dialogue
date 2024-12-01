@@ -14,5 +14,5 @@ if interacted_times == 0:
 	HENRY: (Nods, still processing the situation and extending his left hand awkwardly to meet Norman's) L-l-like a have choice... On the other hand... 
 	HENRY: I really want that couch, man... It's perfect... and free... The best deal... of my life... OF-MY-LIFE! You know what, man? Screw it! LET'S DO THIS!!
 else:
-	Don't worry, Henry. Let's try this again. No worries.
+	NORMAN: Don't worry, Henry. Let's try this again. No worries.
 => END

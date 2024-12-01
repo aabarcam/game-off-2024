@@ -41,6 +41,8 @@ func set_open(value: bool) -> void:
 	open = value
 	if open_texture != null:
 		interactable_component.texture_normal = open_texture
+	if open:
+		MusicController.play_sfx_door_open()
 
 func _on_interactable_clicked() -> void:
 	if open:

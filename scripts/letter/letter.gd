@@ -114,6 +114,7 @@ func light_off() -> void:
 	modulate = Color.WHITE
 
 func wrong_letter(bad_char: String) -> void:
+	MusicController.play_sfx_letter_wrong()
 	mistake.emit()
 	var original_char: String = text
 	if bad_char != "":

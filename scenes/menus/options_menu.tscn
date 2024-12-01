@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_6rthe"]
 
 [node name="OptionsMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wni2c")

@@ -7,6 +7,8 @@ extends Node2D
 @export var balloon: PackedScene
 @export var credits_scene: PackedScene
 
+var options_menu: PackedScene = preload("res://scenes/menus/options_menu.tscn")
+
 @onready var background: Sprite2D = $Background
 
 func _ready() -> void:
@@ -29,6 +31,12 @@ func _ready() -> void:
 		DialogueManager.show_dialogue_balloon_scene(balloon, start_dialogue, "start", [self])
 	else:
 		start_cutscene()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		var options_inst = options_menu.instantiate()
+		get_tree().current_scene.add_child(options_inst)
+		get_tree().paused = true
 
 #func _unhandled_input(event: InputEvent) -> void:
 	## Ignore non-click events

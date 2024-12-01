@@ -12,6 +12,7 @@ var active_minigame: MinigameTrigger:
 	set = set_active_minigame
 var finished: bool = false
 var input_active: bool = false
+var options_menu: PackedScene = preload("res://scenes/menus/options_menu.tscn")
 
 func _ready() -> void:
 	#LevelManager.set_current_level(self)
@@ -34,6 +35,12 @@ func _ready() -> void:
 	if start_dialogue != null:
 		#DialogueManager.show_example_dialogue_balloon(start_dialogue, "start", [self])
 		DialogueManager.show_dialogue_balloon_scene(balloon, start_dialogue, "start", [self])
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		var options_inst = options_menu.instantiate()
+		get_tree().current_scene.add_child(options_inst)
+		get_tree().paused = true
 
 #func _unhandled_input(event: InputEvent) -> void:
 	## Ignore non-click events

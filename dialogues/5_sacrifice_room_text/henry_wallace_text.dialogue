@@ -1,20 +1,23 @@
 ~ start
-WALLACE: (Casually) You’re Henry, right?
-HENRY: Yeah, that’s me. How did you?
-WALLACE: (Murmurs to himself) A little bird told me. 
-WALLACE: (He turns a birdwatching book towards Henry, flipping it open to a page filled with detailed bird sketches)
-WALLACE: (Very proud) 9999 birds now. Only one left.
-HENRY: (Looking at the page) One? Which one?
-WALLACE: (Wallace turns the page carefully. There, in the middle of the page... the dodo)
-WALLACE: (Eyes bright) THIS ONE.
-HENRY: (Confused) The dodo? Isn’t that... extinct, man?
-WALLACE: (Wallace looks up sharply, as if Henry just asked if the sky is green)
-WALLACE: (Upset and confused) What?
-HENRY: (Without hesitation) The dodo. It’s extinct. I mean, everyone knows that.
-WALLACE: (Angry) No, it’s not. Don’t talk nonsense!!
-HENRY: (Trying to hold back a grin) Uh, yeah, it is. Really. Extinct. Gone.
-WALLACE: (Wallace stares at Henry for a moment, his eyes narrowing)
-WALLACE: You think I don’t know? You think I’M the one who doesn’t know about birds?
-HENRY: Look, man. The bird doesn't exist anymore, just saying... It's just facts. 
-WALLACE: YOU WILL BE THE ONE WHO WON'T EXIST ANYMORE. TAKE THE GRENADE. NOW!!!
+if interacted_times == 0:
+	WALLACE: (Casually) You’re Henry, right?
+	HENRY: Yeah, that’s me. How did you?
+	WALLACE: (Murmurs to himself) A little bird told me. 
+	WALLACE: (He turns a birdwatching book towards Henry, flipping it open to a page filled with detailed bird sketches)
+	WALLACE: (Very proud) 9999 birds now. Only one left.
+	HENRY: (Looking at the page) One? Which one?
+	WALLACE: (Wallace turns the page carefully. There, in the middle of the page... the dodo)
+	WALLACE: (Eyes bright) THIS ONE.
+	HENRY: (Confused) The dodo? Isn’t that... extinct, man?
+	WALLACE: (Wallace looks up sharply, as if Henry just asked if the sky is green)
+	WALLACE: (Upset and confused) What?
+	HENRY: (Without hesitation) The dodo. It’s extinct. I mean, everyone knows that.
+	WALLACE: (Angry) No, it’s not. Don’t talk nonsense!!
+	HENRY: (Trying to hold back a grin) Uh, yeah, it is. Really. Extinct. Gone.
+	WALLACE: (Wallace stares at Henry for a moment, his eyes narrowing)
+	WALLACE: You think I don’t know? You think I’M the one who doesn’t know about birds?
+	HENRY: Look, man. The bird doesn't exist anymore, just saying... It's just facts. 
+	WALLACE: YOU WILL BE THE ONE WHO WON'T EXIST ANYMORE. TAKE THE GRENADE. NOW!!!
+	else:
+		HAHAHA! WANNA TRY THAT AGAIN?
 => END

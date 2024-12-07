@@ -67,6 +67,10 @@ func reset() -> void:
 	round_sequences = []
 	sequences_generated = 0
 	current_position = null
+	sequence_positions = {
+		$Sequence1: false,
+		$Sequence3: false
+	}
 	super.reset()
 
 func get_next_sequence() -> Sequence:

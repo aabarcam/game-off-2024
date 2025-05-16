@@ -13,9 +13,13 @@ var active: bool = true ## Whether to use the grenade in the minigame
 var state: GrenadeBaseState:
 	set = change_state
 
+@onready var grenade: TextureButton = $GrenadeSprite
+
 func _ready() -> void:
 	Signals.register_signal(exploded, self)
 	Signals.register_signal(held, self)
+	
+	grenade.button_down.connect(_on_grenade_button_down)
 	
 	change_state(inactive_state)
 	
@@ -25,9 +29,9 @@ func _ready() -> void:
 		change_state(active_state)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("hold_grenade_click"):
-		state.hold_grenade()
-	elif Input.is_action_just_released("hold_grenade_click"):
+	#if Input.is_action_just_pressed("hold_grenade_click"):
+		#state.hold_grenade()
+	if Input.is_action_just_released("hold_grenade_click"):
 		state.release_grenade()
 
 func activate() -> void:
@@ -48,3 +52,6 @@ func reset() -> void:
 func change_state(new_state: GrenadeBaseState) -> void:
 	state = new_state
 	state.set_grenade(self)
+
+func _on_grenade_button_down() -> void:
+	state.hold_grenade()

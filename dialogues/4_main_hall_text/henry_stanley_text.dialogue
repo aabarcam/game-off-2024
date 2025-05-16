@@ -1,0 +1,19 @@
+~ start
+if interacted_times == 0:
+	STANLEY: (Nodding casually, as if Henry is a regular visitor) Ah, yes. You've made it this far, Henry. Very good, Henry.
+	HENRY: (Confused) Wait, how do you know my name???
+	STANLEY: You just told me, Henry!
+	HENRY: Oh, you might be right. Sorry, my bad.
+	STANLEY: You’re in luck, Henry. It’s time for the next step.
+	HENRY: (Half-laughing nervously) Right. More handshakes. Can’t wait.
+	STANLEY: Stanley hands Henry yet another live grenade, with a look that suggests he’s handing over an invitation to a dinner party, not an explosive device.
+	STANLEY: (Seriously, gesturing to Henry's right hand) Hold this in your right hand, Henry. Your left will be free for the next handshake.
+	HENRY: (Eyes narrowing, deadpan) Don't worry, man. I'm already a natural in this handshake thingy.
+	STANLEY: (With bright eyes) That's great, Henry. Seems like you are the one. You haven't exploded so far.
+	HENRY: What a wonderful way to spend the day. No, really, I haven't felt this alive since forever. I mean, this is literally the scariest moment of my entire life, but still!
+	STANLEY: I know what you mean, Henry. Now, good luck and may the hands be with you.
+	HENRY: Hey, thanks. That means a lot to me.
+	STANLEY: No problem, Henry. Now, let's see that beautiful handshake of yours.
+else: 
+	STANLEY: You can do it, Henry. Let's try this again.
+=> END

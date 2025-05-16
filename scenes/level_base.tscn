@@ -7,6 +7,9 @@
 script = ExtResource("1_g26bc")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(9, 5.0625)
 texture = ExtResource("1_25r3e")
+centered = false
+
+[node name="Reference" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.176471)
+centered = false

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://h5adf7o4spfx"]
+
+[ext_resource type="Script" path="res://scripts/misc_trigger.gd" id="1_8ds57"]
+[ext_resource type="PackedScene" uid="uid://bv4torsrkhyqa" path="res://scenes/components/interactable_component.tscn" id="2_41wr1"]
+
+[node name="MiscTrigger" type="Node2D" node_paths=PackedStringArray("interactable_component")]
+script = ExtResource("1_8ds57")
+interactable_component = NodePath("InteractableComponent")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_41wr1")]

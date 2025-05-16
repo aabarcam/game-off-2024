@@ -1,0 +1,74 @@
+[gd_scene load_steps=17 format=3 uid="uid://cjsgh722vmc5e"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_0q6oy"]
+[ext_resource type="Texture2D" uid="uid://du0q8t17dx3dq" path="res://assets/living_room/living_room_background.png" id="2_8lbcf"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_a4ymf"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_2bd7a"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_uu6l1"]
+[ext_resource type="Texture2D" uid="uid://bj8hr6hkuqm55" path="res://assets/living_room/living_room_cdoor.png" id="4_evdec"]
+[ext_resource type="Texture2D" uid="uid://bu7sbia16qltd" path="res://assets/living_room/living_room_odoor.png" id="4_rk4x4"]
+[ext_resource type="Texture2D" uid="uid://c5eppwd5mqqw" path="res://assets/living_room/living_room_character1.png" id="6_kiwdy"]
+[ext_resource type="Texture2D" uid="uid://rkwufoafop8e" path="res://assets/hands/living_level/norman/round1_0.png" id="7_38emy"]
+[ext_resource type="Resource" uid="uid://b6j5tm6qmpll8" path="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue" id="7_dvhhj"]
+[ext_resource type="Resource" uid="uid://cmxluthjrawcv" path="res://dialogues/3_living_room_text/henry_norman_text.dialogue" id="8_u5ugt"]
+[ext_resource type="Texture2D" uid="uid://cclldc6j6faw3" path="res://assets/living_room/living_room_example.png" id="8_uhrs8"]
+[ext_resource type="Texture2D" uid="uid://40ubvp3jj4cj" path="res://assets/hands/living_level/norman/round2_0.png" id="8_x8iax"]
+[ext_resource type="Texture2D" uid="uid://cuwcihn2p256j" path="res://assets/hands/living_level/norman/round3_0.png" id="9_17b4w"]
+[ext_resource type="Texture2D" uid="uid://csse81vi6l8lx" path="res://assets/hands/living_level/norman/hand0.png" id="10_qtrsy"]
+[ext_resource type="Resource" uid="uid://dorjuoki14sj4" path="res://dialogues/tutorials/standard_handshake_tutorial.dialogue" id="12_bcmqr"]
+
+[node name="Level1" node_paths=PackedStringArray("transition") instance=ExtResource("1_0q6oy")]
+texture_filter = 1
+level_name = "living_room"
+music_name = "living"
+transition = NodePath("TransitionTrigger")
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_8lbcf")
+
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_2bd7a")]
+position = Vector2(-213, 0)
+required_minigames = [NodePath("../Norman")]
+open_texture = ExtResource("4_rk4x4")
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = 479.0
+offset_top = 0.0
+offset_right = 587.0
+offset_bottom = 268.0
+texture_normal = ExtResource("4_evdec")
+
+[node name="Norman" parent="." index="2" instance=ExtResource("2_a4ymf")]
+position = Vector2(129, 185)
+lives = -1
+char_name = "norman"
+handshake_textures = Array[Texture2D]([ExtResource("7_38emy"), ExtResource("8_x8iax"), ExtResource("9_17b4w")])
+oppponent_texture = ExtResource("10_qtrsy")
+dialogue_beaten = ExtResource("7_dvhhj")
+dialogue_instructions = ExtResource("12_bcmqr")
+dialogue = ExtResource("8_u5ugt")
+
+[node name="InteractableComponent" parent="Norman" index="1"]
+offset_left = -115.0
+offset_top = -115.0
+offset_right = 49.0
+offset_bottom = 84.0
+texture_normal = ExtResource("6_kiwdy")
+
+[node name="StandardRound" parent="Norman/Minigames" index="0" instance=ExtResource("3_uu6l1")]
+sequence_size = 1
+time_per_sequence = 3.0
+
+[node name="StandardRound2" parent="Norman/Minigames" index="1" instance=ExtResource("3_uu6l1")]
+sequence_size = 1
+time_per_sequence = 3.0
+
+[node name="StandardRound3" parent="Norman/Minigames" index="2" instance=ExtResource("3_uu6l1")]
+time_per_sequence = 5.0
+
+[node name="Reference" parent="." index="3"]
+visible = false
+texture = ExtResource("8_uhrs8")
+
+[editable path="TransitionTrigger"]
+[editable path="Norman"]

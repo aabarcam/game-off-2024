@@ -1,0 +1,24 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://yu33dvdvudm0"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_3enqa"]
+resource_name = "Compressor"
+threshold = -11.5
+ratio = 3.0
+release_ms = 245.0
+sidechain = &"SFX"
+
+[resource]
+bus/1/name = &"MUSIC"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = true
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_3enqa")
+bus/1/effect/0/enabled = true
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"

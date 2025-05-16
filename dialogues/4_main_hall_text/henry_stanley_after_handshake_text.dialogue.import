@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b4nvkvoyx2nv5"
+path="res://.godot/imported/henry_stanley_after_handshake_text.dialogue-feabc086bc382479b10cb4028dbf1a9c.tres"
+
+[deps]
+
+source_file="res://dialogues/4_main_hall_text/henry_stanley_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_stanley_after_handshake_text.dialogue-feabc086bc382479b10cb4028dbf1a9c.tres"]
+
+[params]
+
+defaults=true

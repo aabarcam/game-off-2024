@@ -1,24 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://5yarqmx7h6bb"]
+[gd_scene load_steps=10 format=3 uid="uid://5yarqmx7h6bb"]
 
+[ext_resource type="FontFile" uid="uid://c76uyuq5r0105" path="res://assets/fonts/monogram/ttf/monogram.ttf" id="1_28joq"]
 [ext_resource type="Script" path="res://scripts/letter/letter.gd" id="1_w8lmi"]
 [ext_resource type="Script" path="res://scripts/letter/letter_base_state.gd" id="2_mu2ri"]
 [ext_resource type="Script" path="res://scripts/letter/letter_deactivated_state.gd" id="3_ewnar"]
 [ext_resource type="Script" path="res://scripts/letter/letter_activated_state.gd" id="3_gcs5u"]
 [ext_resource type="Script" path="res://scripts/letter/letter_inactive_state.gd" id="5_sk78p"]
+[ext_resource type="Script" path="res://scripts/letter/letter_cleared_state.gd" id="6_ufh4l"]
+[ext_resource type="Script" path="res://scripts/letter/letter_deceive_state.gd" id="7_gw2l0"]
 
-[node name="Letter" type="Label" node_paths=PackedStringArray("activated_state", "deactivated_state", "inactive_state")]
+[sub_resource type="Theme" id="Theme_hvdsj"]
+default_font = ExtResource("1_28joq")
+default_font_size = 64
+
+[node name="Letter" type="Label" node_paths=PackedStringArray("activated_state", "deactivated_state", "inactive_state", "cleared_state", "deceiving_state")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -284.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "v"
+scale = Vector2(1.8, 1.8)
+theme = SubResource("Theme_hvdsj")
+text = "V"
 horizontal_alignment = 1
 script = ExtResource("1_w8lmi")
 character = "v"
 activated_state = NodePath("LetterBaseState/LetterActivatedState")
 deactivated_state = NodePath("LetterBaseState/LetterDeactivatedState")
 inactive_state = NodePath("LetterBaseState/LetterInactiveState")
+cleared_state = NodePath("LetterBaseState/LetterClearedState")
+deceiving_state = NodePath("LetterBaseState/LetterDeceivingState")
 
 [node name="LetterBaseState" type="Node" parent="."]
 script = ExtResource("2_mu2ri")
@@ -31,3 +44,9 @@ script = ExtResource("3_ewnar")
 
 [node name="LetterInactiveState" type="Node" parent="LetterBaseState"]
 script = ExtResource("5_sk78p")
+
+[node name="LetterClearedState" type="Node" parent="LetterBaseState"]
+script = ExtResource("6_ufh4l")
+
+[node name="LetterDeceivingState" type="Node" parent="LetterBaseState"]
+script = ExtResource("7_gw2l0")

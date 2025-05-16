@@ -4,7 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://5yarqmx7h6bb" path="res://scenes/letter.tscn" id="2_1si20"]
 [ext_resource type="PackedScene" uid="uid://bysqwntwxgx7c" path="res://scenes/sequence.tscn" id="3_80g35"]
 
-[node name="SequenceGeneratorComponent" type="Node2D"]
+[node name="SequenceGeneratorComponent" type="HBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = -576.0
+grow_horizontal = 2
+alignment = 1
 script = ExtResource("1_bjfce")
 letter_scene = ExtResource("2_1si20")
 sequence_scene = ExtResource("3_80g35")

@@ -1,0 +1,7 @@
+~ start
+if interacted_times == 0:
+	Some cultist: testing
+	Some cultist: testing more
+else:
+	Some cultist: you again?
+=> END

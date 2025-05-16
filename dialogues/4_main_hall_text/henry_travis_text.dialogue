@@ -1,0 +1,19 @@
+~ start
+if interacted_times == 0:
+	HENRY: (Noticing Travis’s head, trying to be polite) Uh, hi there. You, uh... are you new around here?
+	TRAVIS: (Looking down at Henry) I wouldn’t say "new." More like. Part of the plan.
+	HENRY: (Nods, confused but not wanting to seem rude) Right! The plan, I'm all about that plan.
+	TRAVIS: (Gesturing vaguely) A lot of people think I’m just a mask. 
+	TRAVIS: But you know, it’s not like that. It’s just... (pauses) it’s just how I am.
+	HENRY: (Tilts head, curious) So... is it a mask?
+	TRAVIS: (Smirks slightly) I wouldn’t worry too much about it. It’s not like it makes me any less... human.
+	HENRY: (Hesitantly) Yeah, I wasn’t judging... I just... (glances at Travis’s head again)
+	HENRY: Nevermind
+	TRAVIS: Are you ready for what comes next, Henry? This trial will be your first real test.
+	TRAVIS: And yes, you DID told me your name.
+	HENRY: Sure thing! I'm ready! Wait a second...
+	TRAVIS: Marvelous, Henry! Now, here's your grenade.
+	TRAVIS: (With a creepy smile) START!!!
+else:
+	TRAVIS: Let's try this again, shall we? 
+=> END

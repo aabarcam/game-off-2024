@@ -9,3 +9,4 @@ show_percentage = false
 script = ExtResource("1_uvkyx")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -5,6 +5,16 @@
 
 [node name="StandardRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
 script = ExtResource("1_7c8h7")
+debug_sequence_size_alt = {
+2: 4,
+3: 1
+}
+sequence_size_alt = {
+1: 0,
+2: 0,
+3: 0
+}
+debug_time_per_sequence = 10.0
 sequence_size = 2
 sequence_generator = NodePath("SequenceGeneratorComponent")
 
@@ -15,6 +25,18 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="SequenceGeneratorComponent" parent="." instance=ExtResource("2_l5ttv")]
+
+[node name="FinishedSequencesContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 329.0
+offset_top = 53.0
+offset_right = 329.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 2
 
 [node name="LetterStop" type="Marker2D" parent="."]
 position = Vector2(560, 64)

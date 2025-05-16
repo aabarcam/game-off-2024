@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://68aq6stk6whr"
+path="res://.godot/imported/henry_grant_after_handshake_text.dialogue-399ff1129544424380f07561bb7d98a4.tres"
+
+[deps]
+
+source_file="res://dialogues/5_sacrifice_room_text/henry_grant_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_grant_after_handshake_text.dialogue-399ff1129544424380f07561bb7d98a4.tres"]
+
+[params]
+
+defaults=true

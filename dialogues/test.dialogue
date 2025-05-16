@@ -1,0 +1,11 @@
+~ start
+if interacted_times == 0:
+	Norman: testing
+	Henry: hello
+	Norman: more
+elif interacted_times == 1:
+	Henry: hello
+	Norman: again
+else:
+	Norman: bye
+=> END

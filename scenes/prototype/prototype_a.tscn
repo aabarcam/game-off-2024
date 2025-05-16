@@ -1,9 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7l5jmqo2vbjw"]
+[gd_scene load_steps=6 format=3 uid="uid://b7l5jmqo2vbjw"]
 
 [ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_w0h52"]
+[ext_resource type="Resource" uid="uid://cfyln1cpk42hq" path="res://dialogues/prototype/transition_test.dialogue" id="2_dwndk"]
 [ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="2_mrcku"]
+[ext_resource type="PackedScene" uid="uid://h5adf7o4spfx" path="res://scenes/misc_trigger.tscn" id="3_hw3b1"]
+[ext_resource type="Resource" uid="uid://eq0anbek87ha" path="res://dialogues/prototype/prototype_dialogue_1.dialogue" id="4_dw8ri"]
 
 [node name="PrototypeA" instance=ExtResource("1_w0h52")]
+transition_dialogue = ExtResource("2_dwndk")
 
-[node name="TransitionInteractable" parent="." index="1" instance=ExtResource("2_mrcku")]
+[node name="MiscTrigger" parent="." index="1" instance=ExtResource("3_hw3b1")]
+position = Vector2(983, 328)
+dialogue = ExtResource("4_dw8ri")
+
+[node name="TransitionInteractable" parent="." index="2" instance=ExtResource("2_mrcku")]
 position = Vector2(580, 354)
+
+[editable path="MiscTrigger"]
+[editable path="TransitionInteractable"]

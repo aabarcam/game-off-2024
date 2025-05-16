@@ -13,6 +13,9 @@ func activate_letter() -> void:
 func deactivate_letter() -> void:
 	push_error("Invalid state " + str(self) + ", cannot deactivate letter " + letter.character)
 
+func wrong_letter(_char: String) -> void:
+	push_error("Invalid state.")
+
 func is_activated() -> bool:
 	return false
 
@@ -20,6 +23,12 @@ func is_deactivated() -> bool:
 	return false
 
 func is_inactive() -> bool:
+	return false
+
+func is_cleared() -> bool:
+	return false
+
+func is_deceiving() -> bool:
 	return false
 
 func set_letter(new_letter: Letter) -> void:

@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://p63h0iu58i11"]
+
+[ext_resource type="Texture2D" uid="uid://b5olccg22dtue" path="res://assets/titilescreen/titlescreen_background.png" id="1_xsdih"]
+[ext_resource type="PackedScene" uid="uid://23p6gt3g2nr8" path="res://scenes/menus/transition_button.tscn" id="2_itf5x"]
+[ext_resource type="Texture2D" uid="uid://f5m0ros7ir0o" path="res://assets/titilescreen/playbutton.png" id="3_gyjuw"]
+[ext_resource type="Texture2D" uid="uid://blblexf2bqhsm" path="res://assets/titilescreen/playbutton_hover.png" id="4_63bi7"]
+[ext_resource type="Texture2D" uid="uid://0jq1vuye4g6b" path="res://assets/titilescreen/creditsbutton.png" id="5_fclir"]
+[ext_resource type="PackedScene" uid="uid://4hpwfvck17yt" path="res://scenes/menus/quit_button.tscn" id="5_hl70k"]
+[ext_resource type="Texture2D" uid="uid://w6spgb2gou0j" path="res://assets/titilescreen/quitbutton.png" id="6_uq358"]
+[ext_resource type="Texture2D" uid="uid://cdvwrkag5xjda" path="res://assets/titilescreen/credits_hover.png" id="6_vvk1q"]
+[ext_resource type="Texture2D" uid="uid://528xjyhbrtnp" path="res://assets/titilescreen/options.png" id="7_frg5u"]
+[ext_resource type="Texture2D" uid="uid://c3l1eekvoofod" path="res://assets/titilescreen/quit_hover.png" id="7_h17mu"]
+[ext_resource type="Texture2D" uid="uid://bp5viejd1vvrp" path="res://assets/titilescreen/options_hover.png" id="8_2gx4n"]
+[ext_resource type="Texture2D" uid="uid://b7ugkcgfgotqc" path="res://assets/titilescreen/ejemplo.png" id="8_2y83p"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xsdih")
+
+[node name="PlayButton" parent="." instance=ExtResource("2_itf5x")]
+layout_mode = 1
+offset_left = 89.0
+offset_top = 280.0
+offset_right = -475.0
+offset_bottom = -55.0
+texture_normal = ExtResource("3_gyjuw")
+texture_hover = ExtResource("4_63bi7")
+target_scene_path = "res://scenes/levels/level_0.tscn"
+
+[node name="CreditsButton" parent="." instance=ExtResource("2_itf5x")]
+layout_mode = 1
+offset_left = 453.0
+offset_top = 221.0
+offset_right = -111.0
+offset_bottom = -114.0
+texture_normal = ExtResource("5_fclir")
+texture_hover = ExtResource("6_vvk1q")
+target_scene_path = "res://scenes/menus/credits.tscn"
+
+[node name="OptionsButton" parent="." instance=ExtResource("2_itf5x")]
+layout_mode = 1
+offset_left = 453.0
+offset_top = 192.0
+offset_right = -111.0
+offset_bottom = -143.0
+texture_normal = ExtResource("7_frg5u")
+texture_hover = ExtResource("8_2gx4n")
+target_scene_path = "res://scenes/menus/options_menu.tscn"
+scene_change = false
+
+[node name="QuitButton" parent="." instance=ExtResource("5_hl70k")]
+layout_mode = 1
+offset_left = 453.0
+offset_top = 250.0
+offset_right = -111.0
+offset_bottom = -85.0
+texture_normal = ExtResource("6_uq358")
+texture_hover = ExtResource("7_h17mu")
+
+[node name="Reference" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.176471)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_2y83p")

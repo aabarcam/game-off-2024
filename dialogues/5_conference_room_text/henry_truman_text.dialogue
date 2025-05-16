@@ -1,0 +1,15 @@
+~ start
+if interacted_times == 0:
+	TRUMAN: (Spits) Name’s Truman. You Henry?
+	HENRY: (Nods, calm) Yeah, that's me... Of course you know my name...
+	TRUMAN: (Leans in a little) You know why I’M here?
+	HENRY: (Shrugs, doesn’t look surprised) To see if I’m gonna flinch with that grenade.
+	TRUMAN: (Grins) Well, I reckon we’ll find out, won’t we?
+	HENRY: (Confident) That's right. Besides, this is not my first rodeo.
+	TRUMAN: You think this is fun, partner?
+	HENRY: (Shrugs) Well, I don’t know. If I get through it, sure. 
+	HENRY: If not, it’s a short day. Either way, we’re done.
+	TRUMAN: It's high noon, then.
+else:
+	TRUMAN: Seems like that was a big challenge for a wimpy guy. Again!
+=> END

@@ -4,8 +4,10 @@ class_name SimonSaysRound
 ##
 ## Generates random sequences of letters to memorize, the player must then
 ## repeat it in order
+## TODO: (maybe) use a split word
 
 @export_category("Config")
+@export var debug_memorize_time: float = -1
 @export var memorize_time: float = 5
 
 var round_sequences: Array[Sequence] = []
@@ -21,6 +23,9 @@ func _ready() -> void:
 	memorize_timer.timeout.connect(_on_memorize_timer_timeout)
 	
 	light_timer.timeout.connect(_on_light_timer_timeout)
+	
+	if OS.is_debug_build() and get_parent() == get_tree().root:
+		memorize_time = debug_memorize_time if debug_memorize_time >= 0 else memorize_time
 	
 	super._ready()
 
@@ -47,7 +52,7 @@ func get_next_sequence() -> Sequence:
 	var sequence: String = sequence_generator.generate_random(sequence_size)
 	return sequence_generator.string_to_letters(sequence, Letter.Mode.HOLD)
 
-func start_sequence_move(sequence: Sequence) -> void:
+func start_sequence_move(_sequence: Sequence) -> void:
 	previous_sequences.shuffle()
 	
 	# light on sequences
@@ -99,7 +104,6 @@ func start_lighting_on() -> void:
 
 func play() -> void:
 	current_sequence = previous_sequences[sequence_id]
-	current_sequence.reset_sequence_state()
 	sequence_id += 1
 
 func _on_sequence_timer_timeout() -> void:
@@ -119,6 +123,10 @@ func _on_letter_activated() -> void:
 			play()
 		else:
 			won.emit()
+	
+	for seq in previous_sequences:
+		if seq != current_sequence and is_sequence_activated(seq):
+			lost.emit()
 
 func _on_memorize_timer_timeout() -> void:
 	# hide letters, let player press
@@ -135,3 +143,5 @@ func _on_light_timer_timeout() -> void:
 		sequence_timer.start(time_per_sequence)
 		light_off_sequences(previous_sequences)
 		play()
+		for seq in previous_sequences:
+			seq.reset_sequence_state()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cmxluthjrawcv"
+path="res://.godot/imported/henry_norman_text.dialogue-da81f0cc890caa4eedc51f0b3e93239d.tres"
+
+[deps]
+
+source_file="res://dialogues/3_living_room_text/henry_norman_text.dialogue"
+dest_files=["res://.godot/imported/henry_norman_text.dialogue-da81f0cc890caa4eedc51f0b3e93239d.tres"]
+
+[params]
+
+defaults=true

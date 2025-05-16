@@ -1,0 +1,120 @@
+[gd_scene load_steps=22 format=3 uid="uid://4d6vaqpei83q"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_i1c4q"]
+[ext_resource type="Texture2D" uid="uid://qij5gsvf5alp" path="res://assets/void/void_background1.png" id="2_uhmnx"]
+[ext_resource type="Texture2D" uid="uid://dgghty847c8fw" path="res://assets/void/void_example.png" id="3_dabda"]
+[ext_resource type="Texture2D" uid="uid://cjapkop0gmaej" path="res://assets/void/void_background2.png" id="4_4legt"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogues/void_balloon/balloon.tscn" id="4_266of"]
+[ext_resource type="Texture2D" uid="uid://cbt876mnm7u0j" path="res://assets/hands/finalboss/fondob.png" id="4_c6riy"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="4_yn0aa"]
+[ext_resource type="Texture2D" uid="uid://bexg32pfwd7vr" path="res://assets/void/big_boss.png" id="5_1184p"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="5_ltel4"]
+[ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="6_1n3w6"]
+[ext_resource type="Texture2D" uid="uid://b2k4c1skpkikp" path="res://assets/hands/finalboss/round1_b.png" id="6_m1vki"]
+[ext_resource type="Texture2D" uid="uid://do38k5tydaso8" path="res://assets/hands/finalboss/round2_b.png" id="7_i1q14"]
+[ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="7_pxibu"]
+[ext_resource type="Texture2D" uid="uid://cb2vp5ygd5c41" path="res://assets/hands/finalboss/round3_b.png" id="8_3lkr0"]
+[ext_resource type="PackedScene" uid="uid://cwv1fr15e7i5d" path="res://scenes/minigames/mix_round.tscn" id="8_34kug"]
+[ext_resource type="Resource" uid="uid://dywkai6to8prd" path="res://dialogues/6_the_void_text/henry_manoel_after_handshake_text.dialogue" id="8_hw5w7"]
+[ext_resource type="Resource" uid="uid://bed3b44xdp8l6" path="res://dialogues/6_the_void_text/henry_manoel_text.dialogue" id="9_ltboa"]
+[ext_resource type="Texture2D" uid="uid://c0ckglh1o3rg0" path="res://assets/hands/finalboss/handboss.png" id="9_s3kat"]
+
+[sub_resource type="Animation" id="Animation_b7ylj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uhmnx")]
+}
+
+[sub_resource type="Animation" id="Animation_f4lrn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_uhmnx"), ExtResource("4_4legt")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b54e0"]
+_data = {
+"RESET": SubResource("Animation_b7ylj"),
+"idle": SubResource("Animation_f4lrn")
+}
+
+[node name="Level5" instance=ExtResource("1_i1c4q")]
+level_name = "void"
+music_name = "void"
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_uhmnx")
+
+[node name="Manoel" parent="." index="1" instance=ExtResource("4_yn0aa")]
+position = Vector2(256, 106)
+lives = 10
+char_name = "manoel"
+balloon_scene = ExtResource("4_266of")
+is_boss = true
+opponent_hand_offset = Vector2(0, -155)
+handshake_textures = Array[Texture2D]([ExtResource("6_m1vki"), ExtResource("7_i1q14"), ExtResource("8_3lkr0")])
+oppponent_texture = ExtResource("9_s3kat")
+dialogue_beaten = ExtResource("8_hw5w7")
+dialogue = ExtResource("9_ltboa")
+
+[node name="Background" parent="Manoel" index="0"]
+texture = ExtResource("4_c6riy")
+
+[node name="InteractableComponent" parent="Manoel" index="1"]
+offset_left = -460.0
+offset_top = -191.0
+offset_right = 180.0
+offset_bottom = 169.0
+texture_normal = ExtResource("5_1184p")
+
+[node name="StandardRound3" parent="Manoel/Minigames" index="0" instance=ExtResource("5_ltel4")]
+debug_sequence_size_alt = {}
+sequence_size_alt = {
+1: 0,
+2: 3,
+3: 2
+}
+rogue_letters = Array[int]([1, 2, 4])
+time_per_sequence = 3.0
+
+[node name="HangmanRound3" parent="Manoel/Minigames" index="1" instance=ExtResource("6_1n3w6")]
+missing_letters = 2
+ambiguous_words = 3
+
+[node name="BlitzTypingRound3" parent="Manoel/Minigames" index="2" instance=ExtResource("7_pxibu")]
+theme = 4
+time_per_letter = 1.0
+sequence_quantity = 1
+
+[node name="MixRound" parent="Manoel/Minigames" index="3" instance=ExtResource("8_34kug")]
+
+[node name="Reference" parent="." index="2"]
+visible = false
+texture = ExtResource("3_dabda")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_b54e0")
+}
+autoplay = "idle"
+
+[editable path="Manoel"]

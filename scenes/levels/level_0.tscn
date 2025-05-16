@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt2ldiwwrydt8"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_aubhi"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://dialogues/void_balloon/balloon.tscn" id="2_3xu8g"]
+[ext_resource type="Resource" uid="uid://b3sldpvncdbci" path="res://dialogues/2_front_yard_text/henry_text_front_yard.dialogue" id="2_46i0n"]
+[ext_resource type="Texture2D" uid="uid://djk0mo1pv0mdd" path="res://assets/street/street_start.png" id="2_jikah"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_g0bqk"]
+
+[node name="Level0" node_paths=PackedStringArray("transition") instance=ExtResource("1_aubhi")]
+start_dialogue = ExtResource("2_46i0n")
+music_name = "street"
+balloon = ExtResource("2_3xu8g")
+transition = NodePath("TransitionTrigger")
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_jikah")
+
+[node name="TransitionTrigger" parent="." index="1" instance=ExtResource("3_g0bqk")]
+position = Vector2(270, 270)
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = -20.0
+offset_top = -67.0
+offset_right = 18.0
+offset_bottom = -3.0
+texture_normal = null
+
+[node name="Reference" parent="." index="2"]
+visible = false
+
+[editable path="TransitionTrigger"]

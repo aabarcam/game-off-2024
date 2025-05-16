@@ -1,0 +1,29 @@
+~ start
+if interacted_times == 0:
+	HENRY: OH, MY GOD!!!
+	MANOEL DE PALMA THE ALL-GREETING HAND: yes. henry. my child. i am your god.
+	HENRY: I-I must be dreaming, this can't be real.
+	MANOEL DE PALMA THE ALL-GREETING HAND: henry. do not be afraid. i just want you to be happy.
+	MANOEL DE PALMA THE ALL-GREETING HAND: don't you want the deal of your life?
+	HENRY: I-I think so... Are you going to k-kill me?
+	MANOEL DE PALMA THE ALL-GREETING HAND: kill you? why in the world would i do such a silly thing, my child?
+	HENRY: B-but all these w-weird handshakes, all the grenades, every minute I feel one step closer to the my g-grave.
+	MANOEL DE PALMA THE ALL-GREETING HAND: what? who told you all of that nonsense, henry?
+	HENRY: N-Norman, sir. Norman and all the other colorful fellows of this house.
+	MANOEL DE PALMA THE ALL-GREETING HAND: oh, i see. i understand the situation.
+	HENRY: A-And that would be?
+	MANOEL DE PALMA THE ALL-GREETING HAND: they're just messing with you.
+	HENRY: MESSING WITH ME??
+	MANOEL DE PALMA THE ALL-GREETING HAND: absolutely, henry. the grenade thing is a joke i came up with around 100 years ago or so. 
+	MANOEL DE PALMA THE ALL-GREETING HAND: before that we used dynamite and many others silly human inventions.
+	MANOEL DE PALMA THE ALL-GREETING HAND: like those perfectly round bombs that pirates love to use. oh, to be that young again.
+	HENRY: (Still processing) that's a joke??
+	MANOEL DE PALMA THE ALL-GREETING HAND: pretty funny, huh?
+	HENRY: Well, to be fair. It was kind of thrilling. I felt alive. But...
+	HENRY: I don't think I will be able to sleep or eat ever again, let alone give another handshake.
+	MANOEL DE PALMA THE ALL-GREETING HAND: well, about that, henry. and yes, i know your name because that's the name i chose for you, my child.
+	MANOEL DE PALMA THE ALL-GREETING HAND: there's one last handshake, a test of true faith. after that, the deal is all yours.
+	HENRY: (Thinking about his beliefs) Well, if it is the LAST ONE... Give me that grenade, man.
+else:
+	MANOEL DE PALMA THE ALL-GREETING HAND: let's try this final challenge one more time, henry.
+=> END

@@ -1,0 +1,161 @@
+[gd_scene load_steps=34 format=3 uid="uid://ckyyb8vjgbxr4"]
+
+[ext_resource type="PackedScene" uid="uid://yixk57dc8qhb" path="res://scenes/level_base.tscn" id="1_37w43"]
+[ext_resource type="PackedScene" uid="uid://b4p2i6cbu0qrs" path="res://scenes/minigame_trigger.tscn" id="2_ihj4d"]
+[ext_resource type="Texture2D" uid="uid://dhsegb6fvsk8e" path="res://assets/conference room/conference_room_background.png" id="2_lmqtt"]
+[ext_resource type="PackedScene" uid="uid://e6gh4frdpblh" path="res://scenes/transition_trigger.tscn" id="3_36rk4"]
+[ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="3_djuq7"]
+[ext_resource type="Texture2D" uid="uid://1hynl2janovb" path="res://assets/conference room/door_open_conference_room.png" id="4_5j4ih"]
+[ext_resource type="Texture2D" uid="uid://7a7q371eeygq" path="res://assets/conference room/door_closed_conference_room.png" id="5_5kdco"]
+[ext_resource type="Texture2D" uid="uid://bu1d6dldia4sq" path="res://assets/conference room/conference_room_example.png" id="5_begou"]
+[ext_resource type="Texture2D" uid="uid://db6hpkn1yyw1x" path="res://assets/hands/conf_levels/allan/round1_4.png" id="7_alg00"]
+[ext_resource type="Resource" uid="uid://dmdgntrar6s53" path="res://dialogues/5_conference_room_text/henry_alan_after_handshake_text.dialogue" id="7_j0ihb"]
+[ext_resource type="Texture2D" uid="uid://cbj4nr0qmfcwo" path="res://assets/conference room/character1_cr.png" id="7_wbiub"]
+[ext_resource type="Resource" uid="uid://ceppql8bxg7lt" path="res://dialogues/tutorials/hangman_tutorial.dialogue" id="8_aqul8"]
+[ext_resource type="Texture2D" uid="uid://dsxne3s85wjeb" path="res://assets/hands/conf_levels/allan/round2_3.png" id="8_u0gc1"]
+[ext_resource type="Resource" uid="uid://dljscuawc8vcq" path="res://dialogues/5_conference_room_text/henry_alan_text.dialogue" id="8_uf0q1"]
+[ext_resource type="Texture2D" uid="uid://clbk67nknb2hc" path="res://assets/hands/conf_levels/allan/round3_4.png" id="9_8xf54"]
+[ext_resource type="Texture2D" uid="uid://dj18bcpm176ii" path="res://assets/conference room/character2_cr.png" id="9_hhqji"]
+[ext_resource type="Texture2D" uid="uid://crnw5k4k5xvya" path="res://assets/hands/conf_levels/allan/fondo4.png" id="10_hijch"]
+[ext_resource type="Texture2D" uid="uid://4wkhs6gm0j1v" path="res://assets/hands/conf_levels/allan/hand4.png" id="10_imsme"]
+[ext_resource type="Texture2D" uid="uid://dninukrio7a2f" path="res://assets/conference room/character3_cr.png" id="10_ndvr7"]
+[ext_resource type="Resource" uid="uid://chpy6sdnluk0y" path="res://dialogues/5_conference_room_text/henry_truman_after_handshake_text.dialogue" id="11_ice8b"]
+[ext_resource type="Resource" uid="uid://c2rxrvyna7sfx" path="res://dialogues/5_conference_room_text/henry_truman_text.dialogue" id="12_lu0q2"]
+[ext_resource type="Resource" uid="uid://c5emomaaw6tfy" path="res://dialogues/5_conference_room_text/henry_tony_after_handshake_text.dialogue" id="14_43s2n"]
+[ext_resource type="Resource" uid="uid://dsb1ggotk0tpn" path="res://dialogues/5_conference_room_text/henry_tony_text.dialogue" id="15_l1h1a"]
+[ext_resource type="Texture2D" uid="uid://bdb5nsdth0bc5" path="res://assets/hands/conf_levels/nivel5/round1_5.png" id="17_ihos3"]
+[ext_resource type="Texture2D" uid="uid://b5q4nx0us1s32" path="res://assets/hands/conf_levels/nivel5/round2_5.png" id="18_6ttyg"]
+[ext_resource type="Texture2D" uid="uid://v2iobu78sh3q" path="res://assets/hands/conf_levels/nivel5/round3_5.png" id="19_vdsvw"]
+[ext_resource type="Texture2D" uid="uid://cgdey25j7w055" path="res://assets/hands/conf_levels/nivel5/fondo5.png" id="19_vlrco"]
+[ext_resource type="Texture2D" uid="uid://bp0hfovvjie1j" path="res://assets/hands/conf_levels/nivel5/hand5.png" id="20_saqw3"]
+[ext_resource type="Texture2D" uid="uid://bntpghrr3fkr" path="res://assets/hands/conf_levels/boss/round1_6.png" id="25_omd1n"]
+[ext_resource type="Texture2D" uid="uid://dqod48bkyev74" path="res://assets/hands/conf_levels/boss/round2_6.png" id="26_ql20w"]
+[ext_resource type="Texture2D" uid="uid://cvn4xfctje5gs" path="res://assets/hands/conf_levels/boss/round3_6.png" id="27_j0sc3"]
+[ext_resource type="Texture2D" uid="uid://dwsal3tg3tdsu" path="res://assets/hands/conf_levels/boss/hand6.png" id="28_dj7cg"]
+[ext_resource type="Texture2D" uid="uid://ddpnfsxwmrg2a" path="res://assets/hands/conf_levels/boss/fondo6.png" id="31_4bn62"]
+
+[node name="Level3" node_paths=PackedStringArray("transition") instance=ExtResource("1_37w43")]
+level_name = "conference_room"
+music_name = "conference_room"
+transition = NodePath("TransitionTrigger")
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_lmqtt")
+
+[node name="TransitionTrigger" parent="." index="1" node_paths=PackedStringArray("required_minigames") instance=ExtResource("3_36rk4")]
+required_minigames = [NodePath("../Alan"), NodePath("../Truman"), NodePath("../TonyBoss")]
+open_texture = ExtResource("4_5j4ih")
+
+[node name="InteractableComponent" parent="TransitionTrigger" index="0"]
+offset_left = 487.0
+offset_top = 49.0
+offset_right = 615.0
+offset_bottom = 187.0
+texture_normal = ExtResource("5_5kdco")
+
+[node name="Alan" parent="." index="2" instance=ExtResource("2_ihj4d")]
+position = Vector2(203, 106)
+char_name = "alan"
+handshake_textures = Array[Texture2D]([ExtResource("7_alg00"), ExtResource("8_u0gc1"), ExtResource("9_8xf54")])
+oppponent_texture = ExtResource("10_imsme")
+dialogue_beaten = ExtResource("7_j0ihb")
+dialogue_instructions = ExtResource("8_aqul8")
+dialogue = ExtResource("8_uf0q1")
+
+[node name="Background" parent="Alan" index="0"]
+texture = ExtResource("10_hijch")
+
+[node name="InteractableComponent" parent="Alan" index="1"]
+texture_normal = ExtResource("7_wbiub")
+
+[node name="MinigameLabel" parent="Alan" index="2"]
+text = "PERSONAJE
+A"
+
+[node name="HangmanRound" parent="Alan/Minigames" index="0" instance=ExtResource("3_djuq7")]
+time_per_sequence = 9.0
+
+[node name="HangmanRound2" parent="Alan/Minigames" index="1" instance=ExtResource("3_djuq7")]
+time_per_sequence = 7.0
+
+[node name="HangmanRound3" parent="Alan/Minigames" index="2" instance=ExtResource("3_djuq7")]
+
+[node name="Truman" parent="." index="3" instance=ExtResource("2_ihj4d")]
+position = Vector2(71, 141)
+char_name = "truman"
+handshake_textures = Array[Texture2D]([ExtResource("17_ihos3"), ExtResource("18_6ttyg"), ExtResource("19_vdsvw")])
+oppponent_texture = ExtResource("20_saqw3")
+dialogue_beaten = ExtResource("11_ice8b")
+dialogue_instructions = ExtResource("8_aqul8")
+dialogue = ExtResource("12_lu0q2")
+
+[node name="Background" parent="Truman" index="0"]
+texture = ExtResource("19_vlrco")
+
+[node name="InteractableComponent" parent="Truman" index="1"]
+offset_left = 152.878
+offset_top = -28.777
+offset_right = 280.878
+offset_bottom = 109.223
+texture_normal = ExtResource("9_hhqji")
+
+[node name="MinigameLabel" parent="Truman" index="2"]
+text = "PERSONAJE
+B"
+
+[node name="HangmanRound" parent="Truman/Minigames" index="0" instance=ExtResource("3_djuq7")]
+ambiguous_words = 1
+time_per_sequence = 9.0
+
+[node name="HangmanRound2" parent="Truman/Minigames" index="1" instance=ExtResource("3_djuq7")]
+ambiguous_words = 2
+time_per_sequence = 9.0
+
+[node name="HangmanRound3" parent="Truman/Minigames" index="2" instance=ExtResource("3_djuq7")]
+ambiguous_words = 3
+time_per_sequence = 9.0
+
+[node name="TonyBoss" parent="." index="4" node_paths=PackedStringArray("required_minigames") instance=ExtResource("2_ihj4d")]
+position = Vector2(459, 123)
+required_minigames = [NodePath("../Alan"), NodePath("../Truman")]
+char_name = "tony"
+handshake_textures = Array[Texture2D]([ExtResource("25_omd1n"), ExtResource("26_ql20w"), ExtResource("27_j0sc3")])
+oppponent_texture = ExtResource("28_dj7cg")
+dialogue_beaten = ExtResource("14_43s2n")
+dialogue_instructions = ExtResource("8_aqul8")
+dialogue = ExtResource("15_l1h1a")
+
+[node name="Background" parent="TonyBoss" index="0"]
+texture = ExtResource("31_4bn62")
+
+[node name="InteractableComponent" parent="TonyBoss" index="1"]
+offset_left = -26.9785
+offset_top = 62.9496
+offset_right = 28.0215
+offset_bottom = 113.95
+texture_normal = ExtResource("10_ndvr7")
+
+[node name="MinigameLabel" parent="TonyBoss" index="2"]
+text = "MINI
+BOSS"
+
+[node name="HangmanRound" parent="TonyBoss/Minigames" index="0" instance=ExtResource("3_djuq7")]
+ambiguous_words = 1
+time_per_sequence = 7.0
+
+[node name="HangmanRound2" parent="TonyBoss/Minigames" index="1" instance=ExtResource("3_djuq7")]
+ambiguous_words = 2
+time_per_sequence = 6.0
+
+[node name="HangmanRound3" parent="TonyBoss/Minigames" index="2" instance=ExtResource("3_djuq7")]
+missing_letters = 2
+ambiguous_words = 3
+
+[node name="Reference" parent="." index="5"]
+visible = false
+texture = ExtResource("5_begou")
+
+[editable path="TransitionTrigger"]
+[editable path="Alan"]
+[editable path="Truman"]
+[editable path="TonyBoss"]

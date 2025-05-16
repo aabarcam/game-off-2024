@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwv1fr15e7i5d"]
+
+[ext_resource type="Script" path="res://scripts/minigames/mix_round.gd" id="1_kbx1h"]
+[ext_resource type="PackedScene" uid="uid://bqoffvdkxvqx5" path="res://scenes/minigames/blitz_typing_round.tscn" id="2_f2vwd"]
+[ext_resource type="PackedScene" uid="uid://wnaxleb6ylw7" path="res://scenes/minigames/standard_round.tscn" id="3_16i06"]
+[ext_resource type="PackedScene" uid="uid://cuuklfgil0thm" path="res://scenes/minigames/hangman_round.tscn" id="4_23la2"]
+
+[node name="MixRound" type="Node2D" node_paths=PackedStringArray("minigames")]
+script = ExtResource("1_kbx1h")
+minigames = [NodePath("MinigamePool/BlitzTypingRound"), NodePath("MinigamePool/StandardRound"), NodePath("MinigamePool/HangmanRound")]
+
+[node name="MinigamePool" type="Node2D" parent="."]
+
+[node name="BlitzTypingRound" parent="MinigamePool" instance=ExtResource("2_f2vwd")]
+sequence_quantity = 1
+
+[node name="StandardRound" parent="MinigamePool" instance=ExtResource("3_16i06")]
+sequence_quantity = 1
+
+[node name="HangmanRound" parent="MinigamePool" instance=ExtResource("4_23la2")]
+sequence_quantity = 1
+
+[node name="LetterStop" type="Marker2D" parent="."]
+visible = false
+position = Vector2(560, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStop"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+STOP HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LetterStart" type="Marker2D" parent="."]
+visible = false
+position = Vector2(1080, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStart"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+START HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SequenceTimer" type="Timer" parent="."]

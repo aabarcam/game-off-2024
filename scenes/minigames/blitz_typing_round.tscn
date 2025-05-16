@@ -1,0 +1,151 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqoffvdkxvqx5"]
+
+[ext_resource type="PackedScene" uid="uid://b75c57ghg2hg7" path="res://scenes/components/sequence_generator_component.tscn" id="1_dw0ll"]
+[ext_resource type="Script" path="res://scripts/minigames/blitz_typing_round.gd" id="1_evha0"]
+
+[node name="BlitzTypingRound" type="Node2D" node_paths=PackedStringArray("sequence_generator")]
+script = ExtResource("1_evha0")
+completion_threshold = 50.0
+time_per_letter = 0.75
+sequence_generator = NodePath("SequenceGeneratorComponent")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="SequenceGeneratorComponent" parent="." instance=ExtResource("1_dw0ll")]
+
+[node name="Sequence1" type="Marker2D" parent="."]
+position = Vector2(136, 64)
+
+[node name="DebugLabel" type="Label" parent="Sequence1"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SEQUENCE 1"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sequence2" type="Marker2D" parent="."]
+position = Vector2(456, 64)
+
+[node name="DebugLabel" type="Label" parent="Sequence2"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SEQUENCE 2"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sequence3" type="Marker2D" parent="."]
+position = Vector2(656, 64)
+
+[node name="DebugLabel" type="Label" parent="Sequence3"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SEQUENCE 3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sequence4" type="Marker2D" parent="."]
+position = Vector2(856, 64)
+
+[node name="DebugLabel" type="Label" parent="Sequence4"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SEQUENCE 4"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SequenceTimer" type="Timer" parent="."]
+
+[node name="SequenceContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 45.0
+offset_right = 580.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 256
+alignment = 1
+
+[node name="LetterStop" type="Marker2D" parent="."]
+position = Vector2(560, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStop"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+STOP HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LetterStart" type="Marker2D" parent="."]
+position = Vector2(1080, 64)
+
+[node name="DebugLabel" type="Label" parent="LetterStart"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -49.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "LETTERS
+START HERE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

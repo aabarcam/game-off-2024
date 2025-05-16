@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b6j5tm6qmpll8"
+path="res://.godot/imported/henry_norman_after_handshake_text.dialogue-0983a3542de869000086bb78c00e3d1a.tres"
+
+[deps]
+
+source_file="res://dialogues/3_living_room_text/henry_norman_after_handshake_text.dialogue"
+dest_files=["res://.godot/imported/henry_norman_after_handshake_text.dialogue-0983a3542de869000086bb78c00e3d1a.tres"]
+
+[params]
+
+defaults=true
